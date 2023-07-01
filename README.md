@@ -7,13 +7,8 @@ This is just a training project, enhanced by best automation framework practice
 
 This project has two aspects [Totally spearated in the code]: 
 
-  1- Autofox business layer
+  1- Autofox business layer - [Sensitive content owned by and protected for **Softxpert**
   
-  2- Automation Engine framework layer 
+  2- Automation Engine framework layer - fully **Mahmoud Samy's personal property.**
 
-
-
-Autofox business layer has many of calssified and sensitive content owned by and protected for **Softxpert**.
-
-while Automation layer is fully **Mahmoud Samy's personal property.**
 
