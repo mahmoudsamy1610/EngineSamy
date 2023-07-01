@@ -10,7 +10,8 @@ This project has two aspects [Totally spearated in the code]:
   2- Automation Engine framework layer
 
 
-Autofox business layer has many of calssified and sensitive content owned by and protected for Softxpert.
 
-while Automation layer is fully Mahmoud Samy's personal property
+Autofox business layer has many of calssified and sensitive content owned by and protected for **Softxpert**.
+
+while Automation layer is fully **Mahmoud Samy's personal property.**
 
