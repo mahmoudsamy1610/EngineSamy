@@ -8,7 +8,6 @@ import java.time.Duration;
 
 public class WaitManager {
 
-  public static WebDriver driver;
   public static int WaitTime;
 
 

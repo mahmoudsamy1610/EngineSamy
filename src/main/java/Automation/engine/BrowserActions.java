@@ -9,7 +9,6 @@ public class BrowserActions {
 
     // day 2 Git training update
 
-    public static  WebDriver driver;
     // these variables are set in the properties file and in configuration
     public static boolean MaxWindow = Boolean.parseBoolean(GetProperty.GetPropertyValue("RunOptions","Maximize"));
     public static int WindowWidth = Integer.parseInt(GetProperty.GetPropertyValue("RunOptions","width"));

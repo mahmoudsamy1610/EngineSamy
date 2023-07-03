@@ -4,7 +4,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.testng.Assert;
+
 
 public class BrowserFactory {
 
@@ -15,11 +18,19 @@ public class BrowserFactory {
 
         if (BrowserType.equalsIgnoreCase("Chrome")) {
             try{
+
                 WebDriver driver;
+                WebDriverListener listener ;
+                WebDriver decoratedDriver;
+
                 WebDriverManager.chromedriver().setup();
+
                 driver = new ChromeDriver();
+                listener = new EventListener();
+                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
+
                 Logger.logStep("Initializing Chrome driver");
-                return driver;
+                return decoratedDriver;
             }
             catch (Exception e) {
                 Logger.logStep("Initializing Chrome driver");
