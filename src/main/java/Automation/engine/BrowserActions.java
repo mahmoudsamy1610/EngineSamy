@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 public class BrowserActions {
 
-    // test 1 changeaaa
+    // day 2 Git training update
 
     public static  WebDriver driver;
     // these variables are set in the properties file and in configuration
