@@ -12,11 +12,6 @@ import org.testng.Assert;
 
 public class ElementActions {
 
-    public  static  WebDriver driver;
-
-
-
-
 
     public static void clearText(WebDriver driver, By locator , String ElementName){
 

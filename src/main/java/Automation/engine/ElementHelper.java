@@ -11,7 +11,6 @@ public class ElementHelper {
 
 
 
-
     public static WebElement locateElement (WebDriver driver, By locator , String ElementName){
 
 

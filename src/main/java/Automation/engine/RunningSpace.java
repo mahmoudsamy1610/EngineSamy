@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 public class RunningSpace {
 
 
-    public static WebDriver driver ;
 
     public static WebDriver SetRunningType( String BrowserType , String ExecutionType ) {
 
