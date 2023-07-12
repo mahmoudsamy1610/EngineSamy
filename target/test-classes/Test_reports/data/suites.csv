@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Jul 04 00:03:55 EET 2023","Tue Jul 04 00:03:58 EET 2023","3426","Default Suite","Autofox","TestAutofox.gui.AdminLogin","TestAutofox.gui.AdminLogin","InvalidAdminCannotLogin","InvalidAdminCannotLogin","invalid Admin cannot login"
-"passed","Tue Jul 04 00:03:50 EET 2023","Tue Jul 04 00:03:53 EET 2023","3398","Default Suite","Autofox","TestAutofox.gui.AdminLogin","TestAutofox.gui.AdminLogin","ValidAdminCanLogin","ValidAdminCanLogin","Valid Admin can login"

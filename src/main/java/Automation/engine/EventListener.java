@@ -26,6 +26,8 @@ public class EventListener implements WebDriverListener {
     @Override
     public void onError(Object target, Method method, Object[] args, InvocationTargetException e) {
         WebDriverListener.super.onError(target, method, args, e);
+        //System.out.println( e);
+
     }
 
     @Override

@@ -1,1 +1,0 @@
-[{"uid":"4a755230deb88631","name":"InvalidAdminCannotLogin","time":{"start":1688421835187,"stop":1688421838613,"duration":3426},"status":"passed","severity":"critical"},{"uid":"28787e6ab725acb","name":"ValidAdminCanLogin","time":{"start":1688421830225,"stop":1688421833623,"duration":3398},"status":"passed","severity":"critical"}]
