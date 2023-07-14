@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 public class BrowserActions {
 
-    // day  Git training update [ingore]
+    // is git ignore working ?
 
     // these variables are set in the properties file and in configuration
     public static boolean MaxWindow = Boolean.parseBoolean(GetProperty.GetPropertyValue("RunOptions","Maximize"));
