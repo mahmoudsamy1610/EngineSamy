@@ -2,12 +2,12 @@
 pom.xml
 
 # ignore IDEA folder
-/.idea/*
+.idea/
 
 # ignore allure Json files
-/allure-results/*
+allure-results/
 
 #ignore target folder
-/target/*
+target/
 
 
