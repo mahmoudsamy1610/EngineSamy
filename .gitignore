@@ -1,0 +1,13 @@
+# Ignore POM file
+pom.xml
+
+# ignore IDEA folder
+.idea/*
+
+# ignore allure Json files
+allure-results/*
+
+#ignore target folder
+target/*
+
+
