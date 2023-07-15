@@ -12,8 +12,10 @@ public class RunningSpace {
         if (ExecutionType.equalsIgnoreCase("Local") ) {
             return BrowserFactory.SetBrowserType(BrowserType);
         }
-        else if (ExecutionType.equalsIgnoreCase("Remote")) {
-            System.out.println("Remote Implementation is not ready");
+        else if (ExecutionType.equalsIgnoreCase("Grid")) {
+            //System.out.println("Remote Implementation is not ready"); --> Implementing
+
+           return GridManager.TakeToGrid();
 
         }else {
             System.out.println("invalid Execution type");

@@ -9,13 +9,14 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
+    public WebDriver driver;
     //Locators
     private By TokenField = By.id("login_token");
     private By LoginButton = By.cssSelector("button.login-btn.btn-block.btn-danger");
     private By InvalidLoginCredsToaster = By.cssSelector("div[role='alertdialog']") ;
 
     //Variables
-    WebDriver driver ;
+    //WebDriver driver ;
     private String Domain = EnvironmentManager.SelectEnvironment();
     private String LoginPageUrl =  GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxUrlsStore","LoginPath");
     private String FullLoginPageUrl = Domain + LoginPageUrl;
@@ -28,7 +29,7 @@ public class LoginPage {
 
 
 
-    public  void openLoginPage(){
+    public  void openLoginPage( ){
         BrowserActions.goToUrl(driver, FullLoginPageUrl , "Login");
     }
 
