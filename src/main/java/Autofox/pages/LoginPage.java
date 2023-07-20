@@ -2,7 +2,7 @@ package Autofox.pages;
 
 import Autofox.tools.GetAutofoxProperty;
 import Automation.engine.*;
-import io.qameta.allure.Step;
+import Automation.engine.browserWorks.BrowserActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

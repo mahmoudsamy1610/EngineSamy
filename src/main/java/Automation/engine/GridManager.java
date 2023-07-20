@@ -11,28 +11,10 @@ import java.net.URL;
 
 public class GridManager {
 
-    public static WebDriver TakeToGrid () {
+    public static void TakeToGrid () {
 
 
-        WebDriver driver = null;
-        try {
-            String GridUrl = "http://localhost:4444";
-            URL url = new URL(GridUrl);
 
-            ChromeOptions chromeOptions = new ChromeOptions();
-            //  chromeOptions.setCapability("browserVersion", "67");
-            // chromeOptions.setCapability("platformName", "Windows 10");
-            driver = new RemoteWebDriver(url, chromeOptions);
-
-
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
-            System.out.println("remote error");
-        }
-
-
-        return driver;
 
     }
 
