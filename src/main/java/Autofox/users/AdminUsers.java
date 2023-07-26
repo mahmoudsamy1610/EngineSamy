@@ -1,7 +1,7 @@
 package Autofox.users;
 
 //import Autofox.tools.GetAutofoxProperty;
-import Automation.engine.GetProperty;
+import Automation.engine.propertyWorks.GetProperty;
 
 public abstract class AdminUsers {
 

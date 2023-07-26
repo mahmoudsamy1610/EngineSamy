@@ -1,8 +1,8 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.GetProperty;
-import Automation.engine.Logger;
-import Automation.engine.SetupFactory;
+import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.reportingworks.Logger;
+import Automation.engine.setupWorks.SetupFactory;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;

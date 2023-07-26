@@ -1,8 +1,8 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.EventListener;
-import Automation.engine.GetProperty;
-import Automation.engine.Logger;
+import Automation.engine.reportingworks.EventListener;
+import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.reportingworks.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;

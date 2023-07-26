@@ -1,8 +1,9 @@
 package Autofox.pages;
 
-import Autofox.tools.GetAutofoxProperty;
-import Automation.engine.*;
+import Autofox.autofoxPropertyWorks.GetAutofoxProperty;
 import Automation.engine.browserWorks.BrowserActions;
+import Automation.engine.elementWorks.ElementActions;
+import Automation.engine.setupWorks.EnvironmentManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
