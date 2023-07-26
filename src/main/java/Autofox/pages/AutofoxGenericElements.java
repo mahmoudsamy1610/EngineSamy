@@ -1,12 +1,8 @@
 package Autofox.pages;
 
-import Automation.engine.ElementActions;
-import Automation.engine.ElementHelper;
-import Automation.engine.Logger;
-import io.qameta.allure.Step;
+import Automation.engine.elementWorks.ElementActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class AutofoxGenericElements {
 

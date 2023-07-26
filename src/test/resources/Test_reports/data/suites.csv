@@ -1,3 +1,4 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Jul 20 19:44:32 EET 2023","Thu Jul 20 19:44:36 EET 2023","3577","Login","AdminLogin","TestAutofox.gui.AdminLogin","TestAutofox.gui.AdminLogin","ValidAdminCanLogin","ValidAdminCanLogin","Valid Admin can login"
-"passed","Thu Jul 20 19:44:43 EET 2023","Thu Jul 20 19:44:47 EET 2023","4265","Login","AdminLogin","TestAutofox.gui.AdminLogin","TestAutofox.gui.AdminLogin","InvalidAdminCannotLogin","InvalidAdminCannotLogin","invalid Admin cannot login"
+"passed","Fri Jul 21 21:43:16 EET 2023","Fri Jul 21 21:43:22 EET 2023","5298","Login","AdminLogin","TestAutofox.gui.AdminLogin","TestAutofox.gui.AdminLogin","InvalidAdminCannotLogin","InvalidAdminCannotLogin","invalid Admin cannot login"
+"broken","Fri Jul 21 21:41:42 EET 2023","Fri Jul 21 21:41:42 EET 2023","2","Login","AdminLogin","TestAutofox.gui.AdminLogin","TestAutofox.gui.AdminLogin","setup","setup",""
+"passed","Fri Jul 21 21:43:10 EET 2023","Fri Jul 21 21:43:13 EET 2023","2919","Login","AdminLogin","TestAutofox.gui.AdminLogin","TestAutofox.gui.AdminLogin","ValidAdminCanLogin","ValidAdminCanLogin","Valid Admin can login"

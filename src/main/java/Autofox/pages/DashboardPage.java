@@ -1,7 +1,7 @@
 package Autofox.pages;
 
-import Automation.engine.ElementActions;
-import Automation.engine.ElementHelper;
+import Automation.engine.elementWorks.ElementActions;
+import Automation.engine.elementWorks.ElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

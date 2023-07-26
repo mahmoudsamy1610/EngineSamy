@@ -1,7 +1,5 @@
 package Autofox.users;
 
-import Automation.engine.GetProperty;
-
 public class SuperAdmin extends AdminUsers {
 
 

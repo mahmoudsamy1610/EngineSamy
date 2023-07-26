@@ -1,9 +1,9 @@
 package TestAutofox.gui;
 
 import Autofox.pages.DashboardPage;
-import Autofox.tools.GetAutofoxProperty;
+import Autofox.autofoxPropertyWorks.GetAutofoxProperty;
 import Automation.engine.browserWorks.BrowserActions;
-import Automation.engine.GenerateAllureReport;
+import Automation.engine.reportingworks.GenerateAllureReport;
 import TestAutomation.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;

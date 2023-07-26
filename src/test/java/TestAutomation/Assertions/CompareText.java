@@ -1,6 +1,6 @@
 package TestAutomation.Assertions;
 
-import Automation.engine.Logger;
+import Automation.engine.reportingworks.Logger;
 import org.testng.Assert;
 
 public class CompareText {
