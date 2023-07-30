@@ -13,45 +13,44 @@ import org.testng.Assert;
 
 import java.net.URL;
 
-public class RemoteBrowserFactory {
+public class StaBrowserFactory {
 
 
 
-    public static WebDriver SetRemoteBrowserType(String RemoteBrowserType){
+    public static WebDriver SetStaBrowserType(String StaBrowserType){
 
-        if (RemoteBrowserType.equalsIgnoreCase("Chrome")) {
+        if (StaBrowserType.equalsIgnoreCase("Chrome")) {
             try{
 
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String GridUrl = GetProperty.GetPropertyValue("RunOptions","RemoteHost");
-                URL url = new URL(GridUrl);
-
+                String StaGridUrl = GetProperty.GetPropertyValue("RunOptions", "StaGridHost");
+                URL url = new URL(StaGridUrl);
 
                 ChromeOptions chromeOptions = new ChromeOptions();
                 driver = new RemoteWebDriver(url, chromeOptions);
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Chrome driver {Remotely} ");
+                Logger.logStep("Initializing Chrome driver  {Stand alone grid} ");
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing Chrome driver {Remotely} ");
-                Assert.fail("Unknown error while Initializing Chrome browser {Remotely} ");
-                System.out.println("Unknown Error while Initializing Chrome browser {Remotely} ");
+                Logger.logStep("Initializing Chrome driver {Stand alone grid} ");
+                Assert.fail("Unknown error while Initializing Chrome browser {Stand alone grid} ");
+                System.out.println("Unknown Error while Initializing Chrome browser {Stand alone grid} ");
             }
 
-        } else if (RemoteBrowserType.equalsIgnoreCase("Firefox") ) {
+        } else if (StaBrowserType.equalsIgnoreCase("Firefox") ) {
             try{
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String GridUrl = GetProperty.GetPropertyValue("RunOptions","RemoteHost");  ;
-                URL url = new URL(GridUrl);
+                String StaGridUrl = GetProperty.GetPropertyValue("RunOptions", "StaGridHost");  ;
+                URL url = new URL(StaGridUrl);
 
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -59,13 +58,13 @@ public class RemoteBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing firefox driver {Remotely} ");
+                Logger.logStep("Initializing firefox driver {Stand alone grid} ");
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing FireFox driver");
-                Assert.fail("Unknown error while Initializing FireFox browser");
-                System.out.println("Unknown Error while Initializing FireFox browser");
+                Logger.logStep("Initializing FireFox driver {Stand alone grid} ");
+                Assert.fail("Unknown error while Initializing FireFox browser {Stand alone grid} ");
+                System.out.println("Unknown Error while Initializing FireFox browser {Stand alone grid} ");
             }
 
         } else {
