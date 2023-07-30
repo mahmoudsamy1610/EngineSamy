@@ -4,6 +4,9 @@
     <test name = "AdminLogin">
         <classes>
             <class name="TestAutofox.gui.AdminLogin"/>
+            <class name="TestAutofox.gui.AdminLogin2"/>
+            <class name="TestAutofox.gui.AdminLogin3"/>
+
         </classes>
     </test>
 </suite>

@@ -6,9 +6,9 @@ import Automation.engine.propertyWorks.GetProperty;
 public class GridLauncher {
 
     public static String GridJarLocation = GetProperty.GetPropertyValue("RunOptions","GridJarFile") ;
-    public static String GridStaCommand = GetProperty.GetPropertyValue("RunOptions","GridStaCommand") ;
+    public static String GridStaCommand = GetProperty.GetPropertyValue("RunOptions", "StaGridCommand") ;
     public static String RunGridStaCommand = "cd " + GridJarLocation  + " && " + GridStaCommand ;
-    public static String GridStaHost = GetProperty.GetPropertyValue("RunOptions","RemoteHost") ;
+    public static String GridStaHost = GetProperty.GetPropertyValue("RunOptions", "StaGridHost") ;
 
     public static void GridStaLauncher() {
         try {

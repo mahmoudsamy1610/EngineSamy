@@ -18,7 +18,8 @@ public class BrowserActions {
     public static int WindowHeight = Integer.parseInt(GetProperty.GetPropertyValue("RunOptions","height"));
     public static String  BrowserType = GetProperty.GetPropertyValue("RunOptions","BrowserType");
     public static String  ExecutionType = GetProperty.GetPropertyValue("RunOptions","ExecutionType");
-
+    public static String  NodePlatformType = GetProperty.GetPropertyValue("ParaRunOptions","Platform0");
+    public static String  NodeBrowserType = GetProperty.GetPropertyValue("ParaRunOptions","Browser0");
 
 
     public static WebDriver StartBrowser(){
@@ -26,7 +27,7 @@ public class BrowserActions {
 
             try {
                 WebDriver driver;
-             driver = SetupFactory.Run(BrowserType , ExecutionType);
+             driver = SetupFactory.Run(BrowserType , ExecutionType , NodePlatformType , NodeBrowserType);
              Logger.logStep("Open " + BrowserType + " Browser");
              return driver;
                 }
@@ -93,7 +94,7 @@ public class BrowserActions {
     public static void Shutdown(WebDriver driver){
         try {
             Logger.logStep("Close " + BrowserType + " Browser");
-            driver.quit();
+            driver.close();
         }
         catch (Exception e) {
           Logger.logStep("Close " + BrowserType + " Browser");
