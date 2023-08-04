@@ -1,6 +1,7 @@
 package Automation.engine.setupWorks;
 
-import Automation.engine.GridWorks.GridLauncher;
+import Automation.engine.GridWorks.HubGridLauncher;
+import Automation.engine.GridWorks.StaGridLauncher;
 import Automation.engine.browserWorks.BrowserFactory;
 import Automation.engine.browserWorks.NodePlatformFactory;
 import Automation.engine.browserWorks.StaBrowserFactory;
@@ -16,16 +17,21 @@ public class RunningSpace {
         if (ExecutionType.equalsIgnoreCase("Local") ) {
             return BrowserFactory.SetBrowserType(BrowserType);
         }
+
+
         else if (ExecutionType.equalsIgnoreCase("GridSta")) {
 
-            GridLauncher.GridStaLauncher();
+            StaGridLauncher.StaGridStart();
             WebDriver driver = StaBrowserFactory.SetStaBrowserType(BrowserType);
 
             return driver ;
         }
 
+
+
         else if (ExecutionType.equalsIgnoreCase("GridHub")) {
 
+            HubGridLauncher.HubGridStart();
            WebDriver driver = NodePlatformFactory.SetNodePlatformType(NodePlatformType , NodeBrowserType);
            return  driver ;
         }
