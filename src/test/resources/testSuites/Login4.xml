@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite  name="Login">
+    <test name = "AdminLogin">
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin10"/>
+            <class name="TestAutofox.gui.AdminLogin11"/>
+            <class name="TestAutofox.gui.AdminLogin12"/>
+
+        </classes>
+    </test>
+</suite>
+
