@@ -12,6 +12,7 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.events.WebDriverListener;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 
 import java.net.URL;
 
@@ -19,7 +20,7 @@ public class NodeBrowserFactory {
 
 
 
-
+    @Parameters(value = {"NodePlatformType", "NodeBrowserType"})
     public static WebDriver SetNodeBrowserType(String NodePlatformType , String NodeBrowserType){
 
         if (NodeBrowserType.equalsIgnoreCase("Chrome")) {
@@ -31,7 +32,6 @@ public class NodeBrowserFactory {
 
                 String HubUrl = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost");
                 URL url = new URL(HubUrl);
-
 
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setPlatformName(NodePlatformType) ;
@@ -57,7 +57,6 @@ public class NodeBrowserFactory {
                 String HubUrl = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost");
                 URL url = new URL(HubUrl);
 
-
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setPlatformName(NodePlatformType) ;
                 driver = new RemoteWebDriver(url, firefoxOptions);
@@ -80,7 +79,6 @@ public class NodeBrowserFactory {
                 WebDriver decoratedDriver;
 
                 String HubUrl = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost");
-                ;
                 URL url = new URL(HubUrl);
 
                 EdgeOptions edgeOptions = new EdgeOptions();

@@ -1,0 +1,14 @@
+[server]
+port = 1001
+
+
+
+[[node.driver-configuration]]
+display-name = "MicrosoftEdge"
+stereotype = "{\"browserName\": \"MicrosoftEdge\", \"platformName\": \"Windows 10\"}"
+
+
+
+
+
+

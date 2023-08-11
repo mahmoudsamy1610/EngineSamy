@@ -2,9 +2,11 @@ package Automation.engine.browserWorks;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 
 public class NodePlatformFactory {
 
+    @Parameters(value = {"NodePlatformType", "NodeBrowserType"})
     public static WebDriver SetNodePlatformType(String NodePlatformType, String NodeBrowserType) {
 
 

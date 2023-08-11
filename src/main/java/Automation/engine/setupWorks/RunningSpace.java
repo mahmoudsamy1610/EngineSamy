@@ -32,6 +32,9 @@ public class RunningSpace {
         else if (ExecutionType.equalsIgnoreCase("GridHub")) {
 
             HubGridLauncher.HubGridStart();
+            //here we call the toml file creator
+            //here we should call the method that automatically get the node path and node name
+            //NodeRegister.RegisterNode();
            WebDriver driver = NodePlatformFactory.SetNodePlatformType(NodePlatformType , NodeBrowserType);
            return  driver ;
         }

@@ -1,0 +1,33 @@
+[server]
+port = 100001
+
+
+
+[node]
+[[node.driver-configuration]]
+display-name = "firefox"
+stereotype = "{\"browserName\": \"firefox\", \"platformName\": \"Windows 10\" }"
+
+[[node.driver-configuration]]
+display-name = "chrome"
+stereotype = "{\"browserName\": \"chrome\",  \"platformName\": \"Windows 10\"}"
+
+
+[[node.driver-configuration]]
+display-name = "internet explorer"
+stereotype = "{\"browserName\": \"internet explorer\", \"platformName\": \"Widnows 10\"}"
+
+
+[[node.driver-configuration]]
+display-name = "MicrosoftEdge"
+stereotype = "{\"browserName\": \"MicrosoftEdge\", \"platformName\": \"Windows 10\"}"
+
+
+[[node.driver-configuration]]
+display-name = "safari"
+stereotype = "{\"browserName\": \"safari\", \"platformName\": \"Windows 10\"}"
+
+
+
+
+

@@ -7,6 +7,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 
 public class BrowserActions {
 
@@ -18,14 +19,18 @@ public class BrowserActions {
     public static int WindowHeight = Integer.parseInt(GetProperty.GetPropertyValue("RunOptions","height"));
     public static String  BrowserType = GetProperty.GetPropertyValue("RunOptions","BrowserType");
     public static String  ExecutionType = GetProperty.GetPropertyValue("RunOptions","ExecutionType");
-    public static String  NodePlatformType = GetProperty.GetPropertyValue("ParaRunOptions","Platform0");
-    public static String  NodeBrowserType = GetProperty.GetPropertyValue("ParaRunOptions","Browser0");
 
 
+
+   @Parameters(value = {"NodePlatformType", "NodeBrowserType"})
     public static WebDriver StartBrowser(){
 
 
             try {
+
+              String  NodePlatformType = GetProperty.GetPropertyValue("ParaRunOptions","Platform0");
+              String  NodeBrowserType = GetProperty.GetPropertyValue("ParaRunOptions","Browser0");
+
                 WebDriver driver;
              driver = SetupFactory.Run(BrowserType , ExecutionType , NodePlatformType , NodeBrowserType);
              Logger.logStep("Open " + BrowserType + " Browser");

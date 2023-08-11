@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite  name="Login">
+<suite  name="Login" parallel="tests" thread-count="3">
+
+
     <test name = "AdminLogin">
-        <parameter name="Node" value="NodeName"> </parameter>
+        <parameter name="NodePlatformType" value="Windows10"> </parameter>
+        <parameter name="NodeBrowserType" value="Chrome"> </parameter>
+
         <classes>
             <class name="TestAutofox.gui.AdminLogin4"/>
             <class name="TestAutofox.gui.AdminLogin5"/>
@@ -10,5 +14,8 @@
 
         </classes>
     </test>
+
+
+
 </suite>
 
