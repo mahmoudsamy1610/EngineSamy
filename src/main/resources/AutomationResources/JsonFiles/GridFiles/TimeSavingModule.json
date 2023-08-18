@@ -1,0 +1,35 @@
+{
+  "TestNode" : "bla" ,
+  "Node1":
+    {
+      "Id": 1,
+      "Suite": "Login",
+      "Browser": "Safari",
+      "Platform": "MacOs"
+    },
+
+  "Node2":
+    {
+      "Id": 2,
+      "Suite": "Login2",
+      "Browser": "Chrome",
+      "Platform": "Windows 10"
+    },
+
+  "Node3":
+    {
+      "Id": 3,
+      "Suite": "Login3",
+      "Browser": "Firefox",
+      "Platform": "Linux"
+    },
+
+  "Node4":
+    {
+      "Id": 4,
+      "Suite": "Login4",
+      "Browser": "Chrome",
+      "Platform": "Windows 11"
+    }
+
+}

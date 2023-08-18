@@ -1,7 +1,7 @@
 package Automation.engine.setupWorks;
 
-import Automation.engine.GridWorks.HubGridLauncher;
-import Automation.engine.GridWorks.StaGridLauncher;
+import Automation.engine.gridWorks.HubGridLauncher;
+import Automation.engine.gridWorks.StaGridLauncher;
 import Automation.engine.browserWorks.BrowserFactory;
 import Automation.engine.browserWorks.NodePlatformFactory;
 import Automation.engine.browserWorks.StaBrowserFactory;

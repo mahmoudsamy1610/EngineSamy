@@ -1,4 +1,4 @@
-package Automation.engine.GridWorks;
+package Automation.engine.gridWorks;
 
 import Automation.engine.setupWorks.CMDRunner;
 import Automation.engine.propertyWorks.GetProperty;

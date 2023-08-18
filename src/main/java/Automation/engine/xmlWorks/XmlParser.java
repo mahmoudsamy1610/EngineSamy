@@ -1,20 +1,17 @@
-package Automation.engine.helpers;
+package Automation.engine.xmlWorks;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import io.qameta.allure.testng.Tag;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import java.io.File;
 
-public class XmlReader {
-
+public class XmlParser {
 
 
-    public static String ReadXml(String XmlRelativePath, String TagName, String AttName) {
+
+    public static String FindXmlData(String XmlRelativePath, String TagName, String AttName) {
         try {
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

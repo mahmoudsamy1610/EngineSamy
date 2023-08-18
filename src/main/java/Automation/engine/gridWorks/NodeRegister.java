@@ -1,4 +1,4 @@
-package Automation.engine.GridWorks;
+package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.PathConverter;
 import Automation.engine.propertyWorks.GetProperty;
@@ -11,12 +11,11 @@ public class NodeRegister {
 
 
 
-    @Parameters(value = {"NodePlatformType", "NodeBrowserType"})
        public static void RegisterNode(String NodePlatformType , String NodeBrowserType){
 
         String NodeRelativePath = NodePathGenerator.GenerateNodeTomlPath(NodePlatformType ,NodeBrowserType );
 
-                    NodeGenerator.CreateNodeToml(NodeRelativePath , NodePlatformType , NodeBrowserType);
+        NodeWriter.CreateNodeToml(NodeRelativePath , NodePlatformType , NodeBrowserType);
 
 
         String NodeTomlName = NodePathGenerator.GenerateNodeTomlName(NodePlatformType ,NodeBrowserType);

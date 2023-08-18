@@ -1,12 +1,11 @@
-package Automation.engine.GridWorks;
+package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.TomlFileCreator;
 import org.testng.annotations.Parameters;
 
-public class NodeGenerator {
+public class NodeWriter {
 
 
-    @Parameters(value = {"NodePlatformType", "NodeBrowserType"})
     public static void CreateNodeToml(String NodeRelativePath , String NodePlatformType , String NodeBrowserType) {
 
         int Port = PortGenerator.GenerateHubPort(5);

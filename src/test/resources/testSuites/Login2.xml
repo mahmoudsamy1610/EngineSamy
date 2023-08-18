@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite  name="Login" parallel="tests" thread-count="3">
+<suite  name="Login2" parallel="tests" thread-count="3">
 
 
     <test name = "AdminLogin">
-        <parameter name="NodePlatformType" value="Windows10"> </parameter>
-        <parameter name="NodeBrowserType" value="Chrome"> </parameter>
+        <parameter name="NodePlatformType" value="MacOs"> </parameter>
+        <parameter name="NodeBrowserType" value="Windows 10"> </parameter>
 
         <classes>
             <class name="TestAutofox.gui.AdminLogin4"/>

@@ -1,4 +1,4 @@
-package Automation.engine.GridWorks;
+package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.FileNameGetter;
 import Automation.engine.helpers.PathConverter;
