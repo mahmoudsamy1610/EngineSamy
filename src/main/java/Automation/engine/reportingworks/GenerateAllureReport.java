@@ -1,14 +1,14 @@
 package Automation.engine.reportingworks;
 
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.setupWorks.CMDRunner;
 
 public class GenerateAllureReport {
 
-    static String AllureResultPath = GetProperty.GetPropertyValue("allure","AllureResultDirectory");
-    static  String AllureReportLPath = GetProperty.GetPropertyValue("allure","AllureReportDirectory");
-    static  String AllureGenerateCommand = GetProperty.GetPropertyValue("allure","AllureGenerateCommand");
-    static  String AllureCleanCommand = GetProperty.GetPropertyValue("allure","AllureCleanCommand");
+    static String AllureResultPath = PropertyGetter.GetPropertyValue("allure","AllureResultDirectory");
+    static  String AllureReportLPath = PropertyGetter.GetPropertyValue("allure","AllureReportDirectory");
+    static  String AllureGenerateCommand = PropertyGetter.GetPropertyValue("allure","AllureGenerateCommand");
+    static  String AllureCleanCommand = PropertyGetter.GetPropertyValue("allure","AllureCleanCommand");
     static String  AllureReportCommand =  AllureGenerateCommand + " " + AllureResultPath + " " + AllureCleanCommand + " " + AllureReportLPath ;
 
 

@@ -1,6 +1,6 @@
 package Automation.engine.xmlWorks;
 
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class XmlDataReplacer {
         String xmlContent = new String(XmlData);
 
         // Replace attribute placeholders with values
-        String PropertyValue = GetProperty.GetPropertyValue(PropertyFileName , PropertyName );
+        String PropertyValue = PropertyGetter.GetPropertyValue(PropertyFileName , PropertyName );
         String PlaceHolder =  XmlParser.FindXmlData(XmlRetalivePath , TagName, AttName ) ;
 
         String ReplacedValue = xmlContent.replace(PlaceHolder, PropertyValue);

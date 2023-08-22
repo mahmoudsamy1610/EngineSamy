@@ -1,14 +1,14 @@
 package Automation.engine.gridWorks;
 
 import Automation.engine.setupWorks.CMDRunner;
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 
 public class StaGridLauncher {
 
-    public static String GridJarLocation = GetProperty.GetPropertyValue("RunOptions","GridJarFile") ;
-    public static String StaGridCommand = GetProperty.GetPropertyValue("RunOptions", "StaGridCommand") ;
+    public static String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
+    public static String StaGridCommand = PropertyGetter.GetPropertyValue("RunOptions", "StaGridCommand") ;
     public static String RunStaGridCommand = "cd " + GridJarLocation  + " && " + StaGridCommand;
-    public static String StaGridHost = GetProperty.GetPropertyValue("RunOptions", "StaGridHost") ;
+    public static String StaGridHost = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost") ;
 
     public static void StaGridStart() {
         try {

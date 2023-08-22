@@ -1,9 +1,8 @@
 package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.PathConverter;
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.setupWorks.CMDRunner;
-import org.testng.annotations.Parameters;
 
 public class NodeRegister {
 
@@ -20,7 +19,7 @@ public class NodeRegister {
 
         String NodeTomlName = NodePathGenerator.GenerateNodeTomlName(NodePlatformType ,NodeBrowserType);
         String NodeAbsolutePath = PathConverter.ConvertPath(NodeRelativePath , NodeTomlName);
-        String NodeGridCommand = GetProperty.GetPropertyValue("ParaRunOptions" , "NodeRegisterCommand") ;
+        String NodeGridCommand = PropertyGetter.GetPropertyValue("ParaRunOptions" , "NodeRegisterCommand") ;
         String NodeRegisterCommand = NodeGridCommand + " " + NodeAbsolutePath ;
 
                     CMDRunner.runCommand(NodeRegisterCommand);

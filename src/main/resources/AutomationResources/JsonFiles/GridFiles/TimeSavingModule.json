@@ -1,11 +1,15 @@
 {
-  "TestNode" : "bla" ,
+
+  "test1" : "bla1",
+  "test2": "bla2",
+
   "Node1":
     {
       "Id": 1,
       "Suite": "Login",
       "Browser": "Safari",
-      "Platform": "MacOs"
+      "Platform": "MacOs",
+      "test1" : "bla1"
     },
 
   "Node2":
@@ -15,6 +19,9 @@
       "Browser": "Chrome",
       "Platform": "Windows 10"
     },
+
+  "test3" : "bla3",
+  "test4" : "bla4",
 
   "Node3":
     {
@@ -31,5 +38,4 @@
       "Browser": "Chrome",
       "Platform": "Windows 11"
     }
-
 }

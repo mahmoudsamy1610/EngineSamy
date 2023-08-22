@@ -1,5 +1,4 @@
 package Automation.engine.helpers;
-import Automation.engine.jsonWorks.GetJsonDuplicateKeys;
 
 import java.util.List;
 
@@ -16,12 +15,6 @@ public class ArrayElementFinder {
         }
 
 
-    public static void main(String[] args) {
-        String ElementToFind = "Login4" ;
-        List<String> ArrayList = GetJsonDuplicateKeys.GetJsonDuplicateKeys("TimeSavingModule" , "Suite");
-        System.out.println(ArrayList);
-        System.out.println(FindArrayElement(ArrayList , ElementToFind));
 
-    }
 
     }

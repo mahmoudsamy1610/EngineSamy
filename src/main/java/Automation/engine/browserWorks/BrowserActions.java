@@ -1,6 +1,6 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.reportingworks.Logger;
 import Automation.engine.setupWorks.SetupFactory;
 import org.openqa.selenium.Dimension;
@@ -13,11 +13,11 @@ public class BrowserActions {
     // is git ignore working ?
 
     // these variables are set in the properties file and in configuration
-    public static boolean MaxWindow = Boolean.parseBoolean(GetProperty.GetPropertyValue("RunOptions","Maximize"));
-    public static int WindowWidth = Integer.parseInt(GetProperty.GetPropertyValue("RunOptions","width"));
-    public static int WindowHeight = Integer.parseInt(GetProperty.GetPropertyValue("RunOptions","height"));
-    public static String  BrowserType = GetProperty.GetPropertyValue("RunOptions","BrowserType");
-    public static String  ExecutionType = GetProperty.GetPropertyValue("RunOptions","ExecutionType");
+    public static boolean MaxWindow = Boolean.parseBoolean(PropertyGetter.GetPropertyValue("RunOptions","Maximize"));
+    public static int WindowWidth = Integer.parseInt(PropertyGetter.GetPropertyValue("RunOptions","width"));
+    public static int WindowHeight = Integer.parseInt(PropertyGetter.GetPropertyValue("RunOptions","height"));
+    public static String  BrowserType = PropertyGetter.GetPropertyValue("RunOptions","BrowserType");
+    public static String  ExecutionType = PropertyGetter.GetPropertyValue("RunOptions","ExecutionType");
     public static String  NodePlatformType = "1" /*NodeTrigger.NodePlatformTrigger(NodePlatformType)*/;
     public static String  NodeBrowserType = "2" /*NodeTrigger.NodePlatformTrigger(NodeBrowserType)*/;
 

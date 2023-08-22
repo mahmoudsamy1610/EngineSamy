@@ -1,7 +1,6 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.propertyWorks.GetProperty;
-import org.testng.annotations.Parameters;
+import Automation.engine.propertyWorks.PropertyGetter;
 
 public class NodePathGenerator {
 
@@ -16,7 +15,7 @@ public class NodePathGenerator {
 
     public static String GenerateNodeTomlPath(String  NodePlatformType , String NodeBrowserType ){
 
-        String NodeGeneralPath = GetProperty.GetPropertyValue("ParaRunOptions" , "NodePathDir") ;
+        String NodeGeneralPath = PropertyGetter.GetPropertyValue("ParaRunOptions" , "NodePathDir") ;
         String NodeTomlName = GenerateNodeTomlName(NodePlatformType ,NodeBrowserType );
 
          String NodeRelativePath =  NodeGeneralPath+NodePlatformType+NodeBrowserType+NodeTomlName ;

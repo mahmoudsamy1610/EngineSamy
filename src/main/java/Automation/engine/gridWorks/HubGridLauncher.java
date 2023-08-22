@@ -2,18 +2,18 @@ package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.FileNameGetter;
 import Automation.engine.helpers.PathConverter;
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.setupWorks.CMDRunner;
 
 public class HubGridLauncher {
 
-    public static String GridJarLocation = GetProperty.GetPropertyValue("RunOptions","GridJarFile") ;
-    public static String HubGridCommand = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridCommand") ;
-    public static String HubDirRelativePath = GetProperty.GetPropertyValue("ParaRunOptions", "HubNodesDirPath") ;
-    public static String HubFileRelativePath = GetProperty.GetPropertyValue("ParaRunOptions", "HubFileRelativePath") ;
+    public static String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
+    public static String HubGridCommand = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubGridCommand") ;
+    public static String HubDirRelativePath = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubNodesDirPath") ;
+    public static String HubFileRelativePath = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubFileRelativePath") ;
     public static String HubTomlName = FileNameGetter.GetFileName(HubFileRelativePath);
     public static String HubAbsolutePath = PathConverter.ConvertPath(HubDirRelativePath, HubTomlName ) ;
-    public static String HubGridHost = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost") ;
+    public static String HubGridHost = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubGridHost") ;
     public static String RunHubGridCommand = "cd " + GridJarLocation  + " && " + HubGridCommand + " " + HubAbsolutePath  ;
 
 

@@ -1,7 +1,7 @@
 package Automation.engine.browserWorks;
 
 import Automation.engine.reportingworks.EventListener;
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.reportingworks.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -26,7 +26,7 @@ public class StaBrowserFactory {
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String StaGridUrl = GetProperty.GetPropertyValue("RunOptions", "StaGridHost");
+                String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");
                 URL url = new URL(StaGridUrl);
 
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -49,7 +49,7 @@ public class StaBrowserFactory {
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String StaGridUrl = GetProperty.GetPropertyValue("RunOptions", "StaGridHost");  ;
+                String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");  ;
                 URL url = new URL(StaGridUrl);
 
 

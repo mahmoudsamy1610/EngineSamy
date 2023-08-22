@@ -1,20 +1,20 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 
 public class NodeWrapper {
 
 
     public static String WrapNodePlatform() {
 
-        String NodePlatformType = GetProperty.GetPropertyValue("NodeCapDecider" , "Platform");
+        String NodePlatformType = PropertyGetter.GetPropertyValue("NodeCapDecider" , "Platform");
 
         return NodePlatformType;
     }
 
     public static String WrapNodeBrowser() {
 
-        String NodeBrowserType = GetProperty.GetPropertyValue("NodeCapDecider" , "Browser");
+        String NodeBrowserType = PropertyGetter.GetPropertyValue("NodeCapDecider" , "Browser");
 
         return NodeBrowserType;
     }

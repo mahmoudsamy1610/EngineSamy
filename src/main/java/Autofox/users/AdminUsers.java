@@ -1,7 +1,7 @@
 package Autofox.users;
 
 //import Autofox.tools.GetAutofoxProperty;
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 
 public abstract class AdminUsers {
 
@@ -22,7 +22,7 @@ public abstract class AdminUsers {
 
     public void setEmail(String EmailProperty) {
 
-        Email = GetProperty.GetPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_Email");
+        Email = PropertyGetter.GetPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_Email");
     }
 
     public String getUsername() {
@@ -70,7 +70,7 @@ public abstract class AdminUsers {
     }
 
     public void setLoginToken(String loginTokenProperty) {
-        LoginToken = GetProperty.GetPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_LoginToken");
+        LoginToken = PropertyGetter.GetPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_LoginToken");
     }
 }
 
