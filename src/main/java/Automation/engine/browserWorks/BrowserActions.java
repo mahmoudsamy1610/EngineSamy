@@ -18,6 +18,7 @@ public class BrowserActions {
     public static int WindowHeight = Integer.parseInt(PropertyGetter.GetPropertyValue("RunOptions","height"));
     public static String  BrowserType = PropertyGetter.GetPropertyValue("RunOptions","BrowserType");
     public static String  ExecutionType = PropertyGetter.GetPropertyValue("RunOptions","ExecutionType");
+    public static String ParaModule = PropertyGetter.GetPropertyValue("RunOptions","ParaModule");
     public static String  NodePlatformType = "1" /*NodeTrigger.NodePlatformTrigger(NodePlatformType)*/;
     public static String  NodeBrowserType = "2" /*NodeTrigger.NodePlatformTrigger(NodeBrowserType)*/;
 

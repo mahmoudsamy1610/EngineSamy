@@ -2,6 +2,8 @@ package Automation.engine.gridWorks;
 
 import Automation.engine.propertyWorks.PropertyGetter;
 
+import java.net.CacheRequest;
+
 public class NodePathGenerator {
 
 
@@ -15,14 +17,18 @@ public class NodePathGenerator {
 
     public static String GenerateNodeTomlPath(String  NodePlatformType , String NodeBrowserType ){
 
-        String NodeGeneralPath = PropertyGetter.GetPropertyValue("ParaRunOptions" , "NodePathDir") ;
+        String NodeGeneralPath = PropertyGetter.GetPropertyValue("ParaRunData", "NodePathDir") ;
         String NodeTomlName = GenerateNodeTomlName(NodePlatformType ,NodeBrowserType );
 
-         String NodeRelativePath =  NodeGeneralPath+NodePlatformType+NodeBrowserType+NodeTomlName ;
+         String NodeRelativePath =  NodeGeneralPath+NodePlatformType+"\\"+NodeBrowserType+"\\"+NodeTomlName ;
 
         return NodeRelativePath ;
     }
 
+
+    public static void main(String[] args) {
+        System.out.println(GenerateNodeTomlPath("MacOs" , "Chrome"));
+    }
 
 
 }

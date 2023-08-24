@@ -1,40 +1,47 @@
 {
-
-  "test1" : "bla1",
-  "test2": "bla2",
-
   "Node1":
     {
       "Id": 1,
-      "Suite": "Login",
+      "Test": "AdminLogin023",
+      "Suite" : "Login",
       "Browser": "Safari",
-      "Platform": "MacOs",
-      "test1" : "bla1"
+      "Platform": "MacOs"
+
     },
 
   "Node2":
+  {
+    "Id": 5,
+    "Test": "AdminLogin023",
+    "Suite" : "Login",
+    "Browser": "Chrome",
+    "Platform": "Windows 10"
+
+  },
+
+  "Node3":
     {
       "Id": 2,
-      "Suite": "Login2",
+      "Test": "AdminLogin023",
+      "Suite" : "Login2",
       "Browser": "Chrome",
       "Platform": "Windows 10"
     },
 
-  "test3" : "bla3",
-  "test4" : "bla4",
-
-  "Node3":
+  "Node4":
     {
       "Id": 3,
-      "Suite": "Login3",
+      "Test": "AdminLogin023",
+      "Suite" : "Login3",
       "Browser": "Firefox",
       "Platform": "Linux"
     },
 
-  "Node4":
+  "Node5":
     {
       "Id": 4,
-      "Suite": "Login4",
+      "Test": "AdminLogin023",
+      "Suite" : "Login4",
       "Browser": "Chrome",
       "Platform": "Windows 11"
     }

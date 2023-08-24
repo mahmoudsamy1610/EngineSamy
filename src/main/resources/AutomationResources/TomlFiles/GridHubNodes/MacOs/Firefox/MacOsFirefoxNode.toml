@@ -1,0 +1,6 @@
+[Server]
+Port=69693
+[node]
+[[node.driver-configuration]]
+display-name ="Firefox "
+stereotype="{\"browserName\": \"Firefox,\"platformName\": \"MacOs\"}"

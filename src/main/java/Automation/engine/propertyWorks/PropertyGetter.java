@@ -15,9 +15,9 @@ public class PropertyGetter {
                 PropertyValue =  LoadProperty(PropertyFilePath).getProperty(PropertyKey); }
 
             catch (InputMismatchException IME) {IME.getMessage();
-                System.out.println("Invalid input Engine property file path");}
+                System.out.println("Invalid input Engine property file path for " + PropertyFileName);}
             catch(Exception e){e.getMessage();
-                System.out.println("Unknown Error while Sending Engine properties Path");}
+                System.out.println("Unknown Error while Sending Engine properties Path for " + PropertyFileName);}
 
             return PropertyValue;
         }

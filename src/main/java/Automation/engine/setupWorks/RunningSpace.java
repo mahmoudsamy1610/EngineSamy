@@ -1,10 +1,12 @@
 package Automation.engine.setupWorks;
 
-import Automation.engine.gridWorks.HubGridLauncher;
+import Automation.engine.gridWorks.NodeBuilder;
 import Automation.engine.gridWorks.StaGridLauncher;
 import Automation.engine.browserWorks.BrowserFactory;
 import Automation.engine.browserWorks.NodePlatformFactory;
 import Automation.engine.browserWorks.StaBrowserFactory;
+import Automation.engine.suiteWorks.SuiteDataGetterByRun;
+import Automation.engine.suiteWorks.SuitePathGetter;
 import org.openqa.selenium.WebDriver;
 
 public class RunningSpace {
@@ -31,7 +33,8 @@ public class RunningSpace {
 
         else if (ExecutionType.equalsIgnoreCase("GridHub")) {
 
-            HubGridLauncher.HubGridStart();
+            NodeBuilder.BuildNode();
+            //HubGridLauncher.HubGridStart();
             //here we call the toml file creator
             //here we should call the method that automatically get the node path and node name
             //NodeRegister.RegisterNode();

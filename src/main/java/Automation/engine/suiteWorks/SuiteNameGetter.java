@@ -2,11 +2,14 @@ package Automation.engine.suiteWorks;
 
 import Automation.engine.xmlWorks.XmlParser;
 
+import java.util.List;
+
 public class SuiteNameGetter {
 
-    public static String GetSuiteName(String SuiteRelativePath){
 
-       String SuiteName =  XmlParser.FindXmlData(SuiteRelativePath ,"suite" , "name") ;
+    public static  List<String> GetSuiteName(String SuiteRelativePath){
+
+       List<String> SuiteName =  XmlParser.FindXmlData(SuiteRelativePath ,"suite" , "name") ;
         return SuiteName ;
 
     }
@@ -15,5 +18,7 @@ public class SuiteNameGetter {
     public static void main(String[] args) {
        System.out.println(GetSuiteName("src/test/resources/testSuites/Login2.xml"));
     }
+
+
 
 }

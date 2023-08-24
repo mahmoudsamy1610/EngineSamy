@@ -8,12 +8,12 @@ import Automation.engine.setupWorks.CMDRunner;
 public class HubGridLauncher {
 
     public static String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
-    public static String HubGridCommand = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubGridCommand") ;
-    public static String HubDirRelativePath = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubNodesDirPath") ;
-    public static String HubFileRelativePath = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubFileRelativePath") ;
+    public static String HubGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridCommand") ;
+    public static String HubDirRelativePath = PropertyGetter.GetPropertyValue("ParaRunData", "HubNodesDirPath") ;
+    public static String HubFileRelativePath = PropertyGetter.GetPropertyValue("ParaRunData", "HubFileRelativePath") ;
     public static String HubTomlName = FileNameGetter.GetFileName(HubFileRelativePath);
     public static String HubAbsolutePath = PathConverter.ConvertPath(HubDirRelativePath, HubTomlName ) ;
-    public static String HubGridHost = PropertyGetter.GetPropertyValue("ParaRunOptions", "HubGridHost") ;
+    public static String HubGridHost = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost") ;
     public static String RunHubGridCommand = "cd " + GridJarLocation  + " && " + HubGridCommand + " " + HubAbsolutePath  ;
 
 

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite  name="Login">
-    <test name = "AdminLogin">
+<suite  name="Login" parallel="tests">
+
+    <listeners>
+        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun"/>
+    </listeners>
+
+    <test name = "AdminLogin023">
         <classes>
             <class name="TestAutofox.gui.AdminLogin"/>
             <class name="TestAutofox.gui.AdminLogin2"/>
@@ -9,5 +14,8 @@
 
         </classes>
     </test>
+
+
+
 </suite>
 

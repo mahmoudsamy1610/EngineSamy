@@ -1,0 +1,6 @@
+[Server]
+Port=59585
+[node]
+[[node.driver-configuration]]
+display-name ="[Safari] "
+stereotype="{\"browserName\": \"[Safari],\"platformName\": \"[MacOs]\"}"
