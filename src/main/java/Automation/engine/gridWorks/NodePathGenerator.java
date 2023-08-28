@@ -2,32 +2,40 @@ package Automation.engine.gridWorks;
 
 import Automation.engine.propertyWorks.PropertyGetter;
 
-import java.net.CacheRequest;
-
 public class NodePathGenerator {
 
 
     public static String GenerateNodeTomlName(String  NodePlatformType , String NodeBrowserType ){
 
-        String NodeTomlName = NodePlatformType+NodeBrowserType+"Node.toml";
+        String NodeTomlName = NodePlatformType+NodeBrowserType+"Node";
 
         return NodeTomlName ;
     }
 
 
-    public static String GenerateNodeTomlPath(String  NodePlatformType , String NodeBrowserType ){
+    public static String GenerateNodeTomlPathOnly(String  NodePlatformType , String NodeBrowserType){
 
         String NodeGeneralPath = PropertyGetter.GetPropertyValue("ParaRunData", "NodePathDir") ;
-        String NodeTomlName = GenerateNodeTomlName(NodePlatformType ,NodeBrowserType );
+        String NodeRelativePath =  NodeGeneralPath+NodePlatformType+"\\"+NodeBrowserType ;
 
-         String NodeRelativePath =  NodeGeneralPath+NodePlatformType+"\\"+NodeBrowserType+"\\"+NodeTomlName ;
+        return NodeRelativePath ;
+    }
+
+
+
+    public static String GenerateNodeTomlPathName(String  NodePlatformType , String NodeBrowserType , String NodeSuffix){
+
+        String NodeRelativeDirPath =GenerateNodeTomlPathOnly(NodePlatformType ,NodeBrowserType);
+       // String NodeSuffix =  NodeTomlSuffixCreator.CreateNodeSuffix(NodeRelativeDirPath);
+        String NodeTomlName = GenerateNodeTomlName(NodePlatformType ,NodeBrowserType );
+        String NodeRelativePath =  NodeRelativeDirPath+"\\"+NodeTomlName+"_"+NodeSuffix+".toml" ;
 
         return NodeRelativePath ;
     }
 
 
     public static void main(String[] args) {
-        System.out.println(GenerateNodeTomlPath("MacOs" , "Chrome"));
+        System.out.println(GenerateNodeTomlPathName("MacOs" , "Chrome" , "5050"));
     }
 
 

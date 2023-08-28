@@ -20,8 +20,8 @@ public class NodeBrowserFactory {
 
 
 
-    @Parameters(value = {"NodePlatformType", "NodeBrowserType"})
-    public static WebDriver SetNodeBrowserType(String NodePlatformType , String NodeBrowserType){
+
+    public static WebDriver SetNodeBrowserType(String NodePlatformType , String NodeBrowserType ){
 
         if (NodeBrowserType.equalsIgnoreCase("Chrome")) {
             try{
@@ -39,13 +39,13 @@ public class NodeBrowserFactory {
                 listener = new EventListener();
                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Chrome driver {Grid node} ");
+                Logger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType);
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing Chrome driver {Grid node} ");
-                Assert.fail("Unknown error while Initializing Chrome browser {Grid node} ");
-                System.out.println("Unknown Error while Initializing Chrome browser {Grid node} ");
+                Logger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType);
+                Assert.fail("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType);
+                System.out.println("Unknown Error while Initializing Chrome browser {Grid node} : " + NodeBrowserType);
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("Firefox") ) {
@@ -72,7 +72,7 @@ public class NodeBrowserFactory {
                 System.out.println("Unknown Error while Initializing FireFox browser {Grid node} ");
             }
 
-        } else if (NodeBrowserType.equalsIgnoreCase("Edge") ) {
+        } else if (NodeBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try {
                 WebDriver driver;
                 WebDriverListener listener;
@@ -126,8 +126,8 @@ public class NodeBrowserFactory {
 
 
             } else {
-            Assert.fail("Invalid Driver or Driver not found");
-            System.out.println("Invalid Driver or Driver not found");
+            Assert.fail("Invalid Driver or Driver not found : " + NodeBrowserType);
+            System.out.println("Invalid Driver or Driver not found : " + NodeBrowserType);
 
         }
 
@@ -135,5 +135,13 @@ public class NodeBrowserFactory {
         return null;
 
     }
+
+
+    public static void main(String[] args) {
+
+        SetNodeBrowserType("Windows10" , "firefox") ;
+
+    }
+
 
 }

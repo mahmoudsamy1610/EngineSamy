@@ -23,7 +23,7 @@ public class AdminLogin {
     DashboardPage dashboardPage ;
 
 
-    @BeforeMethod
+    @BeforeClass
         public void setup(){
 
         // Start driver
@@ -90,13 +90,13 @@ public class AdminLogin {
 
 
 
-        @AfterMethod
+        @AfterClass
             public void TearDown(){
                 BrowserActions.Shutdown(driver);
     }
 
 
-         @AfterTest
+         @AfterSuite
             public void CreateReport(){
                 GenerateAllureReport.GenerateAllureReport();
             }

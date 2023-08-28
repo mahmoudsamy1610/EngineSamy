@@ -4,7 +4,7 @@
       "Id": 1,
       "Test": "AdminLogin023",
       "Suite" : "Login",
-      "Browser": "Safari",
+      "Browser": "safari",
       "Platform": "MacOs"
 
     },
@@ -14,7 +14,7 @@
     "Id": 5,
     "Test": "AdminLogin023",
     "Suite" : "Login",
-    "Browser": "Chrome",
+    "Browser": "chrome",
     "Platform": "Windows 10"
 
   },
@@ -24,7 +24,7 @@
       "Id": 2,
       "Test": "AdminLogin023",
       "Suite" : "Login2",
-      "Browser": "Chrome",
+      "Browser": "chrome",
       "Platform": "Windows 10"
     },
 
@@ -33,7 +33,7 @@
       "Id": 3,
       "Test": "AdminLogin023",
       "Suite" : "Login3",
-      "Browser": "Firefox",
+      "Browser": "firefox",
       "Platform": "Linux"
     },
 
@@ -42,7 +42,7 @@
       "Id": 4,
       "Test": "AdminLogin023",
       "Suite" : "Login4",
-      "Browser": "Chrome",
-      "Platform": "Windows 11"
+      "Browser": "firefox",
+      "Platform": "linux"
     }
 }

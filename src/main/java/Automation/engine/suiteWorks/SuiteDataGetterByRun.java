@@ -17,16 +17,19 @@ public  class SuiteDataGetterByRun extends TestListenerAdapter {
 
         SuitePath = TestContext.getSuite().getXmlSuite().getFileName();
         SuiteName = FileNameGetter.GetFileName(SuitePath);
-        System.out.println("XML File Name: " + SuiteName);
+        System.out.println("Suite Name: " + SuiteName);
 
 
     }
 
+    /*
     public static String GetSuiteNameByRun(){
 
         return SuiteName;
     }
 
+
+     */
     public static String GetSuitePathByRun(){
 
         return SuitePath;
@@ -37,6 +40,13 @@ public  class SuiteDataGetterByRun extends TestListenerAdapter {
         String SuiteRelativePath = GetSuitePathByRun();
        List<String> TestNames = XmlParser.FindXmlData(SuiteRelativePath , "test" , "name");
         return TestNames;
+    }
+
+    public static List<String> GetSuiteNameByRun() {
+
+        String SuiteRelativePath = GetSuitePathByRun();
+        List<String> SuiteNames = XmlParser.FindXmlData(SuiteRelativePath , "suite" , "name");
+        return SuiteNames;
     }
 
 

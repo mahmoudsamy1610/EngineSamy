@@ -11,9 +11,9 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
@@ -26,7 +26,7 @@ public class AdminLogin2 {
     DashboardPage dashboardPage ;
 
 
-    @BeforeMethod
+    @BeforeClass
         public void setup(){
 
         // Start driver
@@ -93,13 +93,13 @@ public class AdminLogin2 {
 
 
 
-        @AfterMethod
+        @AfterClass
             public void TearDown(){
                 BrowserActions.Shutdown(driver);
     }
 
 
-         @AfterTest
+         @AfterSuite
             public void CreateReport(){
                 GenerateAllureReport.GenerateAllureReport();
             }

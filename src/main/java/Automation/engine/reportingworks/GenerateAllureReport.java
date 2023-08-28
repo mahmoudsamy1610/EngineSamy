@@ -15,6 +15,7 @@ public class GenerateAllureReport {
 
     public static void GenerateAllureReport() {
         try {
+             AllureResultsCleaner.CleanAllurePreviousResults(AllureResultPath);
             CMDRunner.runCommand(AllureReportCommand);
             System.out.println("Test Run is Done and, Allure Report Generated successfully to " + AllureResultPath  + ", Check HTML file in " + AllureReportLPath );
 

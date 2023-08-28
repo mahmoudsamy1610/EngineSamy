@@ -1,6 +1,8 @@
 package Automation.engine.setupWorks;
 
+import Automation.engine.gridWorks.GridSetup;
 import Automation.engine.gridWorks.NodeBuilder;
+import Automation.engine.gridWorks.NodeWrapper;
 import Automation.engine.gridWorks.StaGridLauncher;
 import Automation.engine.browserWorks.BrowserFactory;
 import Automation.engine.browserWorks.NodePlatformFactory;
@@ -12,8 +14,7 @@ import org.openqa.selenium.WebDriver;
 public class RunningSpace {
 
 
-
-    public static WebDriver SetRunningType(String BrowserType , String ExecutionType , String NodePlatformType , String NodeBrowserType) {
+    public static WebDriver SetRunningType(String BrowserType , String ExecutionType , String NodePlatformType , String NodeBrowserType  , String ParaModule) {
 
 
         if (ExecutionType.equalsIgnoreCase("Local") ) {
@@ -33,13 +34,18 @@ public class RunningSpace {
 
         else if (ExecutionType.equalsIgnoreCase("GridHub")) {
 
-            NodeBuilder.BuildNode();
-            //HubGridLauncher.HubGridStart();
-            //here we call the toml file creator
-            //here we should call the method that automatically get the node path and node name
-            //NodeRegister.RegisterNode();
-           WebDriver driver = NodePlatformFactory.SetNodePlatformType(NodePlatformType , NodeBrowserType);
-           return  driver ;
+/*
+            Runnable cmdTask = () -> { GridSetup.SetupGrid(NodePlatformType , NodeBrowserType ,  ParaModule);
+            } ;
+            Thread cmdThread = new Thread(cmdTask);
+            cmdThread.start();
+
+
+ */
+            GridSetup.SetupGrid(NodePlatformType , NodeBrowserType ,  ParaModule);
+            WebDriver driver = NodePlatformFactory.SetNodePlatformType(NodePlatformType , NodeBrowserType);
+            return  driver ;
+
         }
 
         else {

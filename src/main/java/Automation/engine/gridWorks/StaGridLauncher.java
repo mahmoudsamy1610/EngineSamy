@@ -21,6 +21,10 @@ public class StaGridLauncher {
             System.out.println("an Error occurred while parsing Stand alone Grid CMD command from properties");}
     }
 
+    public static void main(String[] args) {
+        StaGridStart();
+    }
+
 }
 
 

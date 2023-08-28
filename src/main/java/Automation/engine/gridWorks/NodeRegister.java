@@ -8,24 +8,24 @@ public class NodeRegister {
 
 
 
-
-
        public static void RegisterNode(String NodePlatformType , String NodeBrowserType){
 
-        String NodeRelativePath = NodePathGenerator.GenerateNodeTomlPath(NodePlatformType ,NodeBrowserType );
+           String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
+           String NodeRelativePath = NodeWriter.CreateNodeToml(NodePlatformType , NodeBrowserType);
+           String NodeAbsolutePath = "\""+PathConverter.ConvertPathToAbs(NodeRelativePath)+"\"";
+           String NodeGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "NodeRegisterCommand") ;
+           String NodeRegisterCommand = "cd " + GridJarLocation  + " && " + NodeGridCommand + " " + NodeAbsolutePath ;
 
-        NodeWriter.CreateNodeToml(NodePlatformType , NodeBrowserType);
-
-
-        String NodeTomlName = NodePathGenerator.GenerateNodeTomlName(NodePlatformType ,NodeBrowserType);
-        String NodeAbsolutePath = PathConverter.ConvertPath(NodeRelativePath , NodeTomlName);
-        String NodeGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "NodeRegisterCommand") ;
-        String NodeRegisterCommand = NodeGridCommand + " " + NodeAbsolutePath ;
-
-                    CMDRunner.runCommand(NodeRegisterCommand);
+            System.out.println(NodeRegisterCommand);
+            CMDRunner.runCommand(NodeRegisterCommand);
 
     }
 
+    public static void main(String[] args) {
+
+        RegisterNode("windows 11" , "MicrosoftEdge");
+
+    }
 
 
 }

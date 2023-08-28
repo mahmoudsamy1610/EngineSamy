@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 public class SetupFactory {
 
 
-    public static WebDriver Run(String BrowserType , String  ExecutionType , String  NodePlatformType , String  NodeBrowserType){
-      return RunningSpace.SetRunningType(BrowserType ,  ExecutionType , NodePlatformType , NodeBrowserType);
+    public static WebDriver Run(String BrowserType , String  ExecutionType , String  NodePlatformType , String  NodeBrowserType , String ParaModule){
+      return RunningSpace.SetRunningType(BrowserType ,  ExecutionType , NodePlatformType , NodeBrowserType , ParaModule);
     }
 
 

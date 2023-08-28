@@ -1,6 +1,7 @@
-[Server]
-Port=60737
+[server]
+port=84029
+
 [node]
 [[node.driver-configuration]]
-display-name ="Chrome "
-stereotype="{\"browserName\": \"Chrome,\"platformName\": \"Windows 11\"}"
+display-name ="Chrome"
+stereotype="{\"browserName\": \"Chrome\",\"platformName\": \"Windows 11\"}"

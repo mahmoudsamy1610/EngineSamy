@@ -1,5 +1,6 @@
 package Automation.engine.browserWorks;
 
+import Automation.engine.gridWorks.NodeWrapper;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.reportingworks.Logger;
 import Automation.engine.setupWorks.SetupFactory;
@@ -19,8 +20,9 @@ public class BrowserActions {
     public static String  BrowserType = PropertyGetter.GetPropertyValue("RunOptions","BrowserType");
     public static String  ExecutionType = PropertyGetter.GetPropertyValue("RunOptions","ExecutionType");
     public static String ParaModule = PropertyGetter.GetPropertyValue("RunOptions","ParaModule");
-    public static String  NodePlatformType = "1" /*NodeTrigger.NodePlatformTrigger(NodePlatformType)*/;
-    public static String  NodeBrowserType = "2" /*NodeTrigger.NodePlatformTrigger(NodeBrowserType)*/;
+    public static String NodePlatformType = NodeWrapper.WrapNodePlatformList(ParaModule);
+    public static String NodeBrowserType = NodeWrapper.WrapNodeBrowserList(ParaModule);
+
 
 
 
@@ -30,7 +32,7 @@ public class BrowserActions {
             try {
 
                 WebDriver driver;
-             driver = SetupFactory.Run(BrowserType , ExecutionType ,NodePlatformType , NodeBrowserType);
+             driver = SetupFactory.Run(BrowserType , ExecutionType ,NodePlatformType , NodeBrowserType , ParaModule);
              Logger.logStep("Open " + BrowserType + " Browser");
              return driver;
                 }
@@ -97,7 +99,7 @@ public class BrowserActions {
     public static void Shutdown(WebDriver driver){
         try {
             Logger.logStep("Close " + BrowserType + " Browser");
-            driver.close();
+            driver.quit();
         }
         catch (Exception e) {
           Logger.logStep("Close " + BrowserType + " Browser");
