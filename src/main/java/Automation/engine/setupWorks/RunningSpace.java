@@ -25,6 +25,7 @@ public class RunningSpace {
         else if (ExecutionType.equalsIgnoreCase("GridSta")) {
 
             StaGridLauncher.StaGridStart();
+            //Thread.sleep(5000);
             WebDriver driver = StaBrowserFactory.SetStaBrowserType(BrowserType);
 
             return driver ;
@@ -42,7 +43,7 @@ public class RunningSpace {
 
 
  */
-            GridSetup.SetupGrid(NodePlatformType , NodeBrowserType ,  ParaModule);
+            //GridSetup.SetupGrid(ParaModule);
             WebDriver driver = NodePlatformFactory.SetNodePlatformType(NodePlatformType , NodeBrowserType);
             return  driver ;
 

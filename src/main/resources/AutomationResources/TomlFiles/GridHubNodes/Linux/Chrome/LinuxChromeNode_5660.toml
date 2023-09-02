@@ -1,0 +1,7 @@
+[server]
+port=5660
+
+[node]
+[[node.driver-configuration]]
+display-name ="Chrome"
+stereotype="{\"browserName\": \"Chrome\",\"platformName\": \"Linux\"}"

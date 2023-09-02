@@ -1,8 +1,12 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.helpers.StringPicker;
 import Automation.engine.propertyWorks.PropertyGetter;
 
 public class NodePathGenerator {
+
+
+
 
 
     public static String GenerateNodeTomlName(String  NodePlatformType , String NodeBrowserType ){
@@ -23,19 +27,30 @@ public class NodePathGenerator {
 
 
 
-    public static String GenerateNodeTomlPathName(String  NodePlatformType , String NodeBrowserType , String NodeSuffix){
+    public static String GenerateNodeTomlPathName(String  NodePlatformType , String NodeBrowserType){
 
+        int Port = PortGenerator.GenerateHubPort(4);
         String NodeRelativeDirPath =GenerateNodeTomlPathOnly(NodePlatformType ,NodeBrowserType);
-       // String NodeSuffix =  NodeTomlSuffixCreator.CreateNodeSuffix(NodeRelativeDirPath);
         String NodeTomlName = GenerateNodeTomlName(NodePlatformType ,NodeBrowserType );
-        String NodeRelativePath =  NodeRelativeDirPath+"\\"+NodeTomlName+"_"+NodeSuffix+".toml" ;
+        String NodeRelativePath =  NodeRelativeDirPath+"\\"+NodeTomlName+"_"+Port+".toml" ;
 
         return NodeRelativePath ;
     }
 
+    public static int GetNodePort(String NodeRelativePath){
+
+        String PortWithName = StringPicker.PickString(NodeRelativePath , "_.*.toml") ;
+        String PortNumber = StringPicker.ExtractString(PortWithName ,1 ,5 );
+        int Port = Integer.parseInt(PortNumber);
+       return  Port ;
+    }
+
+
 
     public static void main(String[] args) {
-        System.out.println(GenerateNodeTomlPathName("MacOs" , "Chrome" , "5050"));
+        String path =  GenerateNodeTomlPathName("MacOs" , "Chrome");
+        int port = GetNodePort(path);
+        System.out.println(port);
     }
 
 

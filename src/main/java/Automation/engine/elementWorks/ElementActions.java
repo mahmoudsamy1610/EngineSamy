@@ -1,6 +1,6 @@
 package Automation.engine.elementWorks;
 
-import Automation.engine.reportingworks.Logger;
+import Automation.engine.reportingWorks.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;

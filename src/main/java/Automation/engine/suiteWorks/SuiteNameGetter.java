@@ -9,7 +9,7 @@ public class SuiteNameGetter {
 
     public static  List<String> GetSuiteName(String SuiteRelativePath){
 
-       List<String> SuiteName =  XmlParser.FindXmlData(SuiteRelativePath ,"suite" , "name") ;
+       List<String> SuiteName =  XmlParser.FindXmlAttributes(SuiteRelativePath ,"suite" , "name") ;
         return SuiteName ;
 
     }

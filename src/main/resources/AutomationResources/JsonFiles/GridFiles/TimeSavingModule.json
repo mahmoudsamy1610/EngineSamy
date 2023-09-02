@@ -22,7 +22,7 @@
   "Node3":
     {
       "Id": 2,
-      "Test": "AdminLogin023",
+      "Test": "",
       "Suite" : "Login2",
       "Browser": "chrome",
       "Platform": "Windows 10"
@@ -31,8 +31,8 @@
   "Node4":
     {
       "Id": 3,
-      "Test": "AdminLogin023",
-      "Suite" : "Login3",
+      "Test": "test1",
+      "Suite" : "Login",
       "Browser": "firefox",
       "Platform": "Linux"
     },
@@ -40,9 +40,28 @@
   "Node5":
     {
       "Id": 4,
-      "Test": "AdminLogin023",
-      "Suite" : "Login4",
+      "Test": "test2",
+      "Suite" : "Login",
       "Browser": "firefox",
       "Platform": "linux"
-    }
+    },
+
+  "Node6":
+  {
+    "Id": 6,
+    "Test": "test3",
+    "Suite" : "Login3",
+    "Browser": "firefox",
+    "Platform": "Linux"
+  },
+
+  "Node7":
+  {
+    "Id": 7,
+    "Test": "test4",
+    "Suite" : "Login3",
+    "Browser": "firefox",
+    "Platform": "linux"
+  }
+
 }

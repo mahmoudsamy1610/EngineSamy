@@ -8,11 +8,10 @@ public class NodeRegister {
 
 
 
-       public static void RegisterNode(String NodePlatformType , String NodeBrowserType){
+       public static void RegisterNode(String CreatedNodePath){
 
            String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
-           String NodeRelativePath = NodeWriter.CreateNodeToml(NodePlatformType , NodeBrowserType);
-           String NodeAbsolutePath = "\""+PathConverter.ConvertPathToAbs(NodeRelativePath)+"\"";
+           String NodeAbsolutePath = "\""+PathConverter.ConvertPathToAbs(CreatedNodePath)+"\"";
            String NodeGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "NodeRegisterCommand") ;
            String NodeRegisterCommand = "cd " + GridJarLocation  + " && " + NodeGridCommand + " " + NodeAbsolutePath ;
 
@@ -23,7 +22,8 @@ public class NodeRegister {
 
     public static void main(String[] args) {
 
-        RegisterNode("windows 11" , "MicrosoftEdge");
+        String Path =  NodeWriter.CreateNodeToml("Linux" , "chrome");
+        RegisterNode(Path);
 
     }
 

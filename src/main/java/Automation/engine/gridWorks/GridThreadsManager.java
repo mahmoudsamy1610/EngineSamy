@@ -46,7 +46,7 @@ public class GridThreadsManager {
         Thread RegisterNodeThread;
         try {
             Runnable RegisterNodeTask = () -> {
-                NodeRegister.RegisterNode(NodePlatformType, NodeBrowserType);
+                NodeRegister.RegisterNode("");
             };
             RegisterNodeThread = new Thread(RegisterNodeTask);
 

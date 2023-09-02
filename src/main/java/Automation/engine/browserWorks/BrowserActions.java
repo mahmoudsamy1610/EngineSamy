@@ -2,7 +2,7 @@ package Automation.engine.browserWorks;
 
 import Automation.engine.gridWorks.NodeWrapper;
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.reportingworks.Logger;
+import Automation.engine.reportingWorks.Logger;
 import Automation.engine.setupWorks.SetupFactory;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.TimeoutException;

@@ -46,13 +46,13 @@ public class DirCleaner {
             File directory = new File(DirRelativePath);
             File[] files = directory.listFiles();
 
-            if (files != null) {
+
                 for (File file : files) {
                     if (file.isFile() || file.isDirectory()) {
                         file.delete();
                     }
                 }
-            }
+
         } catch (IllegalArgumentException IAE){IAE.getMessage();}
     }
 
@@ -60,8 +60,9 @@ public class DirCleaner {
 
 
     public static void main(String[] args) {
-        String dirPath = "allure-results"; // Replace with your directory path
-        CleanDir(dirPath);
+        String dirPath = "src/test/resources/TestReports/Allure_Report"; // Replace with your directory path
+        CleanDirFromFolders(dirPath);
+        System.err.println("cleaned");
     }
 
 }

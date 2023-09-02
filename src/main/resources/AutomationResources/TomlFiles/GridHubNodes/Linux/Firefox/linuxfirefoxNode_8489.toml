@@ -1,0 +1,7 @@
+[server]
+port=8489
+
+[node]
+[[node.driver-configuration]]
+display-name ="firefox"
+stereotype="{\"browserName\": \"firefox\",\"platformName\": \"linux\"}"

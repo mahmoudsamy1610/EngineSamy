@@ -1,7 +1,7 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.reportingworks.EventListener;
-import Automation.engine.reportingworks.Logger;
+import Automation.engine.reportingWorks.EventListener;
+import Automation.engine.reportingWorks.Logger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

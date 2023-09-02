@@ -1,8 +1,8 @@
 package Automation.engine.browserWorks;
 
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.reportingworks.EventListener;
-import Automation.engine.reportingworks.Logger;
+import Automation.engine.reportingWorks.EventListener;
+import Automation.engine.reportingWorks.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -12,7 +12,6 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.events.WebDriverListener;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 
 import java.net.URL;
 

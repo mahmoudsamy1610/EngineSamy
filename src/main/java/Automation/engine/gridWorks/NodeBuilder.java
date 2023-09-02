@@ -13,7 +13,8 @@ public class NodeBuilder {
         String NodePlatformType = NodeWrapper.WrapNodePlatformList(ParaModule);
         String NodeBrowserType = NodeWrapper.WrapNodeBrowserList(ParaModule);
 
-                NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
+               String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
+               NodeRegister.RegisterNode(CreatedNodePath);
             }
 
 

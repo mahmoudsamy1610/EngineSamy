@@ -7,8 +7,9 @@ public class NodeWriter {
 
     public static String CreateNodeToml(String NodePlatformType , String NodeBrowserType) {
 
-        int Port = PortGenerator.GenerateHubPort(4);
-        String NodeRelativePath = NodePathGenerator.GenerateNodeTomlPathName(NodePlatformType , NodeBrowserType , String.valueOf(Port));
+        String NodeRelativePath = NodePathGenerator.GenerateNodeTomlPathName(NodePlatformType , NodeBrowserType);
+        int Port = NodePathGenerator.GetNodePort(NodeRelativePath);
+
 
         String NodeContent = "[server]\n" +
                                  "port=" + Port + "\n" +
@@ -22,13 +23,16 @@ public class NodeWriter {
          TomlFileCreator.CreateToml(NodeContent , NodeRelativePath);
          System.out.println("Node Toml File created for : " + NodePlatformType + " and " + NodeBrowserType + " at Port : " + Port);
 
-         return NodeRelativePath;
+         return NodeRelativePath ;
+
     }
 
     public static void main(String[] args) {
 
-        CreateNodeToml("Windows 11" , "Firefox" );
+        CreateNodeToml("Windows 11" , "Firefox");
     }
+
+
 
 
 }

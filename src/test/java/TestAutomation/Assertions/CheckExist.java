@@ -1,6 +1,6 @@
 package TestAutomation.Assertions;
 
-import Automation.engine.reportingworks.Logger;
+import Automation.engine.reportingWorks.Logger;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 

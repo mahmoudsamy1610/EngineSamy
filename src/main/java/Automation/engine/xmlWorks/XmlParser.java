@@ -14,7 +14,7 @@ public class XmlParser {
 
 
 
-    public static List<String> FindXmlData(String XmlRelativePath, String TagName, String AttName) {
+    public static List<String> FindXmlAttributes(String XmlRelativePath, String TagName, String AttName) {
 
         List<String> AttNameValues = null;
         try {
@@ -32,7 +32,7 @@ public class XmlParser {
             for (int i = 0; i < testNodes.getLength(); i++) {
                 Element element = (Element) testNodes.item(i);
                 String AttNameValue = element.getAttribute(AttName);
-                System.out.println("<" + TagName + "> " + AttName + " : " + AttNameValue);
+                //System.out.println("<" + TagName + "> " + AttName + " : " + AttNameValue);
                 AttNameValues.add(AttNameValue);
 
             }
@@ -45,10 +45,9 @@ public class XmlParser {
         return AttNameValues;
     }
 
-
     public static void main(String[] args) {
 
-        FindXmlData("src/test/resources/testSuites/Login.xml" , "test" , "name");
+        FindXmlAttributes("src/test/resources/testSuites/Login.xml" , "test" , "name");
     }
 
 

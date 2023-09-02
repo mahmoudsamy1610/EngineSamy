@@ -17,11 +17,6 @@ public class HubGridLauncher  implements ISuiteListener {
     public static String RunHubGridCommand = "cd " + GridJarLocation  + " && " + HubGridCommand + " " + HubAbsolutePath  ;
 
 
-    @Override
-    public void onStart(ISuite suite) {
-        HubGridLauncher.StartGrid();
-    }
-
 
     public static void StartGrid() {
         try {

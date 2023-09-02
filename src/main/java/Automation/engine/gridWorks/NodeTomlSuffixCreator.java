@@ -25,8 +25,8 @@ public class NodeTomlSuffixCreator {
 
 
     public static void main(String[] args) {
-        String suffix = CreateNodeSuffix("src/main/resources/AutomationResources/TomlFiles/GridHubNodes/Linux/Firefox") ;
-        System.out.println(suffix);
+      //  String suffix = CreateNodeSuffix("src/main/resources/AutomationResources/TomlFiles/GridHubNodes/Linux/Firefox") ;
+      //  System.out.println(suffix);
 
     }
 

@@ -1,5 +1,6 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.helpers.ArrayElementFinder;
 import Automation.engine.suiteWorks.SuiteDataGetterByRun;
 import Automation.engine.suiteWorks.SuiteTestCapGetter;
 
@@ -11,12 +12,12 @@ public class NodeWrapper {
 
     public static  String WrapNodePlatformList(String ParaModule) {
 
-        List<String> TestNames = SuiteDataGetterByRun.GetTestNameByRun();
+        List<String> TestNames = SuiteDataGetterByRun.GetTestNamesByRun();
         List<String> NodePlatformTypes = null;
         String Platform = null;
 
         for (String TestName : TestNames) {
-            NodePlatformTypes = SuiteTestCapGetter.CatchPlatform(ParaModule, TestName);
+            NodePlatformTypes = SuiteTestCapGetter.CatchPlatforms(ParaModule, TestName);
             for (String NodePlatformType : NodePlatformTypes){
                 Platform = NodePlatformType;
             }
@@ -25,54 +26,58 @@ public class NodeWrapper {
     }
 
 /*
-    public static String WrapNodePlatform(String ParaModule) {
 
+    public  static String WrapNodePlaftormByRun(String ParaModule){
+
+        List<String> TestNames = SuiteDataGetterByRun.GetTestNamesByRun();
         List<String> NodePlatformTypes = null;
-        String Platform = null;
+        String NodePlatformType = null;
 
-        for (String NodePlatformType : NodePlatformTypes) {
-            WrapNodePlatformList(ParaModule);
-            Platform = NodePlatformType;
-        }
-
-        return Platform ;
+        for (String TestName : TestNames) {
+            NodePlatformTypes = SuiteTestCapGetter.CatchPlatforms(ParaModule, TestName);
+            String RunningTestName = SuiteDataGetterByRun.GetCurrentTestNameByRun();
+             NodePlatformType = ArrayElementFinder.FindArrayElement(NodePlatformTypes , RunningTestName);
+            }
+        return NodePlatformType;
     }
 
+*/
 
- */
 
 
 
 
     public static  String WrapNodeBrowserList(String ParaModule) {
 
-        List<String> TestNames = SuiteDataGetterByRun.GetTestNameByRun();
+        List<String> TestNames = SuiteDataGetterByRun.GetTestNamesByRun();
         List<String> NodeBrowserTypes = null;
         String Browser = null;
 
         for (String TestName : TestNames) {
-            NodeBrowserTypes = SuiteTestCapGetter.CatchBrowser(ParaModule, TestName);
+            NodeBrowserTypes = SuiteTestCapGetter.CatchBrowsers(ParaModule, TestName);
             for (String NodeBrowserType : NodeBrowserTypes){
                 Browser = NodeBrowserType;
             }
         }
         return Browser;
     }
-/*
 
-    public static String WrapNodeBrowser(String ParaModule) {
+    /*
+    public  static String WrapNodeBrowserByRun(String ParaModule){
 
-        List<String> NodeBrowserTypes = WrapNodeBrowserList(ParaModule);
-        String Browser = null;
+        List<String> TestNames = SuiteDataGetterByRun.GetTestNamesByRun();
+        List<String> NodeBrowserTypes = null;
+        String NodeBrowserType = null;
 
-        for (String NodeBrowserType : NodeBrowserTypes) {
-            Browser = NodeBrowserType;
+        for (String TestName : TestNames) {
+            NodeBrowserTypes = SuiteTestCapGetter.CatchBrowsers(ParaModule, TestName);
+            String RunningTestName = SuiteDataGetterByRun.GetCurrentTestNameByRun();
+            NodeBrowserType = ArrayElementFinder.FindArrayElement(NodeBrowserTypes , RunningTestName);
         }
-
-        return Browser ;
+        return NodeBrowserType;
     }
 
-
-
  */
+
+
 }

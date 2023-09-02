@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite  name="Login2" parallel="tests" thread-count="3">
+
+<suite  name="Login2"   preserve-order="true"  thread-count="20">
+
+    <listeners>
+        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun"/>
+        <listener class-name="Automation.engine.suiteWorks.HubBuilderByRun"/>
+    </listeners>
 
 
-    <test name = "AdminLogin">
-        <parameter name="NodePlatformType" value="MacOs"> </parameter>
-        <parameter name="NodeBrowserType" value="Windows 10"> </parameter>
+    <test name = "test3">
+        <parameter name="allure.results.directory" value="results/test3" />
 
         <classes>
-            <class name="TestAutofox.gui.AdminLogin4"/>
-            <class name="TestAutofox.gui.AdminLogin5"/>
-            <class name="TestAutofox.gui.AdminLogin6"/>
-
+            <class name="TestAutofox.gui.AdminLogin"/>
+            <class name="TestAutofox.gui.AdminLogin2"/>
         </classes>
     </test>
 
 
+    <test name = "test4">
+        <parameter name="allure.results.directory" value="results/test4" />
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin3"/>
+            <class name="TestAutofox.gui.AdminLogin4"/>
+        </classes>
+    </test>
 
 </suite>
+
 

@@ -5,18 +5,16 @@ import Autofox.pages.AutofoxGenericElements;
 import Autofox.pages.DashboardPage;
 import Autofox.pages.LoginPage;
 import Automation.engine.browserWorks.BrowserActions;
-import Automation.engine.reportingworks.GenerateAllureReport;
+import Automation.engine.reportingWorks.AllureReportGenerator;
 import TestAutomation.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.testng.AllureTestNg;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-
+//@Listeners(AllureTestNg.class)
 public class AdminLogin2 {
 
     //Initialization
@@ -98,9 +96,4 @@ public class AdminLogin2 {
                 BrowserActions.Shutdown(driver);
     }
 
-
-         @AfterSuite
-            public void CreateReport(){
-                GenerateAllureReport.GenerateAllureReport();
-            }
 }
