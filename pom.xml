@@ -24,19 +24,17 @@
 
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
-          <parallel>suites</parallel>
-          <threadCount>10</threadCount>
+          <parallel>tests</parallel>
+
 
           <suiteXmlFiles>
-            <file>src/test/resources/testSuites/Login.xml</file>
-            <file>src/test/resources/testSuites/Login2.xml</file>
+            <file>src/test/resources/testSuites/Run.xml</file>
+
+
           </suiteXmlFiles>
 
           <properties>
-            <property>
-              <name>suitethreadpoolsize</name>
-              <value>20</value>
-            </property>
+
 
           </properties>
 
@@ -50,43 +48,6 @@
         <version>3.1.0</version>
 
         <executions>
-
-          <execution>
-            <id>Report</id>
-            <phase>post-integration-test</phase> <!-- or any other appropriate phase -->
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <configuration>
-              <executable>java</executable> <!-- Use the Java executable -->
-              <arguments>
-                <argument>-classpath</argument>
-                <classpath/> <!-- Include the project's classpath -->
-                <argument>Automation.engine.reportingWorks.AllureReportGenerator</argument> <!-- Fully qualified class name -->
-                <argument>main</argument> <!-- Method to execute -->
-              </arguments>
-            </configuration>
-          </execution>
-
-
-          <execution>
-            <id>Clean Previous Reports</id>
-            <phase>generate-test-resources</phase> <!-- or any other appropriate phase -->
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <configuration>
-              <executable>java</executable> <!-- Use the Java executable -->
-              <arguments>
-                <argument>-classpath</argument>
-                <classpath/> <!-- Include the project's classpath -->
-                <argument>Automation.engine.reportingWorks.AllureResultsCleaner</argument> <!-- Fully qualified class name -->
-                <argument>main</argument> <!-- Method to execute -->
-              </arguments>
-            </configuration>
-          </execution>
-
-
         </executions>
 
       </plugin>

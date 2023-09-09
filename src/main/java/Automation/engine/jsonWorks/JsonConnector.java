@@ -15,7 +15,7 @@ public class JsonConnector {
       try {
           JsonNode rootNode = JsonReader.ReadJson("src/main/resources/AutomationResources/JsonFiles/JsonPath.json");
           JsonNode FilePathTextNode = rootNode.get(JsonFileName);
-          String JsonFilePath = null ;
+          //String JsonFilePath = null ;
 
           if (FilePathTextNode != null) {
               return FilePathTextNode.asText();
@@ -31,7 +31,7 @@ public class JsonConnector {
 
     public static void main(String[] args) {
 
-        System.out.println(ConnectToJson("TimeSavingModule"));
+        System.out.println(ConnectToJson("TimeSaving"));
     }
 
   }

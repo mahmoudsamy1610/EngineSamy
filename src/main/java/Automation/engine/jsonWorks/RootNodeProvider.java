@@ -8,4 +8,10 @@ public class RootNodeProvider {
         JsonNode RootNode = JsonReader.ReadJson(JsonFilePath);
         return RootNode;
     }
+
+
+    public static void main(String[] args) {
+        GetRootNode("TimeSaving");
+    }
+
 }

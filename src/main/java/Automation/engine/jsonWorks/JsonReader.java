@@ -26,7 +26,7 @@ public class JsonReader {
     }
 
     public static void main(String[] args) {
-       JsonNode node =  ReadJson("src/main/resources/AutomationResources/JsonFiles/GridFiles/TimeSavingModule.json");
+       JsonNode node =  ReadJson("src/main/resources/AutomationResources/JsonFiles/GridFiles/TimeSaving.json");
         System.out.println(node);
 
     }

@@ -1,22 +1,25 @@
 package Automation.engine.suiteWorks;
 
 import Automation.engine.jsonWorks.GetJsonValueByKey;
+import Automation.engine.propertyWorks.PropertyGetter;
 
 import java.util.List;
 
 public class SuiteTestCapGetter {
 
 
-    public static List<String> CatchPlatforms(String ParaModule , String Catcher) {
+    public static List<String> CatchPlatforms(String Catcher) {
 
+        String ParaModule = PropertyGetter.GetPropertyValue("RunOptions","ParaModule");
         List<String> NodePlatformTypes = (GetJsonValueByKey.GetValueByContainerKey("Platform" , ParaModule , Catcher));
 
       return NodePlatformTypes ;
 
     }
 
-    public static List<String> CatchBrowsers(String ParaModule , String Catcher) {
+    public static List<String> CatchBrowsers(String Catcher) {
 
+        String ParaModule = PropertyGetter.GetPropertyValue("RunOptions","ParaModule");
         List<String> NodeBrowserTypes = GetJsonValueByKey.GetValueByContainerKey("Browser" , ParaModule , Catcher);
 
         return NodeBrowserTypes ;
@@ -30,8 +33,12 @@ public class SuiteTestCapGetter {
 
     public static void main(String[] args) {
 
-        System.out.println(CatchPlatforms("TimeSavingModule" , "AdminLogin023"));
-        CatchBrowsers("TimeSavingModule" , "AdminLogin023") ;
+      List<String> list =  CatchBrowsers("test4") ;
+      System.out.println(list.size());
+        System.out.println(list);
+
+
+
     }
 
 }

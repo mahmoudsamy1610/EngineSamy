@@ -1,0 +1,7 @@
+[server]
+port=3946
+
+[node]
+[[node.driver-configuration]]
+display-name ="chrome"
+stereotype="{\"browserName\": \"chrome\",\"platformName\": \"Windows 10\"}"

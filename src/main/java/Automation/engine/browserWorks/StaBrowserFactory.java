@@ -1,8 +1,8 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.reportingWorks.EventListener;
+import Automation.engine.listeners.EventListener;
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.reportingWorks.Logger;
+import Automation.engine.reportingWorks.Loggers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -34,11 +34,11 @@ public class StaBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Chrome driver  {Stand alone grid} ");
+                Loggers.logStep("Initializing Chrome driver  {Stand alone grid} ");
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing Chrome driver {Stand alone grid} ");
+                Loggers.logStep("Initializing Chrome driver {Stand alone grid} ");
                 Assert.fail("Unknown error while Initializing Chrome browser {Stand alone grid} ");
                 System.out.println("Unknown Error while Initializing Chrome browser {Stand alone grid} ");
             }
@@ -58,11 +58,11 @@ public class StaBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing firefox driver {Stand alone grid} ");
+                Loggers.logStep("Initializing firefox driver {Stand alone grid} ");
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing FireFox driver {Stand alone grid} ");
+                Loggers.logStep("Initializing FireFox driver {Stand alone grid} ");
                 Assert.fail("Unknown error while Initializing FireFox browser {Stand alone grid} ");
                 System.out.println("Unknown Error while Initializing FireFox browser {Stand alone grid} ");
             }

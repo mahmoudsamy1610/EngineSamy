@@ -1,6 +1,6 @@
 
   {
-    "TimeSavingModule" : "src/main/resources/AutomationResources/JsonFiles/GridFiles/TimeSavingModule.json",
+    "TimeSaving" : "src/main/resources/AutomationResources/JsonFiles/GridFiles/TimeSaving.json",
     "ParaModules" :  "src/main/resources/AutomationResources/JsonFiles/GridFiles/ParaModules.json"
   }
 

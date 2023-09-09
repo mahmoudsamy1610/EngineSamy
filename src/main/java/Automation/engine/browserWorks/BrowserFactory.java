@@ -1,7 +1,7 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.reportingWorks.EventListener;
-import Automation.engine.reportingWorks.Logger;
+import Automation.engine.listeners.EventListener;
+import Automation.engine.reportingWorks.Loggers;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,11 +31,11 @@ public class BrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Chrome driver");
+                Loggers.logStep("Initializing Chrome driver");
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing Chrome driver");
+                Loggers.logStep("Initializing Chrome driver");
                 Assert.fail("Unknown error while Initializing Chrome browser");
                 System.out.println("Unknown Error while Initializing Chrome browser");
             }
@@ -45,11 +45,11 @@ public class BrowserFactory {
                 WebDriver driver;
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
-                Logger.logStep("Initializing FireFox driver");
+                Loggers.logStep("Initializing FireFox driver");
                 return driver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing FireFox driver");
+                Loggers.logStep("Initializing FireFox driver");
                 Assert.fail("Unknown error while Initializing FireFox browser");
                 System.out.println("Unknown Error while Initializing FireFox browser");
             }

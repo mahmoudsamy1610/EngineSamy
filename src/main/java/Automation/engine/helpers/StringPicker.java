@@ -14,7 +14,6 @@ public class StringPicker {
            Matcher StringMatcher = InputPattern.matcher(InputString);
             if (StringMatcher.find()) {
                 String PickedString = StringMatcher.group();
-                System.out.println("Picked up String is : " + PickedString);
                 return PickedString;
             }
         } catch (IllegalArgumentException IAE) {
@@ -30,7 +29,6 @@ public class StringPicker {
         //Start index is excluded , End index in included
         try {
             String ExtractedString = InputString.substring(StartIndex , EndIndex);
-            System.out.println("Extracted String is : " + ExtractedString);
 
             return ExtractedString;
 

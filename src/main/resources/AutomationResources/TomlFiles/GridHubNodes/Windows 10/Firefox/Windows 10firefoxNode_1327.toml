@@ -1,0 +1,7 @@
+[server]
+port=1327
+
+[node]
+[[node.driver-configuration]]
+display-name ="firefox"
+stereotype="{\"browserName\": \"firefox\",\"platformName\": \"Windows 10\"}"

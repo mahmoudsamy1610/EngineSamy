@@ -2,8 +2,9 @@ package Automation.engine.reportingWorks;
 
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.setupWorks.CMDRunner;
+import org.testng.IExecutionListener;
 
-public class AllureReportGenerator {
+public class AllureReportGenerator implements IExecutionListener {
 
 
 
@@ -24,6 +25,11 @@ public class AllureReportGenerator {
             e.getMessage();
             System.out.println("an Error occurred while creating allure reports");}
         }
+
+
+    public void onExecutionFinish(){
+        GenerateAllureReport();
+    }
 
 
     public static void main(String[] args) {

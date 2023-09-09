@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="All" >
+
+    <listeners>
+        <listener class-name="Automation.engine.reportingWorks.AllureResultsCleaner" />
+        <listener class-name="Automation.engine.gridWorks.GridSetup" />
+        <listener class-name="Automation.engine.reportingWorks.AllureReportGenerator" />
+    </listeners>
+
+    <suite-files >
+        <suite-file path="Login3.xml"/>
+        <suite-file path="Login4.xml" />
+
+
+        <!-- Add more suite files as needed -->
+    </suite-files>
+
+
+</suite>

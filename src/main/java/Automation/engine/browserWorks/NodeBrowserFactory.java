@@ -1,8 +1,8 @@
 package Automation.engine.browserWorks;
 
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.reportingWorks.EventListener;
-import Automation.engine.reportingWorks.Logger;
+import Automation.engine.listeners.EventListener;
+import Automation.engine.reportingWorks.Loggers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -38,13 +38,13 @@ public class NodeBrowserFactory {
                 listener = new EventListener();
                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType);
+                Loggers.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType);
-                Assert.fail("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType);
-                System.out.println("Unknown Error while Initializing Chrome browser {Grid node} : " + NodeBrowserType);
+                Loggers.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+                Assert.fail("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType);
+                System.out.println("Unknown Error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType);
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("Firefox") ) {
@@ -62,13 +62,13 @@ public class NodeBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing firefox driver {Grid node} ");
+                Loggers.logStep("Initializing firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing FireFox driver {Grid node} ");
-                Assert.fail("Unknown error while Initializing FireFox browser {Grid node} ");
-                System.out.println("Unknown Error while Initializing FireFox browser {Grid node} ");
+                Loggers.logStep("Initializing FireFox driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                Assert.fail("Unknown error while Initializing FireFox browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                System.out.println("Unknown Error while Initializing FireFox browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
@@ -86,12 +86,12 @@ public class NodeBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Edge driver {Grid node} ");
+                Loggers.logStep("Initializing Edge driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             } catch (Exception e) {
-                Logger.logStep("Initializing Edge driver {Grid node} ");
-                Assert.fail("Unknown error while Initializing Edge browser {Grid node} ");
-                System.out.println("Unknown Error while Initializing Edge browser {Grid node} ");
+                Loggers.logStep("Initializing Edge driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                Assert.fail("Unknown error while Initializing Edge browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                System.out.println("Unknown Error while Initializing Edge browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
             }
         }
 
@@ -112,13 +112,13 @@ public class NodeBrowserFactory {
                     listener = new EventListener();
                     decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                    Logger.logStep("Initializing Safari driver {Grid node} ");
+                    Loggers.logStep("Initializing Safari driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                     return decoratedDriver;
                 }
                 catch (Exception e) {
-                    Logger.logStep("Initializing Safari driver {Grid node} ");
-                    Assert.fail("Unknown error while Initializing Safari browser {Grid node} ");
-                    System.out.println("Unknown Error while Initializing Safari browser {Grid node} ");
+                    Loggers.logStep("Initializing Safari driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                    Assert.fail("Unknown error while Initializing Safari browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                    System.out.println("Unknown Error while Initializing Safari browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                 }
 
 
@@ -138,7 +138,7 @@ public class NodeBrowserFactory {
 
     public static void main(String[] args) {
 
-        SetNodeBrowserType("Windows10" , "firefox") ;
+        SetNodeBrowserType("Linux" , "firefox").get("https://www.google.com"); ;
 
     }
 

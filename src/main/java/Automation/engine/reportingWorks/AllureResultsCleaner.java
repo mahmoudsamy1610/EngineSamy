@@ -2,8 +2,9 @@ package Automation.engine.reportingWorks;
 
 import Automation.engine.helpers.DirCleaner;
 import Automation.engine.propertyWorks.PropertyGetter;
+import org.testng.IExecutionListener;
 
-public class AllureResultsCleaner {
+public class AllureResultsCleaner implements IExecutionListener {
 
 
     public static void CleanAllurePreviousResults() {
@@ -19,6 +20,11 @@ public class AllureResultsCleaner {
 
         } catch (Exception E){E.getMessage();}
         }
+
+
+    public void onExecutionStart(){
+        CleanAllurePreviousResults();
+    }
 
 
     public static void main(String[] args) {

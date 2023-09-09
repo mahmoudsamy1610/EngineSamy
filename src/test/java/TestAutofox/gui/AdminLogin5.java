@@ -5,6 +5,7 @@ import Autofox.pages.AutofoxGenericElements;
 import Autofox.pages.DashboardPage;
 import Autofox.pages.LoginPage;
 import Automation.engine.browserWorks.BrowserActions;
+import Automation.engine.browserWorks.BrowserRunner;
 import TestAutomation.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -28,7 +29,7 @@ public class AdminLogin5 {
         public void setup(){
 
         // Start driver
-        driver = BrowserActions.StartBrowser();
+        driver = BrowserRunner.StartBrowser();
         BrowserActions.SetWindowSize(driver);
 
 

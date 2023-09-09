@@ -19,47 +19,27 @@ public class GridThreadsManager {
     }
 
 
-    public static void BuildNodeThread(String  ParaModule) {
-
+    public static void BuildNodeThread() {
 
         Thread BuildNodeThread;
 
         try {
             Runnable BuildNodeTask = () -> {
-                NodeBuilder.BuildNode(ParaModule);
+                NodeBuilder.BuildNode();
             };
             BuildNodeThread = new Thread(BuildNodeTask);
             BuildNodeThread.start();
             BuildNodeThread.sleep(10000);
 
 
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-
-    public static void RegisterNodeThread(String  NodePlatformType ,String  NodeBrowserType) {
-
-
-        Thread RegisterNodeThread;
-        try {
-            Runnable RegisterNodeTask = () -> {
-                NodeRegister.RegisterNode("");
-            };
-            RegisterNodeThread = new Thread(RegisterNodeTask);
-
-            RegisterNodeThread.sleep(10000);
-            RegisterNodeThread.start();
-            RegisterNodeThread.sleep(5000);
-
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
     }
+
 
 
 }
+

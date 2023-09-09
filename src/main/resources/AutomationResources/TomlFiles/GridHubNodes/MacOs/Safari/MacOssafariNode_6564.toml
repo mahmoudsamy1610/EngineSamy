@@ -1,0 +1,7 @@
+[server]
+port=6564
+
+[node]
+[[node.driver-configuration]]
+display-name ="safari"
+stereotype="{\"browserName\": \"safari\",\"platformName\": \"MacOs\"}"

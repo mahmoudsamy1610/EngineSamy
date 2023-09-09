@@ -1,23 +1,34 @@
 package Automation.engine.gridWorks;
 
-import org.testng.ITestContext;
-import org.testng.TestListenerAdapter;
+import org.testng.IExecutionListener;
 
-public class GridSetup extends TestListenerAdapter {
+public class GridSetup implements IExecutionListener {
 
 
-    public static void SetupGrid(String  ParaModule){
 
-        GridThreadsManager.HubThread();
-        GridThreadsManager.BuildNodeThread(ParaModule);
-       // GridThreadsManager.RegisterNodeThread(NodePlatformType , NodeBrowserType);
-
+  @Override
+    public void onExecutionStart(){
+        SetupGrid();
     }
 
 
+    public static void SetupGrid( ) {
+
+        try {
+                GridThreadsManager.HubThread();
+                GridThreadsManager.BuildNodeThread();
+
+
+        } catch (Exception e) {e.getMessage();
+        }
+
+  }
+
 
     public static void main(String[] args) {
-        //SetupGrid();
+       SetupGrid();
+      //  StopBlocked(thread);
+
     }
 
 }

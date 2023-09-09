@@ -1,81 +1,111 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.helpers.ListToTwoDArrayConverter;
 import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.engine.xmlWorks.XmlParser;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class NodeBuilder {
 
 
-    public static void BuildNode(String ParaModule) {
-
-        String NodePlatformType = NodeWrapper.WrapNodePlatformList(ParaModule);
-        String NodeBrowserType = NodeWrapper.WrapNodeBrowserList(ParaModule);
-
-               String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
-               NodeRegister.RegisterNode(CreatedNodePath);
-            }
 
 
+    public static void BuildNode() {
 
-    public static void main2(String[] args) {
-        BuildNode("");
-    }
+        String PomRelativePath = PropertyGetter.GetPropertyValue("RunOptions" , "PomRelativePath");
+        String ParaScope = XmlParser.FindXmlTag(PomRelativePath,"parallel");
 
-    /*
-    public static void main1(String[] args) {
-      List<String> NodePlatformTypes = NodeWrapper.WrapNodePlatform("TimeSavingModule");
-      List<String> NodeBrowserTypes = NodeWrapper.WrapNodeBrowser("TimeSavingModule");
-
-        List<String>[][] matrix = {
-                {NodePlatformTypes, NodeBrowserTypes}
-        };
-
-        int rows = matrix.length;
-        int columns = matrix[0].length;
-
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
-                System.out.print(matrix[row]+ " ");
-            }
-            System.out.println();
+        if (ParaScope.equalsIgnoreCase("suites")){
+            BuildNodeFromSuites();
+        }else if (ParaScope.equalsIgnoreCase("tests")){
+            BuildNodeFromTests();
         }
 
     }
 
 
-     */
-
-/*
-    public static void main(String[] args) {
 
 
-        List<List<String>> PlatformsBrowsersCombined = new ArrayList<>();
-        List<String> NodePlatformTypes = NodeWrapper.WrapNodePlatformList("TimeSavingModule");
-        List<String> NodeBrowserTypes = NodeWrapper.WrapNodeBrowserList("TimeSavingModule");
+
+    public static void BuildNodeFromTests() {
+
+        List<String> NodePlatformTypes = TestNodeWrapper.WrapNodeTestPlatforms();
+        List<String> NodeBrowserTypes = TestNodeWrapper.WrapNodeTestBrowsers();
+        String[][] NodeCaps = NodeCapCoupler.CoupleNodeCap(NodePlatformTypes, NodeBrowserTypes);
 
 
-        PlatformsBrowsersCombined.add(NodePlatformTypes);
-        PlatformsBrowsersCombined.add(NodeBrowserTypes);
+        for (String[] Couple : NodeCaps) {
+            Thread BuildNodeThread;
+            try {
+                Runnable BuildNodeTask = () -> {
+                    String NodePlatformType = Couple[0];
+                    String NodeBrowserType = Couple[1];
+                    String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
+                    NodeRegister.RegisterNode(CreatedNodePath);
+                };
 
-/*
-        for( List<List<String>> PlatformBrowserCombined : PlatformsBrowsersCombined) {
+                BuildNodeThread = new Thread(BuildNodeTask);
+                BuildNodeThread.start();
+                BuildNodeThread.sleep(5000);
 
-                NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
 
 
 
 
-        // Accessing elements
-         String WrappedNodePlatforms =  PlatformBrowserCombined.get(0).get(0);
-         String WrappedNodeBrowsers =  PlatformBrowserCombined.get(1).get(0);
+
+        }
     }
 
 
 
- */
+
+    public static void BuildNodeFromSuites() {
+
+        List<String> NodePlatformTypes = SuiteNodeWrapper.WrapNodeSuitePlatforms();
+        List<String> NodeBrowserTypes = SuiteNodeWrapper.WrapNodeSuiteBrowsers();
+        String[][] NodeCaps = NodeCapCoupler.CoupleNodeCap(NodePlatformTypes, NodeBrowserTypes);
+
+
+        for (String[] Couple : NodeCaps) {
+            Thread BuildNodeThread;
+            try {
+                Runnable BuildNodeTask = () -> {
+                    String NodePlatformType = Couple[0];
+                    String NodeBrowserType = Couple[1];
+                    String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
+                    NodeRegister.RegisterNode(CreatedNodePath);
+                };
+
+                BuildNodeThread = new Thread(BuildNodeTask);
+                BuildNodeThread.start();
+                BuildNodeThread.sleep(5000);
+
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+    }
+
+
+
+
+
+    public static void main(String[] args) {
+
+        BuildNode();
+
 
     }
+
+
+}
 

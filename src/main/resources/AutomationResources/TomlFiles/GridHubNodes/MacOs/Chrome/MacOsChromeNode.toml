@@ -1,7 +1,0 @@
-[server]
-port=91321
-
-[node]
-[[node.driver-configuration]]
-display-name ="Chrome"
-stereotype="{\"browserName\": \"Chrome\",\"platformName\": \"MacOs\"}"
