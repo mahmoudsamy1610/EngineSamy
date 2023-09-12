@@ -1,8 +1,8 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.propertyWorks.GetProperty;
-import Automation.engine.reportingworks.EventListener;
-import Automation.engine.reportingworks.Logger;
+import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.engine.listeners.EventListener;
+import Automation.engine.reportingWorks.Loggers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -20,7 +20,7 @@ public class NodeBrowserFactory {
 
 
 
-    public static WebDriver SetNodeBrowserType(String NodePlatformType , String NodeBrowserType){
+    public static WebDriver SetNodeBrowserType(String NodePlatformType , String NodeBrowserType ){
 
         if (NodeBrowserType.equalsIgnoreCase("Chrome")) {
             try{
@@ -29,9 +29,8 @@ public class NodeBrowserFactory {
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String HubUrl = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost");
+                String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
                 URL url = new URL(HubUrl);
-
 
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setPlatformName(NodePlatformType) ;
@@ -39,13 +38,13 @@ public class NodeBrowserFactory {
                 listener = new EventListener();
                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Chrome driver {Grid node} ");
+                Loggers.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing Chrome driver {Grid node} ");
-                Assert.fail("Unknown error while Initializing Chrome browser {Grid node} ");
-                System.out.println("Unknown Error while Initializing Chrome browser {Grid node} ");
+                Loggers.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+                Assert.fail("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType);
+                System.out.println("Unknown Error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType);
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("Firefox") ) {
@@ -54,9 +53,8 @@ public class NodeBrowserFactory {
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String HubUrl = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost");
+                String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
                 URL url = new URL(HubUrl);
-
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setPlatformName(NodePlatformType) ;
@@ -64,23 +62,22 @@ public class NodeBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing firefox driver {Grid node} ");
+                Loggers.logStep("Initializing firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Logger.logStep("Initializing FireFox driver {Grid node} ");
-                Assert.fail("Unknown error while Initializing FireFox browser {Grid node} ");
-                System.out.println("Unknown Error while Initializing FireFox browser {Grid node} ");
+                Loggers.logStep("Initializing FireFox driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                Assert.fail("Unknown error while Initializing FireFox browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                System.out.println("Unknown Error while Initializing FireFox browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
             }
 
-        } else if (NodeBrowserType.equalsIgnoreCase("Edge") ) {
+        } else if (NodeBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try {
                 WebDriver driver;
                 WebDriverListener listener;
                 WebDriver decoratedDriver;
 
-                String HubUrl = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost");
-                ;
+                String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
                 URL url = new URL(HubUrl);
 
                 EdgeOptions edgeOptions = new EdgeOptions();
@@ -89,12 +86,12 @@ public class NodeBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Logger.logStep("Initializing Edge driver {Grid node} ");
+                Loggers.logStep("Initializing Edge driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             } catch (Exception e) {
-                Logger.logStep("Initializing Edge driver {Grid node} ");
-                Assert.fail("Unknown error while Initializing Edge browser {Grid node} ");
-                System.out.println("Unknown Error while Initializing Edge browser {Grid node} ");
+                Loggers.logStep("Initializing Edge driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                Assert.fail("Unknown error while Initializing Edge browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                System.out.println("Unknown Error while Initializing Edge browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
             }
         }
 
@@ -106,7 +103,7 @@ public class NodeBrowserFactory {
                     WebDriverListener listener ;
                     WebDriver decoratedDriver;
 
-                    String HubUrl = GetProperty.GetPropertyValue("ParaRunOptions", "HubGridHost");
+                    String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
                     URL url = new URL(HubUrl);
 
                     SafariOptions safariOptions = new SafariOptions();
@@ -115,21 +112,21 @@ public class NodeBrowserFactory {
                     listener = new EventListener();
                     decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                    Logger.logStep("Initializing Safari driver {Grid node} ");
+                    Loggers.logStep("Initializing Safari driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                     return decoratedDriver;
                 }
                 catch (Exception e) {
-                    Logger.logStep("Initializing Safari driver {Grid node} ");
-                    Assert.fail("Unknown error while Initializing Safari browser {Grid node} ");
-                    System.out.println("Unknown Error while Initializing Safari browser {Grid node} ");
+                    Loggers.logStep("Initializing Safari driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                    Assert.fail("Unknown error while Initializing Safari browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
+                    System.out.println("Unknown Error while Initializing Safari browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                 }
 
 
 
 
             } else {
-            Assert.fail("Invalid Driver or Driver not found");
-            System.out.println("Invalid Driver or Driver not found");
+            Assert.fail("Invalid Driver or Driver not found : " + NodeBrowserType);
+            System.out.println("Invalid Driver or Driver not found : " + NodeBrowserType);
 
         }
 
@@ -137,5 +134,13 @@ public class NodeBrowserFactory {
         return null;
 
     }
+
+
+    public static void main(String[] args) {
+
+        SetNodeBrowserType("Linux" , "firefox").get("https://www.google.com"); ;
+
+    }
+
 
 }

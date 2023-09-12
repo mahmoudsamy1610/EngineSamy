@@ -3,7 +3,7 @@ package TestAutofox.gui;
 import Autofox.pages.DashboardPage;
 import Autofox.autofoxPropertyWorks.GetAutofoxProperty;
 import Automation.engine.browserWorks.BrowserActions;
-import Automation.engine.reportingworks.GenerateAllureReport;
+import Automation.engine.browserWorks.BrowserRunner;
 import TestAutomation.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -13,7 +13,7 @@ import org.testng.annotations.*;
 import Autofox.pages.AutofoxGenericElements;
 import Autofox.pages.LoginPage;
 
-
+//@Listeners(AllureTestNg.class)
 public class AdminLogin {
 
     //Initialization
@@ -23,11 +23,11 @@ public class AdminLogin {
     DashboardPage dashboardPage ;
 
 
-    @BeforeMethod
+    @BeforeClass
         public void setup(){
 
         // Start driver
-        driver = BrowserActions.StartBrowser();
+        driver = BrowserRunner.StartBrowser();
         BrowserActions.SetWindowSize(driver);
 
 
@@ -81,6 +81,7 @@ public class AdminLogin {
         loginPage.openLoginPage();
         loginPage.insertLoginToken(AdminToken);
         loginPage.clickLogin();
+
         String InvalidCredsError =   loginPage.GetInvalidCredsErrorToaster();
         CompareText.CheckText(InvalidCredsError,"Invalid login credentials." , "Error message");
 
@@ -90,14 +91,10 @@ public class AdminLogin {
 
 
 
-        @AfterMethod
+        @AfterClass
             public void TearDown(){
                 BrowserActions.Shutdown(driver);
     }
 
 
-         @AfterTest
-            public void CreateReport(){
-                GenerateAllureReport.GenerateAllureReport();
-            }
 }

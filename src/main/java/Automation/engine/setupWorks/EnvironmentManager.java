@@ -1,11 +1,11 @@
 package Automation.engine.setupWorks;
 
 
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 
 public class EnvironmentManager {
 
-    public static String Environment = GetProperty.GetPropertyValue("Environment","EnvironmentName");
+    public static String Environment = PropertyGetter.GetPropertyValue("Environment","EnvironmentName");
     public static String  Domain;
 
 
@@ -14,21 +14,21 @@ public class EnvironmentManager {
 
         if (Environment.equalsIgnoreCase("dev")){
             try {
-                Domain =GetProperty.GetPropertyValue("Environment","HomeDev");
+                Domain = PropertyGetter.GetPropertyValue("Environment","HomeDev");
             }catch (Exception e){e.getMessage();
                 System.out.println("DEV Environment is not inserted correctly ");}
         }
 
         else if (Environment.equalsIgnoreCase("alpha")) {
               try{
-                 Domain = GetProperty.GetPropertyValue("Environment","HomeAlpha");
+                 Domain = PropertyGetter.GetPropertyValue("Environment","HomeAlpha");
               }catch(Exception e){e.getMessage();
                   System.out.println("Alpha Environment is not inserted correctly ");}
         }
 
         else if (Environment.equalsIgnoreCase("live")) {
             try {
-                Domain = GetProperty.GetPropertyValue("Environment","HomeLive");
+                Domain = PropertyGetter.GetPropertyValue("Environment","HomeLive");
             }catch (Exception e){e.getMessage();
                 System.out.println("Live Environment is not inserted correctly ");}
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite  name="LoginFake2"  preserve-order="true" >
+
+    <listeners>
+        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun" />
+    </listeners>
+
+
+    <test name = "test2">
+        <parameter name="allure.results.directory" value="results/test2" />
+
+
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin"/>
+            <class name="TestAutofox.gui.AdminLogin2"/>
+        </classes>
+    </test>
+
+
+    <test name = "test4">
+        <parameter name="allure.results.directory" value="results/test4" />
+
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin"/>
+            <class name="TestAutofox.gui.AdminLogin2"/>
+        </classes>
+    </test>
+
+</suite>
+
+

@@ -1,0 +1,4 @@
+title = "My TOML File"
+[author]
+name = "John Doe"
+email = "john@example.com"

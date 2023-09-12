@@ -1,6 +1,6 @@
 package TestAutomation.Assertions;
 
-import Automation.engine.reportingworks.Logger;
+import Automation.engine.reportingWorks.Loggers;
 import org.testng.Assert;
 
 public class CompareText {
@@ -8,7 +8,7 @@ public class CompareText {
     public static void CheckText(String ActualText, String ExpectedText, String ExpectedTextName) {
 
 
-        Logger.logStep("Check that  [" + ExpectedTextName + "] is [" + ActualText + "]");
+        Loggers.logStep("Check that  [" + ExpectedTextName + "] is [" + ActualText + "]");
         Assert.assertEquals(ActualText, ExpectedText);
 
 

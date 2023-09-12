@@ -4,11 +4,11 @@ import java.nio.file.Paths;
 
 public class PathConverter {
 
-    public static String ConvertPath(String RelativePath, String FileName) {
+    public static String ConvertPathToAbs(String RelativePath) {
 
         String AbsolutePath ;
         try {
-          AbsolutePath = Paths.get(RelativePath, FileName)
+          AbsolutePath = Paths.get(RelativePath)
                     .toAbsolutePath().toString();
           return AbsolutePath ;
 
@@ -19,6 +19,10 @@ public class PathConverter {
 
         return null;
 
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ConvertPathToAbs("bla" ));
     }
 
 

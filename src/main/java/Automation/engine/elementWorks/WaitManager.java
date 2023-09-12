@@ -1,6 +1,6 @@
 package Automation.engine.elementWorks;
 
-import Automation.engine.propertyWorks.GetProperty;
+import Automation.engine.propertyWorks.PropertyGetter;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,7 +14,7 @@ public class WaitManager {
 
     public static int getTimeout(){
 
-         WaitTime =Integer.parseInt(GetProperty.GetPropertyValue("Time","ExplicitWait"));
+         WaitTime =Integer.parseInt(PropertyGetter.GetPropertyValue("Time","ExplicitWait"));
 
         return WaitTime;
     }

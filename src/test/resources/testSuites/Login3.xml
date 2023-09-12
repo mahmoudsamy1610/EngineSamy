@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite  name="Login">
-    <test name = "AdminLogin">
-        <classes>
-            <class name="TestAutofox.gui.AdminLogin7"/>
-            <class name="TestAutofox.gui.AdminLogin8"/>
-            <class name="TestAutofox.gui.AdminLogin9"/>
 
+<suite  name="Login3"  preserve-order="true" >
+
+    <listeners>
+        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun" />
+    </listeners>
+
+
+    <test name = "test3">
+        <parameter name="allure.results.directory" value="results/test3" />
+
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin"/>
         </classes>
     </test>
+
+    <test name = "test1">
+        <parameter name="allure.results.directory" value="results/test1" />
+
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin"/>
+        </classes>
+    </test>
+
+
 </suite>
+
 
