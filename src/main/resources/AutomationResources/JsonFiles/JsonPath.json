@@ -1,6 +1,7 @@
 
   {
     "TimeSaving" : "src/main/resources/AutomationResources/JsonFiles/GridFiles/TimeSaving.json",
-    "ParaModules" :  "src/main/resources/AutomationResources/JsonFiles/GridFiles/ParaModules.json"
+    "ParaModules" :  "src/main/resources/AutomationResources/JsonFiles/GridFiles/ParaModules.json",
+    "AllChrome" : "src/main/resources/AutomationResources/JsonFiles/GridFiles/AllChrome.json"
   }
 

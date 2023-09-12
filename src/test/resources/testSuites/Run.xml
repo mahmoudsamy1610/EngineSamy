@@ -7,11 +7,13 @@
         <listener class-name="Automation.engine.reportingWorks.AllureResultsCleaner" />
         <listener class-name="Automation.engine.gridWorks.GridSetup" />
         <listener class-name="Automation.engine.reportingWorks.AllureReportGenerator" />
+        <listener class-name="Automation.engine.browserWorks.DriverMemoryCleaner" />
     </listeners>
+
+
 
     <suite-files >
         <suite-file path="Login3.xml"/>
-        <suite-file path="Login4.xml" />
 
 
         <!-- Add more suite files as needed -->

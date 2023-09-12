@@ -5,6 +5,7 @@ import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.reportingWorks.Loggers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
@@ -67,7 +68,31 @@ public class StaBrowserFactory {
                 System.out.println("Unknown Error while Initializing FireFox browser {Stand alone grid} ");
             }
 
-        } else {
+        }else if (StaBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
+            try{
+                WebDriver driver;
+                WebDriverListener listener ;
+                WebDriver decoratedDriver;
+
+                String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");  ;
+                URL url = new URL(StaGridUrl);
+
+
+                EdgeOptions edgeOptions = new EdgeOptions();
+                driver = new RemoteWebDriver(url, edgeOptions);
+                listener = new EventListener();
+                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
+
+                Loggers.logStep("Initializing firefox driver {Stand alone grid} ");
+                return decoratedDriver;
+            }
+            catch (Exception e) {
+                Loggers.logStep("Initializing FireFox driver {Stand alone grid} ");
+                Assert.fail("Unknown error while Initializing FireFox browser {Stand alone grid} ");
+                System.out.println("Unknown Error while Initializing FireFox browser {Stand alone grid} ");
+            }
+
+        }  else {
             Assert.fail("Invalid Driver or Driver not found");
             System.out.println("Invalid Driver or Driver not found");
 

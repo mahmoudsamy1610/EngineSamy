@@ -1,7 +1,7 @@
 package Automation.engine.reportingWorks;
 
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.setupWorks.CMDRunner;
+import Automation.engine.helpers.CMDRunner;
 import org.testng.IExecutionListener;
 
 public class AllureReportGenerator implements IExecutionListener {

@@ -1,10 +1,8 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.FileNameGetter;
 import Automation.engine.helpers.PathConverter;
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.setupWorks.CMDRunner;
-import org.testng.ISuite;
+import Automation.engine.helpers.CMDRunner;
 import org.testng.ISuiteListener;
 
 public class HubGridLauncher  implements ISuiteListener {

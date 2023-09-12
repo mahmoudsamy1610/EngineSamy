@@ -24,7 +24,7 @@
       "Id": 2,
       "Test": "test3",
       "Suite" : "Login3",
-      "Browser": "chrome",
+      "Browser": "MicrosoftEdge",
       "Platform": "Windows 10"
     },
 

@@ -9,8 +9,6 @@ import org.testng.Assert;
 
 public class BrowserActions {
 
-    // is git ignore working ?
-
     // these variables are set in the properties file and in configuration
     public static boolean MaxWindow = Boolean.parseBoolean(PropertyGetter.GetPropertyValue("RunOptions","Maximize"));
     public static int WindowWidth = Integer.parseInt(PropertyGetter.GetPropertyValue("RunOptions","width"));

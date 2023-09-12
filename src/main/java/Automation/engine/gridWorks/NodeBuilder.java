@@ -1,5 +1,6 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.helpers.FileCleaner;
 import Automation.engine.helpers.ListToTwoDArrayConverter;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.xmlWorks.XmlParser;
@@ -38,17 +39,19 @@ public class NodeBuilder {
 
         for (String[] Couple : NodeCaps) {
             Thread BuildNodeThread;
+            String NodePlatformType = Couple[0];
+            String NodeBrowserType = Couple[1];
+            String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
+
             try {
                 Runnable BuildNodeTask = () -> {
-                    String NodePlatformType = Couple[0];
-                    String NodeBrowserType = Couple[1];
-                    String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
                     NodeRegister.RegisterNode(CreatedNodePath);
                 };
 
                 BuildNodeThread = new Thread(BuildNodeTask);
                 BuildNodeThread.start();
-                BuildNodeThread.sleep(5000);
+                BuildNodeThread.sleep(3000);
+                NodeCleaner.CleanNode(CreatedNodePath);
 
 
             } catch (InterruptedException e) {
@@ -73,18 +76,20 @@ public class NodeBuilder {
 
 
         for (String[] Couple : NodeCaps) {
-            Thread BuildNodeThread;
             try {
+                Thread BuildNodeThread;
+                String NodePlatformType = Couple[0];
+                String NodeBrowserType = Couple[1];
+                String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
+
                 Runnable BuildNodeTask = () -> {
-                    String NodePlatformType = Couple[0];
-                    String NodeBrowserType = Couple[1];
-                    String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
                     NodeRegister.RegisterNode(CreatedNodePath);
                 };
 
                 BuildNodeThread = new Thread(BuildNodeTask);
                 BuildNodeThread.start();
-                BuildNodeThread.sleep(5000);
+                BuildNodeThread.sleep(3000);
+                NodeCleaner.CleanNode(CreatedNodePath);
 
 
             } catch (InterruptedException e) {

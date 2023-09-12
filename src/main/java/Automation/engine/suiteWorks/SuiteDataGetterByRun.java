@@ -13,6 +13,8 @@ public  class SuiteDataGetterByRun implements ITestListener {
 
     public static ThreadLocal<String> SuiteNameThreadLocal = new ThreadLocal<>();
     public static ThreadLocal<String> TestNameThreadLocal = new ThreadLocal<>();
+    //public static ThreadLocal<String> ClassTestNameThreadLocal = new ThreadLocal<>();
+
 
 
 
@@ -20,14 +22,15 @@ public  class SuiteDataGetterByRun implements ITestListener {
     public void onStart(ITestContext TestContext) {
         SuiteNameThreadLocal.set(TestContext.getSuite().getName());
         TestNameThreadLocal.set(TestContext.getName());
-
+       // ClassTestNameThreadLocal.set(TestContext.getClass().getName());
 
     }
 
 
   //  @Override
-    public void aonStart(ITestContext TestContext){
+    public void onTestStart(ITestResult result){
 
+     //   ClassTestNameThreadLocal.set(result.getTestContext().getClass().getName());
 
     }
 
@@ -46,6 +49,20 @@ public  class SuiteDataGetterByRun implements ITestListener {
         return TestName ;
 
     }
+/*
+    is for parallel classes scope and should be implemented later
+    public static String CurrentClassTestName(){
+        String  ClassTestName = ClassTestNameThreadLocal.get();
+        System.out.println(ClassTestName);
+        return ClassTestName ;
+
+    }
+
+
+ */
+
+
+
 }
 
 

@@ -1,7 +1,0 @@
-[server]
-port=2953
-
-[node]
-[[node.driver-configuration]]
-display-name ="firefox"
-stereotype="{\"browserName\": \"firefox\",\"platformName\": \"Windows 10\"}"

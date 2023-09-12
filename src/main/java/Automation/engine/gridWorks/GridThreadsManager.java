@@ -29,7 +29,7 @@ public class GridThreadsManager {
             };
             BuildNodeThread = new Thread(BuildNodeTask);
             BuildNodeThread.start();
-            BuildNodeThread.sleep(10000);
+            BuildNodeThread.sleep(5000);
 
 
 

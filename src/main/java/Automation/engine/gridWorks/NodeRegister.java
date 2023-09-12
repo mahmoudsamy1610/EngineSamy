@@ -2,7 +2,7 @@ package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.PathConverter;
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.setupWorks.CMDRunner;
+import Automation.engine.helpers.CMDRunner;
 
 public class NodeRegister {
 
@@ -18,7 +18,7 @@ public class NodeRegister {
             System.out.println(NodeRegisterCommand);
             CMDRunner.runCommand(NodeRegisterCommand);
 
-    }
+       }
 
     public static void main(String[] args) {
 

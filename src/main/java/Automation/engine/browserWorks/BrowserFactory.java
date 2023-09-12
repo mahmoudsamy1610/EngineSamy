@@ -5,6 +5,7 @@ import Automation.engine.reportingWorks.Loggers;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.events.WebDriverListener;
@@ -31,13 +32,13 @@ public class BrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                Loggers.logStep("Initializing Chrome driver");
+                Loggers.logStep("Initializing Chrome driver {Local} ");
                 return decoratedDriver;
             }
             catch (Exception e) {
-                Loggers.logStep("Initializing Chrome driver");
-                Assert.fail("Unknown error while Initializing Chrome browser");
-                System.out.println("Unknown Error while Initializing Chrome browser");
+                Loggers.logStep("Initializing Chrome driver {Local} ");
+                Assert.fail("Unknown error while Initializing Chrome browser {Local} ");
+                System.out.println("Unknown Error while Initializing Chrome browser {Local} ");
             }
 
         } else if (BrowserType.equalsIgnoreCase("Firefox") ) {
@@ -45,13 +46,27 @@ public class BrowserFactory {
                 WebDriver driver;
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
-                Loggers.logStep("Initializing FireFox driver");
+                Loggers.logStep("Initializing FireFox driver {Local} ");
                 return driver;
             }
             catch (Exception e) {
-                Loggers.logStep("Initializing FireFox driver");
-                Assert.fail("Unknown error while Initializing FireFox browser");
-                System.out.println("Unknown Error while Initializing FireFox browser");
+                Loggers.logStep("Initializing FireFox driver {Local} ");
+                Assert.fail("Unknown error while Initializing FireFox browser {Local} ");
+                System.out.println("Unknown Error while Initializing FireFox browser {Local} ");
+            }
+
+        }else if (BrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
+            try{
+                WebDriver driver;
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                Loggers.logStep("Initializing Edge driver {Local} ");
+                return driver;
+            }
+            catch (Exception e) {
+                Loggers.logStep("Initializing Edge driver {Local} ");
+                Assert.fail("Unknown error while Initializing Edge browser {Local} ");
+                System.out.println("Unknown Error while Initializing Edge browser {Local} ");
             }
 
         } else {
@@ -64,7 +79,13 @@ public class BrowserFactory {
     }
 
 
+    public static void main(String[] args) {
+        SetBrowserType("MicrosoftEdge");
+        SetBrowserType("MicrosoftEdge");
+        SetBrowserType("firefox");
 
+
+    }
 
 
 

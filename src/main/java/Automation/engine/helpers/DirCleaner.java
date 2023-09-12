@@ -53,7 +53,7 @@ public class DirCleaner {
                     }
                 }
 
-        } catch (IllegalArgumentException IAE){IAE.getMessage();}
+        } catch (Exception E){E.getMessage();}
     }
 
 

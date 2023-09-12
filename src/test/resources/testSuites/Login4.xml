@@ -13,6 +13,7 @@
 
         <classes>
             <class name="TestAutofox.gui.AdminLogin"/>
+
         </classes>
     </test>
 
