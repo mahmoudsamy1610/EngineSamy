@@ -36,7 +36,6 @@ public class LoginPage {
 
 
     public void insertLoginToken(String Token)   {
-        //ElementHelper.locateElement(driver, TokenField);
         ElementActions.writeText(driver,TokenField,Token, "Login Token Field" );
     }
 

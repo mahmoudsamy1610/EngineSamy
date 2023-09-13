@@ -1,7 +1,7 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.gridWorks.GridThreadsManager;
-import Automation.engine.reportingWorks.Loggers;
+import Automation.engine.loggers.Loggers;
+import Automation.engine.reportingWorks.AllureStepLogger;
 import Automation.engine.setupWorks.SetupFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -15,13 +15,14 @@ public class BrowserRunner {
             try {
                 WebDriver driver;
              driver = SetupFactory.Run();
-             Loggers.logStep("Start Browser");
+             AllureStepLogger.logStep("Start Browser");
+             Loggers.Info("Start Browser");
              return driver;
                 }
-                catch (Exception e ){
-                    Loggers.logStep("Start browser");
-                    Assert.fail("(unknown) Error while Start browser");
-                    System.out.println("(unknown) Error while Start browser");
+                catch (Exception E ){
+                    Loggers.ExceptionError("(unknown) Error while Start browser" , E);
+                    AllureStepLogger.logStep("Start browser");
+                    Assert.fail("(unknown) Error while Start browser", E);
 
                 }
         return  null ;

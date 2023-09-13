@@ -26,7 +26,6 @@ public class EventListener implements WebDriverListener {
     @Override
     public void onError(Object target, Method method, Object[] args, InvocationTargetException e) {
         WebDriverListener.super.onError(target, method, args, e);
-        //System.out.println( e);
 
     }
 
@@ -42,8 +41,7 @@ public class EventListener implements WebDriverListener {
 
     @Override
     public void beforeGet(WebDriver driver, String url) {
-        WebDriverListener.super.beforeGet(driver, url);
-        System.out.println("navigating to: " + url);
+
     }
 
     @Override

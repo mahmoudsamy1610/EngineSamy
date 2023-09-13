@@ -1,36 +1,32 @@
 package Automation.engine.elementWorks;
 
+import Automation.engine.loggers.Loggers;
 import Automation.engine.propertyWorks.PropertyGetter;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
 public class WaitManager {
 
-  public static int WaitTime;
 
-
-    public static int getTimeout(){
-
-         WaitTime =Integer.parseInt(PropertyGetter.GetPropertyValue("Time","ExplicitWait"));
-
-        return WaitTime;
-    }
 
     public static WebDriverWait useExplicitWait(WebDriver driver) {
-                
+
+        int WaitTime =Integer.parseInt(PropertyGetter.GetPropertyValue("Time","ExplicitWait"));
+
         try {
             WebDriverWait wait;
-            wait =  new WebDriverWait(driver, Duration.ofSeconds(getTimeout()));
+            wait =  new WebDriverWait(driver, Duration.ofSeconds(WaitTime));
+            Loggers.Info("Performing explicit wait for : " + WaitTime);
                return wait;
         }
-        catch (TimeoutException toe) {;
-            System.out.println("(TimeOut Error) while waiting for the element to be displayed ");}
-        catch (Exception e) {e.getMessage();
-            System.out.println("unknown error while waiting for the element to be displayed");
 
+        catch (Exception E) {
+            Loggers.ExceptionError("Failed to wait for an element for : " + WaitTime , E );
+            Assert.fail("Failed to wait for an element for : " + WaitTime , E );
         }
         return null;
     }
