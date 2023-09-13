@@ -13,7 +13,7 @@
 
 
     <suite-files >
-        <suite-file path="Login3.xml"/>
+        <suite-file path="Login.xml"/>
 
 
         <!-- Add more suite files as needed -->

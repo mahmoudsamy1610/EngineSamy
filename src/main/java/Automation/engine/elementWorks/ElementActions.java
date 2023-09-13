@@ -1,6 +1,7 @@
 package Automation.engine.elementWorks;
 
-import Automation.engine.reportingWorks.Loggers;
+import Automation.engine.loggers.Loggers;
+import Automation.engine.reportingWorks.AllureStepLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -11,86 +12,72 @@ import org.testng.Assert;
 public class ElementActions {
 
 
-    public static void clearText(WebDriver driver, By locator , String ElementName){
+    public static void clearText(WebDriver Driver, By Locator , String ElementName){
 
 
         try {
-           ElementHelper.locateElement(driver, locator , ElementName).clear();
+           ElementHelper.locateElement(Driver, Locator , ElementName).clear();
+            AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
+            Loggers.Info("Clearing Text inside field : " + ElementName + "By Locator :" + Locator);
         }
-        catch (TimeoutException toe) {
-            System.out.println("(TimeOut) while clearing text" );
-        }
-        catch (Exception e) {
-            Loggers.logStep(e.getMessage());
-            System.out.println("(TimeOut) Error while clearing text " );
+
+        catch (Exception E) {
+            Loggers.ExceptionError("Failed to clear text in field : " + ElementName + "By Locator :" + Locator , E);
+            AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
+            Assert.fail("Failed to clear text in field : " + ElementName , E);
         }
     }
 
 
-    public static void writeText(WebDriver driver, By locator, String text , String ElementName){
-
-      //  String ElementName =  ElementHelper.GetElementName(driver , locator);
+    public static void writeText(WebDriver Driver, By Locator, String text , String ElementName){
 
         try {
 
-          ElementHelper.locateElement(driver, locator, ElementName).sendKeys(text);
-           Loggers.logStep("in [" + ElementName +  "]" + " Insert [" + text + "]" );
+          ElementHelper.locateElement(Driver, Locator, ElementName).sendKeys(text);
+           AllureStepLogger.logStep("Write : ["+ text +  "] in : [" +ElementName+ "]"  );
+           Loggers.Info("Writing : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator );
 
         }
-        catch (TimeoutException toe) {
-           Loggers.logStep("in [" + ElementName +  "]" + "Insert [" + text + "]" );
-           Assert.fail("(TimeOut) Error while Typing --> [" + text + "]"  );
-           System.out.println("(TimeOut) Error while Typing --> [" + text + "]" );
-        }
-        catch (Exception e) {
-            Loggers.logStep("Insert " + text + "]" );
-            Assert.fail("(unknown) Error while Typing -->" + text+ "]" );
-            System.out.println("(unknown) Error while Typing -->" + text+ "]" );
+        catch (Exception E) {
+            Loggers.ExceptionError("Failed to write : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator , E);
+            AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
+            Assert.fail("Failed to clear text in field : " + ElementName , E);
         }
 
     }
 
-    public static void clickElement(WebDriver driver , By locator , String ElementName){
-
-       // String ElementName =  ElementHelper.GetElementName(driver , locator);
+    public static void clickElement(WebDriver Driver , By Locator , String ElementName){
 
         try {
 
-            ElementHelper.locateElement(driver, locator, ElementName).click();
-                Loggers.logStep("click on [" + ElementName+ "]" );
+            ElementHelper.locateElement(Driver, Locator, ElementName).click();
+            AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
+            Loggers.Info("Clicking on [" + ElementName+ "]" + "By Locator :" + Locator);
             }
-        catch (TimeoutException toe) {
-            Loggers.logStep("click on [" + ElementName+ "]" );
-            Assert.fail("(TimeOut) Error while clicking on [" + ElementName+ "]" );
-            System.out.println("(TimeOut) Error while clicking on [" + ElementName + "]" );
-        }
-        catch (Exception e) {
-            Loggers.logStep("click on [" + ElementName+ "]" );
-            Assert.fail("(unknown) Error while clicking on [" + ElementName+ "]" );
-            System.out.println("(unknown) Error while clicking on [" + ElementName+ "]" );
+
+        catch (Exception E) {
+            Loggers.ExceptionError(" Failed to click on :[" + ElementName+ "]" + "By Locator :" + Locator , E);
+            AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
+            Assert.fail(" Failed to click on :[" + ElementName+ "]"  , E);
         }
     }
 
-    public static String GetElementText(WebDriver driver , By locator , String ElementName){
-
-       // String ElementName =  ElementHelper.GetElementName(driver , locator);
+    public static String GetElementText(WebDriver Driver , By Locator , String ElementName){
 
         try {
             String ElementText;
-            ElementText =  ElementHelper.locateElement(driver, locator, ElementName).getText();
-            Loggers.logStep("Check the text in [" + ElementName+ "]" );
+            ElementText =  ElementHelper.locateElement(Driver, Locator, ElementName).getText();
+            AllureStepLogger.logStep("Check the text in [" + ElementName+ "]" );
+            Loggers.Info("Checking the text in [" + ElementName+ "]" + "By Locator :" + Locator);
+
             return ElementText;
 
         }
-        catch (TimeoutException toe) {
-            Loggers.logStep(("Check the text in [" + ElementName+ "]" ));
-            Assert.fail("(TimeOut) Error while Checking the text from [" + ElementName+ "]" );
-            System.out.println("(TimeOut) Error while Checking the text from [" + ElementName+ "]" );
-        }
-        catch (Exception e) {
-           Loggers.logStep("click on [" + ElementName);
-            Assert.fail("(unknown) Error while Checking the text from [" + ElementName+ "]" );
-            System.out.println("(unknown) Error while Checking the text from [" + ElementName+ "]" );
+
+        catch (Exception E) {
+            Loggers.ExceptionError(" Failed to detect text on :[" + ElementName+ "]" + "By Locator :" + Locator , E);
+            AllureStepLogger.logStep("Check the text in [" + ElementName+ "]" );
+            Assert.fail("Failed to detect text on :[" + ElementName+ "]"  , E);
         }
 
         return null;

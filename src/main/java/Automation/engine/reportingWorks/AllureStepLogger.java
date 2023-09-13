@@ -2,7 +2,7 @@ package Automation.engine.reportingWorks;
 
 import io.qameta.allure.Allure;
 
-public class Loggers {
+public class AllureStepLogger {
     public static void logStep(String Step) {
         try {
             Allure.step(Step);}

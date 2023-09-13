@@ -17,13 +17,6 @@
     </test>
 
 
-    <test name = "test11">
-        <parameter name="allure.results.directory" value="results/test11" />
-        <classes>
-            <class name="TestAutofox.gui.AdminLogin3"/>
-        </classes>
-    </test>
-
 </suite>
 
 

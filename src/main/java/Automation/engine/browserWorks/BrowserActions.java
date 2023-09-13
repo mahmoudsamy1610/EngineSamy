@@ -1,10 +1,13 @@
 package Automation.engine.browserWorks;
 
+import Automation.engine.loggers.Loggers;
 import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.reportingWorks.Loggers;
+import Automation.engine.reportingWorks.AllureStepLogger;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 public class BrowserActions {
@@ -17,23 +20,19 @@ public class BrowserActions {
 
 
     //Method to navigate to specific URL
-    public static void goToUrl(WebDriver driver, String url , String PageName){
+    public static void goToUrl(WebDriver Driver, String Url , String PageName){
         try {
-            driver.get(url);
-            Loggers.logStep("Go to " + PageName + " page" );
+            Driver.get(Url);
+            AllureStepLogger.logStep("Go to " + PageName + " page" );
+            Loggers.Info("Go to " + PageName + " Page " + " at : " +  Url  );
         }
-        catch (TimeoutException toe) {
-                 Loggers.logStep("Go to " + PageName + " page" );
-                 Assert.fail("(TimeOut) Error while navigating to " + PageName + " page");
-                System.out.println("(TimeOut) Error while navigating to " + PageName + " page");
+        catch (Exception E) {
+            Loggers.ExceptionError("Failed to go to " + PageName + " Page " + " at : " +  Url , E);
+            AllureStepLogger.logStep("Go to " + PageName + " page" );
+            Assert.fail("Failed to go to " + PageName + " Page " + " at : " +  Url , E);
 
         }
-        catch (Exception e){
-            Loggers.logStep("Go to " + PageName + " page" );
-            Assert.fail("(unknown) Error while navigating to " + PageName + " page");
-            System.out.println("(unknown) Error while navigating to " + PageName + " page");
 
-        }
     }
 
     //Method to size the browser window
@@ -42,24 +41,28 @@ public class BrowserActions {
         if (MaxWindow == true ){
             try{
                 driver.manage().window().maximize();
-                Loggers.logStep("Maximize browser window");
+                AllureStepLogger.logStep("Maximize browser window");
+                Loggers.Info("Maximizing Browser Window");
             }
-            catch (Exception e){
-                Loggers.logStep("Maximize browser window");
-                Assert.fail("unknown Error while maximizing browser window");
-                System.out.println("unknown Error while maximizing browser window");
+            catch (Exception E){
+                Loggers.ExceptionError("Failed to Maximize window" , E);
+                AllureStepLogger.logStep("Maximize browser window");
+                Assert.fail("Failed to Maximize window" , E);
+
             }
 
         }else {
            try {
                Dimension dimension = new Dimension(WindowWidth, WindowHeight );
                 driver.manage().window().setSize(dimension);
-                Loggers.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
+               Loggers.Info("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
+                AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
+
            }
-           catch (Exception e){
-               Loggers.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight);
-               Assert.fail("unknown Error while controlling browser window dimensions");
-               System.out.println("unknown Error while controlling browser window dimensions");
+           catch (Exception E){
+               Loggers.ExceptionError("unknown Error while controlling browser window dimensions Width = " + WindowWidth + " and,  Height = " +  WindowHeight  , E);
+               AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight);
+               Assert.fail("unknown Error while controlling browser window dimensions Width = " + WindowWidth + " and,  Height = " +  WindowHeight , E);
            }
 
         }
@@ -68,18 +71,27 @@ public class BrowserActions {
 
 
 
-    public static void Shutdown(WebDriver driver){
+    public static void Shutdown(WebDriver driver) {
         try {
-            Loggers.logStep("Close Browser");
+
+            AllureStepLogger.logStep("Close Browser");
+            Loggers.Info("Close Browser");
             driver.quit();
+        } catch (Exception E) {
+            Loggers.ExceptionError("Unknown Error while closing  browser", E);
+            AllureStepLogger.logStep("Close Browser");
+            Assert.fail("Unknown Error while closing  browser", E);
+
         }
-        catch (Exception e) {
-          Loggers.logStep("Close Browser");
-          Assert.fail("Unknown Error while closing  browser");
-          System.out.println("Unknown Error while closing browser");}
-         }
+    }
 
+    public static void main(String[] args) {
 
+        WebDriver Driver;
+        WebDriverManager.chromedriver().setup();
+        Driver = new ChromeDriver();
+        SetWindowSize(Driver);
+    }
 }
 
 

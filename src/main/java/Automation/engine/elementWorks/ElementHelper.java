@@ -1,5 +1,6 @@
 package Automation.engine.elementWorks;
 
+import Automation.engine.loggers.Loggers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -11,59 +12,27 @@ public class ElementHelper {
 
 
 
-    public static WebElement locateElement (WebDriver driver, By locator , String ElementName){
+    public static WebElement locateElement (WebDriver Driver, By Locator , String ElementName){
 
 
         try{
             WebElement Element;
             //Wait for element to be displayed
-            WaitManager.useExplicitWait(driver).until(ExpectedConditions.visibilityOfElementLocated(locator));
+            WaitManager.useExplicitWait(Driver).until(ExpectedConditions.visibilityOfElementLocated(Locator));
             //Make sure that element exists
-            Element =   driver.findElement(locator);
+            Element =  Driver.findElement(Locator);
+
+            Loggers.Info("Locating web element [" + ElementName+ "]" + "By Locator :" + Locator );
             return Element;
 
         }
-        catch (TimeoutException toe) {
-            Assert.fail("(TimeOut) Error While detecting element " + ElementName );
-            System.out.println("(TimeOut) Error While detecting element " + ElementName);
-        }
-        catch (Exception e ){
-            Assert.fail("(unknown) Error While detecting element " + ElementName );
-            System.out.println("(Unknown) Error While detecting element " + ElementName);
+
+        catch (Exception E){
+            Loggers.ExceptionError("Failed to locate element : " + ElementName + "By Locator :" + Locator , E );
+            Assert.fail("Failed to locate element : " + ElementName , E );
         }
         return null;
     }
-
-
-
- /* now Deprecated
-
-    public static String GetElementName(WebDriver driver , By locator) {
-
-        String ElementName = null;
-
-        try {
-            ElementName = locateElement(driver, locator, ElementName).getAccessibleName();
-
-            if (ElementName.isEmpty()) {
-                ElementName = locateElement(driver, locator, ElementName).getAttribute("id");
-            }else if (ElementName.isEmpty()){
-                ElementName = locateElement(driver, locator , ElementName).getText();
-            } else {
-                ElementName = "the correct field" ;
-            }
-        } catch (TimeoutException toe) {
-            System.out.println("Cannot find element to get element name");
-
-        } catch (Exception e) {
-            System.out.println("Unknown error while getting element name");
-        }
-        return ElementName;
-
-
-
-    }
-*/
 
 
 

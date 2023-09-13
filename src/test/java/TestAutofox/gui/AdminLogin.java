@@ -45,8 +45,8 @@ public class AdminLogin {
 
     @Test(priority = 1)
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Valid Admin can login")
-        public void ValidAdminCanLogin()   {
+    @Description("Check Admin login with Valid and Invalid credentials")
+        public void TestAdminLogin()   {
 
         //TestCase Variables
         String AdminToken=  GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_LoginToken");
