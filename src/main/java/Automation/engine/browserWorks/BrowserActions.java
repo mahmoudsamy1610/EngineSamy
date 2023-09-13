@@ -12,7 +12,7 @@ import org.testng.Assert;
 
 public class BrowserActions {
 
-    // these variables are set in the properties file and in configuration
+    // these variables are set in the properties file and in configuration -check
     public static boolean MaxWindow = Boolean.parseBoolean(PropertyGetter.GetPropertyValue("RunOptions","Maximize"));
     public static int WindowWidth = Integer.parseInt(PropertyGetter.GetPropertyValue("RunOptions","width"));
     public static int WindowHeight = Integer.parseInt(PropertyGetter.GetPropertyValue("RunOptions","height"));
