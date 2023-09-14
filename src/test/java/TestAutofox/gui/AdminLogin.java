@@ -2,6 +2,7 @@ package TestAutofox.gui;
 
 import Autofox.pages.DashboardPage;
 import Autofox.autofoxPropertyWorks.GetAutofoxProperty;
+import Autofox.users.SuperAdmin;
 import Automation.engine.browserWorks.BrowserActions;
 import Automation.engine.browserWorks.BrowserRunner;
 import TestAutomation.Assertions.CompareText;
@@ -21,7 +22,7 @@ public class AdminLogin {
     LoginPage loginPage ;
     AutofoxGenericElements autofoxGenericElements;
     DashboardPage dashboardPage ;
-
+    SuperAdmin superAdmin ;
 
     @BeforeClass
         public void setup(){
@@ -36,10 +37,6 @@ public class AdminLogin {
         autofoxGenericElements = new AutofoxGenericElements(driver) ;
         dashboardPage = new DashboardPage(driver);
 
-
-        //Objects
-
-
     }
 
 
@@ -49,9 +46,7 @@ public class AdminLogin {
         public void TestAdminLogin()   {
 
         //TestCase Variables
-        String AdminToken=  GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_LoginToken");
-
-
+       String AdminToken =  superAdmin.getLoginToken();
 
         //Steps
         loginPage.openLoginPage();

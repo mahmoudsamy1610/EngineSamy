@@ -5,72 +5,70 @@ import Automation.engine.propertyWorks.PropertyGetter;
 
 public abstract class AdminUsers {
 
-    private String Email;
-    private String Username;
-    private String FirstName;
-    private String LastName;
-    private String CompanyName;
-    private String CompanyAddress;
-    private String LoginToken;
+    public String Email;
+    public String UserName;
+    public String FirstName;
+    public String LastName;
+    public String CompanyName;
+    public String CompanyAddress;
+    public String LoginToken;
 
 
     public AdminUsers() {
     }
 
+    public AdminUsers(String Email ,String UserName, String LoginToken ) {
+        this.Email = Email ;
+        this.UserName = UserName ;
+        this.LoginToken = LoginToken;
+    }
 
     public String getEmail() {return Email;}
 
-    public void setEmail(String EmailProperty) {
-
-        Email = PropertyGetter.GetPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_Email");
+    public void setEmail(String Email) {
+        this.Email = Email ;
     }
 
-    public String getUsername() {
-        return Username;
+    public String getUserName() {
+        return UserName;
     }
-
-    public void setUsername(String username) {
-        Username = username;
-    }
-
+    public void setUserName(String UserName) { this.UserName = UserName ;}
     public String getFirstName() {
         return FirstName;
     }
 
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
     }
 
     public String getLastName() {
         return LastName;
     }
 
-    public void setLastName(String lastName) {
-        LastName = lastName;
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
     }
 
     public String getCompanyName() {
         return CompanyName;
     }
 
-    public void setCompanyName(String companyName) {
-        CompanyName = companyName;
+    public void setCompanyName(String CompanyName) {
+        this.CompanyName = CompanyName;
     }
 
     public String getCompanyAddress() {
         return CompanyAddress;
     }
 
-    public void setCompanyAddress(String companyAddress) {
-        CompanyAddress = companyAddress;
+    public void setCompanyAddress(String CompanyAddress) {
+        this.CompanyAddress = CompanyAddress;
     }
 
     public String getLoginToken() {
         return LoginToken;
     }
 
-    public void setLoginToken(String loginTokenProperty) {
-        LoginToken = PropertyGetter.GetPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_LoginToken");
-    }
+    public void setLoginToken(String loginToken) {this.LoginToken = LoginToken; }
 }
 
