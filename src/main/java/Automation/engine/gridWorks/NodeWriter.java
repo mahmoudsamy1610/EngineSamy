@@ -1,13 +1,15 @@
 package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.TomlFileCreator;
+import Automation.engine.loggers.Loggers;
+import org.testng.Assert;
 
 public class NodeWriter {
 
 
     public static String CreateNodeToml(String NodePlatformType , String NodeBrowserType) {
 
-        String NodeRelativePath = NodePathGenerator.GenerateNodeTomlPathName(NodePlatformType , NodeBrowserType);
+        String NodeRelativePath = NodePathGenerator.GenerateNodeTomlFullPath(NodePlatformType , NodeBrowserType);
         int Port = NodePathGenerator.GetNodePort(NodeRelativePath);
 
 
@@ -19,17 +21,20 @@ public class NodeWriter {
                                  "display-name =\"" +  NodeBrowserType + "\"\n" +
                                  "stereotype=\"{" + "\\\"browserName\\\": \\\""  + NodeBrowserType + "\\\"" + "," + "\\\"platformName\\\": \\\""  + NodePlatformType + "\\\"" + "}\"" ;
 
-
-         TomlFileCreator.CreateToml(NodeContent , NodeRelativePath);
-         System.out.println("Node Toml File created for : " + NodePlatformType + " and " + NodeBrowserType + " at Port : " + Port);
-
+            try {
+                Loggers.Info("Writing node TOML content for : " +NodePlatformType + " & " + NodeBrowserType );
+                TomlFileCreator.CreateToml(NodeContent, NodeRelativePath);
+            }catch (Exception E){
+                Loggers.ExceptionError("Failed to write node TOML content for : " +NodePlatformType + " & " + NodeBrowserType, E);
+                Assert.fail("Failed to write node TOML content for : " +NodePlatformType + " & " + NodeBrowserType, E);
+            }
          return NodeRelativePath ;
 
     }
 
     public static void main(String[] args) {
 
-        CreateNodeToml("Windows 11" , "Firefox");
+        CreateNodeToml("Windows 11" , "asdasdad");
     }
 
 

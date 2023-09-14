@@ -1,5 +1,6 @@
 package Automation.engine.jsonWorks;
 
+import Automation.engine.loggers.Loggers;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.ArrayList;
@@ -24,15 +25,19 @@ public class GetJsonNodeByValue {
 
     public static List<JsonNode> GetContainerNode(JsonNode CurrentNode, String KeyValue, JsonNode ContainerNode , List<JsonNode> ResultNodes) {
 
-        if (CurrentNode.isValueNode() && CurrentNode.asText().equals(KeyValue)) {
-            ResultNodes.add(ContainerNode);
-        }
+            try {
+                if (CurrentNode.isValueNode() && CurrentNode.asText().equals(KeyValue)) {
+                    ResultNodes.add(ContainerNode);
+                }
+                if (CurrentNode.isObject() || CurrentNode.isArray()) {
+                    for (JsonNode ChildNode : CurrentNode) {
+                        GetContainerNode(ChildNode, KeyValue, CurrentNode, ResultNodes);
+                    }
+                }else if (KeyValue ==null){Loggers.Error("Asdasda");}
 
-        if (CurrentNode.isObject() || CurrentNode.isArray()) {
-            for (JsonNode ChildNode : CurrentNode) {
-                GetContainerNode(ChildNode, KeyValue, CurrentNode , ResultNodes);
+            } catch (Exception E) {
+                E.printStackTrace();
             }
-        }
         return ResultNodes;
     }
 

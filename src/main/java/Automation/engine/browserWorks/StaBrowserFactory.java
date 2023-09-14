@@ -23,6 +23,7 @@ public class StaBrowserFactory {
 
         if (StaBrowserType.equalsIgnoreCase("Chrome")) {
             try{
+                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -37,7 +38,6 @@ public class StaBrowserFactory {
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
-                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 return decoratedDriver;
             }
@@ -49,6 +49,8 @@ public class StaBrowserFactory {
 
         } else if (StaBrowserType.equalsIgnoreCase("Firefox") ) {
             try{
+                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
+
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -63,7 +65,6 @@ public class StaBrowserFactory {
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
-                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -74,6 +75,8 @@ public class StaBrowserFactory {
 
         }else if (StaBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try{
+                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
+
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -88,7 +91,6 @@ public class StaBrowserFactory {
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
-                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
                 return decoratedDriver;
             }
             catch (Exception E) {

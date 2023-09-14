@@ -13,11 +13,12 @@ public class BrowserRunner {
 
 
             try {
+                Loggers.Info("Starting Browser ......");
+
                 WebDriver driver;
-             driver = SetupFactory.Run();
-             AllureStepLogger.logStep("Start Browser");
-             Loggers.Info("Start Browser");
-             return driver;
+                driver = SetupFactory.Run();
+                AllureStepLogger.logStep("Start Browser");
+                    return driver;
                 }
                 catch (Exception E ){
                     Loggers.ExceptionError("(unknown) Error while Start browser" , E);

@@ -22,9 +22,10 @@ public class BrowserActions {
     //Method to navigate to specific URL
     public static void goToUrl(WebDriver Driver, String Url , String PageName){
         try {
+
+            Loggers.Info("redirecting to : " + PageName + " Page " + " at : " +  Url  );
             Driver.get(Url);
             AllureStepLogger.logStep("Go to " + PageName + " page" );
-            Loggers.Info("Go to " + PageName + " Page " + " at : " +  Url  );
         }
         catch (Exception E) {
             Loggers.ExceptionError("Failed to go to " + PageName + " Page " + " at : " +  Url , E);
@@ -40,9 +41,9 @@ public class BrowserActions {
 
         if (MaxWindow == true ){
             try{
+                Loggers.Info("Maximizing Browser Window");
                 driver.manage().window().maximize();
                 AllureStepLogger.logStep("Maximize browser window");
-                Loggers.Info("Maximizing Browser Window");
             }
             catch (Exception E){
                 Loggers.ExceptionError("Failed to Maximize window" , E);
@@ -55,7 +56,7 @@ public class BrowserActions {
            try {
                Dimension dimension = new Dimension(WindowWidth, WindowHeight );
                 driver.manage().window().setSize(dimension);
-               Loggers.Info("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
+               Loggers.Info("Setting window size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
                 AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
 
            }
@@ -74,8 +75,8 @@ public class BrowserActions {
     public static void Shutdown(WebDriver driver) {
         try {
 
+            Loggers.Info("Closing Browser");
             AllureStepLogger.logStep("Close Browser");
-            Loggers.Info("Close Browser");
             driver.quit();
         } catch (Exception E) {
             Loggers.ExceptionError("Unknown Error while closing  browser", E);

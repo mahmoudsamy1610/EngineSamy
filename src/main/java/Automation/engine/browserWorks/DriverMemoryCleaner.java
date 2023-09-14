@@ -26,9 +26,8 @@ public class DriverMemoryCleaner implements IExecutionListener {
 
     public static void CleanChromeDriverTasks() {
         try {
-
-            TaskCleaner.CleanTasks("chromedriver","chromedriver.exe");
             Loggers.Info("Cleaning Chrome webdriver Tasks in the background");
+            TaskCleaner.CleanTasks("chromedriver","chromedriver.exe");
 
         } catch (Exception E) {
             Loggers.ExceptionError("Unknown error while Chrome webdriver Tasks in the background" , E);
@@ -37,9 +36,8 @@ public class DriverMemoryCleaner implements IExecutionListener {
 
     public static void CleanGeckoDriverTasks() {
         try {
-
-            TaskCleaner.CleanTasks("geckodriver","geckodriver.exe");
             Loggers.Info("Cleaning Gecko webdriver Tasks in the background");
+            TaskCleaner.CleanTasks("geckodriver","geckodriver.exe");
 
         } catch (Exception E) {
             Loggers.ExceptionError("Unknown error while Gecko webdriver Tasks in the background" , E);
@@ -50,6 +48,7 @@ public class DriverMemoryCleaner implements IExecutionListener {
         try {
 
             Loggers.Info("Cleaning Edge webdriver Tasks in the background");
+            TaskCleaner.CleanTasks("msedgedriver","msedgedriver.exe");
 
         } catch (Exception E) {
             Loggers.ExceptionError("Unknown error while Edge webdriver Tasks in the background" , E);

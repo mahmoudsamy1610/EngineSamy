@@ -33,11 +33,6 @@ public class SuiteTestCapGetter {
 
     public static void main(String[] args) {
 
-      List<String> list =  CatchBrowsers("test4") ;
-      System.out.println(list.size());
-        System.out.println(list);
-
-
 
     }
 

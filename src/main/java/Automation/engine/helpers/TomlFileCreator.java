@@ -17,7 +17,6 @@ public class TomlFileCreator {
                     e.printStackTrace();
                 }
 
-                System.out.println("TOML file created and filled successfully.");
             }
     }
 

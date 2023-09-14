@@ -1,12 +1,9 @@
 package Autofox.autofoxPropertyWorks;
 
 import Automation.engine.loggers.Loggers;
-import lombok.extern.java.Log;
 import org.testng.Assert;
 
-import java.util.InputMismatchException;
-
-import static Automation.engine.propertyWorks.PropertiesReader.LoadProperty;
+import static Automation.engine.propertyWorks.PropertiesReader.ReadProperty;
 
 public class AutofoxPropertyConnector {
 
@@ -16,7 +13,7 @@ public class AutofoxPropertyConnector {
         String ConnectorProperty = null;
         try {
 
-            ConnectorProperty = LoadProperty("src/main/resources/AutofoxResources/AutofoxPropertyPath.properties").getProperty(PropertyFileName);
+            ConnectorProperty = ReadProperty("src/main/resources/AutofoxResources/AutofoxPropertyPath.properties").getProperty(PropertyFileName);
             Loggers.Info("Connecting to Autofox property path collection and fetching property path of : " + PropertyFileName);
 
         } catch (Exception E) {

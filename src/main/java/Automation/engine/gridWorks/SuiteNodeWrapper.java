@@ -1,8 +1,10 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.loggers.Loggers;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.suiteWorks.SuiteDataGetterByXml;
 import Automation.engine.suiteWorks.SuiteTestCapGetter;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +19,21 @@ public class SuiteNodeWrapper {
         String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
         List<String> SuiteNames = SuiteDataGetterByXml.GetSuiteNamesByXmlPath(RunFileRelativePath);
         List<String> NodePlatformTypes = new ArrayList<>();
+        List<String> Platforms = new ArrayList<>();
 
+        try {
+            for (String SuiteName : SuiteNames) {
+                Loggers.Info("Wrapping all Browsers from suite level " + Platforms);
+                Platforms = SuiteTestCapGetter.CatchPlatforms(SuiteName);
+                NodePlatformTypes.addAll(Platforms);
 
-        for (String SuiteName : SuiteNames) {
-           List<String> Platforms =  SuiteTestCapGetter.CatchPlatforms(SuiteName);
-            NodePlatformTypes.addAll(Platforms);
+            }
+
+        } catch (Exception E) {
+            Loggers.ExceptionError("Failed wrapping all platforms from suite level " + Platforms, E);
+            Assert.fail("Failed wrapping all platforms from suite level " + Platforms, E);
         }
+
 
         return NodePlatformTypes;
     }
@@ -34,12 +45,19 @@ public class SuiteNodeWrapper {
 
         String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
         List<String> TestNames = SuiteDataGetterByXml.GetSuiteNamesByXmlPath(RunFileRelativePath);
+        List<String> NodeBrowserTypes = new ArrayList<>();
+        List<String> Browsers = new ArrayList<>();
 
-        List<String> NodeBrowserTypes = new ArrayList<>() ;;
+        try {
+            for (String TestName : TestNames) {
+                Browsers = SuiteTestCapGetter.CatchBrowsers(TestName);
+                NodeBrowserTypes.addAll(Browsers);
+                Loggers.Info("Wrapping all Browsers from suite level " + Browsers);
 
-        for (String TestName : TestNames) {
-            List<String> Browsers = SuiteTestCapGetter.CatchBrowsers(TestName);
-            NodeBrowserTypes.addAll(Browsers);
+            }
+        } catch (Exception E) {
+            Loggers.ExceptionError("Failed wrapping all Browsers from suite level " + Browsers, E);
+            Assert.fail("Failed wrapping all Browsers from suite level " + Browsers, E);
         }
         return NodeBrowserTypes;
     }

@@ -1,7 +1,7 @@
 package Automation.engine.propertyWorks;
 import java.util.InputMismatchException;
 
-import static Automation.engine.propertyWorks.PropertiesReader.LoadProperty;
+import static Automation.engine.propertyWorks.PropertiesReader.ReadProperty;
 
 public class PropertiesConnector {
 
@@ -9,7 +9,7 @@ public class PropertiesConnector {
 
         try {
             String Property;
-            Property = LoadProperty("src/main/resources/AutomationResources/PropertyFiles/PropertyPath.properties").getProperty(PropertyFileName);
+            Property = ReadProperty("src/main/resources/AutomationResources/PropertyFiles/PropertyPath.properties").getProperty(PropertyFileName);
             return Property;
         }
 

@@ -3,7 +3,7 @@ package Automation.engine.propertyWorks;
 
 import java.util.InputMismatchException;
 
-import static Automation.engine.propertyWorks.PropertiesReader.LoadProperty;
+import static Automation.engine.propertyWorks.PropertiesReader.ReadProperty;
 
 public class PropertyGetter {
 
@@ -12,7 +12,7 @@ public class PropertyGetter {
             String PropertyValue = null ;
             try {
            String PropertyFilePath = PropertiesConnector.ConnectToProperty(PropertyFileName);
-                PropertyValue =  LoadProperty(PropertyFilePath).getProperty(PropertyKey); }
+                PropertyValue =  ReadProperty(PropertyFilePath).getProperty(PropertyKey); }
 
             catch (InputMismatchException IME) {IME.getMessage();
                 System.out.println("Invalid input Engine property file path for " + PropertyFileName);}

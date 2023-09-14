@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class PropertiesReader {
 
-    public static Properties LoadProperty(String path )   {
+    public static Properties ReadProperty(String path )   {
 
 
 

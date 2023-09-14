@@ -2,7 +2,9 @@ package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.CMDRunner;
 import Automation.engine.helpers.TaskCleaner;
+import Automation.engine.loggers.Loggers;
 import Automation.engine.propertyWorks.PropertyGetter;
+import org.testng.Assert;
 import org.testng.IExecutionListener;
 
 //usage is not recommended
@@ -12,28 +14,27 @@ import org.testng.IExecutionListener;
 public class GridMemoryCleaner implements IExecutionListener {
 
 
-    public void onExecutionFinish(){
-        CleanJavaTasks();
-        ReGenerateJavaAfterClean();
-        ReGenerateJavaAfterClean();
+    public void onExecutionFinish() {
+
+        try {
+            CleanJavaTasks();
+
+        }catch (Exception E){
+            Loggers.ExceptionError("Failed to remove all or one of the background Java tasks" , E );
+            Assert.fail("Failed to remove all or one of the background Java tasks" , E );
+        }
     }
 
     public static void CleanJavaTasks() {
         try {
 
+            Loggers.Info("Cleaning all Java tasks in the background");
             TaskCleaner.CleanTasks("java","java.exe");
-            ReGenerateJavaAfterClean();
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());}
-    }
-
-
-    public static void ReGenerateJavaAfterClean(){
-
-        System.out.println("Regenerating Main Java.exe");
-        System.out.println("Main Java.exe Generated, Rerunning is now valid");
-
+        }catch (Exception E){
+            Loggers.ExceptionError("Java tasks cleaning from the back ground failed" , E );
+            Assert.fail("Java tasks cleaning from the back ground failed" , E );
+        }
     }
 
 

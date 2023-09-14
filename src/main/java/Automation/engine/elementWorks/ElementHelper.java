@@ -16,13 +16,14 @@ public class ElementHelper {
 
 
         try{
+            Loggers.Info("Locating web element [" + ElementName+ "]" + "By Locator :" + Locator );
+
             WebElement Element;
             //Wait for element to be displayed
             WaitManager.useExplicitWait(Driver).until(ExpectedConditions.visibilityOfElementLocated(Locator));
             //Make sure that element exists
             Element =  Driver.findElement(Locator);
 
-            Loggers.Info("Locating web element [" + ElementName+ "]" + "By Locator :" + Locator );
             return Element;
 
         }

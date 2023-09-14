@@ -16,9 +16,10 @@ public class ElementActions {
 
 
         try {
-           ElementHelper.locateElement(Driver, Locator , ElementName).clear();
-            AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
             Loggers.Info("Clearing Text inside field : " + ElementName + "By Locator :" + Locator);
+
+            ElementHelper.locateElement(Driver, Locator , ElementName).clear();
+            AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
         }
 
         catch (Exception E) {
@@ -32,10 +33,10 @@ public class ElementActions {
     public static void writeText(WebDriver Driver, By Locator, String text , String ElementName){
 
         try {
+            Loggers.Info("Writing : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator );
 
-          ElementHelper.locateElement(Driver, Locator, ElementName).sendKeys(text);
+            ElementHelper.locateElement(Driver, Locator, ElementName).sendKeys(text);
            AllureStepLogger.logStep("Write : ["+ text +  "] in : [" +ElementName+ "]"  );
-           Loggers.Info("Writing : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator );
 
         }
         catch (Exception E) {
@@ -49,10 +50,10 @@ public class ElementActions {
     public static void clickElement(WebDriver Driver , By Locator , String ElementName){
 
         try {
+            Loggers.Info("Clicking on [" + ElementName+ "]" + "By Locator :" + Locator);
 
             ElementHelper.locateElement(Driver, Locator, ElementName).click();
             AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
-            Loggers.Info("Clicking on [" + ElementName+ "]" + "By Locator :" + Locator);
             }
 
         catch (Exception E) {

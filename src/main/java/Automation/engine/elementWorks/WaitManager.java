@@ -18,9 +18,10 @@ public class WaitManager {
         int WaitTime =Integer.parseInt(PropertyGetter.GetPropertyValue("Time","ExplicitWait"));
 
         try {
+            Loggers.Info("Performing explicit wait for : " + WaitTime);
+
             WebDriverWait wait;
             wait =  new WebDriverWait(driver, Duration.ofSeconds(WaitTime));
-            Loggers.Info("Performing explicit wait for : " + WaitTime);
                return wait;
         }
 

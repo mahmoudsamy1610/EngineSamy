@@ -1,8 +1,10 @@
 package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.PathConverter;
+import Automation.engine.loggers.Loggers;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.helpers.CMDRunner;
+import org.testng.Assert;
 import org.testng.ISuiteListener;
 
 public class HubGridLauncher  implements ISuiteListener {
@@ -18,13 +20,16 @@ public class HubGridLauncher  implements ISuiteListener {
 
     public static void StartGrid() {
         try {
+            Loggers.Info("Running CMD command + " + RunHubGridCommand);
+            Loggers.Info("Starting Selenium grid hub on : " + HubGridHost);
+
             CMDRunner.runCommand(RunHubGridCommand);
-            System.out.println(" Hub server is launched on  " + HubGridHost );
 
 
-        } catch (Exception e) {
-            e.getMessage();
-            System.out.println("an Error occurred while parsing Hub Grid Server CMD command from properties");}
+        } catch (Exception E) {
+            Loggers.ExceptionError("An error occurred while starting selenium grid Hub ", E);
+            Assert.fail("An error occurred while starting selenium grid Hub ", E);
+        }
     }
 
 

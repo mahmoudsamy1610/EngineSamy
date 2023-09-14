@@ -19,11 +19,12 @@ public class SuiteDataGetterByXml {
         String SuiteName ;
         List <String> SuiteNames = new ArrayList<>();
 
-        for (String SuitePath : SuitePaths){
-           SuiteName = GetSuiteNameByPath(SuitePath);
-            SuiteNames.add(SuiteName);
-        }
-
+        try {
+            for (String SuitePath : SuitePaths) {
+                SuiteName = GetSuiteNameByPath(SuitePath);
+                SuiteNames.add(SuiteName);
+            }
+        }catch (Exception E){E.printStackTrace();}
 
         return SuiteNames ;
 

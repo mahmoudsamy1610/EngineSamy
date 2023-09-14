@@ -26,6 +26,7 @@ public class NodeBrowserFactory {
         if (NodeBrowserType.equalsIgnoreCase("Chrome")) {
             try{
 
+                Loggers.Info("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -40,7 +41,6 @@ public class NodeBrowserFactory {
                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
-                Loggers.Info("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -51,6 +51,8 @@ public class NodeBrowserFactory {
 
         } else if (NodeBrowserType.equalsIgnoreCase("Firefox") ) {
             try{
+                Loggers.Info("Initializing Firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -65,7 +67,6 @@ public class NodeBrowserFactory {
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
-                Loggers.Info("Initializing Firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -76,6 +77,8 @@ public class NodeBrowserFactory {
 
         } else if (NodeBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try {
+                Loggers.Info("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+
                 WebDriver driver;
                 WebDriverListener listener;
                 WebDriver decoratedDriver;
@@ -90,7 +93,6 @@ public class NodeBrowserFactory {
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing Edge driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
-                Loggers.Info("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -101,6 +103,8 @@ public class NodeBrowserFactory {
         }
              else if (NodeBrowserType.equalsIgnoreCase("Safari")) {
                 try{
+                    Loggers.Info("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+
                     WebDriver driver;
                     WebDriverListener listener ;
                     WebDriver decoratedDriver;
@@ -115,7 +119,6 @@ public class NodeBrowserFactory {
                     decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                     AllureStepLogger.logStep("Initializing Safari driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
-                    Loggers.Info("Initializing Safari driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                     return decoratedDriver;
                 }
                 catch (Exception E) {

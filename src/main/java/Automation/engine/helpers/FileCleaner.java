@@ -8,7 +8,6 @@ public class FileCleaner {
 
         try {
             File File = new File(FileRelativePath);
-
             if (File.exists()) {
                 File.delete();
                 System.out.println("File deleted successfully");

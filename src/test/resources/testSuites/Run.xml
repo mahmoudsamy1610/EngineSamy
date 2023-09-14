@@ -14,6 +14,9 @@
 
     <suite-files >
         <suite-file path="Login.xml"/>
+        <suite-file path="Login2.xml"/>
+
+
 
 
         <!-- Add more suite files as needed -->

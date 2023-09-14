@@ -22,6 +22,7 @@ public class BrowserFactory {
 
         if (BrowserType.equalsIgnoreCase("Chrome")) {
             try{
+                Loggers.Info("Initializing driver local}" + BrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -34,7 +35,6 @@ public class BrowserFactory {
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Loggers.Info("Initializing driver local}" + BrowserType);
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -45,11 +45,13 @@ public class BrowserFactory {
 
         } else if (BrowserType.equalsIgnoreCase("Firefox") ) {
             try{
+                Loggers.Info("Initializing driver local}" + BrowserType);
+
+
                 WebDriver driver;
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Loggers.Info("Initializing driver local}" + BrowserType);
                 return driver;
             }
             catch (Exception E) {
@@ -60,11 +62,12 @@ public class BrowserFactory {
 
         }else if (BrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try{
+                Loggers.Info("Initializing driver local}" + BrowserType);
+
                 WebDriver driver;
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Loggers.Info("Initializing driver local}" + BrowserType);
                 return driver;
             }
             catch (Exception E) {

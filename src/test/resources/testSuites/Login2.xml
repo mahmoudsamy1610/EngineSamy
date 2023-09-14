@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite  name="Login2"  preserve-order="true" >
+
+    <listeners>
+        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun" />
+    </listeners>
+
+
+    <test name = "test1">
+        <parameter name="allure.results.directory" value="results/test1" />
+
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin"/>
+        </classes>
+    </test>
+
+
+</suite>
+
+
