@@ -1,6 +1,6 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import org.testng.Assert;
 
 public class GridThreadsManager {
@@ -9,7 +9,7 @@ public class GridThreadsManager {
 
 
         try {
-            Loggers.Info("Starting new thread for Selenium grid Hub");
+            EngineLogger.EngineInfo("Starting new thread for Selenium grid Hub");
 
             Runnable HubTask = () -> {HubGridLauncher.StartGrid();} ;
             Thread HubThread = new Thread(HubTask);
@@ -18,7 +18,7 @@ public class GridThreadsManager {
 
 
         } catch (Exception E) {
-            Loggers.ExceptionError("An error occurred while creating new thread for Selenium grid Hub " , E );
+            EngineLogger.EngineExceptionError("An error occurred while creating new thread for Selenium grid Hub " , E );
             Assert.fail("An error occurred while creating new thread for Selenium grid Hub " , E );
         }
     }
@@ -29,7 +29,7 @@ public class GridThreadsManager {
         Thread BuildNodeThread;
 
         try {
-            Loggers.Info("Starting new thread for Selenium grid Node");
+            EngineLogger.EngineInfo("Starting new thread for Selenium grid Node");
 
             Runnable BuildNodeTask = () -> {
                 NodeBuilder.BuildNode();
@@ -39,7 +39,7 @@ public class GridThreadsManager {
             BuildNodeThread.sleep(5000);
 
         } catch (Exception E) {
-            Loggers.ExceptionError("An error occurred while creating new thread for Selenium grid Node " , E );
+            EngineLogger.EngineExceptionError("An error occurred while creating new thread for Selenium grid Node " , E );
             Assert.fail("An error occurred while creating new thread for Selenium grid Node " , E );
         }
 

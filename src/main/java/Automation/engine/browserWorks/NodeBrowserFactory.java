@@ -1,6 +1,6 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.listeners.EventListener;
 import Automation.engine.reportingWorks.AllureStepLogger;
@@ -26,7 +26,7 @@ public class NodeBrowserFactory {
         if (NodeBrowserType.equalsIgnoreCase("Chrome")) {
             try{
 
-                Loggers.Info("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+                EngineLogger.EngineInfo("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -44,14 +44,14 @@ public class NodeBrowserFactory {
                 return decoratedDriver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
                 AllureStepLogger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 Assert.fail("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType, E);
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("Firefox") ) {
             try{
-                Loggers.Info("Initializing Firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+                EngineLogger.EngineInfo("Initializing Firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -70,14 +70,14 @@ public class NodeBrowserFactory {
                 return decoratedDriver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing FireFox browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing FireFox browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
                 AllureStepLogger.logStep("Initializing FireFox driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                 Assert.fail("Unknown error while Initializing FireFox browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType, E);
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try {
-                Loggers.Info("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+                EngineLogger.EngineInfo("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
 
                 WebDriver driver;
                 WebDriverListener listener;
@@ -96,14 +96,14 @@ public class NodeBrowserFactory {
                 return decoratedDriver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing Edge browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing Edge browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
                 AllureStepLogger.logStep("Initializing Edge driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                 Assert.fail("Unknown error while Initializing Edge browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType, E);
             }
         }
              else if (NodeBrowserType.equalsIgnoreCase("Safari")) {
                 try{
-                    Loggers.Info("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+                    EngineLogger.EngineInfo("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
 
                     WebDriver driver;
                     WebDriverListener listener ;
@@ -122,13 +122,13 @@ public class NodeBrowserFactory {
                     return decoratedDriver;
                 }
                 catch (Exception E) {
-                    Loggers.ExceptionError("Unknown error while Initializing Safari browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
+                    EngineLogger.EngineExceptionError("Unknown error while Initializing Safari browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
                     AllureStepLogger.logStep("Initializing Safari driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                     Assert.fail("Unknown error while Initializing Safari browser {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType, E);
                 }
 
             } else {
-            Loggers.Error("Invalid Driver or Driver not found {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType);
+            EngineLogger.EngineError("Invalid Driver or Driver not found {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType);
             AllureStepLogger.logStep("Initializing driver {Grid node} : " + NodeBrowserType);
             Assert.fail("Invalid Driver or Driver not found {Grid node} : " + NodeBrowserType);
         }

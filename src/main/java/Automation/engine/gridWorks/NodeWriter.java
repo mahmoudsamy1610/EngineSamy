@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.TomlFileCreator;
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import org.testng.Assert;
 
 public class NodeWriter {
@@ -22,10 +22,10 @@ public class NodeWriter {
                                  "stereotype=\"{" + "\\\"browserName\\\": \\\""  + NodeBrowserType + "\\\"" + "," + "\\\"platformName\\\": \\\""  + NodePlatformType + "\\\"" + "}\"" ;
 
             try {
-                Loggers.Info("Writing node TOML content for : " +NodePlatformType + " & " + NodeBrowserType );
+                EngineLogger.EngineInfo("Writing node TOML content for : " +NodePlatformType + " & " + NodeBrowserType );
                 TomlFileCreator.CreateToml(NodeContent, NodeRelativePath);
             }catch (Exception E){
-                Loggers.ExceptionError("Failed to write node TOML content for : " +NodePlatformType + " & " + NodeBrowserType, E);
+                EngineLogger.EngineExceptionError("Failed to write node TOML content for : " +NodePlatformType + " & " + NodeBrowserType, E);
                 Assert.fail("Failed to write node TOML content for : " +NodePlatformType + " & " + NodeBrowserType, E);
             }
          return NodeRelativePath ;

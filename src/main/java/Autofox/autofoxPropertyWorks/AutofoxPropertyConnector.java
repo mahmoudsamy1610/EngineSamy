@@ -1,6 +1,6 @@
 package Autofox.autofoxPropertyWorks;
 
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import org.testng.Assert;
 
 import static Automation.engine.propertyWorks.PropertiesReader.ReadProperty;
@@ -14,10 +14,10 @@ public class AutofoxPropertyConnector {
         try {
 
             ConnectorProperty = ReadProperty("src/main/resources/AutofoxResources/AutofoxPropertyPath.properties").getProperty(PropertyFileName);
-            Loggers.Info("Connecting to Autofox property path collection and fetching property path of : " + PropertyFileName);
+            EngineLogger.EngineInfo("Connecting to Autofox property path collection and fetching property path of : " + PropertyFileName);
 
         } catch (Exception E) {
-            Loggers.ExceptionError("Failed to find : " + PropertyFileName + " in Autofox property path collection", E);
+            EngineLogger.EngineExceptionError("Failed to find : " + PropertyFileName + " in Autofox property path collection", E);
             Assert.fail("Failed to find : " + PropertyFileName + " in Autofox property path collection", E);
 
         }

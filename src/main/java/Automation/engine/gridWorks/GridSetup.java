@@ -1,6 +1,6 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import org.testng.Assert;
 import org.testng.IExecutionListener;
@@ -17,15 +17,15 @@ public class GridSetup implements IExecutionListener {
       try {
 
           if (ExecutionType.equalsIgnoreCase("Local") || ExecutionType.equalsIgnoreCase("ParaLocal")) {
-              Loggers.Info("Running on local machine , no need for selenium grid hub and nodes");
-              Loggers.Info("Selenium Grid gub and nodes stopped");
+              EngineLogger.EngineInfo("Running on local machine , no need for selenium grid hub and nodes");
+              EngineLogger.EngineInfo("Selenium Grid gub and nodes stopped");
 
           } else {
               SetupGrid();
 
           }
       }catch (Exception E){
-          Loggers.ExceptionError("Failed to install Selenium grid while running  : " + ExecutionType , E );
+          EngineLogger.EngineExceptionError("Failed to install Selenium grid while running  : " + ExecutionType , E );
           Assert.fail("Failed to install Selenium grid while running  : " + ExecutionType , E );
       }
     }
@@ -34,13 +34,13 @@ public class GridSetup implements IExecutionListener {
     public static void SetupGrid( ) {
 
         try {
-            Loggers.Info("installing Selenium Grid");
+            EngineLogger.EngineInfo("installing Selenium Grid");
 
             GridThreadsManager.HubThread();
             GridThreadsManager.BuildNodeThread();
 
         } catch (Exception E) {
-            Loggers.ExceptionError("An error occurred while installing Selenium grid " , E );
+            EngineLogger.EngineExceptionError("An error occurred while installing Selenium grid " , E );
             Assert.fail("An error occurred while installing Selenium grid " , E);
         }
 

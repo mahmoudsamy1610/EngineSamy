@@ -1,7 +1,7 @@
 package Automation.engine.browserWorks;
 
 import Automation.engine.listeners.EventListener;
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.reportingWorks.AllureStepLogger;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +23,7 @@ public class StaBrowserFactory {
 
         if (StaBrowserType.equalsIgnoreCase("Chrome")) {
             try{
-                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
+                EngineLogger.EngineInfo("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -42,14 +42,14 @@ public class StaBrowserFactory {
                 return decoratedDriver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType , E);
                 AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
                 Assert.fail("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType, E);
             }
 
         } else if (StaBrowserType.equalsIgnoreCase("Firefox") ) {
             try{
-                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
+                EngineLogger.EngineInfo("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -68,14 +68,14 @@ public class StaBrowserFactory {
                 return decoratedDriver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType , E);
                 AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
                 Assert.fail("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType, E);
             }
 
         }else if (StaBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try{
-                Loggers.Info("Initializing driver {Stand alone grid} " + StaBrowserType);
+                EngineLogger.EngineInfo("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -94,13 +94,13 @@ public class StaBrowserFactory {
                 return decoratedDriver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType , E);
                 AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
                 Assert.fail("Unknown error while Initializing browser {Stand alone grid}" + StaBrowserType, E);
             }
 
         }  else {
-            Loggers.Error("Unknown error while Initializing browser {Stand alone grid}: " + StaBrowserType);
+            EngineLogger.EngineError("Unknown error while Initializing browser {Stand alone grid}: " + StaBrowserType);
             AllureStepLogger.logStep("Initializing driver {Stand alone grid} : " + StaBrowserType);
             Assert.fail("Unknown error while Initializing browser {Stand alone grid} : " + StaBrowserType);
 

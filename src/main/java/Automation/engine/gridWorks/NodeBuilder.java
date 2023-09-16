@@ -1,14 +1,11 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.FileCleaner;
-import Automation.engine.helpers.ListToTwoDArrayConverter;
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.xmlWorks.XmlParser;
 import org.testng.Assert;
 
 import java.util.List;
-import java.util.Properties;
 
 public class NodeBuilder {
 
@@ -25,7 +22,7 @@ public class NodeBuilder {
                 BuildNodeFromTests();
             }
         } catch (Exception E) {
-            Loggers.ExceptionError("An error occurred while building nodes", E);
+            EngineLogger.EngineExceptionError("An error occurred while building nodes", E);
             Assert.fail("An error occurred while building nodes", E);
         }
 
@@ -48,7 +45,7 @@ public class NodeBuilder {
                 Thread BuildNodeThread;
                 NodePlatformType = Couple[0];
                 NodeBrowserType = Couple[1];
-                Loggers.Info("Building node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by test level");
+                EngineLogger.EngineInfo("Building node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by test level");
 
                 String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
 
@@ -63,7 +60,7 @@ public class NodeBuilder {
 
             }
         } catch (Exception E) {
-            Loggers.ExceptionError("Failed to build node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by test level", E);
+            EngineLogger.EngineExceptionError("Failed to build node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by test level", E);
             Assert.fail("Failed to build node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by test level", E);
         }
 
@@ -85,7 +82,7 @@ public class NodeBuilder {
                 Thread BuildNodeThread;
                 NodePlatformType = Couple[0];
                 NodeBrowserType = Couple[1];
-                Loggers.Info("Building node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by suite level");
+                EngineLogger.EngineInfo("Building node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by suite level");
                 String CreatedNodePath = NodeWriter.CreateNodeToml(NodePlatformType, NodeBrowserType);
 
                 Runnable BuildNodeTask = () -> {
@@ -96,11 +93,11 @@ public class NodeBuilder {
                 BuildNodeThread.start();
                 BuildNodeThread.sleep(3000);
                 NodeCleaner.CleanNode(CreatedNodePath);
-                Loggers.Info("Node has been built on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by suite level");
+                EngineLogger.EngineInfo("Node has been built on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by suite level");
             }
 
         } catch (Exception E) {
-            Loggers.ExceptionError("Failed to build node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by suite level", E);
+            EngineLogger.EngineExceptionError("Failed to build node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by suite level", E);
             Assert.fail("Failed to build node on : " + NodePlatformType + " for : " + NodeBrowserType + " - Detected by suite level", E);
         }
 

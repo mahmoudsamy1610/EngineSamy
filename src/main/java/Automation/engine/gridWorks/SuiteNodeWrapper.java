@@ -1,6 +1,6 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.suiteWorks.SuiteDataGetterByXml;
 import Automation.engine.suiteWorks.SuiteTestCapGetter;
@@ -23,14 +23,14 @@ public class SuiteNodeWrapper {
 
         try {
             for (String SuiteName : SuiteNames) {
-                Loggers.Info("Wrapping all Browsers from suite level " + Platforms);
+                EngineLogger.EngineInfo("Wrapping all Browsers from suite level " + Platforms);
                 Platforms = SuiteTestCapGetter.CatchPlatforms(SuiteName);
                 NodePlatformTypes.addAll(Platforms);
 
             }
 
         } catch (Exception E) {
-            Loggers.ExceptionError("Failed wrapping all platforms from suite level " + Platforms, E);
+            EngineLogger.EngineExceptionError("Failed wrapping all platforms from suite level " + Platforms, E);
             Assert.fail("Failed wrapping all platforms from suite level " + Platforms, E);
         }
 
@@ -52,11 +52,11 @@ public class SuiteNodeWrapper {
             for (String TestName : TestNames) {
                 Browsers = SuiteTestCapGetter.CatchBrowsers(TestName);
                 NodeBrowserTypes.addAll(Browsers);
-                Loggers.Info("Wrapping all Browsers from suite level " + Browsers);
+                EngineLogger.EngineInfo("Wrapping all Browsers from suite level " + Browsers);
 
             }
         } catch (Exception E) {
-            Loggers.ExceptionError("Failed wrapping all Browsers from suite level " + Browsers, E);
+            EngineLogger.EngineExceptionError("Failed wrapping all Browsers from suite level " + Browsers, E);
             Assert.fail("Failed wrapping all Browsers from suite level " + Browsers, E);
         }
         return NodeBrowserTypes;

@@ -17,22 +17,13 @@ public  class SuiteDataGetterByRun implements ITestListener {
 
 
 
-
     @Override
     public void onStart(ITestContext TestContext) {
         SuiteNameThreadLocal.set(TestContext.getSuite().getName());
         TestNameThreadLocal.set(TestContext.getName());
        // ClassTestNameThreadLocal.set(TestContext.getClass().getName());
-
     }
 
-
-  //  @Override
-    public void onTestStart(ITestResult result){
-
-     //   ClassTestNameThreadLocal.set(result.getTestContext().getClass().getName());
-
-    }
 
 
     public static String CurrentSuiteName(){
@@ -49,16 +40,16 @@ public  class SuiteDataGetterByRun implements ITestListener {
         return TestName ;
 
     }
+
 /*
     is for parallel classes scope and should be implemented later
+
     public static String CurrentClassTestName(){
         String  ClassTestName = ClassTestNameThreadLocal.get();
         System.out.println(ClassTestName);
         return ClassTestName ;
 
     }
-
-
  */
 
 

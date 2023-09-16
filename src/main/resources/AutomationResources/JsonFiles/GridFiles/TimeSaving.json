@@ -12,7 +12,7 @@
   "Node2":
   {
     "Id": 5,
-    "Test": "test2",
+    "Test": "test1",
     "Suite" : "Login2",
     "Browser": "chrome",
     "Platform": "Linux"

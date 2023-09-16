@@ -1,5 +1,6 @@
 package Automation.engine.jsonWorks;
 
+import Automation.engine.loggers.CoreJavaLogger;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,24 +10,21 @@ import java.io.IOException;
 public class JsonReader {
 
     public static JsonNode ReadJson(String JsonFileRelativePath) {
-        // Specify the path to the JSON file
+    CoreJavaLogger.CoreJavaInfo("Reading Json file from : " +JsonFileRelativePath );
 
-        // Create an ObjectMapper instance
-
+        JsonNode RootNode = null;
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode RootNode = objectMapper.readTree(new File(JsonFileRelativePath));
-            return RootNode ;
+            RootNode = objectMapper.readTree(new File(JsonFileRelativePath));
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception E) {
+            CoreJavaLogger.CoreJavaExceptionError("Invalid json file provided : " + JsonFileRelativePath, E);
         }
-
-        return null ;
+        return RootNode;
     }
 
     public static void main(String[] args) {
-       JsonNode node =  ReadJson("src/main/resources/AutomationResources/JsonFiles/GridFiles/TimeSaving.json");
+       JsonNode node =  ReadJson(null);
         System.out.println(node);
 
     }

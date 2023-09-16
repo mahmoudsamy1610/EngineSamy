@@ -3,7 +3,8 @@ package Automation.engine.xmlWorks;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.EngineLogger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,31 +19,37 @@ public class XmlParser {
 
 
     public static List<String> FindXmlAttributes(String XmlRelativePath, String TagName, String AttName) {
+        CoreJavaLogger.CoreJavaInfo("Fetching list of attributes named : " + AttName + " ,using : " + TagName + " ,in file : " + XmlRelativePath );
 
-        List<String> AttNameValues = new ArrayList<>();
+        List<String> AttNameValues = null;
+
         try {
             AttNameValues = new ArrayList<>();
-
-
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(XmlRelativePath);
-
             doc.getDocumentElement().normalize();
             NodeList testNodes = doc.getElementsByTagName(TagName);
+            String AttNameValue = null;
 
-            for (int i = 0; i < testNodes.getLength(); i++) {
-                Element element = (Element) testNodes.item(i);
-                String AttNameValue = element.getAttribute(AttName);
-                //System.out.println("<" + TagName + "> " + AttName + " : " + AttNameValue);
-                AttNameValues.add(AttNameValue);
 
+            if (testNodes != null) {
+                for (int i = 0; i < testNodes.getLength(); i++) {
+                    Element element = (Element) testNodes.item(i);
+                    AttNameValue = element.getAttribute(AttName);
+                    AttNameValues.add(AttNameValue);
+                }
             }
-        } catch (Exception e) {
-            e.getMessage();
-            e.printStackTrace();
-            System.out.println("an Error occurred while reading this xml");
+            if (AttNameValues.isEmpty()) {
+                CoreJavaLogger.CoreJavaError("Cannot find tag name : " + TagName + " ,in file : " + XmlRelativePath);
+            }
+            if (AttNameValue.isBlank()) {
+                CoreJavaLogger.CoreJavaError("Cannot find attribute name : " + AttName + " ,from tag : " + TagName + " ,in file : " + XmlRelativePath);
+            }
+
+        } catch (Exception E) {
+            CoreJavaLogger.CoreJavaExceptionError("Failed to find list of attributes named : " + AttName + " ,using : " + TagName + " ,in file : " + XmlRelativePath, E);
         }
 
         return AttNameValues;
@@ -50,6 +57,7 @@ public class XmlParser {
 
 
     public static String FindXmlAttribute(String XmlRelativePath, String TagName, String AttName){
+        CoreJavaLogger.CoreJavaInfo("Fetching single attribute named : " + AttName + " ,using : " + TagName + " ,in file : " + XmlRelativePath );
 
         try {
             File xmlFile = new File(XmlRelativePath);
@@ -57,28 +65,39 @@ public class XmlParser {
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
-
             doc.getDocumentElement().normalize();
             Node node = doc.getElementsByTagName(TagName).item(0);
+            Node attributeNode = null;
+
 
             if (node != null) {
                 if (node.hasAttributes()) {
-                    Node attributeNode = node.getAttributes().getNamedItem(AttName);
+                    attributeNode = node.getAttributes().getNamedItem(AttName);
                     if (attributeNode != null) {
                         return attributeNode.getNodeValue();
                     }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (node == null) {
+                CoreJavaLogger.CoreJavaError("Cannot find tag name : " + TagName + " ,in file : " + XmlRelativePath);
+            }
+            if (attributeNode == null) {
+                CoreJavaLogger.CoreJavaError("Cannot find attribute name : " + AttName + " ,from tag : " + TagName + " ,in file : " + XmlRelativePath);
+            }
+
+        } catch (Exception E) {
+            CoreJavaLogger.CoreJavaExceptionError("Failed to find attribute named : " + AttName + " ,using : " + TagName + " ,in file : " + XmlRelativePath, E);
         }
 
-        return null; // Tag, attribute, or XML file not found or error occurred
+        return null;
     }
 
 
 
     public static List<String> FindXmlTags(String XmlRelativePath, String TagName) {
+        CoreJavaLogger.CoreJavaInfo("Finding values of list of tags named : " + TagName + " ,in file : " + XmlRelativePath );
+
+
         List<String> values = new ArrayList<>();
 
         try {
@@ -89,13 +108,19 @@ public class XmlParser {
             Document doc = dBuilder.parse(xmlFile);
 
             NodeList nodeList = doc.getElementsByTagName(TagName);
+            Node node = null;
 
             for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
+                node = nodeList.item(i);
                 values.add(node.getTextContent());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            if (node.getTextContent().isBlank()) {
+                CoreJavaLogger.CoreJavaError("Tag found : " + TagName + " , but has no tag values " + " ,in file : " + XmlRelativePath);
+            }
+
+        } catch (Exception E) {
+            CoreJavaLogger.CoreJavaExceptionError("Failed to find list of tags named : " + TagName + " ,in file : " + XmlRelativePath, E);
         }
 
         return values;
@@ -105,6 +130,7 @@ public class XmlParser {
 
 
     public static String FindXmlTag(String XmlRelativePath, String TagName) {
+        CoreJavaLogger.CoreJavaInfo("Finding value of single tag named : " + TagName + " ,in file : " + XmlRelativePath );
 
         String TagValue = null;
         try {
@@ -118,9 +144,12 @@ public class XmlParser {
 
             TagValue = nodeList.item(0).getTextContent();
 
+            if (TagValue.isBlank()) {
+                CoreJavaLogger.CoreJavaError("Tag found : " + TagName + " , but has no tag values " + " ,in file : " + XmlRelativePath);
+            }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception E) {
+           CoreJavaLogger.CoreJavaExceptionError("Failed to find a tag named : " + TagName + " ,in file : " + XmlRelativePath, E);
         }
 
         return TagValue;
@@ -132,9 +161,7 @@ public class XmlParser {
 
 
     public static void main(String[] args) {
-        String PomRelativePath = PropertyGetter.GetPropertyValue("RunOptions" , "PomRelativePath");
-
-       System.out.println(FindXmlTag(PomRelativePath , "parallel"  ));
+        FindXmlTag("src/test/resources/testSuites/Raun.xml" , "suite" );
     }
 
 

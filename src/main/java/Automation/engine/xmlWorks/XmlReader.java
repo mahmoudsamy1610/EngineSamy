@@ -1,14 +1,16 @@
 package Automation.engine.xmlWorks;
 
+import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.EngineLogger;
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class XmlReader {
 
     public static byte[] ReadXml (String XmlRetalivePath)  {
+        CoreJavaLogger.CoreJavaInfo("Reading xml file from " + XmlRetalivePath );
 
-        FileInputStream xmlFile = null;
+        FileInputStream xmlFile ;
         try {
             xmlFile = new FileInputStream(XmlRetalivePath);
             byte[] xmlData = new byte[xmlFile.available()];
@@ -17,13 +19,17 @@ public class XmlReader {
 
             return xmlData;
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Failed to read this XML file : " + XmlRetalivePath ,  E);
         }
 
-
+        return new byte[0];
     }
+
+    public static void main(String[] args) {
+       ReadXml(null);
+    }
+
 
 }

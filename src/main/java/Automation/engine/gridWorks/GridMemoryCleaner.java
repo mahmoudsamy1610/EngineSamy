@@ -1,9 +1,7 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.CMDRunner;
 import Automation.engine.helpers.TaskCleaner;
-import Automation.engine.loggers.Loggers;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.engine.loggers.EngineLogger;
 import org.testng.Assert;
 import org.testng.IExecutionListener;
 
@@ -20,7 +18,7 @@ public class GridMemoryCleaner implements IExecutionListener {
             CleanJavaTasks();
 
         }catch (Exception E){
-            Loggers.ExceptionError("Failed to remove all or one of the background Java tasks" , E );
+            EngineLogger.EngineExceptionError("Failed to remove all or one of the background Java tasks" , E );
             Assert.fail("Failed to remove all or one of the background Java tasks" , E );
         }
     }
@@ -28,11 +26,11 @@ public class GridMemoryCleaner implements IExecutionListener {
     public static void CleanJavaTasks() {
         try {
 
-            Loggers.Info("Cleaning all Java tasks in the background");
+            EngineLogger.EngineInfo("Cleaning all Java tasks in the background");
             TaskCleaner.CleanTasks("java","java.exe");
 
         }catch (Exception E){
-            Loggers.ExceptionError("Java tasks cleaning from the back ground failed" , E );
+            EngineLogger.EngineExceptionError("Java tasks cleaning from the back ground failed" , E );
             Assert.fail("Java tasks cleaning from the back ground failed" , E );
         }
     }

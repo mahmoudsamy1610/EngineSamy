@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.CMDRunner;
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import org.testng.Assert;
 
@@ -14,13 +14,13 @@ public class StaGridLauncher {
 
     public static void StaGridStart() {
         try {
-            Loggers.Info("Running CMD command : " + RunStaGridCommand);
-            Loggers.Info("Starting stand alone grid on " + StaGridHost);
+            EngineLogger.EngineInfo("Running CMD command : " + RunStaGridCommand);
+            EngineLogger.EngineInfo("Starting stand alone grid on " + StaGridHost);
 
             CMDRunner.runCommand(RunStaGridCommand);
 
         } catch (Exception E) {
-            Loggers.ExceptionError("Failed starting stand alone grid", E);
+            EngineLogger.EngineExceptionError("Failed starting stand alone grid", E);
             Assert.fail("Failed starting stand alone grid", E);
         }
     }

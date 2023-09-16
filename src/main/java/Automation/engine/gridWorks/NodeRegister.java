@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
 import Automation.engine.helpers.PathConverter;
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.helpers.CMDRunner;
 import org.testng.Assert;
@@ -19,13 +19,13 @@ public class NodeRegister {
                String NodeGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "NodeRegisterCommand");
                String NodeRegisterCommand = "cd " + GridJarLocation + " && " + NodeGridCommand + " " + NodeAbsolutePath;
 
-               Loggers.Info("Running CMD command : " + NodeRegisterCommand );
-               Loggers.Info("Registering node from : " + CreatedNodePath );
+               EngineLogger.EngineInfo("Running CMD command : " + NodeRegisterCommand );
+               EngineLogger.EngineInfo("Registering node from : " + CreatedNodePath );
 
                CMDRunner.runCommand(NodeRegisterCommand);
 
            }catch (Exception E){
-               Loggers.ExceptionError("Failed to Register node from : " + CreatedNodePath, E);
+               EngineLogger.EngineExceptionError("Failed to Register node from : " + CreatedNodePath, E);
                Assert.fail("Failed to Register node from : " + CreatedNodePath, E);
            }
        }
