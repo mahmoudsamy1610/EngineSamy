@@ -22,14 +22,11 @@ public class GetJsonValueByKey {
             if (keyValueNode != null && keyValueNode.isValueNode()) {
                 KeyValues.add(keyValueNode.asText());
             }
-
-        }if (Nodes.isEmpty()){
-                CoreJavaLogger.CoreJavaError("Cannot find : " +KeyName+  " inside an empty json node ");
-            }
-
+        }
         if (KeyValues.isEmpty()){
             CoreJavaLogger.CoreJavaError("The key : " +KeyName+  " is not found , Cannot return list of values");
-             }
+            throw new IllegalArgumentException();
+        }
 
         }catch (Exception E){
             CoreJavaLogger.CoreJavaExceptionError("Failed to find key : " +KeyName+  " inside the provided node " , E);
@@ -50,20 +47,6 @@ public class GetJsonValueByKey {
             List<JsonNode> TargetNode = GetJsonNodeByKey.GetValueNode(RootNode, KeyName, ResultNodes);
             KeyValues = GetValueByNodeKey(TargetNode, KeyName);
 
-            /*
-            if (!KeyValues.isEmpty()) {
-                for (String value : KeyValues) {
-                    System.out.println(value);
-                }
-                }
-             */
-             if (KeyValues.isEmpty()){
-                CoreJavaLogger.CoreJavaError("Cannot find : " +KeyName+  " from file : " + JsonFileName);
-            }
-            if (TargetNode.isEmpty()){
-                CoreJavaLogger.CoreJavaError("Node resultant from : " +KeyName+  " ,is empty");
-            }
-
         } catch (Exception E) {
         CoreJavaLogger.CoreJavaExceptionError("Invalid json file provided : " + JsonFileName , E);
         }
@@ -83,13 +66,6 @@ public class GetJsonValueByKey {
         try {
             KeyValues = GetValueByNodeKey(TargetNode, KeyName);
 
-            if (KeyValues.isEmpty()) {
-                CoreJavaLogger.CoreJavaError("Cannot find : " + KeyName + " , Searching by : " + NodeDefinerValue + " ,from file : " + JsonFileName);
-            }
-            if (TargetNode.isEmpty()){
-                CoreJavaLogger.CoreJavaError("Cannot find : " + NodeDefinerValue + " ,from file : " + JsonFileName);
-            }
-
         }catch (Exception E) {
             CoreJavaLogger.CoreJavaExceptionError("Invalid json file provided : " + JsonFileName , E);
         }
@@ -100,13 +76,13 @@ public class GetJsonValueByKey {
 
     public static void main(String[] args) {
             String JsonFileName = "TimeSaving";
-            String NodeDefinerValue = "test1" ;
-            String KeyName = "aPlatform" ;
+            String NodeDefinerValue = "test1a" ;
+            String KeyName = "Platform" ;
           //  List<JsonNode> ResultNodes = new ArrayList<>();
 
         JsonNode RootNode = RootNodeProvider.GetRootNode(JsonFileName);
      //   List<JsonNode> TargetNode = GetJsonNodeByValue.GetContainerNode(RootNode, NodeDefinerValue, RootNode, ResultNodes);
-       System.out.println(GetValueByContainerKey(KeyName , JsonFileName ,NodeDefinerValue));
+       System.out.println(GetValueByKeyName(KeyName , JsonFileName ));
     }
 
 

@@ -1,6 +1,8 @@
 package Automation.engine.suiteWorks;
 
 import Automation.engine.helpers.FileNameGetter;
+import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.xmlWorks.XmlParser;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -19,26 +21,52 @@ public  class SuiteDataGetterByRun implements ITestListener {
 
     @Override
     public void onStart(ITestContext TestContext) {
-        SuiteNameThreadLocal.set(TestContext.getSuite().getName());
-        TestNameThreadLocal.set(TestContext.getName());
-       // ClassTestNameThreadLocal.set(TestContext.getClass().getName());
-    }
+        EngineLogger.EngineInfo("Creating separate thread for listing <Tests> and <Suites> names");
 
-
-
-    public static String CurrentSuiteName(){
-
-        String  SuiteName = SuiteNameThreadLocal.get();
-        System.out.println(SuiteName);
-        return SuiteName ;
+            SuiteNameThreadLocal.set(TestContext.getSuite().getName());
+            TestNameThreadLocal.set(TestContext.getName());
+            // ClassTestNameThreadLocal.set(TestContext.getClass().getName());
 
     }
 
-    public static String CurrentTestName(){
-        String  TestName = TestNameThreadLocal.get();
-        System.out.println(TestName);
-        return TestName ;
 
+
+    public static String CurrentSuiteName() {
+        EngineLogger.EngineInfo("Fetching list of values of <Suites> names by Xml run context");
+
+        String SuiteName = null;
+
+        try {
+            SuiteName = SuiteNameThreadLocal.get();
+
+            if (SuiteName != null) {
+                System.out.println("Current running suite : " +SuiteName);
+            }
+            else {
+                EngineLogger.EngineError("Cannot find any value for <Suite> name by running");
+                }
+
+        } catch (Exception E) {
+           EngineLogger.EngineExceptionError("Cannot find any value for <Suite> name by running " , E);
+        }
+        return SuiteName;
+    }
+
+    public static String CurrentTestName() {
+        EngineLogger.EngineInfo("Fetching list of values of <Tests> names  by Xml run context");
+
+        String TestName = null;
+        try {
+            TestName = TestNameThreadLocal.get();
+            if (TestName != null) {
+                System.out.println(TestName);
+            } else {
+                EngineLogger.EngineError("Cannot find any value for <Test> name by running");
+            }
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Cannot find any value for <Test> name by running " , E);
+        }
+        return TestName;
     }
 
 /*

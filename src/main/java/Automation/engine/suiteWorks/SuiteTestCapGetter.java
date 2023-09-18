@@ -1,8 +1,10 @@
 package Automation.engine.suiteWorks;
 
 import Automation.engine.jsonWorks.GetJsonValueByKey;
+import Automation.engine.loggers.CoreJavaLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SuiteTestCapGetter {
@@ -10,19 +12,34 @@ public class SuiteTestCapGetter {
 
     public static List<String> CatchPlatforms(String Catcher) {
 
-        String ParaModule = PropertyGetter.GetPropertyValue("RunOptions","ParaModule");
-        List<String> NodePlatformTypes = (GetJsonValueByKey.GetValueByContainerKey("Platform" , ParaModule , Catcher));
+        List<String> NodePlatformTypes = new ArrayList<>();
+        String ParaModule = null;
 
-      return NodePlatformTypes ;
+        try {
+            ParaModule = PropertyGetter.GetPropertyValue("RunOptions", "ParaModule");
+            NodePlatformTypes = (GetJsonValueByKey.GetValueByContainerKey("Platform", ParaModule, Catcher));
+
+        } catch (Exception E) {
+            CoreJavaLogger.CoreJavaExceptionError("Cannot find any platform results from module : " + ParaModule+ " , using this catcher : " +Catcher , E);
+        }
+        return NodePlatformTypes;
 
     }
 
     public static List<String> CatchBrowsers(String Catcher) {
 
-        String ParaModule = PropertyGetter.GetPropertyValue("RunOptions","ParaModule");
-        List<String> NodeBrowserTypes = GetJsonValueByKey.GetValueByContainerKey("Browser" , ParaModule , Catcher);
+        List<String> NodeBrowserTypes = new ArrayList<>();
+        String ParaModule = null;
 
-        return NodeBrowserTypes ;
+        try {
+            ParaModule = PropertyGetter.GetPropertyValue("RunOptions", "ParaModule");
+            NodeBrowserTypes = GetJsonValueByKey.GetValueByContainerKey("Browser", ParaModule, Catcher);
+
+        } catch (Exception E) {
+            CoreJavaLogger.CoreJavaExceptionError("Cannot find any browser results from module : " + ParaModule + " , using this catcher : " + Catcher, E);
+        }
+
+        return NodeBrowserTypes;
 
     }
 

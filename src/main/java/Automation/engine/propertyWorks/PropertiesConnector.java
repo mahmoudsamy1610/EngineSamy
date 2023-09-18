@@ -11,12 +11,8 @@ public class PropertiesConnector {
             String Property;
             Property = ReadProperty("src/main/resources/AutomationResources/PropertyFiles/PropertyPath.properties").getProperty(PropertyFileName);
             return Property;
-        }
 
-
-        catch (InputMismatchException IME) {IME.getMessage();
-            System.out.println("Invalid input Engine Connector property file path");}
-        catch(Exception e){e.getMessage();
+        }catch(Exception e){e.getMessage();
             System.out.println("Unknown Error while using Engine properties connector");}
 
         return null;

@@ -33,7 +33,6 @@ public class XmlParser {
             NodeList testNodes = doc.getElementsByTagName(TagName);
             String AttNameValue = null;
 
-
             if (testNodes != null) {
                 for (int i = 0; i < testNodes.getLength(); i++) {
                     Element element = (Element) testNodes.item(i);
@@ -41,12 +40,12 @@ public class XmlParser {
                     AttNameValues.add(AttNameValue);
                 }
             }
-            if (AttNameValues.isEmpty()) {
-                CoreJavaLogger.CoreJavaError("Cannot find tag name : " + TagName + " ,in file : " + XmlRelativePath);
-            }
             if (AttNameValue.isBlank()) {
                 CoreJavaLogger.CoreJavaError("Cannot find attribute name : " + AttName + " ,from tag : " + TagName + " ,in file : " + XmlRelativePath);
+                throw new NullPointerException();
             }
+
+
 
         } catch (Exception E) {
             CoreJavaLogger.CoreJavaExceptionError("Failed to find list of attributes named : " + AttName + " ,using : " + TagName + " ,in file : " + XmlRelativePath, E);
@@ -75,14 +74,11 @@ public class XmlParser {
                     attributeNode = node.getAttributes().getNamedItem(AttName);
                     if (attributeNode != null) {
                         return attributeNode.getNodeValue();
+                    } else {
+                        CoreJavaLogger.CoreJavaError("Cannot find attribute name : " + AttName + " ,from tag : " + TagName + " ,in file : " + XmlRelativePath);
+                        throw new NullPointerException();
                     }
                 }
-            }
-            if (node == null) {
-                CoreJavaLogger.CoreJavaError("Cannot find tag name : " + TagName + " ,in file : " + XmlRelativePath);
-            }
-            if (attributeNode == null) {
-                CoreJavaLogger.CoreJavaError("Cannot find attribute name : " + AttName + " ,from tag : " + TagName + " ,in file : " + XmlRelativePath);
             }
 
         } catch (Exception E) {
@@ -117,6 +113,7 @@ public class XmlParser {
 
             if (node.getTextContent().isBlank()) {
                 CoreJavaLogger.CoreJavaError("Tag found : " + TagName + " , but has no tag values " + " ,in file : " + XmlRelativePath);
+                throw new NullPointerException();
             }
 
         } catch (Exception E) {
@@ -142,10 +139,11 @@ public class XmlParser {
 
             NodeList nodeList = doc.getElementsByTagName(TagName);
 
-            TagValue = nodeList.item(0).getTextContent();
-
-            if (TagValue.isBlank()) {
+            if (nodeList != null) {
+                TagValue = nodeList.item(0).getTextContent();
+            }else {
                 CoreJavaLogger.CoreJavaError("Tag found : " + TagName + " , but has no tag values " + " ,in file : " + XmlRelativePath);
+                throw new NullPointerException();
             }
 
         } catch (Exception E) {
@@ -161,7 +159,10 @@ public class XmlParser {
 
 
     public static void main(String[] args) {
-        FindXmlTag("src/test/resources/testSuites/Raun.xml" , "suite" );
+        try {
+            FindXmlTag("src/test/resources/testSuites/Run.xml" , "suite-filea");
+        }catch (Exception E){E.printStackTrace();}
+
     }
 
 

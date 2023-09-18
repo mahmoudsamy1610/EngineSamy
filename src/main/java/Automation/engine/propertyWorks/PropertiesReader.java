@@ -15,8 +15,6 @@ public class PropertiesReader {
             Properties properties  = new Properties();
             properties.load(new FileInputStream(path));
             return properties;
-        } catch (FileNotFoundException e) {
-            System.out.println("Invalid Path for properties file");
         } catch (IOException ioe) {
             ioe.getMessage();
             System.out.println("Unknown input/output Error while finding properties");

@@ -15,7 +15,7 @@ public class TestNodeWrapper {
 
 
         String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
-        List<String> TestNames = SuiteDataGetterByXml.GetTestNamesByRunXml(RunFileRelativePath);
+        List<String> TestNames = SuiteDataGetterByXml.GetTestNamesByXmlPath(RunFileRelativePath);
         List<String> NodePlatformTypes = new ArrayList<>();
 
 
@@ -33,7 +33,7 @@ public class TestNodeWrapper {
 
 
         String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
-        List<String> TestNames = SuiteDataGetterByXml.GetTestNamesByRunXml(RunFileRelativePath);
+        List<String> TestNames = SuiteDataGetterByXml.GetTestNamesByXmlPath(RunFileRelativePath);
         List<String> NodeBrowserTypes = new ArrayList<>() ;;
 
         for (String TestName : TestNames) {

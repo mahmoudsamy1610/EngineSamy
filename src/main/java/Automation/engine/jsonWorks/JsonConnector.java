@@ -11,26 +11,24 @@ import java.io.IOException;
 public class JsonConnector {
 
   public static String ConnectToJson(String JsonFileName) {
-      CoreJavaLogger.CoreJavaInfo("Getting json file : " +JsonFileName+ " , from Json files connector" );
+      CoreJavaLogger.CoreJavaInfo("Getting json file : " + JsonFileName + " , from Json files connector");
+
+      JsonNode FilePathTextNode = null;
 
       try {
           JsonNode rootNode = JsonReader.ReadJson("src/main/resources/AutomationResources/JsonFiles/JsonPath.json");
-          JsonNode FilePathTextNode = rootNode.get(JsonFileName);
+          FilePathTextNode = rootNode.get(JsonFileName);
 
-          if (FilePathTextNode != null) {
-              return FilePathTextNode.asText();
-          } else {
-              CoreJavaLogger.CoreJavaError(" Json file : " +JsonFileName+ " , cannot be found in Json connector" );
-          }
+
       } catch (Exception E) {
-          CoreJavaLogger.CoreJavaExceptionError("problem while reading json connector for file : " + JsonFileName , E);
+          CoreJavaLogger.CoreJavaExceptionError("problem while reading json connector for file : " + JsonFileName, E);
       }
-        return null ;
+      return FilePathTextNode.asText();
   }
 
     public static void main(String[] args) {
 
-        System.out.println(ConnectToJson("TiameSaving"));
+        System.out.println(ConnectToJson("TimeSaving"));
     }
 
   }
