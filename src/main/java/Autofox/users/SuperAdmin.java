@@ -12,7 +12,7 @@ public class SuperAdmin extends AdminUsers {
     }
 
     @Override
-    public void setLoginToken(String loginToken) {super.setLoginToken(loginToken);}
+    public void setLoginToken(String LoginToken) {super.setLoginToken(LoginToken);}
 
     @Override
     public String getLoginToken() {
