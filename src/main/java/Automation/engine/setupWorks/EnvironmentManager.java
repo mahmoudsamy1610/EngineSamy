@@ -1,6 +1,7 @@
 package Automation.engine.setupWorks;
 
 
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 
 public class EnvironmentManager {
@@ -11,34 +12,42 @@ public class EnvironmentManager {
 
     //Method of decide the Environment
     public static String SelectEnvironment() {
+        EngineLogger.EngineInfo("Selecting environment to work on : " + Environment);
 
         if (Environment.equalsIgnoreCase("dev")){
             try {
                 Domain = PropertyGetter.GetPropertyValue("Environment","HomeDev");
-            }catch (Exception e){e.getMessage();
-                System.out.println("DEV Environment is not inserted correctly ");}
+            }catch (Exception E){
+                EngineLogger.EngineExceptionError("Failed to work on Environment : " + Environment , E);
+            }
         }
 
         else if (Environment.equalsIgnoreCase("alpha")) {
-              try{
+            try{
                  Domain = PropertyGetter.GetPropertyValue("Environment","HomeAlpha");
-              }catch(Exception e){e.getMessage();
-                  System.out.println("Alpha Environment is not inserted correctly ");}
+              }catch(Exception E){
+                EngineLogger.EngineExceptionError("Failed to work on Environment : " + Environment , E);
+            }
         }
 
         else if (Environment.equalsIgnoreCase("live")) {
             try {
                 Domain = PropertyGetter.GetPropertyValue("Environment","HomeLive");
-            }catch (Exception e){e.getMessage();
-                System.out.println("Live Environment is not inserted correctly ");}
+            }catch (Exception E){
+                EngineLogger.EngineExceptionError("Failed to work on Environment : " + Environment , E);
+            }
 
 
-        } else {System.out.println("Invalid Environment Url");}
+        } else {
+            EngineLogger.EngineError("Invalid environment key provided : " +Environment);
+        }
 
         return Domain;
 
     }
 
-
+    public static void main(String[] args) {
+       System.out.println(SelectEnvironment());
+    }
 
 }

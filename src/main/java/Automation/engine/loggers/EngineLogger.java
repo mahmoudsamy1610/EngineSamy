@@ -8,46 +8,47 @@ import org.slf4j.LoggerFactory;
 public class EngineLogger {
 
    public static String Log4jPropPath = PropertyGetter.GetPropertyValue( "PropertyPath", "Log4j") ;
-
     public static Logger Logger = LoggerFactory.getLogger(EngineLogger.class);
+
+
 
 
     public static void EngineInfo(String Message){
         System.out.print("\u001B[34m"); //Blue
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.info(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.info(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void EngineDebug(String Message){
-        PropertyConfigurator.configure(Log4jPropPath);
-        Logger.debug(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.debug(Line+" : "+Message);
     }
 
     public static void EngineWarn(String Message){
         System.out.print("\u001B[33m"); //Yellow
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.warn(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.warn(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void EngineError(String Message){
         System.out.print("\u001B[35m"); //Purple
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.error(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.error(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void EngineExceptionError(String Message , Throwable Exception){
         System.out.print("\u001B[35m"); //Purple
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.error(Message , Exception);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.error(Line+" : "+Message , Exception);
         System.out.print("\u001B[0m");
     }
 
 
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -14,32 +14,37 @@ public class BusinessLogger {
 
     public static void  BusinessInfo(String Message){
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.info(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.info(Line+" : "+Message);
     }
 
     public static void  BusinessDebug(String Message){
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.debug(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.debug(Line+" : "+Message);
     }
 
     public static void  BusinessWarn(String Message){
         System.out.print("\u001B[33m"); //Yellow
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.warn(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.warn(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void  BusinessError(String Message){
         System.out.print("\u001B[36m"); //Cyan
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.error(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.error(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void  BusinessExceptionError(String Message , Throwable Exception){
         System.out.print("\u001B[36m"); //Cyan
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.error(Message , Exception);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.error(Line+" : "+Message , Exception);
         System.out.print("\u001B[0m");
     }
 

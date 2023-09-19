@@ -15,33 +15,38 @@ public class CoreJavaLogger {
     public static void CoreJavaInfo(String Message){
         System.out.print("\u001B[32m"); //Green
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.info(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.info(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void CoreJavaDebug(String Message){
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.debug(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.debug(Line+" : "+Message);
     }
 
     public static void CoreJavaWarn(String Message){
         System.out.print("\u001B[33m"); //Yellow
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.warn(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.warn(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void CoreJavaError(String Message){
         System.out.print("\u001B[31m"); //Red
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.error(Message);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.error(Line+" : "+Message);
         System.out.print("\u001B[0m");
     }
 
     public static void CoreJavaExceptionError(String Message , Throwable Exception){
         System.out.print("\u001B[31m"); //Red
         PropertyConfigurator.configure(Log4jPropPath);
-        Logger.error(Message , Exception);
+        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Logger.error(Line+" : "+Message , Exception);
         System.out.print("\u001B[0m");
     }
 

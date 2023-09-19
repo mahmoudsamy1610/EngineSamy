@@ -8,8 +8,16 @@
     </listeners>
 
 
-    <test name = "test1">
-        <parameter name="allure.results.directory" value="results/test1" />
+    <test name = "test2">
+        <parameter name="allure.results.directory" value="results/test2" />
+
+        <classes>
+            <class name="TestAutofox.gui.AdminLogin"/>
+        </classes>
+    </test>
+
+    <test name = "test4">
+        <parameter name="allure.results.directory" value="results/test4" />
 
         <classes>
             <class name="TestAutofox.gui.AdminLogin"/>

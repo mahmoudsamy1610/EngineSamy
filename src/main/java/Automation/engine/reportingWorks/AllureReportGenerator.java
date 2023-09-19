@@ -9,8 +9,8 @@ public class AllureReportGenerator implements IExecutionListener {
 
 
     public static void GenerateAllureReport() {
-        try {
 
+        try {
              String AllureResultPath = PropertyGetter.GetPropertyValue("allure","AllureResultDirectory");
              String AllureReportLPath = PropertyGetter.GetPropertyValue("allure","AllureReportDirectory");
              String AllureGenerateCommand = PropertyGetter.GetPropertyValue("allure","AllureGenerateCommand");

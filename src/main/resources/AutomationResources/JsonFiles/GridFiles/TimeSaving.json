@@ -3,7 +3,7 @@
     {
       "Id": 1,
       "Test": "test1",
-      "Suite" : "Login333333333",
+      "Suite" : "Login1",
       "Browser": "firefox",
       "Platform": "linux"
 
@@ -12,7 +12,7 @@
   "Node2":
   {
     "Id": 5,
-    "Test": "test1",
+    "Test": "test2",
     "Suite" : "Login2",
     "Browser": "chrome",
     "Platform": "Linux"
