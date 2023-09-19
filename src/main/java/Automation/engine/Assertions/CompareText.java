@@ -1,4 +1,4 @@
-package TestAutomation.Assertions;
+package Automation.engine.Assertions;
 
 import Automation.engine.reportingWorks.AllureStepLogger;
 import org.testng.Assert;

@@ -1,8 +1,8 @@
-package Automation.engine.dataFaker;
+package Automation.engine.dataWorks;
 import com.github.javafaker.Faker;
 
 
-public class dataFaker {
+public class DataFaker {
 
     public static String FakeEmail(){
 

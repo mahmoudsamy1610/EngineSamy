@@ -1,11 +1,11 @@
 package Autofox.users;
 
 //import Autofox.tools.GetAutofoxProperty;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.engine.dataWorks.DataFaker;
 
 public abstract class AdminUsers {
 
-    public String Email;
+    public String Email = DataFaker.FakeEmail();
     public String UserName;
     public String FirstName;
     public String LastName;
@@ -70,5 +70,7 @@ public abstract class AdminUsers {
     }
 
     public void setLoginToken(String loginToken) {this.LoginToken = LoginToken; }
+
+
 }
 

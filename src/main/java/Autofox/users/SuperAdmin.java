@@ -20,9 +20,16 @@ public class SuperAdmin extends AdminUsers {
     }
 
     @Override
-    public void setEmail(String Email) {super.setEmail(Email);}
+    public void setEmail(String Email) {
+        super.setEmail(Email);
+    }
 
     @Override
     public String getEmail() {return super.getEmail();}
 
+
+    public static void main(String[] args) {
+          SuperAdmin Super = new SuperAdmin();
+          System.out.println(Super.getEmail());
+    }
 }
