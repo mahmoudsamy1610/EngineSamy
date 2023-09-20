@@ -1,8 +1,8 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.CMDRunner;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.utils.helpers.CMDRunner;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
 import org.testng.Assert;
 
 public class StaGridLauncher {

@@ -1,9 +1,9 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.PathConverter;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.helpers.CMDRunner;
+import Automation.utils.helpers.PathConverter;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
+import Automation.utils.helpers.CMDRunner;
 import org.testng.Assert;
 
 public class NodeRegister {

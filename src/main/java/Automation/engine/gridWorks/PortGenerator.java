@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.RandomDigitsGenerator;
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.helpers.RandomDigitsGenerator;
+import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 
 public class PortGenerator {

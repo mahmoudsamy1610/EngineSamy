@@ -1,6 +1,6 @@
 package Automation.engine.reportingWorks;
 
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.loggers.EngineLogger;
 import io.qameta.allure.Allure;
 
 public class AllureStepLogger {

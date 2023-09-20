@@ -3,9 +3,12 @@ package TestAutofox.gui;
 import Autofox.pages.DashboardPage;
 import Autofox.autofoxPropertyWorks.GetAutofoxProperty;
 import Autofox.users.SuperAdmin;
+import Autofox.usersStatic.StaticRetoucher;
+import Autofox.usersStatic.StaticSuperAdmin;
 import Automation.engine.browserWorks.BrowserActions;
 import Automation.engine.browserWorks.BrowserRunner;
 import Automation.engine.Assertions.CompareText;
+import Automation.engine.dataWorks.DataWrecker;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -13,6 +16,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import Autofox.pages.AutofoxGenericElements;
 import Autofox.pages.LoginPage;
+import Automation.engine.dataWorks.DataWrecker ;
+
+import static Automation.engine.dataWorks.DataWrecker.Wreck;
 
 //@Listeners(AllureTestNg.class)
 public class AdminLogin {
@@ -23,6 +29,28 @@ public class AdminLogin {
     AutofoxGenericElements autofoxGenericElements;
     DashboardPage dashboardPage ;
     SuperAdmin superAdmin ;
+
+
+    @DataProvider(name = "ValidAdmin")
+    public static Object[][] ValidAdminData() {
+        String[][] dataArr = new String[][]{
+                {StaticSuperAdmin.GetLoginToken()},
+                {StaticRetoucher.GetLoginToken()}
+        };
+        return dataArr ;
+    }
+
+    @DataProvider(name = "InvalidAdmin")
+    public static Object[][] InvalidAdminData() {
+        String[][] dataArr = new String[][]{
+
+                {Wreck(StaticSuperAdmin.GetLoginToken())},
+                {Wreck(StaticRetoucher.GetLoginToken())}
+        };
+        return dataArr ;
+    }
+
+
 
     @BeforeClass
         public void setup(){
@@ -39,15 +67,10 @@ public class AdminLogin {
 
     }
 
-
-    @Test(priority = 1)
+    @Test(priority = 1 , dataProvider = "ValidAdmin")
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Check Admin login with Valid and Invalid credentials")
-        public void TestAdminLogin()   {
-
-        superAdmin = new SuperAdmin();
-        //TestCase Variables
-       String AdminToken =  superAdmin.getEmail();
+    @Description("Check that Admin can login with Valid credentials")
+        public void TestAdminLogin(String AdminToken)   {
 
         //Steps
         loginPage.openLoginPage();
@@ -63,15 +86,10 @@ public class AdminLogin {
     }
 
 
-
-    @Test(priority = 2 )
+    @Test(priority = 2 , dataProvider = "InvalidAdmin")
     @Severity(SeverityLevel.CRITICAL)
-    @Description("invalid Admin cannot login")
-    public void InvalidAdminCannotLogin()   {
-
-        //TestCase Variables
-        String AdminToken=  GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxSuperAdminData","Invalid_SuperAdmin_LoginToken");
-
+    @Description("Check that Admin cannot login with Valid credentials")
+    public void InvalidAdminCannotLogin(String AdminToken)   {
 
         //Steps
         loginPage.openLoginPage();

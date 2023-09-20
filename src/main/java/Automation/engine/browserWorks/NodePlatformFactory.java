@@ -1,6 +1,6 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.loggers.EngineLogger;
 import Automation.engine.reportingWorks.AllureStepLogger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

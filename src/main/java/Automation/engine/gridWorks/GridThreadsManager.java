@@ -1,6 +1,6 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 
 public class GridThreadsManager {

@@ -1,8 +1,8 @@
 package Automation.engine.reportingWorks;
 
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.helpers.CMDRunner;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
+import Automation.utils.helpers.CMDRunner;
 import org.testng.IExecutionListener;
 
 public class AllureReportGenerator implements IExecutionListener {
@@ -33,6 +33,10 @@ public class AllureReportGenerator implements IExecutionListener {
             EngineLogger.EngineExceptionError("Failed Generating Allure Report at : " + AllureReportLPath, E);
 
         }
+    }
+
+    public static void main(String[] args) {
+        GenerateAllureReport();
     }
 
 

@@ -1,7 +1,7 @@
 package Automation.engine.elementWorks;
 
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;

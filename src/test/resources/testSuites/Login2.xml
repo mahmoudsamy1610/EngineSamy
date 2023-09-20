@@ -4,7 +4,7 @@
 <suite  name="Login2"  preserve-order="true" >
 
     <listeners>
-        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun" />
+        <listener class-name="Automation.utils.suiteWorks.SuiteDataGetterByRun" />
     </listeners>
 
 

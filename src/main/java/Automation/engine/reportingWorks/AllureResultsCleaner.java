@@ -1,8 +1,8 @@
 package Automation.engine.reportingWorks;
 
-import Automation.engine.helpers.DirCleaner;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.utils.helpers.DirCleaner;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
 import org.testng.IExecutionListener;
 
 public class AllureResultsCleaner implements IExecutionListener {
