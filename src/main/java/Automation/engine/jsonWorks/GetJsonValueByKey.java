@@ -1,11 +1,8 @@
 package Automation.engine.jsonWorks;
 
-import Automation.engine.loggers.CoreJavaLogger;
-import Automation.engine.loggers.EngineLogger;
+import Automation.engine.loggers.JavaLogger;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +10,7 @@ public class GetJsonValueByKey {
 
     public static List<String> GetValueByNodeKey(List<JsonNode> Nodes, String KeyName) {
         //Just a helper not actually used in the engine
-        CoreJavaLogger.CoreJavaInfo("Fetching list of values of key : " + KeyName+ " using provided -VALUE- node");
+        JavaLogger.JavaInfo("Fetching list of values of key : " + KeyName+ " using provided -VALUE- node");
 
         List<String> KeyValues = new ArrayList<>();
         try {
@@ -24,12 +21,12 @@ public class GetJsonValueByKey {
             }
         }
         if (KeyValues.isEmpty()){
-            CoreJavaLogger.CoreJavaError("The key : " +KeyName+  " is not found , Cannot return list of values");
+            JavaLogger.JavaError("The key : " +KeyName+  " is not found , Cannot return list of values");
             throw new IllegalArgumentException();
         }
 
         }catch (Exception E){
-            CoreJavaLogger.CoreJavaExceptionError("Failed to find key : " +KeyName+  " inside the provided node " , E);
+            JavaLogger.JavaExceptionError("Failed to find key : " +KeyName+  " inside the provided node " , E);
         }
         return KeyValues;
     }
@@ -37,7 +34,7 @@ public class GetJsonValueByKey {
 
 
     public static List <String> GetValueByKeyName (String KeyName , String JsonFileName ) {
-        CoreJavaLogger.CoreJavaInfo("Fetching list of values of : " + KeyName + " from file : " + JsonFileName);
+        JavaLogger.JavaInfo("Fetching list of values of : " + KeyName + " from file : " + JsonFileName);
 
         List<String> KeyValues = new ArrayList<>();
 
@@ -48,14 +45,14 @@ public class GetJsonValueByKey {
             KeyValues = GetValueByNodeKey(TargetNode, KeyName);
 
         } catch (Exception E) {
-        CoreJavaLogger.CoreJavaExceptionError("Invalid json file provided : " + JsonFileName , E);
+        JavaLogger.JavaExceptionError("Invalid json file provided : " + JsonFileName , E);
         }
         return KeyValues;
     }
 
 
     public static List <String> GetValueByContainerKey (String KeyName , String JsonFileName , String NodeDefinerValue) {
-        CoreJavaLogger.CoreJavaInfo("Fetching list of values of : " + KeyName + " ,from file : " + JsonFileName+ " ,Defined by : " + NodeDefinerValue);
+        JavaLogger.JavaInfo("Fetching list of values of : " + KeyName + " ,from file : " + JsonFileName+ " ,Defined by : " + NodeDefinerValue);
 
 
         List<JsonNode> ResultNodes = new ArrayList<>();
@@ -67,7 +64,7 @@ public class GetJsonValueByKey {
             KeyValues = GetValueByNodeKey(TargetNode, KeyName);
 
         }catch (Exception E) {
-            CoreJavaLogger.CoreJavaExceptionError("Invalid json file provided : " + JsonFileName , E);
+            JavaLogger.JavaExceptionError("Invalid json file provided : " + JsonFileName , E);
         }
 
         return KeyValues;

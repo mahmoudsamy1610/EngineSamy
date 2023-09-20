@@ -1,12 +1,14 @@
 package Automation.engine.helpers;
 
+import Automation.engine.loggers.JavaLogger;
+
 import java.util.Random;
 
 public class RandomDigitsGenerator {
 
 
     public static int GenerateRandomNumber(int NumberOfDigits) {
-
+        JavaLogger.JavaInfo("Creating random number of digits count " + NumberOfDigits);
 
         try {
             int min = (int) Math.pow(10, NumberOfDigits - 1);
@@ -15,7 +17,9 @@ public class RandomDigitsGenerator {
             Random rand = new Random();
             return rand.nextInt(max - min + 1) + min;
 
-        }catch (IllegalArgumentException IAE){IAE.getMessage();}
+        }catch (Exception E){
+            JavaLogger.JavaExceptionError("Failed Creating random number of digits count " + NumberOfDigits , E);
+        }
 
       return 0 ;
     }

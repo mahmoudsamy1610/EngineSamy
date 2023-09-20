@@ -1,15 +1,8 @@
 package Automation.engine.suiteWorks;
 
-import Automation.engine.helpers.FileNameGetter;
-import Automation.engine.loggers.CoreJavaLogger;
 import Automation.engine.loggers.EngineLogger;
-import Automation.engine.xmlWorks.XmlParser;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
-import org.testng.ITestResult;
-import org.testng.TestListenerAdapter;
-
-import java.util.List;
 
 public  class SuiteDataGetterByRun implements ITestListener {
 

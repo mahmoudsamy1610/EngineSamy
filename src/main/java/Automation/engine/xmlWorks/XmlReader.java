@@ -1,6 +1,6 @@
 package Automation.engine.xmlWorks;
 
-import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.JavaLogger;
 import Automation.engine.loggers.EngineLogger;
 
 import java.io.FileInputStream;
@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 public class XmlReader {
 
     public static byte[] ReadXml (String XmlRetalivePath)  {
-        CoreJavaLogger.CoreJavaInfo("Reading xml file from " + XmlRetalivePath );
+        JavaLogger.JavaInfo("Reading xml file from " + XmlRetalivePath );
 
         FileInputStream xmlFile ;
         try {

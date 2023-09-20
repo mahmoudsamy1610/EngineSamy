@@ -1,10 +1,8 @@
 package Automation.engine.jsonWorks;
 
-import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.JavaLogger;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.checkerframework.checker.units.qual.K;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GetJsonNodeByKey {
@@ -22,7 +20,7 @@ public class GetJsonNodeByKey {
             }
 
         }catch (Exception E){
-            CoreJavaLogger.CoreJavaExceptionError("Cannot return a -VALUE- node for " + KeyName+ " , from an empty node"  , E);
+            JavaLogger.JavaExceptionError("Cannot return a -VALUE- node for " + KeyName+ " , from an empty node"  , E);
         }
 
         return ResultNodes;
@@ -41,7 +39,7 @@ public class GetJsonNodeByKey {
                 GetContainerNode(ChildNode, KeyName, ChildNode, ResultNodes);
             }
         }catch (Exception E){
-            CoreJavaLogger.CoreJavaExceptionError("Cannot return a -c=Container- node for " + KeyName+ " , from an empty node"  , E);
+            JavaLogger.JavaExceptionError("Cannot return a -c=Container- node for " + KeyName+ " , from an empty node"  , E);
         }
 
         return ResultNodes;

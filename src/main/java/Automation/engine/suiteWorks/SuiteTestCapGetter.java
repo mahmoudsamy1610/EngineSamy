@@ -1,7 +1,7 @@
 package Automation.engine.suiteWorks;
 
 import Automation.engine.jsonWorks.GetJsonValueByKey;
-import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.JavaLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SuiteTestCapGetter {
             NodePlatformTypes = (GetJsonValueByKey.GetValueByContainerKey("Platform", ParaModule, Catcher));
 
         } catch (Exception E) {
-            CoreJavaLogger.CoreJavaExceptionError("Cannot find any platform results from module : " + ParaModule+ " , using this catcher : " +Catcher , E);
+            JavaLogger.JavaExceptionError("Cannot find any platform results from module : " + ParaModule+ " , using this catcher : " +Catcher , E);
         }
         return NodePlatformTypes;
 
@@ -36,7 +36,7 @@ public class SuiteTestCapGetter {
             NodeBrowserTypes = GetJsonValueByKey.GetValueByContainerKey("Browser", ParaModule, Catcher);
 
         } catch (Exception E) {
-            CoreJavaLogger.CoreJavaExceptionError("Cannot find any browser results from module : " + ParaModule + " , using this catcher : " + Catcher, E);
+            JavaLogger.JavaExceptionError("Cannot find any browser results from module : " + ParaModule + " , using this catcher : " + Catcher, E);
         }
 
         return NodeBrowserTypes;

@@ -1,10 +1,8 @@
 package Automation.engine.jsonWorks;
 
-import Automation.engine.loggers.CoreJavaLogger;
-import Automation.engine.loggers.EngineLogger;
+import Automation.engine.loggers.JavaLogger;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class GetJsonNodeByValue {
                 }
             }
         }catch (Exception E){
-            CoreJavaLogger.CoreJavaExceptionError("Failed to get any -Value- node by iterating using value : " + KeyValue, E);
+            JavaLogger.JavaExceptionError("Failed to get any -Value- node by iterating using value : " + KeyValue, E);
         }
         return ResultNodes ;
     }
@@ -42,7 +40,7 @@ public class GetJsonNodeByValue {
                 }
 
             } catch (Exception E){
-            CoreJavaLogger.CoreJavaExceptionError("Failed to get any -Container- node by iterating using value : " + KeyValue, E);
+            JavaLogger.JavaExceptionError("Failed to get any -Container- node by iterating using value : " + KeyValue, E);
             }
         return ResultNodes;
     }

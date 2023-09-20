@@ -1,13 +1,6 @@
 package Automation.engine.propertyWorks;
 
-import Automation.engine.loggers.CoreJavaLogger;
-import Automation.engine.loggers.EngineLogger;
-import org.apache.log4j.PropertyConfigurator;
-
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesReader {

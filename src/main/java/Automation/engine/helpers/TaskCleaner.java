@@ -1,10 +1,12 @@
 package Automation.engine.helpers;
 
+import Automation.engine.loggers.JavaLogger;
+
 public class TaskCleaner {
 
     public static void CleanTasks(String TaskName , String PID) {
-        // PID is case sensitive
-
+        // PID is case-sensitive
+        JavaLogger.JavaInfo("Cleaning background tasks of : " + TaskName);
 
         try {
             String TaskListCommand = "tasklist | findstr \"" + TaskName + "\"";
@@ -12,12 +14,14 @@ public class TaskCleaner {
             String CleanMemoryCommand = TaskListCommand + " & " + TaskKillCommand;
 
             CMDRunner.runCommand(CleanMemoryCommand);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+
+        } catch (Exception E) {
+            JavaLogger.JavaExceptionError("Failed cleaning background tasks of : " + TaskName + " , and PID : " + PID, E);
         }
     }
 
+
     public static void main(String[] args) {
-        CleanTasks("Runtime Broker"  , "RuntimeBroker.exe");
+        CleanTasks("Runtime Broaker"  , "RuntimeBroker.exe");
     }
 }

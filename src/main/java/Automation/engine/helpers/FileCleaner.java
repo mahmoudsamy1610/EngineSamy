@@ -1,23 +1,25 @@
 package Automation.engine.helpers;
 
+import Automation.engine.loggers.JavaLogger;
+
 import java.io.File;
 
 public class FileCleaner {
 
     public static void CleanFile (String FileRelativePath){
+        JavaLogger.JavaInfo("Deleting file from : " + FileRelativePath );
 
         try {
             File File = new File(FileRelativePath);
             if (File.exists()) {
                 File.delete();
-                System.out.println("File deleted successfully");
             }else{
-                System.out.println("File path not found");
+                JavaLogger.JavaError("Cannot find the file at path : " + FileRelativePath);
+                throw new NullPointerException();
             }
 
         } catch (Exception E){
-            System.out.println(E.getMessage());
-
+            JavaLogger.JavaExceptionError("Failed deleting file from : " + FileRelativePath , E);
         }
 
     }

@@ -1,20 +1,29 @@
 package Automation.engine.helpers;
 
+import Automation.engine.loggers.JavaLogger;
+
 import java.util.List;
 
 public class ArrayElementFinder {
 
         public static String FindArrayElement(List<String> List, String ElementToFind) {
-            for (String element : List) {
-                if (element.equals(ElementToFind)) {
-                    return element;
+            JavaLogger.JavaInfo("Picking a specific array element : " + ElementToFind);
+
+            try {
+                for (String element : List) {
+                    if (element.equals(ElementToFind)) {
+                        return element;
+                    }else {
+                        JavaLogger.JavaError("Array element is not found : " + ElementToFind);
+                        throw new NullPointerException();
+                    }
                 }
+            }catch (Exception E){
+                JavaLogger.JavaExceptionError("Failed Picking a specific array element : " + ElementToFind , E);
             }
-            System.out.println("not included in the array");
+
             return null ;
         }
-
-
 
 
     }

@@ -14,40 +14,50 @@ public class EngineLogger {
 
 
     public static void EngineInfo(String Message){
-        System.out.print("\u001B[34m"); //Blue
-        PropertyConfigurator.configure(Log4jPropPath);
-        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-        Logger.info(Line+" : "+Message);
-        System.out.print("\u001B[0m");
+        try {
+            System.out.print("\u001B[34m"); //Blue
+            PropertyConfigurator.configure(Log4jPropPath);
+            int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+            Logger.info(Line + " : " + Message);
+            System.out.print("\u001B[0m");
+        }catch (Exception E) {E.printStackTrace();}
     }
 
     public static void EngineDebug(String Message){
-        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-        Logger.debug(Line+" : "+Message);
+        try {
+            int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+            Logger.debug(Line + " : " + Message);
+        }catch (Exception E) {E.printStackTrace();}
     }
 
     public static void EngineWarn(String Message){
-        System.out.print("\u001B[33m"); //Yellow
-        PropertyConfigurator.configure(Log4jPropPath);
-        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-        Logger.warn(Line+" : "+Message);
-        System.out.print("\u001B[0m");
+        try {
+            System.out.print("\u001B[33m"); //Yellow
+            PropertyConfigurator.configure(Log4jPropPath);
+            int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+            Logger.warn(Line + " : " + Message);
+            System.out.print("\u001B[0m");
+        }catch (Exception E) {E.printStackTrace();}
     }
 
     public static void EngineError(String Message){
-        System.out.print("\u001B[35m"); //Purple
-        PropertyConfigurator.configure(Log4jPropPath);
-        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-        Logger.error(Line+" : "+Message);
-        System.out.print("\u001B[0m");
+        try {
+            System.out.print("\u001B[35m"); //Purple
+            PropertyConfigurator.configure(Log4jPropPath);
+            int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+            Logger.error(Line + " : " + Message);
+            System.out.print("\u001B[0m");
+        }catch (Exception E) {E.printStackTrace();}
     }
 
     public static void EngineExceptionError(String Message , Throwable Exception){
-        System.out.print("\u001B[35m"); //Purple
-        PropertyConfigurator.configure(Log4jPropPath);
-        int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-        Logger.error(Line+" : "+Message , Exception);
-        System.out.print("\u001B[0m");
+        try {
+            System.out.print("\u001B[35m"); //Purple
+            PropertyConfigurator.configure(Log4jPropPath);
+            int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
+            Logger.error(Line + " : " + Message, Exception);
+            System.out.print("\u001B[0m");
+        }catch (Exception E) {E.printStackTrace();}
     }
 
 

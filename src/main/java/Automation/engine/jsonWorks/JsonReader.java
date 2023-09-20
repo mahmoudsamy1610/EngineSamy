@@ -1,17 +1,15 @@
 package Automation.engine.jsonWorks;
 
-import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.JavaLogger;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bytebuddy.implementation.bytecode.Throw;
 
 import java.io.File;
-import java.io.IOException;
 
 public class JsonReader {
 
     public static JsonNode ReadJson(String JsonFileRelativePath) {
-    CoreJavaLogger.CoreJavaInfo("Reading Json file from : " +JsonFileRelativePath );
+    JavaLogger.JavaInfo("Reading Json file from : " +JsonFileRelativePath );
 
         JsonNode RootNode = null;
 
@@ -20,7 +18,7 @@ public class JsonReader {
                 RootNode = objectMapper.readTree(new File(JsonFileRelativePath));
 
             } catch (Exception E) {
-                CoreJavaLogger.CoreJavaExceptionError("Invalid json file provided : " + JsonFileRelativePath, E);
+                JavaLogger.JavaExceptionError("Invalid json file provided : " + JsonFileRelativePath, E);
             }
         return RootNode;
     }

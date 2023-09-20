@@ -1,17 +1,12 @@
 package Automation.engine.jsonWorks;
 
-import Automation.engine.loggers.CoreJavaLogger;
+import Automation.engine.loggers.JavaLogger;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.openqa.selenium.json.Json;
-
-import java.io.File;
-import java.io.IOException;
 
 public class JsonConnector {
 
   public static String ConnectToJson(String JsonFileName) {
-      CoreJavaLogger.CoreJavaInfo("Getting json file : " + JsonFileName + " , from Json files connector");
+      JavaLogger.JavaInfo("Getting json file : " + JsonFileName + " , from Json files connector");
 
       JsonNode FilePathTextNode = null;
 
@@ -21,7 +16,7 @@ public class JsonConnector {
 
 
       } catch (Exception E) {
-          CoreJavaLogger.CoreJavaExceptionError("problem while reading json connector for file : " + JsonFileName, E);
+          JavaLogger.JavaExceptionError("problem while reading json connector for file : " + JsonFileName, E);
       }
       return FilePathTextNode.asText();
   }
