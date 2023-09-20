@@ -2,9 +2,10 @@ package TestAutofox.gui;
 
 import Autofox.pages.DashboardPage;
 import Autofox.autofoxPropertyWorks.GetAutofoxProperty;
+import Autofox.users.SuperAdmin;
 import Automation.engine.browserWorks.BrowserActions;
 import Automation.engine.browserWorks.BrowserRunner;
-import TestAutomation.Assertions.CompareText;
+import Automation.engine.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -21,7 +22,7 @@ public class AdminLogin {
     LoginPage loginPage ;
     AutofoxGenericElements autofoxGenericElements;
     DashboardPage dashboardPage ;
-
+    SuperAdmin superAdmin ;
 
     @BeforeClass
         public void setup(){
@@ -36,10 +37,6 @@ public class AdminLogin {
         autofoxGenericElements = new AutofoxGenericElements(driver) ;
         dashboardPage = new DashboardPage(driver);
 
-
-        //Objects
-
-
     }
 
 
@@ -48,10 +45,9 @@ public class AdminLogin {
     @Description("Check Admin login with Valid and Invalid credentials")
         public void TestAdminLogin()   {
 
+        superAdmin = new SuperAdmin();
         //TestCase Variables
-        String AdminToken=  GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxSuperAdminData","Valid_SuperAdmin_LoginToken");
-
-
+       String AdminToken =  superAdmin.getEmail();
 
         //Steps
         loginPage.openLoginPage();
