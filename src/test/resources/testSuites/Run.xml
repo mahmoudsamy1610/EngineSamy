@@ -11,12 +11,9 @@
     </listeners>
 
 
-
     <suite-files >
         <suite-file path="Login.xml"/>
-
-
-        <!-- Add more suite files as needed -->
+        <suite-file path="Login2.xml"/>
     </suite-files>
 
 

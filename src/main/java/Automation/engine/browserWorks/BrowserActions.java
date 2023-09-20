@@ -1,11 +1,10 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.reportingWorks.AllureStepLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -22,12 +21,13 @@ public class BrowserActions {
     //Method to navigate to specific URL
     public static void goToUrl(WebDriver Driver, String Url , String PageName){
         try {
+
+            EngineLogger.EngineInfo("redirecting to : " + PageName + " Page " + " at : " +  Url  );
             Driver.get(Url);
             AllureStepLogger.logStep("Go to " + PageName + " page" );
-            Loggers.Info("Go to " + PageName + " Page " + " at : " +  Url  );
         }
         catch (Exception E) {
-            Loggers.ExceptionError("Failed to go to " + PageName + " Page " + " at : " +  Url , E);
+            EngineLogger.EngineExceptionError("Failed to go to " + PageName + " Page " + " at : " +  Url , E);
             AllureStepLogger.logStep("Go to " + PageName + " page" );
             Assert.fail("Failed to go to " + PageName + " Page " + " at : " +  Url , E);
 
@@ -40,12 +40,12 @@ public class BrowserActions {
 
         if (MaxWindow == true ){
             try{
+                EngineLogger.EngineInfo("Maximizing Browser Window");
                 driver.manage().window().maximize();
                 AllureStepLogger.logStep("Maximize browser window");
-                Loggers.Info("Maximizing Browser Window");
             }
             catch (Exception E){
-                Loggers.ExceptionError("Failed to Maximize window" , E);
+                EngineLogger.EngineExceptionError("Failed to Maximize window" , E);
                 AllureStepLogger.logStep("Maximize browser window");
                 Assert.fail("Failed to Maximize window" , E);
 
@@ -55,12 +55,12 @@ public class BrowserActions {
            try {
                Dimension dimension = new Dimension(WindowWidth, WindowHeight );
                 driver.manage().window().setSize(dimension);
-               Loggers.Info("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
+               EngineLogger.EngineInfo("Setting window size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
                 AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
 
            }
            catch (Exception E){
-               Loggers.ExceptionError("unknown Error while controlling browser window dimensions Width = " + WindowWidth + " and,  Height = " +  WindowHeight  , E);
+               EngineLogger.EngineExceptionError("unknown Error while controlling browser window dimensions Width = " + WindowWidth + " and,  Height = " +  WindowHeight  , E);
                AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight);
                Assert.fail("unknown Error while controlling browser window dimensions Width = " + WindowWidth + " and,  Height = " +  WindowHeight , E);
            }
@@ -74,11 +74,11 @@ public class BrowserActions {
     public static void Shutdown(WebDriver driver) {
         try {
 
+            EngineLogger.EngineInfo("Closing Browser");
             AllureStepLogger.logStep("Close Browser");
-            Loggers.Info("Close Browser");
             driver.quit();
         } catch (Exception E) {
-            Loggers.ExceptionError("Unknown Error while closing  browser", E);
+            EngineLogger.EngineExceptionError("Unknown Error while closing  browser", E);
             AllureStepLogger.logStep("Close Browser");
             Assert.fail("Unknown Error while closing  browser", E);
 

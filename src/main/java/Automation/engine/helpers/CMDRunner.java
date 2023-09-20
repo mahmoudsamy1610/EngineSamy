@@ -1,5 +1,7 @@
 package Automation.engine.helpers;
 
+import Automation.engine.loggers.JavaLogger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,28 +9,29 @@ import java.util.List;
 
 public class CMDRunner {
 
-    public  static void runCommand(String cmd) {
+    public  static void runCommand(String Command) {
+        JavaLogger.JavaInfo("Running CMD command : " + Command);
+
         try {
             ProcessBuilder processBuilder = new ProcessBuilder();
-            processBuilder.command("cmd", "/c", cmd);
+            processBuilder.command("cmd", "/c", Command);
             Process process = processBuilder.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                JavaLogger.JavaInfo("Line : " + line);
             }
 
             int exitCode = process.waitFor();
             if (exitCode == 0) {
-                System.out.println("Command executed successfully.");
+                JavaLogger.JavaInfo("CMD command ran successfully : " + Command);
             } else {
-                System.out.println("Command execution failed with exit code: " + exitCode);
+                JavaLogger.JavaError("Running interrupted with exit code : " + exitCode );
+                throw new InterruptedException();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (Exception E) {
+            JavaLogger.JavaExceptionError("Failed running CMD command : " + Command , E);
         }
     }
 }

@@ -42,10 +42,8 @@ public class DirCleaner {
     public static void CleanDir(String DirRelativePath) {
 
         try {
-
             File directory = new File(DirRelativePath);
             File[] files = directory.listFiles();
-
 
                 for (File file : files) {
                     if (file.isFile() || file.isDirectory()) {

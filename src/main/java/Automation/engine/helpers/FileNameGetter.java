@@ -1,10 +1,13 @@
 package Automation.engine.helpers;
 
+import Automation.engine.loggers.JavaLogger;
+
 import java.io.File;
 
 public class FileNameGetter {
 
     public static String GetFileName(String FileRelativePath) {
+        JavaLogger.JavaInfo("Getting file name of : " + FileRelativePath);
 
         try {
             String FileName;
@@ -12,9 +15,8 @@ public class FileNameGetter {
             FileName = file.getName();
             return FileName;
 
-        } catch (Exception e) {
-            e.getMessage();
-            System.out.println("an Error occurred while Getting the file name");
+        } catch (Exception E) {
+            JavaLogger.JavaExceptionError("Failed getting file name of : " + FileRelativePath , E);
         }
 
         return null;

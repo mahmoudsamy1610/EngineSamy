@@ -1,7 +1,7 @@
 package Automation.engine.browserWorks;
 
 import Automation.engine.listeners.EventListener;
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.reportingWorks.AllureStepLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +22,7 @@ public class BrowserFactory {
 
         if (BrowserType.equalsIgnoreCase("Chrome")) {
             try{
+                EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -34,47 +35,49 @@ public class BrowserFactory {
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Loggers.Info("Initializing driver local}" + BrowserType);
                 return decoratedDriver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing browser {Local}" + BrowserType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Local} " + BrowserType , E);
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Assert.fail("Unknown error while Initializing browser {Local}" + BrowserType , E);
+                Assert.fail("Unknown error while Initializing browser {Local} " + BrowserType , E);
             }
 
         } else if (BrowserType.equalsIgnoreCase("Firefox") ) {
             try{
+                EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
+
+
                 WebDriver driver;
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Loggers.Info("Initializing driver local}" + BrowserType);
                 return driver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing browser {Local}" + BrowserType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Local} " + BrowserType , E);
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Assert.fail("Unknown error while Initializing browser {Local}" + BrowserType, E);
+                Assert.fail("Unknown error while Initializing browser {Local} " + BrowserType, E);
             }
 
         }else if (BrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try{
+                EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
+
                 WebDriver driver;
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Loggers.Info("Initializing driver local}" + BrowserType);
                 return driver;
             }
             catch (Exception E) {
-                Loggers.ExceptionError("Unknown error while Initializing browser {Local}" + BrowserType , E);
+                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Local} " + BrowserType , E);
                 AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Assert.fail("Unknown error while Initializing browser {Local}" + BrowserType, E);
+                Assert.fail("Unknown error while Initializing browser {Local} " + BrowserType, E);
             }
 
         } else {
-            Loggers.Error("Unknown error while Initializing browser {Local} : " + BrowserType);
+            EngineLogger.EngineError("Unknown error while Initializing browser {Local} : " + BrowserType);
             AllureStepLogger.logStep("Initializing driver {Local} : " + BrowserType);
             Assert.fail("Unknown error while Initializing browser {Local} : " + BrowserType);
         }

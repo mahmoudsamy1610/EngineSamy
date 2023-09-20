@@ -1,6 +1,6 @@
 package Automation.engine.browserWorks;
 
-import Automation.engine.loggers.Loggers;
+import Automation.engine.loggers.EngineLogger;
 import Automation.engine.reportingWorks.AllureStepLogger;
 import Automation.engine.setupWorks.SetupFactory;
 import org.openqa.selenium.WebDriver;
@@ -13,14 +13,15 @@ public class BrowserRunner {
 
 
             try {
+                EngineLogger.EngineInfo("Starting Browser ......");
+
                 WebDriver driver;
-             driver = SetupFactory.Run();
-             AllureStepLogger.logStep("Start Browser");
-             Loggers.Info("Start Browser");
-             return driver;
+                driver = SetupFactory.Run();
+                AllureStepLogger.logStep("Start Browser");
+                    return driver;
                 }
                 catch (Exception E ){
-                    Loggers.ExceptionError("(unknown) Error while Start browser" , E);
+                    EngineLogger.EngineExceptionError("(unknown) Error while Start browser" , E);
                     AllureStepLogger.logStep("Start browser");
                     Assert.fail("(unknown) Error while Start browser", E);
 

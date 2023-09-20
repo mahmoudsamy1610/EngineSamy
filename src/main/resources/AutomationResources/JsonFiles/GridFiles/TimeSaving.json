@@ -3,7 +3,7 @@
     {
       "Id": 1,
       "Test": "test1",
-      "Suite" : "Login",
+      "Suite" : "Login1",
       "Browser": "firefox",
       "Platform": "linux"
 

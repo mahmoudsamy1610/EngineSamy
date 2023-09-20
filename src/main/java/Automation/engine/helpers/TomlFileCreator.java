@@ -1,23 +1,23 @@
 package Automation.engine.helpers;
 
+import Automation.engine.loggers.JavaLogger;
+
 import java.io.FileWriter;
-import java.io.IOException;
 
 
 public class TomlFileCreator {
 
-
-
         public static void CreateToml(String Content , String TomlRelativePath) {
 
+            JavaLogger.JavaInfo("Creating TOML file at : " + TomlRelativePath);
 
-                try (FileWriter writer = new FileWriter(TomlRelativePath)) {
+            try {
+                    FileWriter writer = new FileWriter(TomlRelativePath) ;
                     writer.write(Content);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (Exception E) {
+                    JavaLogger.JavaExceptionError("Failed creating TOML file at : " + TomlRelativePath , E);
                 }
 
-                System.out.println("TOML file created and filled successfully.");
             }
     }
 
