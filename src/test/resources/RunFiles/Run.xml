@@ -12,8 +12,8 @@
 
 
     <suite-files >
-        <suite-file path="Login.xml"/>
-        <suite-file path="Login2.xml"/>
+        <suite-file path="/testSuites/Login.xml"/>
+        <suite-file path="/testSuites/Login2.xml"/>
     </suite-files>
 
 

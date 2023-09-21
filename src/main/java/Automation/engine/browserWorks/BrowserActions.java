@@ -20,11 +20,11 @@ public class BrowserActions {
 
     //Method to navigate to specific URL
     public static void goToUrl(WebDriver Driver, String Url , String PageName){
-        try {
+        EngineLogger.EngineInfo("redirecting to : " + PageName + " Page " + " at : " +  Url  );
+        AllureStepLogger.logStep("Go to " + PageName + " page" );
 
-            EngineLogger.EngineInfo("redirecting to : " + PageName + " Page " + " at : " +  Url  );
+        try {
             Driver.get(Url);
-            AllureStepLogger.logStep("Go to " + PageName + " page" );
         }
         catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to go to " + PageName + " Page " + " at : " +  Url , E);
@@ -38,23 +38,24 @@ public class BrowserActions {
     //Method to size the browser window
     public static void SetWindowSize(WebDriver driver) {
 
+
         if (MaxWindow == true ){
             try{
-                EngineLogger.EngineInfo("Maximizing Browser Window");
                 driver.manage().window().maximize();
+
+                EngineLogger.EngineInfo("Maximizing Browser Window");
                 AllureStepLogger.logStep("Maximize browser window");
             }
             catch (Exception E){
                 EngineLogger.EngineExceptionError("Failed to Maximize window" , E);
                 AllureStepLogger.logStep("Maximize browser window");
                 Assert.fail("Failed to Maximize window" , E);
-
             }
-
         }else {
            try {
                Dimension dimension = new Dimension(WindowWidth, WindowHeight );
                 driver.manage().window().setSize(dimension);
+
                EngineLogger.EngineInfo("Setting window size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
                 AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
 
@@ -72,10 +73,10 @@ public class BrowserActions {
 
 
     public static void Shutdown(WebDriver driver) {
-        try {
+        EngineLogger.EngineInfo("Closing Browser");
+        AllureStepLogger.logStep("Close Browser");
 
-            EngineLogger.EngineInfo("Closing Browser");
-            AllureStepLogger.logStep("Close Browser");
+        try {
             driver.quit();
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Unknown Error while closing  browser", E);

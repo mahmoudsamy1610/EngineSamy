@@ -1,5 +1,6 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.helpers.StringConcatenator;
 import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.suiteWorks.SuiteDataGetterByXml;
@@ -16,22 +17,24 @@ public class SuiteNodeWrapper {
     public static  List <String> WrapNodeSuitePlatforms() {
 
 
-        String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
+        String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
+        String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
+        String RunFileRelativePath = StringConcatenator.Concatenate(RunFileDirPath,RunXmlFileName);
         List<String> SuiteNames = SuiteDataGetterByXml.GetSuiteNamesByXmlPath(RunFileRelativePath);
         List<String> NodePlatformTypes = new ArrayList<>();
         List<String> Platforms = new ArrayList<>();
 
+        EngineLogger.EngineInfo("Wrapping all platforms found from provided suite names : " + SuiteNames + " --->" + Platforms);
+
         try {
             for (String SuiteName : SuiteNames) {
-                EngineLogger.EngineInfo("Wrapping all Browsers from suite level " + Platforms);
                 Platforms = SuiteTestCapGetter.CatchPlatforms(SuiteName);
                 NodePlatformTypes.addAll(Platforms);
-
+                EngineLogger.EngineInfo("Catch platform from test name : " + SuiteName + " --->" + Platforms);
             }
 
         } catch (Exception E) {
-            EngineLogger.EngineExceptionError("Failed wrapping all platforms from suite level " + Platforms, E);
-            Assert.fail("Failed wrapping all platforms from suite level " + Platforms, E);
+            EngineLogger.EngineExceptionError("Failed Wrapping all platforms found from provided test names : " + SuiteNames + " --->" + Platforms, E);
         }
 
 
@@ -43,21 +46,24 @@ public class SuiteNodeWrapper {
     public static  List <String> WrapNodeSuiteBrowsers() {
 
 
-        String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
-        List<String> TestNames = SuiteDataGetterByXml.GetSuiteNamesByXmlPath(RunFileRelativePath);
+        String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
+        String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
+        String RunFileRelativePath = StringConcatenator.Concatenate(RunFileDirPath,RunXmlFileName);
+        List<String> SuiteNames = SuiteDataGetterByXml.GetSuiteNamesByXmlPath(RunFileRelativePath);
         List<String> NodeBrowserTypes = new ArrayList<>();
         List<String> Browsers = new ArrayList<>();
 
+        EngineLogger.EngineInfo("Wrapping all platforms found from provided test names : " + SuiteNames);
+
         try {
-            for (String TestName : TestNames) {
-                Browsers = SuiteTestCapGetter.CatchBrowsers(TestName);
+            for (String SuiteName : SuiteNames) {
+                Browsers = SuiteTestCapGetter.CatchBrowsers(SuiteName);
                 NodeBrowserTypes.addAll(Browsers);
-                EngineLogger.EngineInfo("Wrapping all Browsers from suite level " + Browsers);
+                EngineLogger.EngineInfo("Catch browser from test name : " + SuiteName + " --->" + Browsers);
 
             }
         } catch (Exception E) {
-            EngineLogger.EngineExceptionError("Failed wrapping all Browsers from suite level " + Browsers, E);
-            Assert.fail("Failed wrapping all Browsers from suite level " + Browsers, E);
+            EngineLogger.EngineExceptionError("Failed Wrapping all browsers found from provided test names : " + SuiteNames + " --->" + Browsers, E);
         }
         return NodeBrowserTypes;
     }

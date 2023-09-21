@@ -1,5 +1,6 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.helpers.StringConcatenator;
 import Automation.engine.helpers.StringPicker;
 import Automation.engine.loggers.EngineLogger;
 import Automation.engine.propertyWorks.PropertyGetter;
@@ -12,17 +13,15 @@ public class NodePathGenerator {
 
 
     public static String GenerateNodeTomlName(String  NodePlatformType , String NodeBrowserType ) {
+        EngineLogger.EngineInfo("Creating node TOML file name for : " +NodePlatformType+ " & " + NodeBrowserType);
 
         String NodeTomlName = null;
 
         try {
-            EngineLogger.EngineInfo("Creating node TOML file name : " +NodePlatformType + NodeBrowserType);
-
-            NodeTomlName = NodePlatformType + NodeBrowserType + "Node";
+            NodeTomlName = StringConcatenator.Concatenate(NodePlatformType, NodeBrowserType , "Node");
 
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to Create node TOML file name : " +NodePlatformType + NodeBrowserType , E);
-            Assert.fail("Failed to Create node TOML file name : " +NodePlatformType +  NodeBrowserType , E);
         }
         return NodeTomlName;
     }
@@ -31,16 +30,16 @@ public class NodePathGenerator {
     public static String GenerateNodeTomlPathOnly(String  NodePlatformType , String NodeBrowserType) {
 
         String NodeRelativePath = null;
-        try {
 
+        try {
             String NodeGeneralPath = PropertyGetter.GetPropertyValue("ParaRunData", "NodePathDir");
-            NodeRelativePath = NodeGeneralPath + NodePlatformType + "\\" + NodeBrowserType;
-            EngineLogger.EngineInfo("Deciding node TOML file path at : " + NodeRelativePath);
+            NodeRelativePath = StringConcatenator.Concatenate(NodeGeneralPath,NodePlatformType,"\\", NodeBrowserType);
+            EngineLogger.EngineInfo("Generating node TOML file path at : " + NodeRelativePath);
 
 
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to Decide node TOML file path at : " + NodeRelativePath, E);
-            Assert.fail("Failed to Decide node TOML file path at : " + NodeRelativePath, E);
+            Assert.fail("Failed Generating node TOML file path at : " + NodeRelativePath, E);
         }
         return NodeRelativePath;
     }
@@ -50,18 +49,17 @@ public class NodePathGenerator {
     public static String GenerateNodeTomlFullPath(String  NodePlatformType , String NodeBrowserType) {
 
         String NodeRelativePath = null;
-        try {
 
+        try {
             int Port = PortGenerator.GenerateHubPort(4);
             String NodeRelativeDirPath = GenerateNodeTomlPathOnly(NodePlatformType, NodeBrowserType);
             String NodeTomlName = GenerateNodeTomlName(NodePlatformType, NodeBrowserType);
-            NodeRelativePath = NodeRelativeDirPath + "\\" + NodeTomlName + "_" + Port + ".toml";
-            EngineLogger.EngineInfo("Creating node TOML file FULL path : " + NodeRelativePath);
+            NodeRelativePath = StringConcatenator.Concatenate(NodeRelativeDirPath , "\\" , NodeTomlName , "_" + Port , ".toml");
+            EngineLogger.EngineInfo("Generating node TOML file FULL path : " + NodeRelativePath);
 
 
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to Created node TOML file FULL path : " + NodeRelativePath, E);
-            Assert.fail("Failed to Created node TOML file FULL path : " + NodeRelativePath, E);
         }
 
         return NodeRelativePath;
@@ -89,7 +87,7 @@ public class NodePathGenerator {
 
     public static void main(String[] args) {
 
-        String path = GenerateNodeTomlFullPath("Linux" , "chrome");
+        String path = GenerateNodeTomlFullPath("" , "chrome");
         GetNodePort(path);
     }
 

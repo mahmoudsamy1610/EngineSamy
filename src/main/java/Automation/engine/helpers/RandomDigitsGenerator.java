@@ -13,9 +13,15 @@ public class RandomDigitsGenerator {
         try {
             int min = (int) Math.pow(10, NumberOfDigits - 1);
             int max = (int) Math.pow(10, NumberOfDigits) - 1;
-
             Random rand = new Random();
-            return rand.nextInt(max - min + 1) + min;
+            int ResultRandom = rand.nextInt(max - min + 1) + min;
+
+            if (ResultRandom == 0){
+                JavaLogger.JavaError("Error occurred while generating random number of digits :  " + NumberOfDigits);
+                throw new IllegalArgumentException();
+            }
+
+            return ResultRandom;
 
         }catch (Exception E){
             JavaLogger.JavaExceptionError("Failed Creating random number of digits count " + NumberOfDigits , E);

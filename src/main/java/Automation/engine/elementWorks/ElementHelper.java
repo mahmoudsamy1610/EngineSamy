@@ -29,7 +29,6 @@ public class ElementHelper {
 
         catch (Exception E){
             EngineLogger.EngineExceptionError("Failed to locate element : " + ElementName + "By Locator :" + Locator , E );
-            Assert.fail("Failed to locate element : " + ElementName , E );
         }
         return null;
     }

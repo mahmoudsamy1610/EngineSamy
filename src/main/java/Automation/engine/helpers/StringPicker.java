@@ -40,7 +40,6 @@ public class StringPicker {
 
         try {
             String ExtractedString = InputString.substring(StartIndex , EndIndex);
-
             return ExtractedString;
 
         } catch (Exception E) {
