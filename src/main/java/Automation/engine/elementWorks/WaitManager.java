@@ -14,19 +14,19 @@ public class WaitManager {
 
     public static WebDriverWait useExplicitWait(WebDriver driver) {
 
-        int WaitTime =Integer.parseInt(PropertyGetter.GetPropertyValue("Time","ExplicitWait"));
+        int WaitTime = 0;
 
         try {
+            WaitTime = Integer.parseInt(PropertyGetter.GetPropertyValue("Time", "ExplicitWait"));
+
             EngineLogger.EngineInfo("Performing explicit wait for : " + WaitTime);
 
             WebDriverWait wait;
-            wait =  new WebDriverWait(driver, Duration.ofSeconds(WaitTime));
-               return wait;
-        }
+            wait = new WebDriverWait(driver, Duration.ofSeconds(WaitTime));
+            return wait;
 
-        catch (Exception E) {
-            EngineLogger.EngineExceptionError("Failed to wait for an element for : " + WaitTime , E );
-            Assert.fail("Failed to wait for an element for : " + WaitTime , E );
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Failed to wait for an element for : " + WaitTime, E);
         }
         return null;
     }

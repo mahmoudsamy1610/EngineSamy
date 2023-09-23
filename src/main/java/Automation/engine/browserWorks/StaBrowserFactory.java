@@ -20,10 +20,12 @@ public class StaBrowserFactory {
 
 
     public static WebDriver SetStaBrowserType(String StaBrowserType){
+        EngineLogger.EngineInfo("Initializing driver {Stand alone grid} " + StaBrowserType);
+        AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
+
 
         if (StaBrowserType.equalsIgnoreCase("Chrome")) {
             try{
-                EngineLogger.EngineInfo("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -37,8 +39,6 @@ public class StaBrowserFactory {
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
 
-                AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
-
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -49,7 +49,6 @@ public class StaBrowserFactory {
 
         } else if (StaBrowserType.equalsIgnoreCase("Firefox") ) {
             try{
-                EngineLogger.EngineInfo("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -58,13 +57,10 @@ public class StaBrowserFactory {
                 String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");  ;
                 URL url = new URL(StaGridUrl);
 
-
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 driver = new RemoteWebDriver(url, firefoxOptions);
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-
-                AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -75,7 +71,6 @@ public class StaBrowserFactory {
 
         }else if (StaBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
             try{
-                EngineLogger.EngineInfo("Initializing driver {Stand alone grid} " + StaBrowserType);
 
                 WebDriver driver;
                 WebDriverListener listener ;
@@ -84,13 +79,10 @@ public class StaBrowserFactory {
                 String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");  ;
                 URL url = new URL(StaGridUrl);
 
-
                 EdgeOptions edgeOptions = new EdgeOptions();
                 driver = new RemoteWebDriver(url, edgeOptions);
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-
-                AllureStepLogger.logStep("Initializing driver {Stand alone grid} " + StaBrowserType);
                 return decoratedDriver;
             }
             catch (Exception E) {

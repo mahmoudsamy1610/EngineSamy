@@ -55,7 +55,7 @@ public class XmlParser {
 
 
     public static String FindXmlAttribute(String XmlRelativePath, String TagName, String AttName){
-        JavaLogger.JavaInfo("Fetching single attribute named : " + AttName + " ,using : " + TagName + " ,in file : " + XmlRelativePath );
+        JavaLogger.JavaInfo("Fetching single attribute named : " + AttName + " ,using : " + TagName + " ,in file : " + XmlRelativePath);
 
         try {
             File xmlFile = new File(XmlRelativePath);

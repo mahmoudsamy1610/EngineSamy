@@ -7,10 +7,8 @@ public class CompareText {
 
     public static void CheckText(String ActualText, String ExpectedText, String ExpectedTextName) {
 
-
         AllureStepLogger.logStep("Check that  [" + ExpectedTextName + "] is [" + ActualText + "]");
         Assert.assertEquals(ActualText, ExpectedText);
-
 
     }
 

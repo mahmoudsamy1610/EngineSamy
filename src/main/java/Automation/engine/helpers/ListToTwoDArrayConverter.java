@@ -19,6 +19,7 @@ public class ListToTwoDArrayConverter {
                 TwoDArray[i][0] = List1.get(i);
                 TwoDArray[i][1] = List2.get(i);
                 //Here you managed to gather the two columns of the first row ONLY
+
             }
             for (String[] row : TwoDArray) {
                 for (String cell : row) {

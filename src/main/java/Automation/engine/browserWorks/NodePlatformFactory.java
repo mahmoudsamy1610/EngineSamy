@@ -8,18 +8,17 @@ import org.testng.Assert;
 public class NodePlatformFactory {
 
     public static WebDriver SetNodePlatformType(String NodePlatformType, String NodeBrowserType  ) {
+        EngineLogger.EngineInfo("Selected node platform type is found : " + NodePlatformType);
+        AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
 
 
         if (NodePlatformType.equalsIgnoreCase("Windows 10")) {
 
             try {
-                EngineLogger.EngineInfo("Selected node platform type is found : " + NodePlatformType);
-
                 WebDriver driver;
                 driver = NodeBrowserFactory.SetNodeBrowserType(NodePlatformType, NodeBrowserType);
-                AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
-
                 return driver;
+
             }catch (Exception E){
                 EngineLogger.EngineExceptionError("Cannot find a node for selected platform type : " + NodePlatformType , E);
                 AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
@@ -30,12 +29,10 @@ public class NodePlatformFactory {
         } else if (NodePlatformType.equalsIgnoreCase("Windows 11")) {
 
             try {
-                EngineLogger.EngineInfo("Selected node platform type is found : " + NodePlatformType);
-
                 WebDriver driver;
                 driver = NodeBrowserFactory.SetNodeBrowserType(NodePlatformType, NodeBrowserType);
-                AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
                 return driver;
+
             }catch (Exception E) {
                 EngineLogger.EngineExceptionError("Cannot find a node for selected platform type : " + NodePlatformType , E);
                 AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
@@ -45,12 +42,10 @@ public class NodePlatformFactory {
         } else if (NodePlatformType.equalsIgnoreCase("MacOs")) {
 
             try {
-                EngineLogger.EngineInfo("Selected node platform type is found : " + NodePlatformType);
-
                 WebDriver driver;
                 driver = NodeBrowserFactory.SetNodeBrowserType(NodePlatformType, NodeBrowserType);
-                AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
                 return driver;
+
             }catch (Exception E) {
                 EngineLogger.EngineExceptionError("Cannot find a node for selected platform type : " + NodePlatformType , E);
                 AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
@@ -60,12 +55,10 @@ public class NodePlatformFactory {
         } else if (NodePlatformType.equalsIgnoreCase("Linux")) {
 
             try {
-                EngineLogger.EngineInfo("Selected node platform type is found : " + NodePlatformType);
-
                 WebDriver driver;
                 driver = NodeBrowserFactory.SetNodeBrowserType(NodePlatformType, NodeBrowserType);
-                AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);
                 return driver;
+
             }catch (Exception E) {
                 EngineLogger.EngineExceptionError("Cannot find a node for selected platform type : " + NodePlatformType , E);
                 AllureStepLogger.logStep("Selected node platform type is found : " + NodePlatformType);

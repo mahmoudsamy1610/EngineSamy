@@ -22,11 +22,11 @@ public class NodeBrowserFactory {
 
 
     public static WebDriver SetNodeBrowserType(String NodePlatformType , String NodeBrowserType ){
+        EngineLogger.EngineInfo("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
+        AllureStepLogger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
 
         if (NodeBrowserType.equalsIgnoreCase("Chrome")) {
             try{
-
-                EngineLogger.EngineInfo("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -39,9 +39,8 @@ public class NodeBrowserFactory {
                 driver = new RemoteWebDriver(url, chromeOptions);
                 listener = new EventListener();
                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-
-                AllureStepLogger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
+
             }
             catch (Exception E) {
                 EngineLogger.EngineExceptionError("Unknown error while Initializing Chrome browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
@@ -50,9 +49,8 @@ public class NodeBrowserFactory {
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("Firefox") ) {
-            try{
-                EngineLogger.EngineInfo("Initializing Firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
 
+            try{
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -65,9 +63,8 @@ public class NodeBrowserFactory {
                 driver = new RemoteWebDriver(url, firefoxOptions);
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-
-                AllureStepLogger.logStep("Initializing firefox driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
+
             }
             catch (Exception E) {
                 EngineLogger.EngineExceptionError("Unknown error while Initializing FireFox browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
@@ -76,9 +73,8 @@ public class NodeBrowserFactory {
             }
 
         } else if (NodeBrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
-            try {
-                EngineLogger.EngineInfo("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
 
+            try {
                 WebDriver driver;
                 WebDriverListener listener;
                 WebDriver decoratedDriver;
@@ -91,9 +87,8 @@ public class NodeBrowserFactory {
                 driver = new RemoteWebDriver(url, edgeOptions);
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-
-                AllureStepLogger.logStep("Initializing Edge driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                 return decoratedDriver;
+
             }
             catch (Exception E) {
                 EngineLogger.EngineExceptionError("Unknown error while Initializing Edge browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
@@ -102,9 +97,8 @@ public class NodeBrowserFactory {
             }
         }
              else if (NodeBrowserType.equalsIgnoreCase("Safari")) {
-                try{
-                    EngineLogger.EngineInfo("Initializing Edge driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
 
+                try{
                     WebDriver driver;
                     WebDriverListener listener ;
                     WebDriver decoratedDriver;
@@ -117,9 +111,8 @@ public class NodeBrowserFactory {
                     driver = new RemoteWebDriver(url, safariOptions);
                     listener = new EventListener();
                     decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-
-                    AllureStepLogger.logStep("Initializing Safari driver {Grid node} "+ NodeBrowserType + " on : " + NodePlatformType);
                     return decoratedDriver;
+
                 }
                 catch (Exception E) {
                     EngineLogger.EngineExceptionError("Unknown error while Initializing Safari browser {Grid node} : " + NodeBrowserType + " on : " + NodePlatformType , E);
