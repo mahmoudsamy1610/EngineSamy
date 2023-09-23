@@ -18,7 +18,6 @@ public class NodeCapCoupler {
 
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to couple : " + NodePlatformTypes  + NodeBrowserTypes, E);
-            Assert.fail("Failed to couple : " + NodePlatformTypes  + NodeBrowserTypes, E);
         }
         return NodeCaps;
 

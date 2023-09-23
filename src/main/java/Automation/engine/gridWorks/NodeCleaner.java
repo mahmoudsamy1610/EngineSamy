@@ -22,7 +22,6 @@ public class NodeCleaner {
 
         }catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to clean Node file at : " + NodeDirRelativePath, E);
-            Assert.fail("Failed to clean Node file at : " + NodeDirRelativePath, E);
         }
 
 

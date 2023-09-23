@@ -10,14 +10,12 @@ public class BrowserRunner {
 
 
     public static WebDriver StartBrowser(){
+        EngineLogger.EngineInfo("Starting Browser ......");
+        AllureStepLogger.logStep("Start Browser");
 
-
-            try {
-                EngineLogger.EngineInfo("Starting Browser ......");
-
+        try {
                 WebDriver driver;
                 driver = SetupFactory.Run();
-                AllureStepLogger.logStep("Start Browser");
                     return driver;
                 }
                 catch (Exception E ){

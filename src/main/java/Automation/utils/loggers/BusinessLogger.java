@@ -16,7 +16,7 @@ public class BusinessLogger {
         try {
             PropertyConfigurator.configure(Log4jPropPath);
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-            Logger.info(Line + " : " + Message);
+            Logger.info("Line : -"+Line + "- : " + Message);
         }catch (Exception E) {E.printStackTrace();}
     }
 
@@ -24,37 +24,46 @@ public class BusinessLogger {
         try {
             PropertyConfigurator.configure(Log4jPropPath);
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-            Logger.debug(Line + " : " + Message);
+            Logger.debug("Line : -"+Line + "- : " + Message);
         }catch (Exception E) {E.printStackTrace();}
     }
 
     public static void  BusinessWarn(String Message){
         try {
-            System.out.print("\u001B[33m"); //Yellow
             PropertyConfigurator.configure(Log4jPropPath);
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-            Logger.warn(Line + " : " + Message);
+            String ClassName = new Throwable().getStackTrace()[1].getClassName();
+
+            System.out.print("\u001B[33m"); //Yellow
+            Logger.warn(ClassName+" - "+Line + " : " + Message);
             System.out.print("\u001B[0m");
+
         }catch (Exception E) {E.printStackTrace();}
     }
 
     public static void  BusinessError(String Message){
         try {
-            System.out.print("\u001B[36m"); //Cyan
             PropertyConfigurator.configure(Log4jPropPath);
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-            Logger.error(Line + " : " + Message);
+            String ClassName = new Throwable().getStackTrace()[1].getClassName();
+
+            System.out.print("\u001B[36m"); //Cyan
+            Logger.error(ClassName+" - "+Line + " : " + Message);
             System.out.print("\u001B[0m");
+
         }catch (Exception E) {E.printStackTrace();}
     }
 
     public static void  BusinessExceptionError(String Message , Throwable Exception){
         try {
-            System.out.print("\u001B[36m"); //Cyan
             PropertyConfigurator.configure(Log4jPropPath);
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
-            Logger.error(Line + " : " + Message, Exception);
+            String ClassName = new Throwable().getStackTrace()[1].getClassName();
+
+            System.out.print("\u001B[36m"); //Cyan
+            Logger.error(ClassName+" - "+Line + " : " + Message , Exception);
             System.out.print("\u001B[0m");
+
         }catch (Exception E) {E.printStackTrace();}
     }
 

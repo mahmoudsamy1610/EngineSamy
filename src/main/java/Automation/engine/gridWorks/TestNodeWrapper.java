@@ -1,8 +1,16 @@
 package Automation.engine.gridWorks;
 
+<<<<<<< HEAD
 import Automation.utils.propertyWorks.PropertyGetter;
 import Automation.utils.suiteWorks.SuiteDataGetterByXml;
 import Automation.utils.suiteWorks.SuiteTestCapGetter;
+=======
+import Automation.engine.helpers.StringConcatenator;
+import Automation.engine.loggers.EngineLogger;
+import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.engine.suiteWorks.SuiteDataGetterByXml;
+import Automation.engine.suiteWorks.SuiteTestCapGetter;
+>>>>>>> main
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +21,23 @@ public class TestNodeWrapper {
 
     public static  List <String> WrapNodeTestPlatforms() {
 
-
-        String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
+        String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
+        String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
+        String RunFileRelativePath = StringConcatenator.Concatenate(RunFileDirPath, RunXmlFileName);
         List<String> TestNames = SuiteDataGetterByXml.GetTestNamesByXmlPath(RunFileRelativePath);
         List<String> NodePlatformTypes = new ArrayList<>();
+        List<String> Platforms = new ArrayList<>();
 
+        EngineLogger.EngineInfo("Wrapping all platforms found from provided test names : " + TestNames + " --->" + Platforms);
 
-        for (String TestName : TestNames) {
-           List<String> Platforms =  SuiteTestCapGetter.CatchPlatforms(TestName);
-            NodePlatformTypes.addAll(Platforms);
+        try {
+            for (String TestName : TestNames) {
+                Platforms = SuiteTestCapGetter.CatchPlatforms(TestName);
+                NodePlatformTypes.addAll(Platforms);
+                EngineLogger.EngineInfo("Catch platform from test name : " + TestName + " --->" + Platforms);
+            }
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Failed Wrapping all platforms found from provided test names : " + TestNames + " --->" + Platforms, E);
         }
 
         return NodePlatformTypes;
@@ -31,14 +47,24 @@ public class TestNodeWrapper {
 
     public static  List <String> WrapNodeTestBrowsers() {
 
-
-        String RunFileRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlRelativePath");
+        String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
+        String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
+        String RunFileRelativePath = StringConcatenator.Concatenate(RunFileDirPath, RunXmlFileName);
         List<String> TestNames = SuiteDataGetterByXml.GetTestNamesByXmlPath(RunFileRelativePath);
-        List<String> NodeBrowserTypes = new ArrayList<>() ;;
+        List<String> NodeBrowserTypes = new ArrayList<>();
+        List<String> Browsers = new ArrayList<>();
 
-        for (String TestName : TestNames) {
-            List<String> Browsers = SuiteTestCapGetter.CatchBrowsers(TestName);
-            NodeBrowserTypes.addAll(Browsers);
+        EngineLogger.EngineInfo("Wrapping all platforms found from provided test names : " + TestNames);
+
+        try {
+            for (String TestName : TestNames) {
+                Browsers = SuiteTestCapGetter.CatchBrowsers(TestName);
+                NodeBrowserTypes.addAll(Browsers);
+                EngineLogger.EngineInfo("Catch browser from test name : " + TestName + " --->" + Browsers);
+
+            }
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Failed Wrapping all browsers found from provided test names : " + TestNames + " --->" + Browsers, E);
         }
         return NodeBrowserTypes;
     }
@@ -46,9 +72,8 @@ public class TestNodeWrapper {
 
     public static void main(String[] args) {
 
-        List<String> list =  WrapNodeTestPlatforms();
-        System.out.println(list.size());
-        System.out.println(list);
+        WrapNodeTestPlatforms();
+        WrapNodeTestBrowsers();
 
     }
 

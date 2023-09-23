@@ -18,12 +18,13 @@ public class BrowserFactory {
 
 
     public static WebDriver SetBrowserType(String BrowserType){
+        EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
+        AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
 
 
         if (BrowserType.equalsIgnoreCase("Chrome")) {
-            try{
-                EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
 
+            try{
                 WebDriver driver;
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
@@ -33,8 +34,6 @@ public class BrowserFactory {
                 driver = new ChromeDriver();
                 listener = new EventListener();
                 decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-
-                AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
                 return decoratedDriver;
             }
             catch (Exception E) {
@@ -44,14 +43,11 @@ public class BrowserFactory {
             }
 
         } else if (BrowserType.equalsIgnoreCase("Firefox") ) {
+
             try{
-                EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
-
-
                 WebDriver driver;
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
-                AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
                 return driver;
             }
             catch (Exception E) {
@@ -61,13 +57,11 @@ public class BrowserFactory {
             }
 
         }else if (BrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
-            try{
-                EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
 
+            try{
                 WebDriver driver;
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
-                AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
                 return driver;
             }
             catch (Exception E) {

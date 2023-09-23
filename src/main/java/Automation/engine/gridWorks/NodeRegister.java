@@ -1,9 +1,17 @@
 package Automation.engine.gridWorks;
 
+<<<<<<< HEAD
 import Automation.utils.helpers.PathConverter;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 import Automation.utils.helpers.CMDRunner;
+=======
+import Automation.engine.helpers.PathConverter;
+import Automation.engine.helpers.StringConcatenator;
+import Automation.engine.loggers.EngineLogger;
+import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.engine.helpers.CMDRunner;
+>>>>>>> main
 import org.testng.Assert;
 
 public class NodeRegister {
@@ -15,9 +23,9 @@ public class NodeRegister {
            try {
 
                String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions", "GridJarFile");
-               String NodeAbsolutePath = "\"" + PathConverter.ConvertPathToAbs(CreatedNodePath) + "\"";
+               String NodeAbsolutePath = StringConcatenator.Concatenate("\"" , PathConverter.ConvertPathToAbs(CreatedNodePath) , "\"");
                String NodeGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "NodeRegisterCommand");
-               String NodeRegisterCommand = "cd " + GridJarLocation + " && " + NodeGridCommand + " " + NodeAbsolutePath;
+               String NodeRegisterCommand = StringConcatenator.Concatenate("cd " , GridJarLocation , " && " , NodeGridCommand , " " , NodeAbsolutePath);
 
                EngineLogger.EngineInfo("Running CMD command : " + NodeRegisterCommand );
                EngineLogger.EngineInfo("Registering node from : " + CreatedNodePath );
@@ -26,14 +34,13 @@ public class NodeRegister {
 
            }catch (Exception E){
                EngineLogger.EngineExceptionError("Failed to Register node from : " + CreatedNodePath, E);
-               Assert.fail("Failed to Register node from : " + CreatedNodePath, E);
            }
        }
 
 
     public static void main(String[] args) {
-
-        String Path =  NodeWriter.CreateNodeToml("Linasdasdux" , "chrome");
+        //GridSetup.SetupGrid();
+        String Path =  NodeWriter.CreateNodeToml("Linux" , "firefox");
         RegisterNode(Path);
 
     }

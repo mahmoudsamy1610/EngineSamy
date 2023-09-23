@@ -19,7 +19,6 @@ public class GridMemoryCleaner implements IExecutionListener {
 
         }catch (Exception E){
             EngineLogger.EngineExceptionError("Failed to remove all or one of the background Java tasks" , E );
-            Assert.fail("Failed to remove all or one of the background Java tasks" , E );
         }
     }
 
@@ -31,7 +30,6 @@ public class GridMemoryCleaner implements IExecutionListener {
 
         }catch (Exception E){
             EngineLogger.EngineExceptionError("Java tasks cleaning from the back ground failed" , E );
-            Assert.fail("Java tasks cleaning from the back ground failed" , E );
         }
     }
 

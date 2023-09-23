@@ -9,7 +9,7 @@ public class StaGridLauncher {
 
     public static String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
     public static String StaGridCommand = PropertyGetter.GetPropertyValue("RunOptions", "StaGridCommand") ;
-    public static String RunStaGridCommand = "cd " + GridJarLocation  + " && " + StaGridCommand;
+    public static String RunStaGridCommand = "cd" + GridJarLocation  + " && " + StaGridCommand;
     public static String StaGridHost = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost") ;
 
     public static void StaGridStart() {
@@ -21,7 +21,6 @@ public class StaGridLauncher {
 
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed starting stand alone grid", E);
-            Assert.fail("Failed starting stand alone grid", E);
         }
     }
 

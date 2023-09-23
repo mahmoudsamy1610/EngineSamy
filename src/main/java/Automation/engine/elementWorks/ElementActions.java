@@ -12,13 +12,11 @@ public class ElementActions {
 
 
     public static void clearText(WebDriver Driver, By Locator , String ElementName){
-
+        EngineLogger.EngineInfo("Clearing Text inside field : " + ElementName + "By Locator :" + Locator);
+        AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
 
         try {
-            EngineLogger.EngineInfo("Clearing Text inside field : " + ElementName + "By Locator :" + Locator);
-
             ElementHelper.locateElement(Driver, Locator , ElementName).clear();
-            AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
         }
 
         catch (Exception E) {
@@ -30,13 +28,11 @@ public class ElementActions {
 
 
     public static void writeText(WebDriver Driver, By Locator, String text , String ElementName){
+        EngineLogger.EngineInfo("Writing : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator );
+        AllureStepLogger.logStep("Write : ["+ text +  "] in : [" +ElementName+ "]"  );
 
         try {
-            EngineLogger.EngineInfo("Writing : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator );
-
             ElementHelper.locateElement(Driver, Locator, ElementName).sendKeys(text);
-           AllureStepLogger.logStep("Write : ["+ text +  "] in : [" +ElementName+ "]"  );
-
         }
         catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to write : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator , E);
@@ -47,14 +43,12 @@ public class ElementActions {
     }
 
     public static void clickElement(WebDriver Driver , By Locator , String ElementName){
+        EngineLogger.EngineInfo("Clicking on [" + ElementName+ "]" + "By Locator :" + Locator);
+        AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
 
         try {
-            EngineLogger.EngineInfo("Clicking on [" + ElementName+ "]" + "By Locator :" + Locator);
-
             ElementHelper.locateElement(Driver, Locator, ElementName).click();
-            AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
             }
-
         catch (Exception E) {
             EngineLogger.EngineExceptionError(" Failed to click on :[" + ElementName+ "]" + "By Locator :" + Locator , E);
             AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
@@ -63,15 +57,13 @@ public class ElementActions {
     }
 
     public static String GetElementText(WebDriver Driver , By Locator , String ElementName){
+        EngineLogger.EngineInfo("Checking the text in [" + ElementName+ "]" + "By Locator :" + Locator);
+        AllureStepLogger.logStep("Check the text in [" + ElementName+ "]" );
 
         try {
             String ElementText;
             ElementText =  ElementHelper.locateElement(Driver, Locator, ElementName).getText();
-            AllureStepLogger.logStep("Check the text in [" + ElementName+ "]" );
-            EngineLogger.EngineInfo("Checking the text in [" + ElementName+ "]" + "By Locator :" + Locator);
-
             return ElementText;
-
         }
 
         catch (Exception E) {
@@ -82,8 +74,6 @@ public class ElementActions {
 
         return null;
     }
-
-
 
 
     }

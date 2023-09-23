@@ -12,18 +12,20 @@ public class NodeBuilder {
 
     public static void BuildNode() {
 
+
+        try {
         String PomRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "PomRelativePath");
         String ParaScope = XmlParser.FindXmlTag(PomRelativePath, "parallel");
 
-        try {
+            EngineLogger.EngineInfo("Deciding to build nodes on level : " + ParaScope);
+
             if (ParaScope.equalsIgnoreCase("suites")) {
                 BuildNodeFromSuites();
             } else if (ParaScope.equalsIgnoreCase("tests")) {
                 BuildNodeFromTests();
             }
         } catch (Exception E) {
-            EngineLogger.EngineExceptionError("An error occurred while building nodes", E);
-            Assert.fail("An error occurred while building nodes", E);
+            EngineLogger.EngineExceptionError("Building Nodes Failed", E);
         }
 
     }
@@ -31,14 +33,14 @@ public class NodeBuilder {
 
     public static void BuildNodeFromTests() {
 
-        List<String> NodePlatformTypes = TestNodeWrapper.WrapNodeTestPlatforms();
-        List<String> NodeBrowserTypes = TestNodeWrapper.WrapNodeTestBrowsers();
-        String[][] NodeCaps = NodeCapCoupler.CoupleNodeCap(NodePlatformTypes, NodeBrowserTypes);
         String NodePlatformType = null;
         String NodeBrowserType = null;
 
-
         try {
+            List<String> NodePlatformTypes = TestNodeWrapper.WrapNodeTestPlatforms();
+            List<String> NodeBrowserTypes = TestNodeWrapper.WrapNodeTestBrowsers();
+            String[][] NodeCaps = NodeCapCoupler.CoupleNodeCap(NodePlatformTypes, NodeBrowserTypes);
+
 
             for (String[] Couple : NodeCaps) {
 
@@ -69,13 +71,13 @@ public class NodeBuilder {
 
     public static void BuildNodeFromSuites() {
 
-        List<String> NodePlatformTypes = SuiteNodeWrapper.WrapNodeSuitePlatforms();
-        List<String> NodeBrowserTypes = SuiteNodeWrapper.WrapNodeSuiteBrowsers();
-        String[][] NodeCaps = NodeCapCoupler.CoupleNodeCap(NodePlatformTypes, NodeBrowserTypes);
         String NodePlatformType = null;
         String NodeBrowserType = null;
 
         try {
+            List<String> NodePlatformTypes = SuiteNodeWrapper.WrapNodeSuitePlatforms();
+            List<String> NodeBrowserTypes = SuiteNodeWrapper.WrapNodeSuiteBrowsers();
+            String[][] NodeCaps = NodeCapCoupler.CoupleNodeCap(NodePlatformTypes, NodeBrowserTypes);
 
             for (String[] Couple : NodeCaps) {
 

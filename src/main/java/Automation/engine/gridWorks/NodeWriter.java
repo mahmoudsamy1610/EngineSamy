@@ -5,30 +5,52 @@ import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 
 public class NodeWriter {
-
+    /**
+     *<p> Ex
+     *<p> "title = \"My TOML File\"\n" +
+     *<p>                       "[author]\n" +
+     *<p>                        "name = \"John Doe\"\n" +
+     *<p>                        "email = \"john@example.com\"\n";
+     *<p>
+     *<p> -----------------------------------------------------
+     *<p> title = "My TOML File"
+     *<p>         [author]
+     *<p>         name = "John Doe"
+     *<p>         email = "john@example.com"
+     *<p> ----------------------------------------------------------
+     *<p> [server]
+     *<p> port = 10001
+     *<p> [node]
+     *<p> [[node.driver-configuration]]
+     *<p> display-name = "firefox"
+     *<p> stereotype = "{\"browserName\": \"firefox\", \"platformName\": \"Windows 10\" }"
+     *<p>
+     */
 
     public static String CreateNodeToml(String NodePlatformType , String NodeBrowserType) {
+        EngineLogger.EngineInfo("Writing node TOML content for : " + NodePlatformType + " & " + NodeBrowserType);
 
-        String NodeRelativePath = NodePathGenerator.GenerateNodeTomlFullPath(NodePlatformType , NodeBrowserType);
-        int Port = NodePathGenerator.GetNodePort(NodeRelativePath);
+        String NodeRelativePath = null;
+
+        try {
+            NodeRelativePath = NodePathGenerator.GenerateNodeTomlFullPath(NodePlatformType, NodeBrowserType);
+            int Port = NodePathGenerator.GetNodePort(NodeRelativePath);
 
 
-        String NodeContent = "[server]\n" +
-                                 "port=" + Port + "\n" +
-                                    "\n"  +
-                                 "[node]\n" +
-                                 "[[node.driver-configuration]]\n" +
-                                 "display-name =\"" +  NodeBrowserType + "\"\n" +
-                                 "stereotype=\"{" + "\\\"browserName\\\": \\\""  + NodeBrowserType + "\\\"" + "," + "\\\"platformName\\\": \\\""  + NodePlatformType + "\\\"" + "}\"" ;
+            String NodeContent = "[server]\n" +
+                    "port=" + Port + "\n" +
+                    "\n" +
+                    "[node]\n" +
+                    "[[node.driver-configuration]]\n" +
+                    "display-name =\"" + NodeBrowserType + "\"\n" +
+                    "stereotype=\"{" + "\\\"browserName\\\": \\\"" + NodeBrowserType + "\\\"" + "," + "\\\"platformName\\\": \\\"" + NodePlatformType + "\\\"" + "}\"";
 
-            try {
-                EngineLogger.EngineInfo("Writing node TOML content for : " +NodePlatformType + " & " + NodeBrowserType );
-                TomlFileCreator.CreateToml(NodeContent, NodeRelativePath);
-            }catch (Exception E){
-                EngineLogger.EngineExceptionError("Failed to write node TOML content for : " +NodePlatformType + " & " + NodeBrowserType, E);
-                Assert.fail("Failed to write node TOML content for : " +NodePlatformType + " & " + NodeBrowserType, E);
-            }
-         return NodeRelativePath ;
+            TomlFileCreator.CreateToml(NodeContent, NodeRelativePath);
+
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Failed to write node TOML content for : " + NodePlatformType + " & " + NodeBrowserType, E);
+        }
+        return NodeRelativePath;
 
     }
 
@@ -42,27 +64,3 @@ public class NodeWriter {
 
 }
 
-
-
-/*
-Ex
-"title = \"My TOML File\"\n" +
-                                "[author]\n" +
-                                "name = \"John Doe\"\n" +
-                                "email = \"john@example.com\"\n";
-
------------------------------------------------------
-title = "My TOML File"
-        [author]
-        name = "John Doe"
-        email = "john@example.com"
- ----------------------------------------------------------
- [server]
-port = 10001
-[node]
-[[node.driver-configuration]]
-display-name = "firefox"
-stereotype = "{\"browserName\": \"firefox\", \"platformName\": \"Windows 10\" }"
-
-
- */
