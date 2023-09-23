@@ -42,13 +42,10 @@ public class LoginPage {
 
     public void clickLogin(){
         ElementActions.clickElement(driver,LoginButton, "Login Button");
-
     }
 
     public String GetInvalidCredsErrorToaster(){
-
       String  InvalidCredsError =  ElementActions.GetElementText(driver, InvalidLoginCredsToaster , "Invalid Creds Error Toaster Messages");
-
          return InvalidCredsError;
     }
 

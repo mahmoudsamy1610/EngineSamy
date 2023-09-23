@@ -28,7 +28,7 @@
 
 
           <suiteXmlFiles>
-            <file>src/test/resources/testSuites/Run.xml</file>
+            <file>src/test/resources/RunFiles/Run.xml</file>
 
 
           </suiteXmlFiles>
