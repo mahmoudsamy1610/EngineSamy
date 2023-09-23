@@ -1,6 +1,6 @@
 package Automation.engine.elementWorks;
 
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.loggers.EngineLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,6 +1,6 @@
 package Automation.engine.setupWorks;
 
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.loggers.EngineLogger;
 import org.openqa.selenium.WebDriver;
 
 public class SetupFactory {

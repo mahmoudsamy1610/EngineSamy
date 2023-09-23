@@ -1,9 +1,9 @@
 package Autofox.autofoxPropertyWorks;
 
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 
-import static Automation.engine.propertyWorks.PropertiesReader.ReadProperty;
+import static Automation.utils.propertyWorks.PropertiesReader.ReadProperty;
 
 public class GetAutofoxProperty {
 

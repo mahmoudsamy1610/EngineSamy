@@ -3,8 +3,8 @@ package Automation.engine.setupWorks;
 import Automation.engine.gridWorks.StaGridLauncher;
 import Automation.engine.browserWorks.BrowserFactory;
 import Automation.engine.browserWorks.StaBrowserFactory;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
 import org.openqa.selenium.WebDriver;
 
 public class RunSpace {

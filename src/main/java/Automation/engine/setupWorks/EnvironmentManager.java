@@ -1,8 +1,8 @@
 package Automation.engine.setupWorks;
 
 
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
 
 public class EnvironmentManager {
 

@@ -2,11 +2,11 @@ package Automation.engine.setupWorks;
 
 import Automation.engine.browserWorks.NodePlatformFactory;
 import Automation.engine.gridWorks.NodeCapCoupler;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.suiteWorks.SuiteDataGetterByRun;
-import Automation.engine.suiteWorks.SuiteTestCapGetter;
-import Automation.engine.xmlWorks.XmlParser;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
+import Automation.utils.suiteWorks.SuiteDataGetterByRun;
+import Automation.utils.suiteWorks.SuiteTestCapGetter;
+import Automation.utils.xmlWorks.XmlParser;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 

@@ -69,7 +69,7 @@ public abstract class AdminUsers {
         return LoginToken;
     }
 
-    public void setLoginToken(String loginToken) {this.LoginToken = LoginToken; }
+    public void setLoginToken(String LoginToken) {this.LoginToken = LoginToken; }
 
 
 }

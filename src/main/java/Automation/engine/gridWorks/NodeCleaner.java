@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.FileCleaner;
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.helpers.FileCleaner;
+import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 
 public class NodeCleaner {

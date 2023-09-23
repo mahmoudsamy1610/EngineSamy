@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.ListToTwoDArrayConverter;
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.helpers.ListToTwoDArrayConverter;
+import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package Automation.engine.browserWorks;
 
 import Automation.engine.listeners.EventListener;
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.loggers.EngineLogger;
 import Automation.engine.reportingWorks.AllureStepLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

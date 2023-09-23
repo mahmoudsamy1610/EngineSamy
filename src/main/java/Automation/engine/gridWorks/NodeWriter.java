@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.TomlFileCreator;
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.helpers.TomlFileCreator;
+import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 
 public class NodeWriter {

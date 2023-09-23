@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
+import Automation.utils.loggers.EngineLogger;
+import Automation.utils.propertyWorks.PropertyGetter;
 import org.testng.Assert;
 import org.testng.IExecutionListener;
 

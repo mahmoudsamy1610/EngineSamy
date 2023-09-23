@@ -1,7 +1,7 @@
 package Automation.engine.gridWorks;
 
-import Automation.engine.helpers.TaskCleaner;
-import Automation.engine.loggers.EngineLogger;
+import Automation.utils.helpers.TaskCleaner;
+import Automation.utils.loggers.EngineLogger;
 import org.testng.Assert;
 import org.testng.IExecutionListener;
 
