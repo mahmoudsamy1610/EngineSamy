@@ -24,7 +24,7 @@
 
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
-          <parallel>tests</parallel>
+          <parallel>suites</parallel>
 
 
           <suiteXmlFiles>
@@ -35,12 +35,12 @@
 
           <properties>
 
-        <!--
+
             <property>
               <name>suitethreadpoolsize</name>
               <value>20</value>
             </property>
-          -->
+
 
           </properties>
 

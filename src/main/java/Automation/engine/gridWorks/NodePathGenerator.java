@@ -1,15 +1,10 @@
 package Automation.engine.gridWorks;
 
-<<<<<<< HEAD
+import Automation.utils.helpers.StringConcatenator;
 import Automation.utils.helpers.StringPicker;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
-=======
-import Automation.engine.helpers.StringConcatenator;
-import Automation.engine.helpers.StringPicker;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
->>>>>>> main
+
 import org.testng.Assert;
 
 public class NodePathGenerator {

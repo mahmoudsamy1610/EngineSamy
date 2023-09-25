@@ -13,12 +13,12 @@ public class AllureResultsCleaner implements IExecutionListener {
         String AllureResultPath = PropertyGetter.GetPropertyValue("allure","AllureResultDirectory");
         String AllureReportLPath = PropertyGetter.GetPropertyValue("allure","AllureReportDirectory");
 
+        EngineLogger.EngineInfo("Cleaning previous Allure results at :  " + AllureResultPath);
+        EngineLogger.EngineInfo("Cleaning previous Allure reports at :  " + AllureReportLPath);
 
         try {
-               DirCleaner.CleanDir(AllureResultPath);
-                 EngineLogger.EngineInfo("Cleaning previous Allure results at :  " + AllureResultPath);
-               DirCleaner.CleanDir(AllureReportLPath);
-                 EngineLogger.EngineInfo("Cleaning previous Allure reports at :  " + AllureReportLPath);
+            DirCleaner.CleanDir(AllureResultPath);
+            DirCleaner.CleanDir(AllureReportLPath);
 
         } catch (Exception E){
             EngineLogger.EngineExceptionError("Failed cleaning Allure results or Allure reports " , E);
