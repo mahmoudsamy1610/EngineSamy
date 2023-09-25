@@ -1,16 +1,11 @@
 package Automation.engine.gridWorks;
 
-<<<<<<< HEAD
+import Automation.utils.helpers.StringConcatenator;
+import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
-import Automation.utils.suiteWorks.SuiteDataGetterByXml;
-import Automation.utils.suiteWorks.SuiteTestCapGetter;
-=======
-import Automation.engine.helpers.StringConcatenator;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
 import Automation.engine.suiteWorks.SuiteDataGetterByXml;
 import Automation.engine.suiteWorks.SuiteTestCapGetter;
->>>>>>> main
+
 
 import java.util.ArrayList;
 import java.util.List;

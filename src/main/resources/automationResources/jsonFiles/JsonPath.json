@@ -1,0 +1,7 @@
+
+  {
+    "TimeSaving" : "src/main/resources/automationResources/jsonFiles/paraModules/TimeSaving.json",
+    "RunNow" :  "src/main/resources/automationResources/jsonFiles/paraModules/RunNow.json",
+    "AllChrome" : "src/main/resources/automationResources/jsonFiles/paraModules/AllChrome.json"
+  }
+

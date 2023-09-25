@@ -2,6 +2,7 @@ package Automation.utils.helpers;
 
 import Automation.utils.loggers.JavaLogger;
 
+import java.io.File;
 import java.nio.file.Paths;
 
 public class PathConverter {
@@ -12,8 +13,7 @@ public class PathConverter {
 
         String AbsolutePath ;
         try {
-          AbsolutePath = Paths.get(RelativePath)
-                    .toAbsolutePath().toString();
+          AbsolutePath = new File(RelativePath).getAbsolutePath();
           return AbsolutePath ;
 
         } catch (Exception E) {

@@ -1,18 +1,11 @@
 package Automation.engine.gridWorks;
 
-<<<<<<< HEAD
 import Automation.utils.helpers.PathConverter;
+import Automation.utils.helpers.StringConcatenator;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 import Automation.utils.helpers.CMDRunner;
-=======
-import Automation.engine.helpers.PathConverter;
-import Automation.engine.helpers.StringConcatenator;
-import Automation.engine.loggers.EngineLogger;
-import Automation.engine.propertyWorks.PropertyGetter;
-import Automation.engine.helpers.CMDRunner;
->>>>>>> main
-import org.testng.Assert;
+
 
 public class NodeRegister {
 

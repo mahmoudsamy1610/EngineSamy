@@ -4,7 +4,7 @@
 <suite  name="Login2"  preserve-order="true" >
 
     <listeners>
-        <listener class-name="Automation.utils.suiteWorks.SuiteDataGetterByRun" />
+        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun" />
     </listeners>
 
 
@@ -12,7 +12,7 @@
         <parameter name="allure.results.directory" value="results/test2" />
 
         <classes>
-            <class name="TestAutofox.gui.AdminLogin"/>
+            <class name="autofoxTests.gui.AdminLogin"/>
         </classes>
     </test>
 
@@ -20,7 +20,7 @@
         <parameter name="allure.results.directory" value="results/test4" />
 
         <classes>
-            <class name="TestAutofox.gui.AdminLogin"/>
+            <class name="autofoxTests.gui.AdminLogin"/>
         </classes>
     </test>
 

@@ -3,6 +3,7 @@ package Automation.utils.xmlWorks;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import Automation.utils.helpers.PathConverter;
 import Automation.utils.loggers.JavaLogger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -65,7 +66,7 @@ public class XmlParser {
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
             Node node = doc.getElementsByTagName(TagName).item(0);
-            Node attributeNode = null;
+            Node attributeNode ;
 
 
             if (node != null) {

@@ -1,10 +1,13 @@
 package Automation.utils.helpers;
 
+import Automation.utils.loggers.JavaLogger;
+
 import java.io.File;
 
 public class DirCleaner {
 
     public static void CleanDirFromFiles(String DirRelativePath) {
+        JavaLogger.JavaInfo("Cleaning Directory on : " + DirRelativePath);
 
         try {
 
@@ -15,14 +18,23 @@ public class DirCleaner {
                 for (File file : files) {
                     if (file.isFile()) {
                         file.delete();
+                        JavaLogger.JavaInfo("Cleaning file : " +file.getName()+ " , from directory" + DirRelativePath);
                     }
                 }
+            } else {
+                JavaLogger.JavaInfo("cannot find directory to clean : " + DirRelativePath);
+                throw new NullPointerException();
             }
-        } catch (IllegalArgumentException IAE){IAE.getMessage();}
+
+        } catch (Exception E) {
+            E.printStackTrace();
+            JavaLogger.JavaExceptionError("Failed cleaning Directory at : " + DirRelativePath, E);
+        }
     }
 
 
     public static void CleanDirFromFolders(String DirRelativePath) {
+        JavaLogger.JavaInfo("Cleaning all folders inside Directory on : " + DirRelativePath);
 
         try {
 
@@ -33,13 +45,21 @@ public class DirCleaner {
                 for (File file : files) {
                     if (file.isDirectory()) {
                         file.delete();
+                        JavaLogger.JavaInfo("Cleaning folder : " +file.getName()+ " , from directory" + DirRelativePath);
                     }
                 }
+            }else {
+                JavaLogger.JavaInfo("cannot find directory to clean folders inside : " + DirRelativePath);
+                throw new NullPointerException();
             }
-        } catch (IllegalArgumentException IAE){IAE.getMessage();}
+        } catch (Exception E){
+            E.printStackTrace();
+            JavaLogger.JavaExceptionError("Failed cleaning folders inside Directory at : " + DirRelativePath, E);
+        }
     }
 
     public static void CleanDir(String DirRelativePath) {
+        JavaLogger.JavaInfo("Cleaning Directory on : " + DirRelativePath);
 
         try {
             File directory = new File(DirRelativePath);
@@ -48,14 +68,15 @@ public class DirCleaner {
                 for (File file : files) {
                     if (file.isFile() || file.isDirectory()) {
                         file.delete();
-                        System.out.println("good");
-
+                        JavaLogger.JavaInfo("Cleaning file : " +file.getName()+ " , from directory" + DirRelativePath);
+                    }else {
+                        JavaLogger.JavaInfo("cannot find directory to clean : " + DirRelativePath);
+                        throw new NullPointerException();
                     }
                 }
-
         } catch (Exception E){
             E.printStackTrace();
-            System.out.println("bad");
+            JavaLogger.JavaExceptionError("Failed cleaning Directory at : " + DirRelativePath, E);
         }
     }
 
