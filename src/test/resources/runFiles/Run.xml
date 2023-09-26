@@ -13,7 +13,6 @@
 
     <suite-files >
         <suite-file path="../testSuites/Login.xml"/>
-        <suite-file path="../testSuites/Login2.xml"/>
     </suite-files>
 
 

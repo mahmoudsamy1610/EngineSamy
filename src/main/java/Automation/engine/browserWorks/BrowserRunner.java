@@ -12,19 +12,14 @@ public class BrowserRunner {
     public static WebDriver StartBrowser(){
 
         try {
+            EngineLogger.EngineInfo("---------- Preparing WebDiver requirements ------------");
                 WebDriver driver;
                 driver = SetupFactory.Run();
-
-            EngineLogger.EngineInfo("Starting Browser ......");
-            AllureStepLogger.logStep("Start Browser");
 
                     return driver;
                 }
                 catch (Exception E ){
-                    EngineLogger.EngineExceptionError("(unknown) Error while Start browser" , E);
-                    AllureStepLogger.logStep("Start browser");
-                    Assert.fail("(unknown) Error while Start browser", E);
-
+                    EngineLogger.EngineExceptionError("(unknown) Error while Preparing WebDiver requirements" , E);
                 }
         return  null ;
     }

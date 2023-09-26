@@ -41,7 +41,7 @@ public class EventListener implements WebDriverListener {
 
     @Override
     public void beforeGet(WebDriver driver, String url) {
-
+        System.out.println("-----------------test listener--------------------------" );
     }
 
     @Override
