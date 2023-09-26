@@ -16,21 +16,14 @@ public class AllureReportGenerator implements IExecutionListener {
 
     public static void GenerateAllureReport() {
 
-        String AllureReportLPath = null;
 
         try {
-            String AllureResultPath = PropertyGetter.GetPropertyValue("allure", "AllureResultDirectory");
-            AllureReportLPath = PropertyGetter.GetPropertyValue("allure", "AllureReportDirectory");
-            String AllureGenerateCommand = PropertyGetter.GetPropertyValue("allure", "AllureGenerateCommand");
-            String AllureCleanCommand = PropertyGetter.GetPropertyValue("allure", "AllureCleanCommand");
-            String AllureReportCommand = AllureGenerateCommand + " " + AllureResultPath + " " + AllureCleanCommand + " " + AllureReportLPath;
-            CMDRunner.runCommand(AllureReportCommand);
-
-            EngineLogger.EngineInfo("Generating Allure Report at : " + AllureReportLPath);
+            EngineLogger.EngineInfo("------------------Generating Allure Report----------------");
+            AllureCmdCommander.GenerateAllureCommander();
 
 
         } catch (Exception E) {
-            EngineLogger.EngineExceptionError("Failed Generating Allure Report at : " + AllureReportLPath, E);
+            EngineLogger.EngineExceptionError("Failed Generating Allure Report", E);
 
         }
     }

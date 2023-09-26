@@ -23,17 +23,15 @@ public class RunSpace {
                 return BrowserFactory.SetBrowserType(BrowserType);
 
             } else if (ExecutionType.equalsIgnoreCase("ParaLocal")) {
-
                 return ParaLocalRunLevel.SetParaLocalRunLevel();
-            } else if (ExecutionType.equalsIgnoreCase("GridSta")) {
 
+            } else if (ExecutionType.equalsIgnoreCase("GridSta")) {
                 String BrowserType = PropertyGetter.GetPropertyValue("RunOptions", "BrowserType");
                 StaGridLauncher.StaGridStart();
                 WebDriver driver = StaBrowserFactory.SetStaBrowserType(BrowserType);
                 return driver;
 
             } else if (ExecutionType.equalsIgnoreCase("GridHub")) {
-
                 return ParaGridRunLevel.SetParaGridRunLevel();
 
             } else {

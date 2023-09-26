@@ -36,11 +36,11 @@ public class NodeWriter {
             NodeRelativePath = NodePathGenerator.GenerateNodeTomlFullPath(NodePlatformType, NodeBrowserType);
             int Port = NodePathGenerator.GetNodePort(NodeRelativePath);
 
-
             String NodeContent = "[server]\n" +
                     "port=" + Port + "\n" +
                     "\n" +
                     "[node]\n" +
+                    "selenium-manager = true\n" +
                     "[[node.driver-configuration]]\n" +
                     "display-name =\"" + NodeBrowserType + "\"\n" +
                     "stereotype=\"{" + "\\\"browserName\\\": \\\"" + NodeBrowserType + "\\\"" + "," + "\\\"platformName\\\": \\\"" + NodePlatformType + "\\\"" + "}\"";
@@ -56,11 +56,8 @@ public class NodeWriter {
 
     public static void main(String[] args) {
 
-        CreateNodeToml("Windows 11" , "asdasdad");
+        //CreateNodeToml("Windows 11" , "chrome");
     }
-
-
-
 
 }
 

@@ -12,82 +12,108 @@ import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.events.WebDriverListener;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 
 public class BrowserFactory {
 
 
-
     public static WebDriver SetBrowserType(String BrowserType){
-        EngineLogger.EngineInfo("Initializing driver local} " + BrowserType);
-        AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
 
+        try {
 
-        if (BrowserType.equalsIgnoreCase("Chrome")) {
+            EngineLogger.EngineInfo("Selecting webdriver {local} : " + BrowserType);
+            AllureStepLogger.logStep("Start browser {local} : " + BrowserType);
 
-            try{
-                WebDriver driver;
-                WebDriverListener listener ;
-                WebDriver decoratedDriver;
-
-                WebDriverManager.chromedriver().setup();
-
-                driver = new ChromeDriver();
-                listener = new EventListener();
-                decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
-                return decoratedDriver;
-            }
-            catch (Exception E) {
-                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Local} " + BrowserType , E);
-                AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Assert.fail("Unknown error while Initializing browser {Local} " + BrowserType , E);
+            if (BrowserType.equalsIgnoreCase("Chrome")){
+                return SetupChromeDriver();
+            }else if (BrowserType.equalsIgnoreCase("firefox")){
+                return SetupFirefoxDriver();
+            }else if (BrowserType.equalsIgnoreCase("MicrosoftEdge")){
+                return SetupEdgeDriver();
+            } else {
+                EngineLogger.EngineError("Invalid browser type provided {Local} : " + BrowserType);
+                throw new IOException();
             }
 
-        } else if (BrowserType.equalsIgnoreCase("Firefox") ) {
-
-            try{
-                WebDriver driver;
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-                return driver;
-            }
-            catch (Exception E) {
-                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Local} " + BrowserType , E);
-                AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Assert.fail("Unknown error while Initializing browser {Local} " + BrowserType, E);
-            }
-
-        }else if (BrowserType.equalsIgnoreCase("MicrosoftEdge") ) {
-
-            try{
-                WebDriver driver;
-                WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
-                return driver;
-            }
-            catch (Exception E) {
-                EngineLogger.EngineExceptionError("Unknown error while Initializing browser {Local} " + BrowserType , E);
-                AllureStepLogger.logStep("Initializing driver {local} " + BrowserType);
-                Assert.fail("Unknown error while Initializing browser {Local} " + BrowserType, E);
-            }
-
-        } else {
-            EngineLogger.EngineError("Unknown error while Initializing browser {Local} : " + BrowserType);
-            AllureStepLogger.logStep("Initializing driver {Local} : " + BrowserType);
-            Assert.fail("Unknown error while Initializing browser {Local} : " + BrowserType);
+        }catch (Exception E){
+            EngineLogger.EngineExceptionError("Error while Selecting webdriver {Local} " + BrowserType , E);
+            AllureStepLogger.logStep("Start browser {local} " + BrowserType);
+            Assert.fail("Failed starting browser {Local} " + BrowserType , E);
         }
 
         return null;
     }
 
 
-    public static void main(String[] args) {
-        SetBrowserType("MicrosoftEdge");
-        SetBrowserType("MicrosoftEdge");
-        SetBrowserType("firefox");
 
 
+    public static WebDriver SetupChromeDriver() {
+
+        WebDriver decoratedDriver ;
+
+        try {
+            WebDriver driver;
+            WebDriverListener listener;
+
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+
+            listener = new EventListener();
+            decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
+
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Error while setting up web driver", E);
+            throw new NullPointerException();
+        }
+        return decoratedDriver;
     }
 
+
+
+    public static WebDriver SetupFirefoxDriver() {
+
+        WebDriver decoratedDriver ;
+
+        try {
+            WebDriver driver;
+            WebDriverListener listener;
+
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+
+            listener = new EventListener();
+            decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
+
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Error while setting up web driver", E);
+            throw new NullPointerException();
+        }
+        return decoratedDriver;
+    }
+
+
+
+    public static WebDriver SetupEdgeDriver() {
+
+        WebDriver decoratedDriver;
+        try {
+            WebDriver driver;
+            WebDriverListener listener;
+
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
+
+            listener = new EventListener();
+            decoratedDriver = new EventFiringDecorator<>(listener).decorate(driver);
+
+
+        } catch (Exception E) {
+            EngineLogger.EngineExceptionError("Error while setting up web driver", E);
+            throw new NullPointerException();
+        }
+        return decoratedDriver;
+    }
 
 
 }
