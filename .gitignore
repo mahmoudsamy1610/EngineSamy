@@ -3,7 +3,7 @@
 .idea/
 
 # ignore allure Json files
-AllureResults/
+allure-results/
 src/test/resources/testReports
 
 
