@@ -4,6 +4,8 @@
 
 # ignore allure Json files
 AllureResults/
+src/test/resources/testReports
+
 
 #ignore target folder
 target/
