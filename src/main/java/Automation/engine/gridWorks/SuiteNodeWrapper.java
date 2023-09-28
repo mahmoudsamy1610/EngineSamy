@@ -5,13 +5,13 @@ import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 import Automation.engine.suiteWorks.SuiteDataGetterByXml;
 import Automation.engine.suiteWorks.SuiteTestCapGetter;
+import org.testng.annotations.Parameters;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SuiteNodeWrapper {
-
 
 
     public static  List <String> WrapNodeSuitePlatforms() {
