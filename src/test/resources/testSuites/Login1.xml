@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite  name="Login1"  preserve-order="true" >
+<suite  name="Login1" >
 
     <listeners>
         <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun" />
@@ -15,7 +15,13 @@
             <class name="autofoxTests.gui.AdminLogin"/>
         </classes>
     </test>
+    <test name = "test3">
+        <parameter name="allure.results.directory" value="results/test3" />
 
+        <classes>
+            <class name="autofoxTests.gui.AdminLogin"/>
+        </classes>
+    </test>
 
 
 </suite>

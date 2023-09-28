@@ -1,0 +1,8 @@
+[server]
+port=6925
+
+[node]
+selenium-manager = true
+[[node.driver-configuration]]
+display-name ="firefox"
+stereotype="{\"browserName\": \"firefox\",\"platformName\": \"linux\"}"
