@@ -4,7 +4,7 @@ import Automation.utils.helpers.StringPicker;
 import Automation.utils.helpers.StringToListJoiner;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
-import Automation.utils.xmlWorks.XmlParser;
+import Automation.utils.xmlWorks.XmlAttValueGetter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,8 @@ public class SuiteDataGetterByXml {
 
         try {
 
-            String SuitesDirPath = PropertyGetter.GetPropertyValue("RunOptions" , "SuitesDirRelativePath");
-            List <String> SuiteNamesXml =  XmlParser.FindXmlAttributes(XmlRelativePath ,"suite-file" , "path") ;
+            String SuitesDirPath = PropertyGetter.GetPropertyValue("EngineData", "SuitesDirRelativePath");
+            List <String> SuiteNamesXml =  XmlAttValueGetter.FindXmlAttributeValues(XmlRelativePath ,"suite-file" , "path") ;
             List <String> SuiteNamesXmlRefined = StringPicker.ExtractStringsOfVariableLength(SuiteNamesXml , 2 );
             List <String> SuitePaths = StringToListJoiner.JoinStringToList(SuitesDirPath , SuiteNamesXmlRefined , "prefix" ) ;
             String SuiteName ;
@@ -42,9 +42,9 @@ public class SuiteDataGetterByXml {
         List<String> TestNames = new ArrayList<>() ;
 
         try {
-            List<String> SuitePaths = XmlParser.FindXmlAttributes(RunXmlRelativePath, "suite-file", "path");
+            List<String> SuitePaths = XmlAttValueGetter.FindXmlAttributeValues(RunXmlRelativePath, "suite-file", "path");
             List <String> TestSuiteNamesXmlRefined = StringPicker.ExtractStringsOfVariableLength(SuitePaths , 2 );
-            String TestSuitesRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "SuitesDirRelativePath");
+            String TestSuitesRelativePath = PropertyGetter.GetPropertyValue("EngineData", "SuitesDirRelativePath");
 
             TestNames = new ArrayList<>();
 
@@ -66,7 +66,7 @@ public class SuiteDataGetterByXml {
         String SuiteName = null;
 
         try {
-            SuiteName = XmlParser.FindXmlAttribute(SuiteRelativePath, "suite", "name");
+            SuiteName = XmlAttValueGetter.FindXmlAttributeValue(SuiteRelativePath, "suite", "name");
         } catch (Exception E){
             EngineLogger.EngineExceptionError("Failed to Get suite single name from suite path : " + SuiteRelativePath , E);
         }
@@ -79,7 +79,7 @@ public class SuiteDataGetterByXml {
 
         List<String> TestName = new ArrayList<>();
         try {
-            TestName = XmlParser.FindXmlAttributes(SuiteRelativePath, "test", "name");
+            TestName = XmlAttValueGetter.FindXmlAttributeValues(SuiteRelativePath, "test", "name");
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to get test list of names from suite path : " + SuiteRelativePath, E);
         }

@@ -1,12 +1,13 @@
 package Automation.engine.setupWorks;
 
 
+import Automation.engine.config.ConfigTestEnvironment;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 
 public class EnvironmentManager {
 
-    public static String Environment = PropertyGetter.GetPropertyValue("Environment","EnvironmentName");
+    public static String Environment = ConfigTestEnvironment.GetTestEnvironment();
     public static String  Domain;
 
 

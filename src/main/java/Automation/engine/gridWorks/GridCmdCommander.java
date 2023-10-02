@@ -12,11 +12,11 @@ public class GridCmdCommander {
     public static void HubCmdCommander(){
 
         try {
-            String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
-            String HubGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridCommand") ;
-            String HubFileRelativePath = PropertyGetter.GetPropertyValue("ParaRunData", "HubFileRelativePath") ;
+            String GridJarLocation = PropertyGetter.GetPropertyValue("SelGridData","GridJarFile") ;
+            String HubGridCommand = PropertyGetter.GetPropertyValue("SelGridData", "HubGridCommand") ;
+            String HubFileRelativePath = PropertyGetter.GetPropertyValue("SelGridData", "HubFileRelativePath") ;
             String HubAbsolutePath = PathConverter.ConvertPathToAbs(HubFileRelativePath ) ;
-            String HubGridHost = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost") ;
+            String HubGridHost = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost") ;
             String RunHubGridCommand = "cd " + GridJarLocation  + " && " + HubGridCommand + " " + HubAbsolutePath  ;
 
 
@@ -37,9 +37,9 @@ public class GridCmdCommander {
 
         try {
 
-            String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions", "GridJarFile");
+            String GridJarLocation = PropertyGetter.GetPropertyValue("SelGridData", "GridJarFile");
             String NodeAbsolutePath = StringConcatenator.Concatenate("\"" , PathConverter.ConvertPathToAbs(CreatedNodePath) , "\"");
-            String NodeGridCommand = PropertyGetter.GetPropertyValue("ParaRunData", "NodeRegisterCommand");
+            String NodeGridCommand = PropertyGetter.GetPropertyValue("SelGridData", "NodeRegisterCommand");
             String NodeRegisterCommand = StringConcatenator.Concatenate("cd " , GridJarLocation , " && " , NodeGridCommand , " " , NodeAbsolutePath);
 
             EngineLogger.EngineInfo("Running node config registration CMD command : " + NodeRegisterCommand );
@@ -55,14 +55,15 @@ public class GridCmdCommander {
 
     public static void StaGridCommander(){
 
-          String GridJarLocation = PropertyGetter.GetPropertyValue("RunOptions","GridJarFile") ;
-          String StaGridCommand = PropertyGetter.GetPropertyValue("RunOptions", "StaGridCommand") ;
-          String RunStaGridCommand = "cd" + GridJarLocation  + " && " + StaGridCommand;
-          String StaGridHost = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost") ;
+          String GridJarLocation = PropertyGetter.GetPropertyValue("SelGridData","GridJarFile") ;
+          String StaGridCommand = PropertyGetter.GetPropertyValue("SelGridData", "StaGridCommand") ;
+          String RunStaGridCommand = "cd " + GridJarLocation  + " && " + StaGridCommand;
+          String StaGridHost = PropertyGetter.GetPropertyValue("SelGridData", "StaGridHost") ;
 
         try {
             EngineLogger.EngineInfo("Running Stand alone selenium grid CMD command : " + RunStaGridCommand);
             EngineLogger.EngineInfo("Starting stand alone grid on " + StaGridHost);
+            EngineLogger.EngineWarn("IF SELENIUM STAND ALONE WAS ALREADY RUNNING BEFORE ... PLEASE NEGLECT THE FOLLOWING INTERRUPTED EXCEPTION ERROR RELATED");
 
             CMDRunner.runCommand(RunStaGridCommand);
 

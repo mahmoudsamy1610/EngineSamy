@@ -33,7 +33,7 @@ public class NodePathGenerator {
         String NodeRelativePath = null;
 
         try {
-            String NodeGeneralPath = PropertyGetter.GetPropertyValue("ParaRunData", "NodePathDir");
+            String NodeGeneralPath = PropertyGetter.GetPropertyValue("SelGridData", "NodePathDir");
             NodeRelativePath = StringConcatenator.Concatenate(NodeGeneralPath,NodePlatformType,"\\", NodeBrowserType);
             EngineLogger.EngineInfo("Generating node TOML file path at : " + NodeRelativePath);
 

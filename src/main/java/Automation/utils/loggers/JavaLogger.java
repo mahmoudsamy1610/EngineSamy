@@ -18,6 +18,7 @@ public class JavaLogger {
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
             String ClassName = new Throwable().getStackTrace()[1].getClassName();
 
+            System.out.print("\u001B[0m");
             System.out.print("\u001B[32m"); //Green
             Logger.info(ClassName+" - "+Line + " : " + Message);
             System.out.print("\u001B[0m");
@@ -39,6 +40,7 @@ public class JavaLogger {
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
             String ClassName = new Throwable().getStackTrace()[1].getClassName();
 
+            System.out.print("\u001B[0m");
             System.out.print("\u001B[33m"); //Yellow
             Logger.warn(ClassName+" - "+Line + " : " + Message);
             System.out.print("\u001B[0m");
@@ -52,6 +54,7 @@ public class JavaLogger {
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
             String ClassName = new Throwable().getStackTrace()[1].getClassName();
 
+            System.out.print("\u001B[0m");
             System.out.print("\u001B[31m"); //Red
             Logger.error(ClassName+" - "+Line + " : " + Message);
             System.out.print("\u001B[0m");
@@ -65,6 +68,7 @@ public class JavaLogger {
             int Line = Thread.currentThread().getStackTrace()[2].getLineNumber();
             String ClassName = new Throwable().getStackTrace()[1].getClassName();
 
+            System.out.print("\u001B[0m");
             System.out.print("\u001B[31m"); //Red
             Logger.error(ClassName+" - "+Line + " : " + Message, Exception);
             System.out.print("\u001B[0m");

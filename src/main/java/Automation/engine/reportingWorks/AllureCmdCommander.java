@@ -11,10 +11,10 @@ public class AllureCmdCommander {
         String AllureReportLPath = null;
 
         try {
-            String AllureResultPath = PropertyGetter.GetPropertyValue("allure", "AllureResultDirectory");
-            AllureReportLPath = PropertyGetter.GetPropertyValue("allure", "AllureReportDirectory");
-            String AllureGenerateCommand = PropertyGetter.GetPropertyValue("allure", "AllureGenerateCommand");
-            String AllureCleanCommand = PropertyGetter.GetPropertyValue("allure", "AllureCleanCommand");
+            String AllureResultPath = PropertyGetter.GetPropertyValue("Allure", "AllureResultDirectory");
+            AllureReportLPath = PropertyGetter.GetPropertyValue("Allure", "AllureReportDirectory");
+            String AllureGenerateCommand = PropertyGetter.GetPropertyValue("Allure", "AllureGenerateCommand");
+            String AllureCleanCommand = PropertyGetter.GetPropertyValue("Allure", "AllureCleanCommand");
             String AllureReportCommand = AllureGenerateCommand + " " + AllureResultPath + " " + AllureCleanCommand + " " + AllureReportLPath;
             CMDRunner.runCommand(AllureReportCommand);
 

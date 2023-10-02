@@ -10,8 +10,8 @@ public class AllureResultsCleaner implements IExecutionListener {
 
     public static void CleanAllurePreviousResults() {
 
-        String AllureResultPath = PropertyGetter.GetPropertyValue("allure","AllureResultDirectory");
-        String AllureReportLPath = PropertyGetter.GetPropertyValue("allure","AllureReportDirectory");
+        String AllureResultPath = PropertyGetter.GetPropertyValue("Allure","AllureResultDirectory");
+        String AllureReportLPath = PropertyGetter.GetPropertyValue("Allure","AllureReportDirectory");
 
         EngineLogger.EngineInfo("Cleaning previous Allure results at :  " + AllureResultPath);
         EngineLogger.EngineInfo("Cleaning previous Allure reports at :  " + AllureReportLPath);

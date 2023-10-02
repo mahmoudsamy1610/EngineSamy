@@ -4,13 +4,9 @@ import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 import Automation.engine.listeners.EventListener;
 import Automation.engine.reportingWorks.AllureStepLogger;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariOptions;
@@ -44,7 +40,7 @@ public class NodeBrowserFactory {
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+                String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
                 URL url = new URL(HubUrl);
 
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -68,7 +64,7 @@ public class NodeBrowserFactory {
                 WebDriverListener listener ;
                 WebDriver decoratedDriver;
 
-                String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+                String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
                 URL url = new URL(HubUrl);
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -92,7 +88,7 @@ public class NodeBrowserFactory {
                 WebDriverListener listener;
                 WebDriver decoratedDriver;
 
-                String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+                String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
                 URL url = new URL(HubUrl);
 
                 EdgeOptions edgeOptions = new EdgeOptions();
@@ -116,7 +112,7 @@ public class NodeBrowserFactory {
                     WebDriverListener listener ;
                     WebDriver decoratedDriver;
 
-                    String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+                    String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
                     URL url = new URL(HubUrl);
 
                     SafariOptions safariOptions = new SafariOptions();
@@ -190,7 +186,7 @@ public class NodeBrowserFactory {
             WebDriver driver;
             WebDriverListener listener ;
 
-            String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+            String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
             URL url = new URL(HubUrl);
 
             ChromeOptions chromeOptions = new ChromeOptions();
@@ -216,7 +212,7 @@ public class NodeBrowserFactory {
             WebDriver driver;
             WebDriverListener listener ;
 
-            String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+            String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
             URL url = new URL(HubUrl);
 
             FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -241,7 +237,7 @@ public class NodeBrowserFactory {
             WebDriver driver;
             WebDriverListener listener;
 
-            String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+            String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
             URL url = new URL(HubUrl);
 
             EdgeOptions edgeOptions = new EdgeOptions();
@@ -266,7 +262,7 @@ public class NodeBrowserFactory {
             WebDriver driver;
             WebDriverListener listener ;
 
-            String HubUrl = PropertyGetter.GetPropertyValue("ParaRunData", "HubGridHost");
+            String HubUrl = PropertyGetter.GetPropertyValue("SelGridData", "HubGridHost");
             URL url = new URL(HubUrl);
 
             SafariOptions safariOptions = new SafariOptions();

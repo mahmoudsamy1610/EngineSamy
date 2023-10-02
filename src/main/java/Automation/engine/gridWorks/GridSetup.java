@@ -1,8 +1,7 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.config.ConfigExecutionType;
 import Automation.utils.loggers.EngineLogger;
-import Automation.utils.propertyWorks.PropertyGetter;
-import org.testng.Assert;
 import org.testng.IExecutionListener;
 
 public class GridSetup implements IExecutionListener {
@@ -17,7 +16,7 @@ public class GridSetup implements IExecutionListener {
       String ExecutionType = null;
 
       try {
-          ExecutionType = PropertyGetter.GetPropertyValue("RunOptions", "ExecutionType");
+          ExecutionType = ConfigExecutionType.GetExecutionType();
 
           if (ExecutionType.equalsIgnoreCase("Local") || ExecutionType.equalsIgnoreCase("ParaLocal")) {
 

@@ -2,7 +2,7 @@ package Automation.engine.gridWorks;
 
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
-import Automation.utils.xmlWorks.XmlParser;
+import Automation.utils.xmlWorks.XmlTagValueGetter;
 import org.testng.Assert;
 
 import java.util.List;
@@ -14,8 +14,8 @@ public class NodeBuilder {
 
 
         try {
-        String PomRelativePath = PropertyGetter.GetPropertyValue("RunOptions", "PomRelativePath");
-        String ParaScope = XmlParser.FindXmlTag(PomRelativePath, "parallel");
+        String PomRelativePath = PropertyGetter.GetPropertyValue("EngineData", "PomRelativePath");
+        String ParaScope = XmlTagValueGetter.FindXmlTagValue(PomRelativePath, "parallel");
 
             EngineLogger.EngineInfo("Deciding to build nodes on level : " + ParaScope);
 

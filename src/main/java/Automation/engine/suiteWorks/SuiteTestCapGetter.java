@@ -1,8 +1,8 @@
 package Automation.engine.suiteWorks;
 
+import Automation.engine.config.ConfigParaModule;
 import Automation.utils.jsonWorks.GetJsonValueByKey;
 import Automation.utils.loggers.JavaLogger;
-import Automation.utils.propertyWorks.PropertyGetter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class SuiteTestCapGetter {
         String ParaModule = null;
 
         try {
-            ParaModule = PropertyGetter.GetPropertyValue("RunOptions", "ParaModule");
+            ParaModule = ConfigParaModule.GetParaModule();
             NodePlatformTypes = (GetJsonValueByKey.GetValueByContainerKey("Platform", ParaModule, Catcher));
 
         } catch (Exception E) {
@@ -37,7 +37,7 @@ public class SuiteTestCapGetter {
         String ParaModule = null;
 
         try {
-            ParaModule = PropertyGetter.GetPropertyValue("RunOptions", "ParaModule");
+            ParaModule = ConfigParaModule.GetParaModule();
             NodeBrowserTypes = GetJsonValueByKey.GetValueByContainerKey("Browser", ParaModule, Catcher);
 
         } catch (Exception E) {
