@@ -1,5 +1,6 @@
 package Automation.engine.gridWorks;
 
+import Automation.engine.config.ConfigFilePath;
 import Automation.utils.helpers.StringConcatenator;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
@@ -17,9 +18,9 @@ public class SuiteNodeWrapper {
     public static  List <String> WrapNodeSuitePlatforms() {
 
 
-        String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
-        String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
-        String RunFileRelativePath = StringConcatenator.Concatenate(RunFileDirPath,RunXmlFileName);
+        //String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
+        //String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
+        String RunFileRelativePath = ConfigFilePath.GetConfigFilePath();
         List<String> SuiteNames = SuiteDataGetterByXml.GetSuiteNamesByXmlPath(RunFileRelativePath);
         List<String> NodePlatformTypes = new ArrayList<>();
         List<String> Platforms = new ArrayList<>();
@@ -46,9 +47,9 @@ public class SuiteNodeWrapper {
     public static  List <String> WrapNodeSuiteBrowsers() {
 
 
-        String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
-        String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
-        String RunFileRelativePath = StringConcatenator.Concatenate(RunFileDirPath,RunXmlFileName);
+     //   String RunFileDirPath = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlDirPath");
+      //  String RunXmlFileName = PropertyGetter.GetPropertyValue("RunOptions", "RunXmlFile");
+        String RunFileRelativePath = ConfigFilePath.GetConfigFilePath();
         List<String> SuiteNames = SuiteDataGetterByXml.GetSuiteNamesByXmlPath(RunFileRelativePath);
         List<String> NodeBrowserTypes = new ArrayList<>();
         List<String> Browsers = new ArrayList<>();

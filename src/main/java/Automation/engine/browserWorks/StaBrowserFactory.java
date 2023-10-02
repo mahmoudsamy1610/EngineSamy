@@ -61,7 +61,7 @@ public class StaBrowserFactory {
             WebDriver driver;
             WebDriverListener listener ;
 
-            String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");
+            String StaGridUrl = PropertyGetter.GetPropertyValue("SelGridData", "StaGridHost");
             URL url = new URL(StaGridUrl);
 
             ChromeOptions chromeOptions = new ChromeOptions();
@@ -86,7 +86,7 @@ public class StaBrowserFactory {
             WebDriver driver;
             WebDriverListener listener ;
 
-            String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");  ;
+            String StaGridUrl = PropertyGetter.GetPropertyValue("SelGridData", "StaGridHost");  ;
             URL url = new URL(StaGridUrl);
 
             FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -110,7 +110,7 @@ public class StaBrowserFactory {
             WebDriver driver;
             WebDriverListener listener ;
 
-            String StaGridUrl = PropertyGetter.GetPropertyValue("RunOptions", "StaGridHost");  ;
+            String StaGridUrl = PropertyGetter.GetPropertyValue("SelGridData", "StaGridHost");  ;
             URL url = new URL(StaGridUrl);
 
             EdgeOptions edgeOptions = new EdgeOptions();

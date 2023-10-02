@@ -10,6 +10,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <RunId>RunConfig</RunId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -168,7 +169,6 @@
   </build>
 
 
-
   <profiles>
     <profile>
       <id>RunConfig</id>
@@ -184,7 +184,35 @@
               <testFailureIgnore>true</testFailureIgnore>
               <parallel>suites</parallel>
               <suiteXmlFiles>
-                <file>src/test/resources/runFiles/RunConfig.run.xml</file>
+                <file>src/test/resources/runFiles/Run.xml</file>
+              </suiteXmlFiles>
+              <properties>
+                <property>
+                  <name>suitethreadpoolsize</name>
+                  <value>20</value>
+                </property>
+              </properties>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>RunConfig1</id>
+      <properties>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+            <configuration>
+              <testFailureIgnore>true</testFailureIgnore>
+              <parallel>asdadasdasdadasd</parallel>
+              <suiteXmlFiles>
+                <file>src/test/resources/runFiles/RunConfig1.run.xml</file>
               </suiteXmlFiles>
               <properties>
                 <property>

@@ -1,24 +1,29 @@
 package Automation.engine.setupWorks;
 
 import Automation.engine.browserWorks.NodePlatformFactory;
+import Automation.engine.config.ConfigFilePath;
 import Automation.engine.gridWorks.NodeCapCoupler;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 import Automation.engine.suiteWorks.SuiteDataGetterByRun;
 import Automation.engine.suiteWorks.SuiteTestCapGetter;
-import Automation.utils.xmlWorks.XmlParser;
+import Automation.utils.xmlWorks.XmlTagValueGetter;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ParaGridRunLevel implements ITestListener {
 
 
-    public static WebDriver SetParaGridRunLevel(){
+    public static WebDriver SetParaGridRunLevel() throws IOException {
 
-        String PomRelativePath = PropertyGetter.GetPropertyValue("RunOptions" , "PomRelativePath");
-        String ParaLevel = XmlParser.FindXmlTag(PomRelativePath,"parallel");
+        String PomRelativePath = PropertyGetter.GetPropertyValue("EngineData", "PomRelativePath");
+       // String XmlRunConfigFile = PropertyGetter.GetPropertyValue("RunOptions" , "ConfigXmlFile");
+       // String XmlRunConfigDir = PropertyGetter.GetPropertyValue("RunOptions" , "RunXmlDirPath");
+        String RunConfigFilePath = ConfigFilePath.GetConfigFilePath();
+        String ParaLevel = XmlTagValueGetter.GetAdjacentXmlTagValue(PomRelativePath,"profile" , "file" , RunConfigFilePath , "parallel");
         WebDriver driver = null;
 
         EngineLogger.EngineInfo("Deciding Selenium Grid parallel run level : " + ParaLevel);
@@ -85,12 +90,14 @@ public class ParaGridRunLevel implements ITestListener {
  */
         else {
             EngineLogger.EngineError("Invalid Parallel level keyword inserted : " + ParaLevel) ;
+            throw new IOException();
+
         }
 
         return driver ;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         SetParaGridRunLevel();
     }
 

@@ -28,7 +28,7 @@ public class XmlReader {
     }
 
     public static void main(String[] args) {
-       ReadXml(null);
+        ReadXml("pom.xml");
     }
 
 

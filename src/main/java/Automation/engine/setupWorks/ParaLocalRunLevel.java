@@ -1,23 +1,28 @@
 package Automation.engine.setupWorks;
 
 import Automation.engine.browserWorks.BrowserFactory;
+import Automation.engine.config.ConfigFilePath;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 import Automation.engine.suiteWorks.SuiteDataGetterByRun;
 import Automation.engine.suiteWorks.SuiteTestCapGetter;
-import Automation.utils.xmlWorks.XmlParser;
+import Automation.utils.xmlWorks.XmlTagValueGetter;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ParaLocalRunLevel implements ITestListener {
 
 
-    public static WebDriver SetParaLocalRunLevel(){
+    public static WebDriver SetParaLocalRunLevel() throws IOException {
 
-        String PomRelativePath = PropertyGetter.GetPropertyValue("RunOptions" , "PomRelativePath");
-        String ParaLevel = XmlParser.FindXmlTag(PomRelativePath,"parallel");
+        String PomRelativePath = PropertyGetter.GetPropertyValue("EngineData", "PomRelativePath");
+      //  String XmlRunConfigFile = PropertyGetter.GetPropertyValue("RunOptions" , "ConfigXmlFile");
+       // String XmlRunConfigDir = PropertyGetter.GetPropertyValue("RunOptions" , "RunXmlDirPath");
+        String RunConfigFilePath = ConfigFilePath.GetConfigFilePath();
+        String ParaLevel = XmlTagValueGetter.GetAdjacentXmlTagValue(PomRelativePath,"profile" , "file" , RunConfigFilePath , "parallel");
         WebDriver driver = null;
 
         EngineLogger.EngineInfo("Deciding local parallel run level : " + ParaLevel);
@@ -70,14 +75,19 @@ public class ParaLocalRunLevel implements ITestListener {
         }
  */
         else {
-            System.out.println("Invalid parallel Local test level provided : " + ParaLevel);
+            EngineLogger.EngineError("Invalid Parallel level keyword inserted : " + ParaLevel) ;
+            throw new IOException();
         }
 
         return driver ;
     }
 
     public static void main(String[] args) {
-        SetParaLocalRunLevel();
+        try {
+            SetParaLocalRunLevel();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     }
