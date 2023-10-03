@@ -11,12 +11,6 @@ import org.testng.Assert;
 
 public class BrowserActions {
 
-    // these variables are set in the properties file and in configuration -check
-    public static boolean MaxWindow = Boolean.parseBoolean(PropertyGetter.GetPropertyValue("EngineData","Maximize"));
-    public static int WindowWidth = Integer.parseInt(PropertyGetter.GetPropertyValue("EngineData","width"));
-    public static int WindowHeight = Integer.parseInt(PropertyGetter.GetPropertyValue("EngineData","height"));
-
-
 
     //Method to navigate to specific URL
     public static void goToUrl(WebDriver Driver, String Url , String PageName){
@@ -35,40 +29,41 @@ public class BrowserActions {
 
     }
 
-    //Method to size the browser window
-    public static void SetWindowSize(WebDriver driver) {
 
+    public static void MaxWindow(WebDriver driver){
+        EngineLogger.EngineInfo("Maximizing Browser Window");
+        AllureStepLogger.logStep("Maximize browser window");
 
-        if (MaxWindow == true ){
             try{
                 driver.manage().window().maximize();
-
-                EngineLogger.EngineInfo("Maximizing Browser Window");
-                AllureStepLogger.logStep("Maximize browser window");
-            }
-            catch (Exception E){
+            }catch (Exception E){
                 EngineLogger.EngineExceptionError("Failed to Maximize window" , E);
                 AllureStepLogger.logStep("Maximize browser window");
                 Assert.fail("Failed to Maximize window" , E);
             }
-        }else {
+        }
+
+
+    //Method to size the browser window
+    public static void SetWindowSize(WebDriver driver , int Width , int Height) {
+
+
            try {
-               Dimension dimension = new Dimension(WindowWidth, WindowHeight );
+               Dimension dimension = new Dimension(Width, Height );
                 driver.manage().window().setSize(dimension);
 
-               EngineLogger.EngineInfo("Setting window size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
-                AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight );
+               EngineLogger.EngineInfo("Setting window size to Width = " + Width + " and,  Height = " +  Height );
+                AllureStepLogger.logStep("Set windows size to Width = " + Width + " and,  Height = " +  Height );
 
            }
            catch (Exception E){
-               EngineLogger.EngineExceptionError("unknown Error while controlling browser window dimensions Width = " + WindowWidth + " and,  Height = " +  WindowHeight  , E);
-               AllureStepLogger.logStep("Set windows size to Width = " + WindowWidth + " and,  Height = " +  WindowHeight);
-               Assert.fail("unknown Error while controlling browser window dimensions Width = " + WindowWidth + " and,  Height = " +  WindowHeight , E);
+               EngineLogger.EngineExceptionError("unknown Error while controlling browser window dimensions Width = " + Width + " and,  Height = " +  Height  , E);
+               AllureStepLogger.logStep("Set windows size to Width = " + Width + " and,  Height = " +  Height);
+               Assert.fail("unknown Error while controlling browser window dimensions Width = " + Width + " and,  Height = " +  Height , E);
            }
 
         }
 
-        }
 
 
 
@@ -91,7 +86,8 @@ public class BrowserActions {
         WebDriver Driver;
         WebDriverManager.chromedriver().setup();
         Driver = new ChromeDriver();
-        SetWindowSize(Driver);
+        MaxWindow(Driver);
+        SetWindowSize(Driver , 700 , 800);
     }
 }
 

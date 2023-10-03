@@ -10,131 +10,153 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <RunId>RunConfig</RunId>
+    <profileId>RunConfig</profileId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <selenium.dep.version>4.10.0</selenium.dep.version>
+    <webDriverManager.dep.version>5.5.2</webDriverManager.dep.version>
+    <testNg.dep.version>7.7.1</testNg.dep.version>
+    <restAssured.dep.version>5.3.0</restAssured.dep.version>
+    <fasterXmlCore.dep.version>2.15.0</fasterXmlCore.dep.version>
+    <fasterXmlData.dep.version>2.15.0</fasterXmlData.dep.version>
+    <allure.dep.version>2.24.0</allure.dep.version>
+    <slf4j-api.dep.version>2.0.7</slf4j-api.dep.version>
+    <slf4j-jdk14.dep.version>2.0.7</slf4j-jdk14.dep.version>
+    <slf4j-log4j12.dep.version>2.0.5</slf4j-log4j12.dep.version>
+    <log4j.dep.version>1.2.17</log4j.dep.version>
+    <logback.dep.version>1.4.11</logback.dep.version>
+    <annotations.dep.version>24.0.1</annotations.dep.version>
+    <lombok.dep.version>1.18.26</lombok.dep.version>
+    <toml4j.dep.version>0.7.2</toml4j.dep.version>
+    <maven-surefire-plugin.dep.version>3.1.2</maven-surefire-plugin.dep.version>
+    <exec-maven-plugin.dep.version>3.1.0</exec-maven-plugin.dep.version>
+    <javafaker.dep.version>1.0.2</javafaker.dep.version>
+    <maven-compiler-plugin.dep.version>3.11.0</maven-compiler-plugin.dep.version>
+
+    <maven-compiler-plugin.plugin.version>3.11.0</maven-compiler-plugin.plugin.version>
+    <maven-surefire-plugin.plugin.version>3.1.2</maven-surefire-plugin.plugin.version>
+    <exec-maven-plugin.plugin.version>3.1.0</exec-maven-plugin.plugin.version>
   </properties>
 
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-    <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.11.0</version>
-    </dependency>
-
-    <dependency>
+        <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.10.0</version>
+      <version>${selenium.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.5.2</version>
+      <version>${webDriverManager.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>7.7.1</version>
+      <version>${testNg.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>5.3.0</version>
+      <version>${restAssured.dep.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.15.0</version>
+      <version>${fasterXmlCore.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jdk8</artifactId>
-      <version>2.15.0</version>
+      <version>${fasterXmlData.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
-      <version>2.24.0</version>
+      <version>${allure.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>2.0.7</version>
+      <version>${slf4j-api.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-jdk14</artifactId>
-      <version>2.0.7</version>
+      <version>${slf4j-jdk14.dep.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <version>2.0.5</version> <!-- Use the latest version -->
+      <version>${slf4j-log4j12.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.17</version> <!-- Use the version you prefer -->
+      <version>${log4j.dep.version}</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.4.11</version>
+      <version>${logback.dep.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
-      <version>24.0.1</version>
+      <version>${annotations.dep.version}</version>
       <scope>compile</scope>
     </dependency>
 
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.26</version>
+      <version>${lombok.dep.version}</version>
       <scope>compile</scope>
     </dependency>
 
     <dependency>
       <groupId>com.moandjiezana.toml</groupId>
       <artifactId>toml4j</artifactId>
-      <version>0.7.2</version>
+      <version>${toml4j.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.1.2</version>
+      <version>${maven-surefire-plugin.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.codehaus.mojo</groupId>
       <artifactId>exec-maven-plugin</artifactId>
-      <version>3.1.0</version>
+      <version>${exec-maven-plugin.dep.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.github.javafaker</groupId>
       <artifactId>javafaker</artifactId>
-      <version>1.0.2</version> <!-- Use the latest version -->
+      <version>${javafaker.dep.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>${maven-compiler-plugin.dep.version}</version>
     </dependency>
   </dependencies>
 
@@ -144,7 +166,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>${maven-compiler-plugin.plugin.version}</version>
         <configuration>
           <source>18</source>
           <target>18</target>
@@ -154,7 +176,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.1.2</version>
+        <version>${maven-surefire-plugin.plugin.version}</version>
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
@@ -163,7 +185,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>${exec-maven-plugin.plugin.version}</version>
       </plugin>
     </plugins>
   </build>
@@ -179,7 +201,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M5</version>
+            <version>${maven-surefire-plugin.plugin.version}</version>
             <configuration>
               <testFailureIgnore>true</testFailureIgnore>
               <parallel>suites</parallel>
@@ -207,7 +229,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M5</version>
+            <version>${maven-surefire-plugin.plugin.version}</version>
             <configuration>
               <testFailureIgnore>true</testFailureIgnore>
               <parallel>asdadasdasdadasd</parallel>

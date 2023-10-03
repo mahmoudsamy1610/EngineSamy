@@ -54,7 +54,7 @@ public class AdminLogin {
 
         // Start driver
         driver = BrowserRunner.StartBrowser();
-        BrowserActions.SetWindowSize(driver);
+        BrowserActions.MaxWindow(driver);
 
 
         //pages
