@@ -5,14 +5,18 @@ import Automation.engine.config.ConfigTestEnvironment;
 import Automation.utils.loggers.EngineLogger;
 import Automation.utils.propertyWorks.PropertyGetter;
 
+import java.io.IOException;
+
 public class EnvironmentManager {
 
-    public static String Environment = ConfigTestEnvironment.GetTestEnvironment();
-    public static String  Domain;
 
 
     //Method of decide the Environment
-    public static String SelectEnvironment() {
+    public static String SelectEnvironment() throws IOException {
+
+          String Environment = ConfigTestEnvironment.GetTestEnvironment();
+          String  Domain = null;
+
         EngineLogger.EngineInfo("Selecting environment to work on : " + Environment);
 
         if (Environment.equalsIgnoreCase("dev")){
@@ -41,14 +45,17 @@ public class EnvironmentManager {
 
         } else {
             EngineLogger.EngineError("Invalid environment key provided : " +Environment);
+            throw new IOException();
         }
-
         return Domain;
-
     }
 
     public static void main(String[] args) {
-       System.out.println(SelectEnvironment());
+        try {
+            System.out.println(SelectEnvironment());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

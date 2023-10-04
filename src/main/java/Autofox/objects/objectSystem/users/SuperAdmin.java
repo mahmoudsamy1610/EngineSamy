@@ -1,4 +1,4 @@
-package Autofox.users;
+package Autofox.objects.objectSystem.users;
 
 public class SuperAdmin extends AdminUsers {
 
@@ -7,8 +7,12 @@ public class SuperAdmin extends AdminUsers {
     public SuperAdmin() {
     }
 
-    public SuperAdmin(String Email, String UserName, String LoginToken) {
-        super(Email, UserName, LoginToken);
+    public SuperAdmin(String LoginToken) {
+        super(LoginToken);
+    }
+
+    public SuperAdmin(String Email, String UserName) {
+        super(Email, UserName);
     }
 
     @Override
@@ -26,6 +30,9 @@ public class SuperAdmin extends AdminUsers {
 
     @Override
     public String getEmail() {return super.getEmail();}
+
+
+
 
 
     public static void main(String[] args) {
