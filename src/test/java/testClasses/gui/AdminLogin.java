@@ -1,9 +1,9 @@
-package autofoxTests.gui;
+package testClasses.gui;
 
-import Autofox.pages.DashboardPage;
-import Autofox.users.SuperAdmin;
-import Autofox.usersStatic.StaticRetoucher;
-import Autofox.usersStatic.StaticSuperAdmin;
+import Autofox.objects.objectPage.DashboardPage;
+import Autofox.objects.objectSystem.users.SuperAdmin;
+import Autofox.sharedSteps.gui.GetStaticRetoucher;
+import Autofox.sharedSteps.gui.GetStaticSuperAdmin;
 import Automation.engine.browserWorks.BrowserActions;
 import Automation.engine.browserWorks.BrowserRunner;
 import Automation.engine.Assertions.CompareText;
@@ -12,10 +12,10 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import Autofox.pages.AutofoxGenericElements;
-import Autofox.pages.LoginPage;
-
+import Autofox.objects.objectPage.AutofoxGenericElements;
+import Autofox.objects.objectPage.LoginPage;
 import static Automation.engine.dataWorks.DataWrecker.Wreck;
+
 
 //@Listeners(AllureTestNg.class)
 public class AdminLogin {
@@ -31,8 +31,8 @@ public class AdminLogin {
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
         String[][] dataArr = new String[][]{
-                {StaticSuperAdmin.GetLoginToken()},
-                {StaticRetoucher.GetLoginToken()}
+                {GetStaticSuperAdmin.LoginToken},
+                {GetStaticRetoucher.LoginToken}
         };
         return dataArr ;
     }
@@ -41,8 +41,8 @@ public class AdminLogin {
     public static Object[][] InvalidAdminData() {
         String[][] dataArr = new String[][]{
 
-                {Wreck(StaticSuperAdmin.GetLoginToken())},
-                {Wreck(StaticRetoucher.GetLoginToken())}
+                {Wreck(GetStaticSuperAdmin.LoginToken)},
+                {Wreck(GetStaticRetoucher.LoginToken)}
         };
         return dataArr ;
     }
@@ -78,7 +78,7 @@ public class AdminLogin {
         autofoxGenericElements.LogOut();
 
 
-        //Expected Results : Valid Admin can login and home page title is logout
+        //Expected Results : Valid Admin can log in and home page title is logout
 
     }
 

@@ -1,4 +1,4 @@
-package Autofox.pages;
+package Autofox.objects.objectPage;
 
 public class CreateAdminPage {
 

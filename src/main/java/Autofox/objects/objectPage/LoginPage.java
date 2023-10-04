@@ -1,9 +1,10 @@
-package Autofox.pages;
+package Autofox.objects.objectPage;
 
 import Autofox.autofoxPropertyWorks.GetAutofoxProperty;
 import Automation.engine.browserWorks.BrowserActions;
 import Automation.engine.elementWorks.ElementActions;
 import Automation.engine.setupWorks.EnvironmentManager;
+import Automation.utils.loggers.BusinessLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,22 +17,27 @@ public class LoginPage {
     private By LoginButton = By.cssSelector("button.login-btn.btn-block.btn-danger");
     private By InvalidLoginCredsToaster = By.cssSelector("div[role='alertdialog']") ;
 
-    //Variables
-    //WebDriver driver ;
-    private String Domain = EnvironmentManager.SelectEnvironment();
-    private String LoginPageUrl =  GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxUrlsStore","LoginPath");
-    private String FullLoginPageUrl = Domain + LoginPageUrl;
-
-
-
 
     //driver constructor
     public LoginPage(WebDriver driver){this.driver = driver;}
 
 
 
-    public  void openLoginPage( ){
-        BrowserActions.goToUrl(driver, FullLoginPageUrl , "Login");
+    public  void openLoginPage( ) {
+        String Domain = null;
+        String FullLoginPageUrl = null;
+
+        try {
+            Domain = EnvironmentManager.SelectEnvironment();
+            String LoginPageUrl = GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxUrlsStore", "LoginPath");
+            FullLoginPageUrl = Domain + LoginPageUrl;
+
+            BusinessLogger.BusinessInfo("Autofox environment selected on : " + Domain + " , and redirecting to login page : " + FullLoginPageUrl);
+
+            BrowserActions.goToUrl(driver, FullLoginPageUrl, "Login");
+        } catch (Exception E) {
+            BusinessLogger.BusinessExceptionError("Failed to select Autofox environment on : " + Domain + " , and redirecting to login page : " + FullLoginPageUrl, E);
+        }
     }
 
 

@@ -12,7 +12,7 @@
         <parameter name="allure.results.directory" value="results/test2" />
 
         <classes>
-            <class name="autofoxTests.gui.AdminLogin"/>
+            <class name="testClasses.gui.AdminLogin"/>
         </classes>
     </test>
 
@@ -20,7 +20,7 @@
         <parameter name="allure.results.directory" value="results/test4" />
 
         <classes>
-            <class name="autofoxTests.gui.AdminLogin"/>
+            <class name="testClasses.gui.AdminLogin"/>
         </classes>
     </test>
 
