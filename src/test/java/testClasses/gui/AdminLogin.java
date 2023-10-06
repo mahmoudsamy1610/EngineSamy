@@ -1,9 +1,9 @@
 package testClasses.gui;
 
 import Autofox.objects.objectPage.DashboardPage;
-import Autofox.objects.objectSystem.users.SuperAdmin;
-import Autofox.sharedSteps.gui.GetStaticRetoucher;
-import Autofox.sharedSteps.gui.GetStaticSuperAdmin;
+import Autofox.sharedSteps.gui.user.LoginGuiSteps;
+import Autofox.sharedSteps.system.user.MakeStaticRetoucher;
+import Autofox.sharedSteps.system.user.MakeStaticSuperAdmin;
 import Automation.engine.browserWorks.BrowserActions;
 import Automation.engine.browserWorks.BrowserRunner;
 import Automation.engine.Assertions.CompareText;
@@ -17,7 +17,7 @@ import Autofox.objects.objectPage.LoginPage;
 import static Automation.engine.dataWorks.DataWrecker.Wreck;
 
 
-//@Listeners(AllureTestNg.class)
+
 public class AdminLogin {
 
     //Initialization
@@ -25,14 +25,13 @@ public class AdminLogin {
     LoginPage loginPage ;
     AutofoxGenericElements autofoxGenericElements;
     DashboardPage dashboardPage ;
-    SuperAdmin superAdmin ;
 
 
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
         String[][] dataArr = new String[][]{
-                {GetStaticSuperAdmin.LoginToken},
-                {GetStaticRetoucher.LoginToken}
+                {MakeStaticSuperAdmin.LoginToken},
+                {MakeStaticRetoucher.LoginToken}
         };
         return dataArr ;
     }
@@ -41,8 +40,8 @@ public class AdminLogin {
     public static Object[][] InvalidAdminData() {
         String[][] dataArr = new String[][]{
 
-                {Wreck(GetStaticSuperAdmin.LoginToken)},
-                {Wreck(GetStaticRetoucher.LoginToken)}
+                {Wreck(MakeStaticSuperAdmin.LoginToken)},
+                {Wreck(MakeStaticRetoucher.LoginToken)}
         };
         return dataArr ;
     }
@@ -62,6 +61,8 @@ public class AdminLogin {
         autofoxGenericElements = new AutofoxGenericElements(driver) ;
         dashboardPage = new DashboardPage(driver);
 
+        //shared steps
+
     }
 
     @Test(priority = 1 , dataProvider = "ValidAdmin")
@@ -73,10 +74,10 @@ public class AdminLogin {
         loginPage.openLoginPage();
         loginPage.insertLoginToken(AdminToken);
         loginPage.clickLogin();
+
         String DashboardPageTitleName =  dashboardPage.GetDashboardPageTitleName();
         CompareText.CheckText(DashboardPageTitleName,"Dashboard" , "Landing page title");
         autofoxGenericElements.LogOut();
-
 
         //Expected Results : Valid Admin can log in and home page title is logout
 

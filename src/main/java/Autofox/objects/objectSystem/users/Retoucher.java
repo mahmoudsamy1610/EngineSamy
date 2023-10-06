@@ -1,19 +1,17 @@
 package Autofox.objects.objectSystem.users;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class SuperAdmin extends AdminUsers {
+public class Retoucher extends AdminUsers{
 
 
 
-    public SuperAdmin() {
+    public Retoucher() {
     }
 
-    public SuperAdmin(String LoginToken) {
+    public Retoucher(String LoginToken) {
         super(LoginToken);
     }
 
-    public SuperAdmin(String Email, String UserName) {
+    public Retoucher(String Email, String UserName) {
         super(Email, UserName);
     }
 
@@ -35,11 +33,4 @@ public class SuperAdmin extends AdminUsers {
     public String getEmail() {return super.getEmail();}
 
 
-
-
-
-    public static void main(String[] args) {
-          SuperAdmin Super = new SuperAdmin();
-          System.out.println(Super.getEmail());
-    }
 }
