@@ -18,6 +18,12 @@ public class RequestSpecs {
         try {
             String Domain = EnvManagerApi.SelectApiEnvironment();
             requestSpecs = given().baseUri(Domain).contentType(ContentType.JSON).log().all();
+
+            if (requestSpecs == null){
+                EngineLogger.EngineError("Failed Parsing Api request specification");
+                throw new NullPointerException();
+            }
+
         } catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed Parsing Api request specification", E);
         }

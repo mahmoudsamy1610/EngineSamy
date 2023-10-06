@@ -31,5 +31,8 @@ public class AllureResultsCleaner implements IExecutionListener {
         EngineLogger.EngineInfo("Allure previous reports/results cleaned successfully ");
     }
 
+    public static void main(String[] args) {
+        CleanAllurePreviousResults();
+    }
 
     }
