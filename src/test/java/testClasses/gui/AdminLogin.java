@@ -1,9 +1,8 @@
 package testClasses.gui;
 
 import Autofox.objects.objectPage.DashboardPage;
-import Autofox.sharedSteps.gui.user.LoginGuiSteps;
-import Autofox.sharedSteps.system.user.MakeStaticRetoucher;
-import Autofox.sharedSteps.system.user.MakeStaticSuperAdmin;
+import Autofox.sharedSteps.system.user.StaticRetoucher;
+import Autofox.sharedSteps.system.user.StaticSuperAdmin;
 import Automation.engine.browserWorks.BrowserActions;
 import Automation.engine.browserWorks.BrowserRunner;
 import Automation.engine.Assertions.CompareText;
@@ -30,8 +29,8 @@ public class AdminLogin {
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
         String[][] dataArr = new String[][]{
-                {MakeStaticSuperAdmin.LoginToken},
-                {MakeStaticRetoucher.LoginToken}
+                {StaticSuperAdmin.LoginToken},
+                {StaticRetoucher.LoginToken}
         };
         return dataArr ;
     }
@@ -40,8 +39,8 @@ public class AdminLogin {
     public static Object[][] InvalidAdminData() {
         String[][] dataArr = new String[][]{
 
-                {Wreck(MakeStaticSuperAdmin.LoginToken)},
-                {Wreck(MakeStaticRetoucher.LoginToken)}
+                {Wreck(StaticSuperAdmin.LoginToken)},
+                {Wreck(StaticRetoucher.LoginToken)}
         };
         return dataArr ;
     }

@@ -1,10 +1,9 @@
 package Autofox.sharedSteps.system.user;
 
-import Autofox.objects.objectSystem.users.Retoucher;
-import Automation.engine.dataWorks.DataWrecker;
+import Autofox.objects.objectSystem.users.AdminUsersPojo.AdminUsers;
 import static Automation.engine.dataWorks.DataWrecker.Wreck;
 
-public class MakeStaticRetoucher {
+public class StaticRetoucher {
 
     public static String Email ="mahmoudsamy.softxpert+3@gmail.com" ;
     public static String UserName = "mahmoudsmsm3" ;
@@ -12,18 +11,18 @@ public class MakeStaticRetoucher {
     public static  String LastName = "samy3" ;
     public static  String CompanyName ="hiroll3" ;
     public static  String CompanyAddress = "borg3" ;
-    public static  String LoginToken = "2577+31" ;
+    public static  String LoginToken = "2577+3" ;
 
 
-    public static Retoucher GenerateValidStaticRetoucher(){
+    public static AdminUsers GenerateValidStaticRetoucher(){
 
-        Retoucher retoucher = new Retoucher(LoginToken) ;
+        AdminUsers retoucher = new AdminUsers(LoginToken , Email) ;
         return retoucher;
     }
 
-    public static Retoucher GenerateInvalidStaticRetoucher(){
+    public static AdminUsers GenerateInvalidStaticRetoucher(){
 
-        Retoucher retoucher = new Retoucher(Wreck(LoginToken)) ;
+        AdminUsers retoucher = new AdminUsers(LoginToken , Email) ;
         return retoucher;
     }
 
