@@ -1,6 +1,6 @@
 package Autofox.sharedSteps.gui.user;
 
-import Autofox.objects.objectPage.LoginPage;
+import Autofox.objects.objectGui.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 public class LoginGuiSteps {

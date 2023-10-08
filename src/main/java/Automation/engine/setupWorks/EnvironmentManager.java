@@ -12,7 +12,7 @@ public class EnvironmentManager {
 
 
     //Method of decide the Environment
-    public static String SelectEnvironment() throws IOException {
+    public static String SelectEnvironment() {
 
           String Environment = ConfigTestEnvironment.GetTestEnvironment();
           String  Domain = null;
@@ -45,7 +45,7 @@ public class EnvironmentManager {
 
         } else {
             EngineLogger.EngineError("Invalid environment key provided : " +Environment);
-            throw new IOException();
+            throw new NullPointerException();
         }
         return Domain;
     }
@@ -53,7 +53,7 @@ public class EnvironmentManager {
     public static void main(String[] args) {
         try {
             System.out.println(SelectEnvironment());
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,4 +1,4 @@
-package Autofox.objects.objectPage;
+package Autofox.objects.objectGui;
 
 import Automation.engine.elementWorks.ElementActions;
 import org.openqa.selenium.By;

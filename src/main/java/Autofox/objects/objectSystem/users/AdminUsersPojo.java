@@ -3,6 +3,7 @@ package Autofox.objects.objectSystem.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AdminUsersPojo {
@@ -14,6 +15,8 @@ public class AdminUsersPojo {
     @JsonProperty("data")
     public  Data Data;
 
+    @JsonProperty("errors")
+    public List<AdminErrors> AdminErrors;
 
     public int getStatus() {return Status;}
 
@@ -25,7 +28,9 @@ public class AdminUsersPojo {
     @JsonProperty("data")
     public void setData(AdminUsersPojo.Data Data) {this.Data = Data;}
 
-
+    public List<AdminErrors> getAdminErrors() {return AdminErrors;}
+    @JsonProperty("errors")
+    public void setAdminErrors(List<AdminErrors> adminErrors) {AdminErrors = adminErrors;}
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Data {
@@ -51,6 +56,30 @@ public class AdminUsersPojo {
             this.adminUsers = adminUsers;
         }
     }
+
+
+
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class AdminErrors {
+        @JsonProperty("code")
+        public int Code;
+
+        @JsonProperty("name")
+        public String ErrorName;
+
+        @JsonProperty("description")
+        public String ErrorMessage;
+
+        public String getErrorMessage() {
+            return ErrorMessage;
+        }
+
+        public void setErrorMessage(String errorMessage) {
+            ErrorMessage = errorMessage;
+        }
+    }
+
 
 
 
