@@ -1,10 +1,10 @@
 package testClasses.api;
 
 import Autofox.objects.objectApi.AdminUserDeserializer;
-import Autofox.objects.objectApi.LoginApiRequest;
-import Autofox.objects.objectSystem.users.AdminUsersPojo.AdminUsers;
-import Autofox.sharedSteps.system.user.StaticRetoucher;
-import Autofox.sharedSteps.system.user.StaticSuperAdmin;
+import Autofox.objects.objectApi.AdminLoginApiRequest;
+import Autofox.objects.objectSystem.users.AdminUsersPojo.*;
+import Autofox.data.user.StaticRetoucher;
+import Autofox.data.user.StaticSuperAdmin;
 import Automation.engine.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -43,17 +43,35 @@ public class AdminLoginApi {
     @Test(priority = 1 , dataProvider = "ValidAdmin")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Check that Admin can login with Valid credentials through Apis")
-    public void TestAdminLogin(AdminUsers AdminUser)   {
+    public void TestAdminLogin(AdminUsers ValidAdminUser)   {
 
         //Steps
-        Response LoginResponse = LoginApiRequest.LoginApis(AdminUser);
-        AdminUsers AdminLoginResponse = AdminUserDeserializer.DeserializeAdminUser(LoginResponse);
+        Response LoginResponse = AdminLoginApiRequest.LoginApis(ValidAdminUser);
+        AdminUsers AdminUserResponse = AdminUserDeserializer.DeserializeAdminUser(LoginResponse);
 
-        CompareText.CheckText(AdminLoginResponse.getEmail() , AdminUser.Email , " Logged in user Email ");
+        CompareText.CheckText(AdminUserResponse.getEmail() , ValidAdminUser.Email , " Logged in user Email ");
 
         //Expected Results : Valid Admin can log in and home page title is logout
 
     }
+
+
+
+    @Test(priority = 2 , dataProvider = "InvalidAdmin")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Check that Admin cannot login with Valid credentials through Apis")
+    public void InvalidAdminCannotLogin(AdminUsers InvalidAdminUser)   {
+
+        //Steps
+        Response LoginResponse = AdminLoginApiRequest.LoginApis(InvalidAdminUser);
+        AdminErrors AdminUserErrorResponse = AdminUserDeserializer.DeserializeAdminErrorFetch(LoginResponse , "login");
+        CompareText.CheckText(AdminUserErrorResponse.getErrorMessage() , StaticSuperAdmin.LoginCredsError , " Response error message ");
+
+        //Expected Results : invalid Admin cannot login and Error message "invalid login credentials appears
+
+    }
+
+
 
 
 

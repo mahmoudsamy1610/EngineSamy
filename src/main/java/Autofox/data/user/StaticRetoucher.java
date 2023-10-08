@@ -1,4 +1,4 @@
-package Autofox.sharedSteps.system.user;
+package Autofox.data.user;
 
 import Autofox.objects.objectSystem.users.AdminUsersPojo.AdminUsers;
 import static Automation.engine.dataWorks.DataWrecker.Wreck;
@@ -22,7 +22,7 @@ public class StaticRetoucher {
 
     public static AdminUsers GenerateInvalidStaticRetoucher(){
 
-        AdminUsers retoucher = new AdminUsers(LoginToken , Email) ;
+        AdminUsers retoucher = new AdminUsers(Wreck(LoginToken) , Wreck(Email)) ;
         return retoucher;
     }
 

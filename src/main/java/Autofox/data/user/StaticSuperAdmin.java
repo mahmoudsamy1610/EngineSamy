@@ -1,4 +1,4 @@
-package Autofox.sharedSteps.system.user;
+package Autofox.data.user;
 
 import Autofox.objects.objectSystem.users.AdminUsersPojo.AdminUsers;
 import static Automation.engine.dataWorks.DataWrecker.Wreck;
@@ -12,6 +12,8 @@ public class StaticSuperAdmin {
     public static  String CompanyName ="hiroll" ;
     public static  String CompanyAddress = "borg" ;
     public static  String LoginToken = "2575+1" ;
+    public static  String LoginCredsError = "Invalid login credentials." ;
+
 
     public static AdminUsers GenerateValidStaticSuperAdmin(){
 
@@ -22,7 +24,7 @@ public class StaticSuperAdmin {
 
     public static AdminUsers GenerateInvalidStaticSuperAdmin(){
 
-        AdminUsers superAdmin = new AdminUsers(LoginToken , Email) ;
+        AdminUsers superAdmin = new AdminUsers(Wreck(LoginToken)  ,Wreck(Email)) ;
         return superAdmin;
     }
 

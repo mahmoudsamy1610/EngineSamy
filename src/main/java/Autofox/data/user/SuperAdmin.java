@@ -1,4 +1,4 @@
-package Autofox.sharedSteps.system.user;
+package Autofox.data.user;
 
 import Autofox.objects.objectSystem.users.AdminUsersPojo.AdminUsers;
 import Automation.engine.dataWorks.DataFaker;
