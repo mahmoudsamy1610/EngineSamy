@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.softxpert</groupId>
   <artifactId>Autofox</artifactId>
@@ -18,6 +17,7 @@
     <testNg.dep.version>7.7.1</testNg.dep.version>
     <restAssured.dep.version>5.3.0</restAssured.dep.version>
     <fasterXmlCore.dep.version>2.15.0</fasterXmlCore.dep.version>
+    <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
     <fasterXmlData.dep.version>2.15.0</fasterXmlData.dep.version>
     <allure.dep.version>2.24.0</allure.dep.version>
     <slf4j-api.dep.version>2.0.7</slf4j-api.dep.version>
@@ -25,17 +25,24 @@
     <slf4j-log4j12.dep.version>2.0.5</slf4j-log4j12.dep.version>
     <log4j.dep.version>1.2.17</log4j.dep.version>
     <logback.dep.version>1.4.11</logback.dep.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
     <annotations.dep.version>24.0.1</annotations.dep.version>
     <lombok.dep.version>1.18.26</lombok.dep.version>
     <toml4j.dep.version>0.7.2</toml4j.dep.version>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <maven-surefire-plugin.dep.version>3.1.2</maven-surefire-plugin.dep.version>
     <exec-maven-plugin.dep.version>3.1.0</exec-maven-plugin.dep.version>
     <javafaker.dep.version>1.0.2</javafaker.dep.version>
     <maven-compiler-plugin.dep.version>3.11.0</maven-compiler-plugin.dep.version>
+    <com.browserstack.dep.version>1.5.2</com.browserstack.dep.version>
+    <org.apache.maven.plugins.dep.version>3.6.0</org.apache.maven.plugins.dep.version>
+
 
     <maven-compiler-plugin.plugin.version>3.11.0</maven-compiler-plugin.plugin.version>
     <maven-surefire-plugin.plugin.version>3.1.2</maven-surefire-plugin.plugin.version>
     <exec-maven-plugin.plugin.version>3.1.0</exec-maven-plugin.plugin.version>
+    <org.apache.maven.plugins.plugin.version>3.6.0</org.apache.maven.plugins.plugin.version>
+
   </properties>
 
 
@@ -63,6 +70,13 @@
       <artifactId>rest-assured</artifactId>
       <version>${restAssured.dep.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${restAssured.dep.version}</version>
+      <scope>compile</scope>
     </dependency>
 
     <dependency>
@@ -158,11 +172,11 @@
       <artifactId>maven-compiler-plugin</artifactId>
       <version>${maven-compiler-plugin.dep.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>io.rest-assured</groupId>
-      <artifactId>rest-assured</artifactId>
-      <version>5.3.0</version>
-      <scope>compile</scope>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-dependency-plugin</artifactId>
+      <version>${org.apache.maven.plugins.dep.version}</version>
     </dependency>
   </dependencies>
 
@@ -193,6 +207,19 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>${exec-maven-plugin.plugin.version}</version>
       </plugin>
+
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>${org.apache.maven.plugins.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>getClasspathFilenames</id>
+            <goals>
+              <goal>properties</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -200,8 +227,6 @@
   <profiles>
     <profile>
       <id>RunConfig</id>
-      <properties>
-      </properties>
       <build>
         <plugins>
           <plugin>
@@ -227,10 +252,16 @@
     </profile>
 
     <profile>
-      <id>RunConfig1</id>
-      <properties>
-      </properties>
-      <build>
+      <id>BStack</id>
+    <dependencies>
+      <dependency>
+        <groupId>com.browserstack</groupId>
+        <artifactId>browserstack-java-sdk</artifactId>
+        <version>${com.browserstack.dep.version}</version>
+        <scope>compile</scope>
+      </dependency>
+    </dependencies>
+    <build>
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -238,9 +269,10 @@
             <version>${maven-surefire-plugin.plugin.version}</version>
             <configuration>
               <testFailureIgnore>true</testFailureIgnore>
-              <parallel>asdadasdasdadasd</parallel>
+              <argLine>-javaagent:"${settings.localRepository}/com/browserstack/browserstack-java-sdk/${com.browserstack.dep.version}/browserstack-java-sdk-${com.browserstack.dep.version}.jar"</argLine>
+              <parallel>suites</parallel>
               <suiteXmlFiles>
-                <file>src/test/resources/runFiles/RunConfig1.run.xml</file>
+                <file>src/test/resources/runFiles/Run.xml</file>
               </suiteXmlFiles>
               <properties>
                 <property>
