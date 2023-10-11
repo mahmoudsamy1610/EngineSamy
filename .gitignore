@@ -11,4 +11,4 @@ src/test/resources/testReports/*
 target/
 
 #ignore random folders
-logs/
+logs
