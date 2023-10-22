@@ -11,6 +11,8 @@ services:
       GRID_MAX_SESSION: 16
       GRID_BROWSER_TIMEOUT: 300
       GRID_TIMEOUT: 300
+    volumes:
+      - D:/Automation/Autofox:/Autofox
 
   chrome:
     image: selenium/node-chrome
@@ -25,8 +27,9 @@ services:
       SE_NODE_OVERRIDE_MAX_SESSIONS: true
       SE_NODE_MAX_SESSIONS: 4
       SE_NODE_MAX_INSTANCES: 4
-    # volumes:
-    #   - D:/Automation/Autofox:/Autofox
+    volumes:
+      - D:/Automation/Autofox:/Autofox
+
   firefox:
     image: selenium/node-firefox
     depends_on:
@@ -40,3 +43,5 @@ services:
       SE_NODE_OVERRIDE_MAX_SESSIONS: true
       SE_NODE_MAX_SESSIONS: 4
       SE_NODE_MAX_INSTANCES: 4
+    volumes:
+      - D:/Automation/Autofox:/Autofox
