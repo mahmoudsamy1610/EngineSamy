@@ -11,4 +11,7 @@ src/test/resources/testReports/*
 target/
 
 #ignore random folders
-logs
+logs/browserstack-plugin.log
+
+#ignore random files
+jenkins.war
