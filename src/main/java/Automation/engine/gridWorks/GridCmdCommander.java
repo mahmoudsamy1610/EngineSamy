@@ -73,5 +73,16 @@ public class GridCmdCommander {
 
     }
 
+    public static void main(String[] args) {
 
+        String GridJarLocation = PropertyGetter.GetPropertyValue("SelGridData","GridJarFile") ;
+        String StaGridCommand = PropertyGetter.GetPropertyValue("SelGridData", "StaGridCommand") ;
+        String RunStaGridCommand = "cd " + GridJarLocation  + " && " + StaGridCommand;
+        String StaGridHost = PropertyGetter.GetPropertyValue("SelGridData", "StaGridHost") ;
+
+        System.out.println("RunStaGridCommand");
+        CMDRunner.runCommand("java -jar src/main/resources/automationResources/executableFiles/selenium-server-4.12.0.jar standalone --selenium-manager true");
+
+
+    }
 }
