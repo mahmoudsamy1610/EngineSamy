@@ -12,7 +12,7 @@ pipeline {
                 // Get some code from a GitHub repository
                 git 'https://github.com/MahmoudSamyOrg/Autofox.git'
 
-                // Run Maven on a Unix agent. "test change_7"
+                // Run Maven on a Unix agent. "test change_8"
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
