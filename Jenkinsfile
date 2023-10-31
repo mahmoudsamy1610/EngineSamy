@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-            MY_CREDENTIALS = credentials(793a80b8-84df-4900-9138-54a32c66a208)
+            MY_CREDENTIALS = credentials('793a80b8-84df-4900-9138-54a32c66a208')
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
