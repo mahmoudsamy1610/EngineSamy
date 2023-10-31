@@ -12,7 +12,7 @@ pipeline {
                 // Get some code from a GitHub repository
                 git 'https://github.com/MahmoudSamyOrg/Autofox.git'
 
-                // Run Maven on a Unix agent.
+                // Run Maven on a Unix agent. "test change_8"
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
@@ -22,7 +22,7 @@ pipeline {
             post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
-                success {
+                always {
                     allure includeProperties: false, jdk: '', report: 'src/test/resources/testReports', results: [[path: 'allure-results']]
 
                 }
