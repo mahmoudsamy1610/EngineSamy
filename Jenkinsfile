@@ -14,7 +14,7 @@ node {
             if (isUnix()) {
                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" -PBStack clean test/)
+                bat(/"%MVN_HOME%\bin\mvn" -PRunConfig clean test/)
             }
         }
     }
