@@ -28,7 +28,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      env: # Set the secret as an environment variable
       run: mvn -PRunConfig clean test
       shell: bash
 
