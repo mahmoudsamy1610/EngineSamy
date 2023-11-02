@@ -28,6 +28,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      env: # Set the secret as an environment variable
+        REGISTRY_TOKEN: ${{ secrets.REPO_SECRECT }}
       run: mvn -PRunConfig clean test
       shell: bash
 
