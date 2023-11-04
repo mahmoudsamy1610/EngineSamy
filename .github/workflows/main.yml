@@ -46,5 +46,9 @@ jobs:
         path: src/test/resources/testReports
 
     - name: Run Allure report
+      run: npm install -g allure-commandline --save-dev
+      shell: bash
+
+    - name: Run Allure report
       run: allure generate allure-results --clean -o src/test/resources/testReports
       shell: bash
