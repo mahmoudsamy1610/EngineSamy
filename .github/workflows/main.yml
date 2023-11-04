@@ -43,10 +43,10 @@ jobs:
       run: npm install -g allure-commandline --save-dev
       shell: bash
 
-    - name: Upload Allure Reports
+    - name: Upload Allure results
       uses: actions/upload-artifact@v2
       with:
-        name: allure-reports-GitHubBuild
+        name: allure-results-GitHubBuild
         path: allure-results
 
     - name: Run Allure report
