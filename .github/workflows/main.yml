@@ -43,5 +43,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: allure-reports-GitHubBuild
-        path: allure-results
+        path: src/test/resources/testReports
+        path1: src/test/resources/testReports/app.js
+        path2: src/test/resources/testReports/favicon.ico
+        path3: src/test/resources/testReports/index.html
+        path4: src/test/resources/testReports/styles.css
 
