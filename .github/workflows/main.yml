@@ -36,7 +36,7 @@ jobs:
       shell: bash
 
     - name: Upload Allure Reports
-    - uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: allure-reports-GitHubBuild
         path: Autofox
