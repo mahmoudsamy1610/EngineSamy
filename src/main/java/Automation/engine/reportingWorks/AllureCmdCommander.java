@@ -27,4 +27,18 @@ public class AllureCmdCommander {
         }
     }
 
+    public static void main(String[] args) {
+
+        String AllureReportLPath = null;
+
+            String AllureResultPath = PropertyGetter.GetPropertyValue("Allure", "AllureResultDirectory");
+            AllureReportLPath = PropertyGetter.GetPropertyValue("Allure", "AllureReportDirectory");
+            String AllureGenerateCommand = PropertyGetter.GetPropertyValue("Allure", "AllureGenerateCommand");
+            String AllureCleanCommand = PropertyGetter.GetPropertyValue("Allure", "AllureCleanCommand");
+            String AllureReportCommand = AllureGenerateCommand + " " + AllureResultPath + " " + AllureCleanCommand + " " + AllureReportLPath;
+
+        System.out.println(AllureReportCommand);
+    }
+
+
 }

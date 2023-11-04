@@ -45,26 +45,6 @@ jobs:
         name: allure-reports-GitHubBuild
         path: src/test/resources/testReports
 
-    - name: Upload Individual Allure Files
-      uses: actions/upload-artifact@v2
-      with:
-        name: allure-files
-        path: src/test/resources/testReports/app.js
-
-    - name: Upload favicon.ico
-      uses: actions/upload-artifact@v2
-      with:
-        name: allure-files
-        path: src/test/resources/testReports/favicon.ico
-
-    - name: Upload index.html
-      uses: actions/upload-artifact@v2
-      with:
-        name: allure-files
-        path: src/test/resources/testReports/index.html
-
-    - name: Upload styles.css
-      uses: actions/upload-artifact@v2
-      with:
-        name: allure-files
-        path: src/test/resources/testReports/styles.css
+    - name: Run Allure report
+      run: allure generate allure-results --clean -o src/test/resources/testReports
+      shell: bash
