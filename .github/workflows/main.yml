@@ -46,7 +46,7 @@ jobs:
     - name: Upload Allure results
       uses: actions/upload-artifact@v2
       with:
-        name: allure-results-GitHubBuild
+        name: allure-results
         path: allure-results
 
     - name: Run Allure report
@@ -56,5 +56,5 @@ jobs:
     - name: Upload Allure Reports
       uses: actions/upload-artifact@v2
       with:
-        name: allure-reports-GitHubBuild
+        name: allure-reports
         path: src/test/resources/testReports
