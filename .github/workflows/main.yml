@@ -39,16 +39,16 @@ jobs:
       run: mvn -PRunConfig clean test
       shell: bash
 
-    - name: Upload Allure Reports
-      uses: actions/upload-artifact@v2
-      with:
-        name: allure-reports-GitHubBuild
-        path: src/test/resources/testReports
-
-    - name: Run Allure report
+    - name: install NPM
       run: npm install -g allure-commandline --save-dev
       shell: bash
 
     - name: Run Allure report
       run: allure generate allure-results --clean -o src/test/resources/testReports
       shell: bash
+
+    - name: Upload Allure Reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: allure-reports-GitHubBuild
+        path: src/test/resources/testReports
