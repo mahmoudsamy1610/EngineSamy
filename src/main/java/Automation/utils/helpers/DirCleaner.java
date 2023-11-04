@@ -22,7 +22,7 @@ public class DirCleaner {
                     }
                 }
             } else {
-                JavaLogger.JavaInfo("cannot find directory to clean : " + DirRelativePath);
+                JavaLogger.JavaInfo("cannot find directory  to clean : " + DirRelativePath);
                 throw new NullPointerException();
             }
 
@@ -85,7 +85,7 @@ public class DirCleaner {
 
     public static void main(String[] args) {
         String dirPath = "1"; // Replace with your directory path
-        CleanDir(dirPath);
+        CleanDir("src/test/resources/testReports");
         System.out.println("cleaned");
     }
 
