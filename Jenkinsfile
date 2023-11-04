@@ -19,7 +19,7 @@ node {
         }
     }
     stage('Results') {
-        allure includeProperties: false, jdk: '', report: 'src/test/resources/testReports', results: [[path: 'allure-results']]
+        allure includeProperties: false, jdk: '', report: 'allure-report-Jenkins', results: [[path: 'allure-results']]
         testNG failureOnFailedTestConfig: true, reportFilenamePattern: 'target/surefire-reports/testng-results.xml', showFailedBuilds: true, unstableSkips: 0
         emailext attachLog: true, body: '$DEFAULT_CONTENT', subject: '$DEFAULT_CONTENT', to: 'mahmoud.samy1610@gmail.com,mahmoud.samy1610+1@gmail.com,'
     }
