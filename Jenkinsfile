@@ -2,7 +2,7 @@ node {
     def mvnHome
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
-        git branch: 'main', changelog: false, credentialsId: 'SSH', poll: false, url: 'https://github.com/mahmoudsamy1610/Autofox'
+        git branch: 'test', credentialsId: 'SSH', url: 'https://github.com/mahmoudsamy1610/Autofox'
         // Get the Maven tool.
         // ** NOTE: This 'M3' Maven tool must be configured
         // **       in the global configuration.
