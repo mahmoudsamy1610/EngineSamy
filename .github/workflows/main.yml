@@ -30,9 +30,9 @@ jobs:
 
     - name: Install Allure
       run: |
-        curl -LO https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.15.0/allure-commandline-2.15.0.zip
-        unzip allure-commandline-2.15.0.zip
-        export PATH="${PATH}:$(pwd)/allure-2.15.0/bin"
+        curl -LO https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.24.0/allure-commandline-2.24.0.zip
+        unzip allure-commandline-2.24.0.zip
+        export PATH="${PATH}:$(pwd)/allure-2.24.0/bin"
       shell: bash
 
     - name: Build with Maven
@@ -50,7 +50,7 @@ jobs:
         path: allure-results
 
     - name: Run Allure report
-      run: allure generate allure-results --clean -o src/test/resources/testReports
+      run: allure generate allure-results --clean -o allure-reports
       shell: bash
 
     - name: Upload Allure Reports
