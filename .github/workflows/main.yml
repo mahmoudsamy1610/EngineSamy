@@ -35,6 +35,10 @@ jobs:
         export PATH="${PATH}:$(pwd)/allure-2.15.0/bin"
       shell: bash
 
+    - name: Serve Allure
+      run: allure serve allure-results
+      shell: bash
+
     - name: Build with Maven
       run: mvn -PRunConfig clean test
       shell: bash
@@ -49,12 +53,12 @@ jobs:
         name: allure-results
         path: allure-results
 
-    - name: Run Allure report
-      run: allure generate allure-results --clean -o src/test/resources/testReports
-      shell: bash
+    #- name: Run Allure report
+      #run: allure generate allure-results --clean -o src/test/resources/testReports
+      #shell: bash
 
     - name: Upload Allure Reports
       uses: actions/upload-artifact@v2
       with:
         name: allure-reports
-        path: src/test/resources/testReports
+        path: allure-reports
