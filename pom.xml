@@ -5,11 +5,11 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Autofox</name>
+  <name>autofox</name>
   <url>http://maven.apache.org</url>
 
   <properties>
-    <profileId>RunConfig</profileId>
+    <profileId>Local</profileId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <selenium.dep.version>4.10.0</selenium.dep.version>
@@ -226,7 +226,7 @@
 
   <profiles>
     <profile>
-      <id>RunConfig</id>
+      <id>Local</id>
       <build>
         <plugins>
           <plugin>
@@ -237,7 +237,7 @@
               <testFailureIgnore>true</testFailureIgnore>
               <parallel>suites</parallel>
               <suiteXmlFiles>
-                <file>src/test/resources/runFiles/Run.xml</file>
+                <file>runConfiguration/Local.xml</file>
               </suiteXmlFiles>
               <properties>
                 <property>
@@ -272,7 +272,7 @@
               <argLine>-javaagent:"${settings.localRepository}/com/browserstack/browserstack-java-sdk/${com.browserstack.dep.version}/browserstack-java-sdk-${com.browserstack.dep.version}.jar"</argLine>
               <parallel>suites</parallel>
               <suiteXmlFiles>
-                <file>src/test/resources/runFiles/Run.xml</file>
+                <file>runConfiguration/BrowserStack.xml</file>
               </suiteXmlFiles>
               <properties>
                 <property>

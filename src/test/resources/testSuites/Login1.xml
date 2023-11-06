@@ -4,7 +4,7 @@
 <suite  name="Login1" >
 
     <listeners>
-        <listener class-name="Automation.engine.suiteWorks.SuiteDataGetterByRun" />
+        <listener class-name="automation.engine.suiteWorks.SuiteDataGetterByRun" />
     </listeners>
 
 

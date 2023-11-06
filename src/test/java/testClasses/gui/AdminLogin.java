@@ -1,19 +1,19 @@
 package testClasses.gui;
 
-import Autofox.objects.objectGui.DashboardPage;
-import Autofox.data.user.StaticRetoucher;
-import Autofox.data.user.StaticSuperAdmin;
-import Automation.engine.browserWorks.BrowserActions;
-import Automation.engine.browserWorks.BrowserRunner;
-import Automation.engine.Assertions.CompareText;
+import autofox.objects.objectGui.DashboardPage;
+import autofox.data.user.StaticRetoucher;
+import autofox.data.user.StaticSuperAdmin;
+import automation.engine.browserWorks.BrowserActions;
+import automation.engine.browserWorks.BrowserRunner;
+import automation.engine.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import Autofox.objects.objectGui.AutofoxGenericElements;
-import Autofox.objects.objectGui.LoginPage;
-import static Automation.engine.dataWorks.DataWrecker.Wreck;
+import autofox.objects.objectGui.AutofoxGenericElements;
+import autofox.objects.objectGui.LoginPage;
+import static automation.engine.dataWorks.DataWrecker.Wreck;
 
 
 
