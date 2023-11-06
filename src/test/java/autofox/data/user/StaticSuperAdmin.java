@@ -5,14 +5,17 @@ import static automation.engine.dataWorks.DataWrecker.Wreck;
 
 public class StaticSuperAdmin {
 
-    public static String Email ="mahmoudsamy.softxpert+1@gmail.com" ;
-    public static String UserName = "mahmoudsmsm1" ;
-    public static  String FirstName = "mahmoud" ;
-    public static  String LastName = "samy" ;
-    public static  String CompanyName ="hiroll" ;
-    public static  String CompanyAddress = "borg" ;
-    public static  String LoginToken = "2575+1" ;
+    public static String Email ="SuperUser+3@aut.com" ;
+    public static String UserName = "SuperUser+3" ;
+    public static  String FirstName = "Super" ;
+    public static  String LastName = "User" ;
+    public static  String CompanyName ="SuperUserCompany" ;
+    public static  String CompanyAddress = "SuperUserAdress" ;
+    public static  String LoginToken = "333" ;
     public static  String LoginCredsError = "Invalid login credentials." ;
+
+
+
 
 
     public static AdminUsers GenerateValidStaticSuperAdmin(){

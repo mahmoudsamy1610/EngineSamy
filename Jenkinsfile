@@ -14,12 +14,12 @@ node {
             if (isUnix()) {
                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" -P$Local clean test/)
+                bat(/"%MVN_HOME%\bin\mvn" -P$Config clean test/)
             }
         }
     }
     stage('Results') {
-        allure includeProperties: false, jdk: '', report: 'allure-report', results: [[path: 'allure-results']]
+        allure jdk: 'JAVA_HOME', report: 'allure-reports', results: [[path: 'allure-results']]
         testNG failureOnFailedTestConfig: true, reportFilenamePattern: 'target/surefire-reports/testng-results.xml', showFailedBuilds: true, unstableSkips: 0
         emailext attachLog: true, body: '$DEFAULT_CONTENT', subject: '$DEFAULT_CONTENT', to: 'mahmoud.samy1610@gmail.com,mahmoud.samy1610+1@gmail.com,'
     }
