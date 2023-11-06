@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM openjdk:17
 
-WORKDIR /Autofox
+WORKDIR /autofox
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
@@ -13,8 +13,8 @@ RUN ./mvnw dependency:resolve
 COPY src ./src
 
 
-RUN chmod -R 777 /Autofox
-RUN chmod -R 777 /Autofox/src/test/resources/testReports
+RUN chmod -R 777 /autofox
+RUN chmod -R 777 /autofox/allure-reports
 
 
-CMD ["./mvnw" , "-PRunConfig" , "clean" , "test"]
+CMD ["./mvnw" , "-PLocal" , "clean" , "test"]

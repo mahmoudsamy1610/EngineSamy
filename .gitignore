@@ -4,7 +4,7 @@
 
 # ignore allure Json files
 allure-results/
-src/test/resources/testReports/*
+allure-reports/*
 
 
 #ignore target folder
@@ -14,4 +14,3 @@ target/
 logs/browserstack-plugin.log
 
 #ignore random files
-jenkins.war
