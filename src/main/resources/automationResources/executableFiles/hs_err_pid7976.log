@@ -27,7 +27,7 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: selenium-server-4.12.0.jar node --config D:\Automation\Autofox\src\main\resources\AutomationResources\TomlFiles\GridHubNodes\MacOs\chrome\MacOschromeNode_9378.toml
+Command Line: selenium-server-4.12.0.jar node --config D:\automation\autofox\src\main\resources\AutomationResources\TomlFiles\GridHubNodes\MacOs\chrome\MacOschromeNode_9378.toml
 
 Host: Intel(R) Core(TM) i5-4570 CPU @ 3.20GHz, 4 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.3155)
 Time: Thu Sep  7 09:59:30 2023 Egypt Daylight Time elapsed time: 1.162108 seconds (0d 0h 0m 1s)
@@ -160,7 +160,7 @@ dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
 symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-18.0.2\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e;C:\Program Files\Java\jdk-18.0.2\bin\server
 
 VM Arguments:
-java_command: selenium-server-4.12.0.jar node --config D:\Automation\Autofox\src\main\resources\AutomationResources\TomlFiles\GridHubNodes\MacOs\chrome\MacOschromeNode_9378.toml
+java_command: selenium-server-4.12.0.jar node --config D:\automation\autofox\src\main\resources\AutomationResources\TomlFiles\GridHubNodes\MacOs\chrome\MacOschromeNode_9378.toml
 java_class_path (initial): selenium-server-4.12.0.jar
 Launcher Type: SUN_STANDARD
 
