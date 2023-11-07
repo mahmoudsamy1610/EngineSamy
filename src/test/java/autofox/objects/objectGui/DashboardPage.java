@@ -10,8 +10,8 @@ public class DashboardPage {
 
 
     //locators
-    private By DashboardTab = By.cssSelector("app-sidebar-nav-link.nav-item.ng-star-inserted");
-    private By DashboardPageTitle = By.cssSelector("p");
+    public static By DashboardTab = By.cssSelector("app-sidebar-nav-link.nav-item.ng-star-inserted");
+    public static By DashboardPageTitle = By.cssSelector("p");
 
     //Variables
         WebDriver driver ;

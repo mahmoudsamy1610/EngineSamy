@@ -1,6 +1,6 @@
 package autofox.objects.objectGui;
 
-import autofox.autofoxPropertyWorks.GetAutofoxProperty;
+import autofox.data.routes.RoutesUser;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.elementWorks.ElementActions;
 import automation.engine.setupWorks.EnvironmentManager;
@@ -12,9 +12,9 @@ public class LoginPage {
 
     public WebDriver driver;
     //Locators
-    private By TokenField = By.id("login_token");
-    private By LoginButton = By.cssSelector("button.login-btn.btn-block.btn-danger");
-    private By InvalidLoginCredsToaster = By.cssSelector("div[role='alertdialog']") ;
+    public static By TokenField = By.id("login_token");
+    public static By LoginButton = By.cssSelector("button.login-btn.btn-block.btn-danger");
+    public static By InvalidLoginCredsToaster = By.cssSelector("div[role='alertdialog']") ;
 
 
     //driver constructor
@@ -25,7 +25,7 @@ public class LoginPage {
     public  void openLoginPage( ) {
 
         String Domain = EnvironmentManager.SelectEnvironment();
-        String LoginPageUrl = GetAutofoxProperty.GetAutofoxPropertyValue("AutofoxUrlsStore", "LoginPath");
+        String LoginPageUrl = RoutesUser.LoginPage;
         String FullLoginPageUrl = Domain + LoginPageUrl;
 
             BrowserActions.goToUrl(driver, FullLoginPageUrl, "Login");

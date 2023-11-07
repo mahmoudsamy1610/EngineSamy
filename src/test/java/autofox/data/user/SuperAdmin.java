@@ -11,7 +11,7 @@ public class SuperAdmin {
     public static AdminUsers GenerateSuperAdmin(){
         String Email = DataFaker.FakeEmail();
         String UserName = DataFaker.FakeUserName();
-        AdminUsers superAdmin = new AdminUsers( Email,  UserName) ;
+        AdminUsers superAdmin = new AdminUsers(Email,  UserName) ;
 
         return superAdmin;
     }

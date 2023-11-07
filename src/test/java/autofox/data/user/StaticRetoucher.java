@@ -5,13 +5,17 @@ import static automation.engine.dataWorks.DataWrecker.Wreck;
 
 public class StaticRetoucher {
 
-    public static String Email ="mahmoudsamy.softxpert+3@gmail.com" ;
-    public static String UserName = "mahmoudsmsm3" ;
-    public static  String FirstName = "mahmoud3" ;
-    public static  String LastName = "samy3" ;
-    public static  String CompanyName ="hiroll3" ;
-    public static  String CompanyAddress = "borg3" ;
-    public static  String LoginToken = "2577+3" ;
+    public static String Email ="RetouchUser+4@aut.com" ;
+    public static String UserName = "RetouchUser+4" ;
+    public static  String FirstName = "Retouch" ;
+    public static  String LastName = "User" ;
+    public static  String CompanyName ="RetouchUserCompany" ;
+    public static  String CompanyAddress = "RetouchUserAdress" ;
+    public static  String LoginToken = "444" ;
+
+    public static  String LoginCredsError = "Invalid login credentials." ;
+
+
 
 
     public static AdminUsers GenerateValidStaticRetoucher(){

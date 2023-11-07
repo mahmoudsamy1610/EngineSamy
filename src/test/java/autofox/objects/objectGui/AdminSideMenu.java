@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class AdminSideMenu {
 
         //locators
-       private By DashboardTab = By.cssSelector("app-sidebar-nav-link.nav-item.ng-star-inserted");
+        public static By DashboardTab = By.cssSelector("app-sidebar-nav-link.nav-item.ng-star-inserted");
 
     //variables
        WebDriver driver ;
