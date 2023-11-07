@@ -3,7 +3,7 @@
 .idea/
 
 # ignore allure Json files
-allure-results/
+allure-results/*
 allure-reports/*
 
 

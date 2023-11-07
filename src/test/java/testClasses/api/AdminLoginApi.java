@@ -49,7 +49,7 @@ public class AdminLoginApi {
         Response LoginResponse = AdminLoginApiRequest.LoginApis(ValidAdminUser);
         AdminUsers AdminUserResponse = AdminUserDeserializer.DeserializeAdminUser(LoginResponse);
 
-        CompareText.CheckText(AdminUserResponse.getEmail() , ValidAdminUser.Email , " Logged in user Email ");
+        CompareText.CheckText(AdminUserResponse.getEmail() , ValidAdminUser.Email , "Logged in user Email ");
 
         //Expected Results : Valid Admin can log in and home page title is logout
 

@@ -26,7 +26,7 @@ Test environment  [Alpha || DEV || Live]
 
 
     <suite-files >
-        <suite-file path="../src/test/resources/testSuites/Login1.xml"/>
+        <suite-file path="../src/test/resources/testSuites/Login.xml"/>
 
 
     </suite-files>
