@@ -10,7 +10,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import autofox.objects.objectGui.AutofoxElements;
+import autofox.objects.objectGui.AutofoxHeader;
 import autofox.objects.objectGui.LoginPage;
 import static automation.engine.dataWorks.DataWrecker.Wreck;
 
@@ -21,10 +21,11 @@ public class AdminLogin {
     //Initialization
     WebDriver driver;
     LoginPage loginPage ;
-    AutofoxElements autofoxElements;
+    AutofoxHeader autofoxElements;
     DashboardPage dashboardPage ;
 
 
+    //Data Providers
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
         String[][] dataArr = new String[][]{
@@ -69,10 +70,8 @@ public class AdminLogin {
 
         //pages
         loginPage = new LoginPage(driver);
-        autofoxElements = new AutofoxElements(driver) ;
+        autofoxElements = new AutofoxHeader(driver) ;
         dashboardPage = new DashboardPage(driver);
-
-        //shared steps
 
     }
 

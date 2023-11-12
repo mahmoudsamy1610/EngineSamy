@@ -33,12 +33,12 @@ public class LoginPage {
 
 
     public void insertLoginToken(String Token)   {
-        ElementActions.writeText(driver,TokenField,Token, "Login Token Field" );
+        ElementActions.WriteText(driver,TokenField,Token, "Login Token Field" );
     }
 
 
     public void clickLogin(){
-        ElementActions.clickElement(driver,LoginButton, "Login Button");
+        ElementActions.ClickElement(driver,LoginButton, "Login Button" );
     }
 
     public String GetInvalidCredsErrorToaster(){

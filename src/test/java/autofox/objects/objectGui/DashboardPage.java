@@ -1,7 +1,7 @@
 package autofox.objects.objectGui;
 
 import automation.engine.elementWorks.ElementActions;
-import automation.engine.elementWorks.ElementHelper;
+import automation.engine.elementWorks.LocatorActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,7 +35,7 @@ public class DashboardPage {
 
     public WebElement GetDashboardPageTitle() {
 
-        WebElement DashboardPageTitleName = ElementHelper.locateElement(driver, DashboardPageTitle, "Dashboard page title name");
+        WebElement DashboardPageTitleName = LocatorActions.locateElement(driver, DashboardPageTitle, "Dashboard page title name");
 
         return DashboardPageTitleName ;
     }
