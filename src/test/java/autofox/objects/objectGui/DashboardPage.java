@@ -33,11 +33,6 @@ public class DashboardPage {
 
     }
 
-    public WebElement GetDashboardPageTitle() {
 
-        WebElement DashboardPageTitleName = LocatorActions.locateElement(driver, DashboardPageTitle, "Dashboard page title name");
-
-        return DashboardPageTitleName ;
-    }
 
 }

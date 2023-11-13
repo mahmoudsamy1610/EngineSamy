@@ -46,13 +46,10 @@ public class AALocatorTester {
         loginGuiSteps.UserLogin(SuperAdminToken);
         autofoxSideMenu.ClickOnAdmins();
         addAdminPage.OpenAddAdminPage();
-        addAdminPage.InsertEmail("emailasd");
-        addAdminPage.InsertCompanyName("cococo");
-        addAdminPage.InsertCompanyAddress("adddd");
-        addAdminPage.InsertFirstName("ffffff");
-        addAdminPage.InsertLastName("laslaslas");
-        addAdminPage.InsertUserName("User");
-        addAdminPage.InsertUserName("email tany");
+        addAdminPage.ClickLanguageDropDown();
+        addAdminPage.SelectAdminLanguage("PT");
+        addAdminPage.ClickCountryDropDown();
+        addAdminPage.SelectAdminCountry("LU");
 
 
 

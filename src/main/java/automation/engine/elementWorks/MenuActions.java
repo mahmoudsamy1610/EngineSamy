@@ -20,9 +20,8 @@ public class MenuActions {
         List<WebElement> MenuParentItems = new ArrayList<>();
 
         try {
-            WebElement SideMenuElement = LocatorActions.locateElement(Driver, MenuLocator, MenuElemenName);
-
-                MenuParentItems = Objects.requireNonNull(SideMenuElement).findElements(MenuParentItem);
+            LocatorActions.locateElement(Driver, MenuLocator, MenuElemenName);
+               Driver.findElements(MenuParentItem);
 
         }catch (Exception E){
             EngineLogger.EngineExceptionError(" Failed Fetching menu all items elements [" + MenuElemenName+ "]" ,E);

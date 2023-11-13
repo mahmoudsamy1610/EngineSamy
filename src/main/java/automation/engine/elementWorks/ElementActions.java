@@ -4,6 +4,9 @@ import automation.utils.loggers.EngineLogger;
 import automation.engine.reportingWorks.AllureStepLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import java.util.Objects;
@@ -17,7 +20,8 @@ public class ElementActions {
         AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
 
         try {
-                Objects.requireNonNull(LocatorActions.locateElement(Driver, Locator, ElementName)).clear();
+            LocatorActions.locateElement(Driver, Locator, ElementName);
+            Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).clear();
         }
         catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to clear text in field : " + ElementName + "By Locator :" + Locator , E);
@@ -27,15 +31,16 @@ public class ElementActions {
     }
 
 
-    public static void WriteText(WebDriver Driver, By Locator, String text , String ElementName){
-        EngineLogger.EngineInfo("Writing : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator );
-        AllureStepLogger.logStep("Write : ["+ text +  "] in : [" +ElementName+ "]"  );
+    public static void WriteText(WebDriver Driver, By Locator, String Text , String ElementName){
+        EngineLogger.EngineInfo("Writing : ["+ Text +  "] in : [" +ElementName+ "] " + "By Locator :" + Locator );
+        AllureStepLogger.logStep("Write : ["+ Text +  "] in : [" +ElementName+ "]"  );
 
         try {
-            Objects.requireNonNull(LocatorActions.locateElement(Driver, Locator, ElementName)).sendKeys(text);
+            LocatorActions.locateElement(Driver, Locator, ElementName);
+            Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).sendKeys(Text);
         }
         catch (Exception E) {
-            EngineLogger.EngineExceptionError("Failed to write : ["+ text +  "] in : [" +ElementName+ "]" + "By Locator :" + Locator , E);
+            EngineLogger.EngineExceptionError("Failed to write : ["+ Text +  "] in : [" +ElementName+ "] " + "By Locator :" + Locator , E);
             AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
             Assert.fail("Failed to clear text in field : " + ElementName , E);
         }
@@ -43,18 +48,40 @@ public class ElementActions {
     }
 
     public static void ClickElement(WebDriver Driver , By Locator , String ElementName){
-        EngineLogger.EngineInfo("Clicking on [" + ElementName+ "]" + "By Locator :" + Locator);
+        EngineLogger.EngineInfo("Clicking on [" + ElementName+ "] " + "By Locator :" + Locator);
         AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
 
         try {
-                Objects.requireNonNull(LocatorActions.locateElement(Driver, Locator, ElementName)).click();
+            LocatorActions.locateElement(Driver, Locator, ElementName);
+            Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).click();
             }
         catch (Exception E) {
-            EngineLogger.EngineExceptionError(" Failed to click on :[" + ElementName+ "]" + "By Locator :" + Locator , E);
+            EngineLogger.EngineExceptionError(" Failed to click on :[" + ElementName+ "] " + "By Locator :" + Locator , E);
             AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
             Assert.fail(" Failed to click on :[" + ElementName+ "]"  , E);
         }
     }
+
+
+    public static void HoverElement(WebDriver Driver , By Locator , String ElementName){
+        EngineLogger.EngineInfo("Hovering on [" + ElementName+ "] " + "By Locator :" + Locator);
+        AllureStepLogger.logStep("Hovering on [" + ElementName+ "]" );
+
+        Actions actions = new Actions(Driver);
+
+        try {
+            LocatorActions.locateElement(Driver, Locator, ElementName);
+            WebElement element = Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator));
+            actions.moveToElement(element).perform();
+        }
+        catch (Exception E) {
+            EngineLogger.EngineExceptionError(" Failed to Hover on :[" + ElementName+ "] " + "By Locator :" + Locator , E);
+            AllureStepLogger.logStep("Hover on [" + ElementName+ "]" );
+            Assert.fail(" Failed to Hover on :[" + ElementName+ "]"  , E);
+        }
+    }
+
+
 
     public static String GetElementText(WebDriver Driver , By Locator , String ElementName){
         EngineLogger.EngineInfo("Checking the text in [" + ElementName+ "]" + "By Locator :" + Locator);
@@ -62,7 +89,8 @@ public class ElementActions {
 
         try {
             String ElementText;
-            ElementText =  Objects.requireNonNull(LocatorActions.locateElement(Driver, Locator, ElementName)).getText();
+            LocatorActions.locateElement(Driver, Locator, ElementName);
+            ElementText = Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).getText();
             return ElementText;
         }
 
