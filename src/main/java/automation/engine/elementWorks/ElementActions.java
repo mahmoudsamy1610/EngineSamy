@@ -82,6 +82,23 @@ public class ElementActions {
     }
 
 
+    public static void ClickByCoordinates(WebDriver Driver , int x , int y){
+        //Coordinates from origin on top,left corner
+        EngineLogger.EngineInfo("moving cursor by x and y respectively : " + x + y);
+
+        Actions actions = new Actions(Driver);
+
+        try {
+            actions.moveByOffset(x , y).click().perform();
+        }
+        catch (Exception E) {
+            EngineLogger.EngineExceptionError(" Failed moving cursor by x and y respectively : " + x + y, E);
+            Assert.fail(" Failed moving cursor by x and y respectively : " + x + y  , E);
+        }
+    }
+
+
+
 
     public static String GetElementText(WebDriver Driver , By Locator , String ElementName){
         EngineLogger.EngineInfo("Checking the text in [" + ElementName+ "]" + "By Locator :" + Locator);

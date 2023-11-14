@@ -4,6 +4,8 @@ import autofox.data.user.StaticSuperAdmin;
 import autofox.sharedSteps.gui.user.LoginGuiSteps;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
+import automation.engine.elementWorks.ElementActions;
+import automation.engine.elementWorks.KeyboardActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -46,10 +48,24 @@ public class AALocatorTester {
         loginGuiSteps.UserLogin(SuperAdminToken);
         autofoxSideMenu.ClickOnAdmins();
         addAdminPage.OpenAddAdminPage();
-        addAdminPage.ClickLanguageDropDown();
+        addAdminPage.InsertAdminData("email" , "asdas");
+        addAdminPage.InsertAdminData("username" , "asdas");
+        addAdminPage.InsertAdminData("first_name" , "asdas");
+        addAdminPage.InsertAdminData("email" , "as123231231312311das");
+
+        addAdminPage.ClickDropDown("language");
         addAdminPage.SelectAdminLanguage("PT");
-        addAdminPage.ClickCountryDropDown();
+        addAdminPage.ClickDropDown("country_id");
         addAdminPage.SelectAdminCountry("LU");
+        addAdminPage.SelectAdminPermission("is_review_user");
+        addAdminPage.InsertAdminData("review_images_target" , "123");
+        addAdminPage.ClickDropDown("working_days");
+        addAdminPage.SelectWorkingDay("Monday");
+        addAdminPage.SelectWorkingDay("Tuesday");
+        KeyboardActions.PressEscapeKey(driver);
+        addAdminPage.SelectAdminPermission("is_sales_user");
+        addAdminPage.ClickSaveAdmin();
+
 
 
 

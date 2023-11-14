@@ -67,7 +67,6 @@ public class AutofoxSideMenu {
 
 
 
-
     public By GetMenuParentLocator(int ParentIndex){
 
         By ParentIMenuItem = By.cssSelector("app-sidebar-nav-dropdown:nth-child("+ParentIndex+")") ;
@@ -78,6 +77,8 @@ public class AutofoxSideMenu {
         By ChildMenuItem = By.cssSelector("app-sidebar-nav-dropdown.nav-item.nav-dropdown.open > app-sidebar-nav-items > app-sidebar-nav-link:nth-child("+ChildIndex+")");
         return ChildMenuItem;
     }
+
+
 
 
 
