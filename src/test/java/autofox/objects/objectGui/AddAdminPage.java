@@ -18,8 +18,8 @@ public class AddAdminPage {
 
 
     //Locators
-    public static By Save = By.cssSelector("button.btn.btn-sm.btn-primary.ml-2.ng-tns-c134-2");
-    public static By Cancel = By.cssSelector("button.btn.btn-sm.btn-danger.ml-2.ng-tns-c134-2");
+    public static By Save = By.cssSelector("button[type=submit]");
+    public static By Cancel = By.cssSelector("button[type=button] > i");
     public static List<String> LanguageIndex = new ArrayList<>();
     public static List<String> CountryIndex = new ArrayList<>();
     public static List<String> WorkingDaysIndex = new ArrayList<>();

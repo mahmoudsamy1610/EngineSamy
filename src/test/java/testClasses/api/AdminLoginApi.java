@@ -11,7 +11,7 @@ import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static autofox.objects.objectSystem.users.AdminUsersPojo.*;
+import static autofox.objects.objectSystem.users.AdminUsersLoginPojo.*;
 
 public class AdminLoginApi {
 

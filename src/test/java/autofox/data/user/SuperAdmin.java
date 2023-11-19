@@ -1,6 +1,7 @@
 package autofox.data.user;
 
-import autofox.objects.objectSystem.users.AdminUsersPojo.AdminUsers;
+import autofox.objects.objectSystem.users.AdminUsersLoginPojo.AdminUsers;
+import autofox.objects.objectSystem.users.AdminUsersPojoChatGBT;
 import automation.engine.dataWorks.DataFaker;
 
 public class SuperAdmin {
@@ -8,10 +9,19 @@ public class SuperAdmin {
 
 
 //Just an example constructor .. we will remove it and change it upon need
-    public static AdminUsers GenerateSuperAdmin(){
+
+    public static AdminUsersPojoChatGBT.UserData GenerateSuperAdmin(){
         String Email = DataFaker.FakeEmail();
         String UserName = DataFaker.FakeUserName();
-        AdminUsers superAdmin = new AdminUsers(Email,  UserName) ;
+        String FirstName = DataFaker.FakeFirstName();
+        String LastName = DataFaker.FakeLastName();
+        String CompanyName = DataFaker.FakeCompanyName();
+        String CompanyAddress = DataFaker.FakeCompanyAddress();
+        String Language = "EN" ;
+        String Country = "DE" ;
+        boolean Permission = true;
+
+        AdminUsersPojoChatGBT.UserData superAdmin = new AdminUsersPojoChatGBT.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country ,Permission) ;
 
         return superAdmin;
     }

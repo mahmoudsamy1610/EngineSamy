@@ -3,12 +3,13 @@ package autofox.objects.objectSystem.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AdminUsersPojo {
 
-
+    //--------------------------------Json parameters---------------------------------
     @JsonProperty("status")
     public int Status;
 
@@ -18,6 +19,8 @@ public class AdminUsersPojo {
     @JsonProperty("errors")
     public List<AdminErrors> AdminErrors;
 
+
+    //---------------------------Getters and Setters----------------------------------
     public int getStatus() {return Status;}
 
     @JsonProperty("status")
@@ -32,61 +35,14 @@ public class AdminUsersPojo {
     @JsonProperty("errors")
     public void setAdminErrors(List<AdminErrors> adminErrors) {AdminErrors = adminErrors;}
 
+
+    //------------------------------------Object subClasses---------------------------------
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Data {
 
-        @JsonProperty("access_token")
-        public String AccessToken;
-        @JsonProperty("user")
-        public AdminUsers adminUsers;
-
-        public String getAccessToken() {
-            return AccessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.AccessToken = accessToken;
-        }
-
-        public AdminUsers getAdminUsers() {
-            return adminUsers;
-        }
-        @JsonProperty("user")
-        public void setAdminUsers(AdminUsers adminUsers) {
-            this.adminUsers = adminUsers;
-        }
-    }
-
-
-
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class AdminErrors {
-        @JsonProperty("code")
-        public int Code;
-
-        @JsonProperty("name")
-        public String ErrorName;
-
-        @JsonProperty("description")
-        public String ErrorMessage;
-
-        public String getErrorMessage() {
-            return ErrorMessage;
-        }
-
-        public void setErrorMessage(String errorMessage) {
-            ErrorMessage = errorMessage;
-        }
-    }
-
-
-
-
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class AdminUsers {
-
+        //------------------------------- sub class json parameters-------------------------
+        @JsonProperty("id")
+        public int Id;
         @JsonProperty("email")
         public String Email;
         @JsonProperty("username")
@@ -101,25 +57,42 @@ public class AdminUsersPojo {
         public String CompanyAddress;
         @JsonProperty("login_token")
         public String LoginToken;
+        @JsonProperty("language")
+        public String Language;
+        @JsonProperty("country_id")
+        public String Country;
+        @JsonProperty("is_superuser")
+        public String IsSuperUser;
+        @JsonProperty("is_staff")
+        public String IsStaff;
 
-        public AdminUsers() {
+        @JsonProperty("settings")
+        public String UserSettings;
+
+        @JsonProperty("admin_settings")
+        public String AdminSettings;
+
+        //-----------------------------Sub class Constructors--------------------------------
+        public Data() {
         }
 
-        public AdminUsers(String LoginToken , String Email) {
+        public Data(String LoginToken, String Email) {
             this.Email = Email;
             this.LoginToken = LoginToken;
         }
 
-        public AdminUsers(String LoginToken) {
-            this.LoginToken = LoginToken;
-        }
+
+        //----------------------------sub class getters and setters--------------------------
+        @JsonProperty("id")
+        public int getId() {return Id;}
+        @JsonProperty("id")
+        public void setId(int id) {Id = id;}
 
 
         @JsonProperty("email")
         public void setEmail(String Email) {
             this.Email = Email;
         }
-
         @JsonProperty("email")
         public String getEmail() {
             return Email;
@@ -130,7 +103,7 @@ public class AdminUsersPojo {
         public void setUserName(String UserName) {
             this.UserName = UserName;
         }
-
+        @JsonProperty("username")
         public String getUserName() {
             return UserName;
         }
@@ -140,7 +113,7 @@ public class AdminUsersPojo {
         public void setFirstName(String FirstName) {
             this.FirstName = FirstName;
         }
-
+        @JsonProperty("first_name")
         public String getFirstName() {
             return FirstName;
         }
@@ -150,7 +123,7 @@ public class AdminUsersPojo {
         public void setLastName(String LastName) {
             this.LastName = LastName;
         }
-
+        @JsonProperty("last_name")
         public String getLastName() {
             return LastName;
         }
@@ -160,7 +133,7 @@ public class AdminUsersPojo {
         public void setCompanyName(String CompanyName) {
             this.CompanyName = CompanyName;
         }
-
+        @JsonProperty("company_name")
         public String getCompanyName() {
             return CompanyName;
         }
@@ -170,50 +143,98 @@ public class AdminUsersPojo {
         public void setCompanyAddress(String CompanyAddress) {
             this.CompanyAddress = CompanyAddress;
         }
-
+        @JsonProperty("company_address")
         public String getCompanyAddress() {
             return CompanyAddress;
         }
+
+
+        @JsonProperty("is_superuser")
+        public String getIsSuperUser() {return IsSuperUser;}
+        @JsonProperty("is_superuser")
+        public void setIsSuperUser(String isSuperUser) {IsSuperUser = isSuperUser;}
+
+
+        @JsonProperty("is_staff")
+        public String getIsStaff() {return IsStaff;}
+        @JsonProperty("is_staff")
+        public void setIsStaff(String isStaff) {IsStaff = isStaff;}
 
 
         @JsonProperty("login_token")
         public void setLoginToken(String LoginToken) {
             this.LoginToken = LoginToken;
         }
-
+        @JsonProperty("login_token")
         public String getLoginToken() {
             return LoginToken;
         }
 
+        @JsonProperty("language")
+        public String getLanguage() {return Language;}
+        @JsonProperty("language")
+        public void setLanguage(String language) {Language = language;}
 
-        public class Status {
-            @JsonProperty("status")
-            int Status;
 
-            public int getStatus() {
-                return Status;
-            }
+        @JsonProperty("country_id")
+        public String getCountry() {return Country;}
+        @JsonProperty("country_id")
+        public void setCountry(String country) {Country = country;}
 
-            @JsonProperty("status")
-            public void setStatus(int status) {
-                Status = status;
-            }
-        }
+        @JsonProperty("settings")
+        public String getUserSettings() {return UserSettings;}
+        @JsonProperty("settings")
+        public void setUserSettings(String userSettings) {UserSettings = userSettings;}
 
-        public class Data {
-            @JsonProperty("access_token")
-            String AccessToken;
-
-            public String getAccessToken() {
-                return AccessToken;
-            }
-
-            public void setAccessToken(String accessToken) {
-                AccessToken = accessToken;
-            }
-        }
+        @JsonProperty("admin_settings")
+        public String getAdminSettings() {return AdminSettings;}
+        @JsonProperty("admin_settings")
+        public void setAdminSettings(String adminSettings) {AdminSettings = adminSettings;}
 
     }
+
+
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class UserSettings{
+        //------------------------------- sub class json parameters-------------------------
+
+
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class AdminSettings{
+        //------------------------------- sub class json parameters-------------------------
+
+
+    }
+
+
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class AdminErrors {
+
+        //------------------------------- sub class json parameters-------------------------
+        @JsonProperty("code")
+        public int Code;
+
+        @JsonProperty("name")
+        public String ErrorName;
+
+        @JsonProperty("description")
+        public String ErrorMessage;
+
+        //----------------------------sub class getters and setters--------------------------
+         public String getErrorMessage() {
+            return ErrorMessage;
+        }
+
+        public void setErrorMessage(String errorMessage) {
+            ErrorMessage = errorMessage;
+        }
+    }
+
 }
+
 
 

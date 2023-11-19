@@ -48,6 +48,7 @@ public class AALocatorTester {
         loginGuiSteps.UserLogin(SuperAdminToken);
         autofoxSideMenu.ClickOnAdmins();
         addAdminPage.OpenAddAdminPage();
+        //addAdminPage.ClickSaveAdmin();
         addAdminPage.InsertAdminData("email" , "asdas");
         addAdminPage.InsertAdminData("username" , "asdas");
         addAdminPage.InsertAdminData("first_name" , "asdas");
@@ -65,7 +66,7 @@ public class AALocatorTester {
         KeyboardActions.PressEscapeKey(driver);
         addAdminPage.SelectAdminPermission("is_sales_user");
         addAdminPage.ClickSaveAdmin();
-
+        addAdminPage.ClickCancelAddingAdmin();
 
 
 

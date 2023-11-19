@@ -1,6 +1,6 @@
 package autofox.data.user;
 
-import autofox.objects.objectSystem.users.AdminUsersPojo.AdminUsers;
+import autofox.objects.objectSystem.users.AdminUsersLoginPojo.AdminUsers;
 import static automation.engine.dataWorks.DataWrecker.Wreck;
 
 public class StaticSuperAdmin {

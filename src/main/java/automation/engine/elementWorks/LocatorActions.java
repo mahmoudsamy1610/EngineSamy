@@ -16,16 +16,16 @@ public class LocatorActions {
 
     public static void locateElement (WebDriver Driver, By Locator , String ElementName){
 
+            String Script = "window.scrollTo(0 , document.body.scrollHeight)" ;
 
         try{
             EngineLogger.EngineInfo("Locating web element [" + ElementName+ "]" + " By Locator :" + Locator );
 
             Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.visibilityOfElementLocated(Locator));
-            ((JavascriptExecutor) Driver).executeScript("arguments[0].scrollIntoView(false);", Driver.findElement(Locator));
 
             if (!Driver.findElement(Locator).isDisplayed()) {
-                EngineLogger.EngineError("Element located by : "+ Locator+ " is not displayed");
-                throw new Exception();
+                EngineLogger.EngineInfo("Scrolling to web element [" + ElementName+ "]" + " By Locator :" + Locator );
+                ((JavascriptExecutor) Driver).executeScript(Script, Driver.findElement(Locator));
             }
         }
         catch (Exception E){
@@ -35,16 +35,17 @@ public class LocatorActions {
 
     public static void locateElements(WebDriver Driver, By Locators , String ElementName , int ChidIndex){
 
+        String Script = "window.scrollTo(0 , document.body.scrollHeight)" ;
 
         try{
             EngineLogger.EngineInfo("Locating web elements [" + ElementName+ "]" + "By Locator :" + Locators );
 
             Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.visibilityOfElementLocated(Locators));
-            ((JavascriptExecutor) Driver).executeScript("arguments[0].scrollIntoView(false);", Driver.findElements(Locators).get(ChidIndex));
+            ((JavascriptExecutor) Driver).executeScript(Script, Driver.findElements(Locators).get(ChidIndex));
 
             if (!Driver.findElement(Locators).isDisplayed()) {
-                EngineLogger.EngineError("Elements located by : "+ Locators+ " are all not displayed");
-                throw new Exception();
+                EngineLogger.EngineInfo("Scrolling to web element [" + ElementName+ "]" + " By Locator :" + Locators );
+                ((JavascriptExecutor) Driver).executeScript(Script, Driver.findElement(Locators));
             }
         }
         catch (Exception E){
