@@ -11,17 +11,17 @@ public class AdminUsersPojoChatGBT {
 
 
     @JsonProperty("status")
-    private int status;
+    public int status;
 
     @JsonProperty("data")
-    private UserData data;
+    public UserData data;
 
     // getters and setters
 
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class UserData {
-        public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country , boolean Permission ){
+        public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country , boolean IsSuperUser){
             this.email = Email;
             this.username = UserName ;
             this.firstName = FirstName;
@@ -30,166 +30,167 @@ public class AdminUsersPojoChatGBT {
             this.companyAddress = CompanyAddress ;
             this.language = Language ;
             this.countryId = Country;
+            this.isSuperuser = IsSuperUser;
         }
 
         @JsonProperty("id")
-        private int id;
+        public int id;
 
         @JsonProperty("email")
-        private String email;
+        public String email;
 
         @JsonProperty("username")
-        private String username;
+        public String username;
 
         @JsonProperty("first_name")
-        private String firstName;
+        public String firstName;
 
         @JsonProperty("last_name")
-        private String lastName;
+        public String lastName;
 
         @JsonProperty("company_name")
-        private String companyName;
+        public String companyName;
 
         @JsonProperty("company_address")
-        private String companyAddress;
+        public String companyAddress;
 
         @JsonProperty("phone")
-        private String phone;
+        public String phone;
 
         @JsonProperty("postal_code")
-        private String postalCode;
+        public String postalCode;
 
         @JsonProperty("region")
-        private String region;
+        public String region;
 
         @JsonProperty("language")
-        private String language;
+        public String language;
 
         @JsonProperty("date_joined")
-        private String dateJoined;
+        public String dateJoined;
 
         @JsonProperty("date_deleted")
-        private String dateDeleted;
+        public String dateDeleted;
 
         @JsonProperty("last_login")
-        private String lastLogin;
+        public String lastLogin;
 
         @JsonProperty("is_superuser")
-        private boolean isSuperuser;
+        public boolean isSuperuser;
 
         @JsonProperty("is_staff")
-        private boolean isStaff;
+        public boolean isStaff;
 
         @JsonProperty("is_active")
-        private boolean isActive;
+        public boolean isActive;
 
         @JsonProperty("login_token")
-        private String loginToken;
+        public String loginToken;
 
         @JsonProperty("balance")
-        private String balance;
+        public String balance;
 
         @JsonProperty("vin_query_balance")
-        private String vinQueryBalance;
+        public String vinQueryBalance;
 
         @JsonProperty("registration_document_balance")
-        private String registrationDocumentBalance;
+        public String registrationDocumentBalance;
 
         @JsonProperty("retouch_balance")
-        private String retouchBalance;
+        public String retouchBalance;
 
         @JsonProperty("subscription_start_date")
-        private String subscriptionStartDate;
+        public String subscriptionStartDate;
 
         @JsonProperty("subscription_end_date")
-        private String subscriptionEndDate;
+        public String subscriptionEndDate;
 
         @JsonProperty("is_subscription_active")
-        private boolean isSubscriptionActive;
+        public boolean isSubscriptionActive;
 
         @JsonProperty("subscription_type")
-        private String subscriptionType;
+        public String subscriptionType;
 
         @JsonProperty("position_template_ids")
-        private String[] positionTemplateIds;
+        public String[] positionTemplateIds;
 
         @JsonProperty("no_ai_position_template_ids")
-        private String[] noAiPositionTemplateIds;
+        public String[] noAiPositionTemplateIds;
 
         @JsonProperty("retouch_position_template_ids")
-        private String[] retouchPositionTemplateIds;
+        public String[] retouchPositionTemplateIds;
 
         @JsonProperty("sorted_position_template_ids")
-        private String[] sortedPositionTemplateIds;
+        public String[] sortedPositionTemplateIds;
 
         @JsonProperty("user_export_sort_ids")
-        private String[] userExportSortIds;
+        public String[] userExportSortIds;
 
         @JsonProperty("export_sort_last_update")
-        private String exportSortLastUpdate;
+        public String exportSortLastUpdate;
 
         @JsonProperty("settings")
-        private UserSettings settings;
+        public UserSettings settings;
 
         @JsonProperty("user_position_templates")
-        private String[] userPositionTemplates;
+        public String[] userPositionTemplates;
 
         @JsonProperty("country_id")
-        private String countryId;
+        public String countryId;
 
         @JsonProperty("working_status")
-        private String workingStatus;
+        public String workingStatus;
 
         @JsonProperty("is_training_retoucher")
-        private boolean isTrainingRetoucher;
+        public boolean isTrainingRetoucher;
 
         @JsonProperty("last_active")
-        private String lastActive;
+        public String lastActive;
 
         @JsonProperty("last_subscription_start_date")
-        private String lastSubscriptionStartDate;
+        public String lastSubscriptionStartDate;
 
         @JsonProperty("last_subscription_end_date")
-        private String lastSubscriptionEndDate;
+        public String lastSubscriptionEndDate;
 
         @JsonProperty("sub_users_ids")
-        private String[] subUsersIds;
+        public String[] subUsersIds;
 
         @JsonProperty("user_vehicle_package")
-        private UserVehiclePackage userVehiclePackage;
+        public UserVehiclePackage userVehiclePackage;
 
         @JsonProperty("img_width")
-        private int imgWidth;
+        public int imgWidth;
 
         @JsonProperty("admin_settings")
-        private AdminSettings adminSettings;
+        public AdminSettings adminSettings;
 
         @JsonProperty("is_organization")
-        private boolean isOrganization;
+        public boolean isOrganization;
 
         @JsonProperty("login_qr_file")
-        private String loginQrFile;
+        public String loginQrFile;
 
         @JsonProperty("branch_id")
-        private String branchId;
+        public String branchId;
 
         @JsonProperty("organization_id")
-        private String organizationId;
+        public String organizationId;
 
         @JsonProperty("user_permissions")
-        private String[] userPermissions;
+        public String[] userPermissions;
 
         @JsonProperty("is_organization_mail_enabled")
-        private boolean isOrganizationMailEnabled;
+        public boolean isOrganizationMailEnabled;
 
         @JsonProperty("is_organization_mail_copied_to_dealer")
-        private boolean isOrganizationMailCopiedToDealer;
+        public boolean isOrganizationMailCopiedToDealer;
 
         @JsonProperty("template_images_ids")
-        private String[] templateImagesIds;
+        public String[] templateImagesIds;
 
         @JsonProperty("is_working")
-        private boolean isWorking;
+        public boolean isWorking;
 
         // getters and setters
 
@@ -624,136 +625,136 @@ public class AdminUsersPojoChatGBT {
         public static class UserSettings {
 
             @JsonProperty("id")
-            private int id;
+            public int id;
 
             @JsonProperty("disable_world_light")
-            private boolean disableWorldLight;
+            public boolean disableWorldLight;
 
             @JsonProperty("disable_car_light")
-            private boolean disableCarLight;
+            public boolean disableCarLight;
 
             @JsonProperty("padding_factor")
-            private String paddingFactor;
+            public String paddingFactor;
 
             @JsonProperty("shadow_opacity_power_0")
-            private String shadowOpacityPower0;
+            public String shadowOpacityPower0;
 
             @JsonProperty("hide_license_plate")
-            private boolean hideLicensePlate;
+            public boolean hideLicensePlate;
 
             @JsonProperty("license_plate_logo")
-            private String licensePlateLogo;
+            public String licensePlateLogo;
 
             @JsonProperty("license_plate_bk_color")
-            private String licensePlateBkColor;
+            public String licensePlateBkColor;
 
             @JsonProperty("body_style")
-            private String bodyStyle;
+            public String bodyStyle;
 
             @JsonProperty("allow_crm_preview")
-            private boolean allowCrmPreview;
+            public boolean allowCrmPreview;
 
             @JsonProperty("allow_web_ai_conversion")
-            private boolean allowWebAiConversion;
+            public boolean allowWebAiConversion;
 
             @JsonProperty("allow_psd_download")
-            private boolean allowPsdDownload;
+            public boolean allowPsdDownload;
 
             @JsonProperty("allow_add_vehicles")
-            private boolean allowAddVehicles;
+            public boolean allowAddVehicles;
 
             @JsonProperty("is_google_drive_enabled")
-            private boolean isGoogleDriveEnabled;
+            public boolean isGoogleDriveEnabled;
 
             @JsonProperty("is_ftp_enabled")
-            private boolean isFtpEnabled;
+            public boolean isFtpEnabled;
 
             @JsonProperty("ftp_host")
-            private String ftpHost;
+            public String ftpHost;
 
             @JsonProperty("ftp_username")
-            private String ftpUsername;
+            public String ftpUsername;
 
             @JsonProperty("ftp_dir")
-            private String ftpDir;
+            public String ftpDir;
 
             @JsonProperty("ftp_webhook_url")
-            private String ftpWebhookUrl;
+            public String ftpWebhookUrl;
 
             @JsonProperty("is_ftp_lazy")
-            private boolean isFtpLazy;
+            public boolean isFtpLazy;
 
             @JsonProperty("should_ignore_lazy_ftp_history")
-            private boolean shouldIgnoreLazyFtpHistory;
+            public boolean shouldIgnoreLazyFtpHistory;
 
             @JsonProperty("should_ignore_lazy_compressed_ftp_history")
-            private boolean shouldIgnoreLazyCompressedFtpHistory;
+            public boolean shouldIgnoreLazyCompressedFtpHistory;
 
             @JsonProperty("is_ftp_compressed")
-            private boolean isFtpCompressed;
+            public boolean isFtpCompressed;
 
             @JsonProperty("is_ftp_vin_dir_enabled")
-            private boolean isFtpVinDirEnabled;
+            public boolean isFtpVinDirEnabled;
 
             @JsonProperty("is_ftp_full_vehicle_reupload")
-            private boolean isFtpFullVehicleReupload;
+            public boolean isFtpFullVehicleReupload;
 
             @JsonProperty("is_only_retouched_vehicle_ftp")
-            private boolean isOnlyRetouchedVehicleFtp;
+            public boolean isOnlyRetouchedVehicleFtp;
 
             @JsonProperty("is_date_group_dirs_disabled")
-            private boolean isDateGroupDirsDisabled;
+            public boolean isDateGroupDirsDisabled;
 
             @JsonProperty("is_16_orientations_enabled")
-            private boolean is16OrientationsEnabled;
+            public boolean is16OrientationsEnabled;
 
             @JsonProperty("date_created")
-            private String dateCreated;
+            public String dateCreated;
 
             @JsonProperty("date_modified")
-            private String dateModified;
+            public String dateModified;
 
             @JsonProperty("allow_position_templates_update")
-            private boolean allowPositionTemplatesUpdate;
+            public boolean allowPositionTemplatesUpdate;
 
             @JsonProperty("allow_interior_ai_update")
-            private boolean allowInteriorAiUpdate;
+            public boolean allowInteriorAiUpdate;
 
             @JsonProperty("is_trial")
-            private boolean isTrial;
+            public boolean isTrial;
 
             @JsonProperty("is_vip")
-            private boolean isVip;
+            public boolean isVip;
 
             @JsonProperty("img_width")
-            private int imgWidth;
+            public int imgWidth;
 
             @JsonProperty("is_autorola_enabled")
-            private boolean isAutorolaEnabled;
+            public boolean isAutorolaEnabled;
 
             @JsonProperty("autorola_username")
-            private String autorolaUsername;
+            public String autorolaUsername;
 
             @JsonProperty("is_email_notification_enabled")
-            private boolean isEmailNotificationEnabled;
+            public boolean isEmailNotificationEnabled;
 
             @JsonProperty("notification_emails")
-            private String notificationEmails;
+            public String notificationEmails;
 
             @JsonProperty("is_ftp_status_file_enabled")
-            private boolean isFtpStatusFileEnabled;
+            public boolean isFtpStatusFileEnabled;
 
             @JsonProperty("is_auto_archive_enabled")
-            private boolean isAutoArchiveEnabled;
+            public boolean isAutoArchiveEnabled;
 
             @JsonProperty("allow_photo_collage")
-            private boolean allowPhotoCollage;
+            public boolean allowPhotoCollage;
 
             @JsonProperty("photo_collage_banner")
-            private String photoCollageBanner;
+            public String photoCollageBanner;
 
             @JsonProperty("is_ftp_special_file_enabled")
-            private boolean isFtpSpecialFileEnabled;
+            public boolean isFtpSpecialFileEnabled;
 
             // getters and setters
 
@@ -1114,31 +1115,31 @@ public class AdminUsersPojoChatGBT {
         public static class UserVehiclePackage {
 
             @JsonProperty("id")
-            private int id;
+            public int id;
 
             @JsonProperty("vehicle_package")
-            private int vehiclePackage;
+            public int vehiclePackage;
 
             @JsonProperty("retouch_package")
-            private String retouchPackage;
+            public String retouchPackage;
 
             @JsonProperty("vehicle_balance")
-            private int vehicleBalance;
+            public int vehicleBalance;
 
             @JsonProperty("user_id")
-            private int userId;
+            public int userId;
 
             @JsonProperty("is_renewable")
-            private boolean isRenewable;
+            public boolean isRenewable;
 
             @JsonProperty("date_renewal")
-            private String dateRenewal;
+            public String dateRenewal;
 
             @JsonProperty("date_created")
-            private String dateCreated;
+            public String dateCreated;
 
             @JsonProperty("date_modified")
-            private String dateModified;
+            public String dateModified;
 
             // getters and setters
 
@@ -1222,52 +1223,52 @@ public class AdminUsersPojoChatGBT {
         public static class AdminSettings {
 
             @JsonProperty("id")
-            private int id;
+            public int id;
 
             @JsonProperty("user_id")
-            private int userId;
+            public int userId;
 
             @JsonProperty("retouch_target_per_day")
-            private Integer retouchTargetPerDay;
+            public Integer retouchTargetPerDay;
 
             @JsonProperty("review_target_per_day")
-            private Integer reviewTargetPerDay;
+            public Integer reviewTargetPerDay;
 
             @JsonProperty("audit_target_per_day")
-            private Integer auditTargetPerDay;
+            public Integer auditTargetPerDay;
 
             @JsonProperty("working_days")
-            private String workingDays;
+            public String workingDays;
 
             @JsonProperty("is_retouch_user")
-            private boolean isRetouchUser;
+            public boolean isRetouchUser;
 
             @JsonProperty("is_review_user")
-            private boolean isReviewUser;
+            public boolean isReviewUser;
 
             @JsonProperty("is_view_vehicle_user")
-            private boolean isViewVehicleUser;
+            public boolean isViewVehicleUser;
 
             @JsonProperty("is_sales_user")
-            private boolean isSalesUser;
+            public boolean isSalesUser;
 
             @JsonProperty("is_training_retoucher")
-            private boolean isTrainingRetoucher;
+            public boolean isTrainingRetoucher;
 
             @JsonProperty("is_audit_user")
-            private boolean isAuditUser;
+            public boolean isAuditUser;
 
             @JsonProperty("is_reported_images_user")
-            private boolean isReportedImagesUser;
+            public boolean isReportedImagesUser;
 
             @JsonProperty("is_reported_issues_user")
-            private boolean isReportedIssuesUser;
+            public boolean isReportedIssuesUser;
 
             @JsonProperty("is_retoucher_audited_user")
-            private boolean isRetoucherAuditedUser;
+            public boolean isRetoucherAuditedUser;
 
             @JsonProperty("is_pipedrive_user")
-            private boolean isPipedriveUser;
+            public boolean isPipedriveUser;
 
             // getters and setters
 

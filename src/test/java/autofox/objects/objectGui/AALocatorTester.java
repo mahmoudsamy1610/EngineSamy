@@ -48,25 +48,25 @@ public class AALocatorTester {
         loginGuiSteps.UserLogin(SuperAdminToken);
         autofoxSideMenu.ClickOnAdmins();
         addAdminPage.OpenAddAdminPage();
-        //addAdminPage.ClickSaveAdmin();
         addAdminPage.InsertAdminData("email" , "asdas");
         addAdminPage.InsertAdminData("username" , "asdas");
         addAdminPage.InsertAdminData("first_name" , "asdas");
         addAdminPage.InsertAdminData("email" , "as123231231312311das");
-
         addAdminPage.ClickDropDown("language");
         addAdminPage.SelectAdminLanguage("PT");
         addAdminPage.ClickDropDown("country_id");
         addAdminPage.SelectAdminCountry("LU");
-        addAdminPage.SelectAdminPermission("is_review_user");
+        addAdminPage.SelectAdminPermission("is_review_user" , true);
         addAdminPage.InsertAdminData("review_images_target" , "123");
         addAdminPage.ClickDropDown("working_days");
         addAdminPage.SelectWorkingDay("Monday");
         addAdminPage.SelectWorkingDay("Tuesday");
         KeyboardActions.PressEscapeKey(driver);
-        addAdminPage.SelectAdminPermission("is_sales_user");
+        addAdminPage.SelectAdminPermission("is_sales_user" , true);
         addAdminPage.ClickSaveAdmin();
         addAdminPage.ClickCancelAddingAdmin();
+
+
 
 
 

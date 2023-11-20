@@ -1,6 +1,7 @@
 package autofox.objects.objectGui;
 
 import automation.engine.elementWorks.ElementActions;
+import automation.utils.loggers.BusinessLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
@@ -20,6 +21,7 @@ public class AddAdminPage {
     //Locators
     public static By Save = By.cssSelector("button[type=submit]");
     public static By Cancel = By.cssSelector("button[type=button] > i");
+    public static By SuccessToaster = By.cssSelector("div[role='alertdialog']");
     public static List<String> LanguageIndex = new ArrayList<>();
     public static List<String> CountryIndex = new ArrayList<>();
     public static List<String> WorkingDaysIndex = new ArrayList<>();
@@ -47,9 +49,9 @@ public class AddAdminPage {
     public By GetDropDownLocator(String DropDownName){
 
         By DropDownLabel = By.cssSelector("label[for='"+DropDownName+"']");
-        return RelativeLocator.with(By.cssSelector("div.ng-value-container")).toRightOf(DropDownLabel);
+        return RelativeLocator.with(By.cssSelector("div.ng-select-container")).toRightOf(DropDownLabel);
           /* available labels
-            Language
+            language
             country_id
             working_days
          */
@@ -171,10 +173,14 @@ public class AddAdminPage {
     }
 
 
-    public void SelectAdminPermission(String ApiPermissionKey){
+    public void SelectAdminPermission(String ApiPermissionKey , boolean State){
 
         By PermissionToggleLocator = GetPermissionToggleLocator(ApiPermissionKey);
-        ElementActions.ClickElement(driver , PermissionToggleLocator , ""+ApiPermissionKey+" : permission toggle");
+        if (State) {
+            ElementActions.ClickElement(driver, PermissionToggleLocator, "" + ApiPermissionKey + " : permission toggle");
+        }else {
+            BusinessLogger.BusinessInfo("No permission will be selected for this Admin");
+        }
     }
 
     public void SelectWorkingDay(String WorkingDay){
@@ -195,6 +201,13 @@ public class AddAdminPage {
 
     }
 
+    public void ClickToaster(){
+        ElementActions.ClickElement(driver , SuccessToaster ,  "Success toaster message" );
+    }
+
+    public void WaitForToaster(){
+        ElementActions.WaitToDisappear(driver , SuccessToaster , "Success toaster message");
+    }
 
 
 }

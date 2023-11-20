@@ -24,7 +24,7 @@ public class AutofoxHeader {
         return LoggedInEmail ;
     }
 
-    public void LogOut() {
+    public void ClickLogOut() {
 
         ElementActions.ClickElement(driver , LoggedInEmailElement , "Logged in email button" );
         ElementActions.ClickElement(driver , LogoutButton , "Log Out Button" );

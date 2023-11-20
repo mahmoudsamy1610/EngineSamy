@@ -1,7 +1,6 @@
 package testClasses.gui;
 
 import autofox.data.user.*;
-import autofox.objects.objectGui.DashboardPage;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
 import automation.engine.Assertions.CompareText;
@@ -21,14 +20,12 @@ public class AdminLogin {
     //Initialization
     WebDriver driver;
     LoginPage loginPage ;
-    AutofoxHeader autofoxElements;
-    DashboardPage dashboardPage ;
-
+    AutofoxHeader autofoxHeader;
 
     //Data Providers
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
-        String[][] dataArr = new String[][]{
+        String[][] ValidAdmins = new String[][]{
                 {StaticSuperAdmin.LoginToken , StaticSuperAdmin.Email},
                 {StaticRetoucher.LoginToken , StaticRetoucher.Email} ,
                 {StaticReviewer.LoginToken, StaticReviewer.Email},
@@ -40,12 +37,12 @@ public class AdminLogin {
                 {StaticRetoucherPerformance.LoginToken , StaticRetoucherPerformance.Email},
 
         };
-        return dataArr ;
+        return ValidAdmins ;
     }
 
     @DataProvider(name = "InvalidAdmin")
     public static Object[][] InvalidAdminData() {
-        String[][] dataArr = new String[][]{
+        String[][] InvalidAdmins = new String[][]{
                 {Wreck(StaticSuperAdmin.LoginToken) , Wreck(StaticSuperAdmin.Email)},
                 {Wreck(StaticRetoucher.LoginToken), Wreck(StaticRetoucher.Email)} ,
                 {Wreck(StaticReviewer.LoginToken), Wreck(StaticReviewer.Email) },
@@ -56,7 +53,7 @@ public class AdminLogin {
                 {Wreck(StaticReportedIssues.LoginToken) , Wreck(StaticReportedIssues.Email)},
                 {Wreck(StaticRetoucherPerformance.LoginToken), Wreck(StaticRetoucherPerformance.Email)},
         };
-        return dataArr ;
+        return InvalidAdmins ;
     }
 
 
@@ -70,9 +67,7 @@ public class AdminLogin {
 
         //pages
         loginPage = new LoginPage(driver);
-        autofoxElements = new AutofoxHeader(driver) ;
-        dashboardPage = new DashboardPage(driver);
-
+        autofoxHeader = new AutofoxHeader(driver) ;
     }
 
 
@@ -87,9 +82,9 @@ public class AdminLogin {
         loginPage.insertLoginToken(AdminToken);
         loginPage.clickLogin();
 
-        String ActualAdminEmail =  autofoxElements.GetLoggedInEmail();
+        String ActualAdminEmail =  autofoxHeader.GetLoggedInEmail();
         CompareText.CheckText(ActualAdminEmail, AdminEmail , "Logged in Admin Email");
-        autofoxElements.LogOut();
+        autofoxHeader.ClickLogOut();
 
         //Expected Results : Valid Admin can log in and home page title is logout
 

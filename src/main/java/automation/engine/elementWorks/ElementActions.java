@@ -98,6 +98,20 @@ public class ElementActions {
     }
 
 
+    public static void WaitToDisappear(WebDriver Driver , By Locator , String ElementName){
+        EngineLogger.EngineInfo("waiting for element to disappear [" + ElementName+ "] " + "By Locator :" + Locator);
+        AllureStepLogger.logStep("waiting for element to disappear [" + ElementName+ "] " );
+
+        try {
+            LocatorActions.locateElement(Driver, Locator, ElementName);
+            Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.invisibilityOfElementLocated(Locator));
+        }
+        catch (Exception E) {
+            EngineLogger.EngineExceptionError(" Failed to wait for element to disappear [" + ElementName+ "] " + "By Locator :" + Locator , E);
+            AllureStepLogger.logStep("waiting for element to disappear [" + ElementName+ "] " );
+            Assert.fail(" Failed to wait for element to disappear [" + ElementName+ "] "  , E);
+        }
+    }
 
 
     public static String GetElementText(WebDriver Driver , By Locator , String ElementName){

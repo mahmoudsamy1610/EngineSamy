@@ -1,9 +1,11 @@
 package testClasses.gui;
 
+import autofox.data.user.SuperAdmin;
+import autofox.objects.objectGui.AddAdminPage;
 import autofox.objects.objectGui.AutofoxHeader;
 import autofox.data.user.StaticSuperAdmin;
 import autofox.objects.objectGui.AutofoxSideMenu;
-import autofox.objects.objectGui.LoginPage;
+import autofox.objects.objectSystem.users.AdminUsersPojoChatGBT;
 import autofox.sharedSteps.gui.user.LoginGuiSteps;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
@@ -20,10 +22,10 @@ public class CreateNewAdmin {
 
     //Initialization
     WebDriver driver;
-    LoginPage loginPage ;
-    AutofoxHeader autofoxElements;
-    LoginGuiSteps loginGuiSteps;
+       LoginGuiSteps loginGuiSteps;
     AutofoxSideMenu autofoxSideMenu ;
+    AddAdminPage addAdminPage;
+    AutofoxHeader autofoxHeader;
 
     //Static Data
 
@@ -31,17 +33,20 @@ public class CreateNewAdmin {
     //Data Providers
     @DataProvider(name = "Valid admin data")
     public static Object[][] ValidAdminData() {
-        String[][] dataArr = new String[][]{
-
+        AdminUsersPojoChatGBT.UserData[][] ValidAdmins = new AdminUsersPojoChatGBT.UserData[][]{
+                {SuperAdmin.GenerateValidSuperAdmin()},
+                {SuperAdmin.GenerateValidSuperAdmin()}
         };
-        return dataArr ;
+        return ValidAdmins ;
     }
 
     @DataProvider(name = "Invalid admin data")
     public static Object[][] InvalidAdminData() {
-        String[][] dataArr = new String[][]{
+        AdminUsersPojoChatGBT.UserData[][] InvalidAdmins = new AdminUsersPojoChatGBT.UserData[][]{
+                {SuperAdmin.GenerateInvalidSuperAdmin()},
+                {SuperAdmin.GenerateInvalidSuperAdmin()}
         };
-        return dataArr ;
+        return InvalidAdmins ;
     }
 
 
@@ -53,10 +58,10 @@ public class CreateNewAdmin {
         BrowserActions.MaxWindow(driver);
 
         //pages
-        loginPage = new LoginPage(driver);
-        autofoxElements = new AutofoxHeader(driver) ;
         loginGuiSteps = new LoginGuiSteps(driver);
         autofoxSideMenu = new AutofoxSideMenu(driver);
+        addAdminPage = new AddAdminPage(driver);
+        autofoxHeader = new AutofoxHeader(driver);
 
     }
 
@@ -64,14 +69,29 @@ public class CreateNewAdmin {
     @Test(priority = 1 , dataProvider = "Valid admin data")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Check that super admin can create new admins with valid data")
-    public void TestValidAdminCreation()   {
-
-        String SuperAdminToken = StaticSuperAdmin.LoginToken ;
-
+    public void TestValidAdminCreation(AdminUsersPojoChatGBT.UserData ValidAdmin)   {
 
         //Steps
-       loginGuiSteps.UserLogin(SuperAdminToken);
+       loginGuiSteps.UserLogin(StaticSuperAdmin.LoginToken);
        autofoxSideMenu.ClickOnAdmins();
+       autofoxSideMenu.ClickOnAddAdmin();
+       addAdminPage.InsertAdminData("email" , ValidAdmin.email);
+       addAdminPage.InsertAdminData("username" , ValidAdmin.username);
+       addAdminPage.InsertAdminData("first_name" , ValidAdmin.firstName);
+       addAdminPage.InsertAdminData("last_name" , ValidAdmin.lastName);
+       addAdminPage.InsertAdminData("company_name" , ValidAdmin.companyName);
+       addAdminPage.InsertAdminData("company_address" , ValidAdmin.companyAddress);
+       addAdminPage.ClickDropDown("language");
+       addAdminPage.SelectAdminLanguage(ValidAdmin.language);
+       addAdminPage.ClickDropDown("country_id");
+       addAdminPage.SelectAdminCountry(ValidAdmin.countryId);
+       addAdminPage.SelectAdminPermission( "is_superuser" , ValidAdmin.isSuperuser);
+       addAdminPage.ClickSaveAdmin();
+       addAdminPage.ClickToaster();
+       addAdminPage.WaitForToaster();
+       autofoxHeader.ClickLogOut();
+
+
 
 
 
