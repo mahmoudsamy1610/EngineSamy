@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AddAdminPage {
@@ -23,7 +24,7 @@ public class AddAdminPage {
     public static By Cancel = By.cssSelector("button[type=button] > i");
     public static By SuccessToaster = By.cssSelector("div[role='alertdialog']");
     public static List<String> LanguageIndex = new ArrayList<>();
-    public static List<String> CountryIndex = new ArrayList<>();
+    public static String[] CountryIndex = new String[300] ;
     public static List<String> WorkingDaysIndex = new ArrayList<>();
 
 
@@ -107,15 +108,11 @@ public class AddAdminPage {
 
     public int GetCountryIndex(String Country){
 
-        CountryIndex.add(0,null) ;
-        CountryIndex.add(1,"CH") ;
-        CountryIndex.add(2,"DE") ;
-        CountryIndex.add(3,"FR") ;
-        CountryIndex.add(4,"LU") ;
-        CountryIndex.add(5,"TR") ;
-        CountryIndex.add(6,"Other") ;
+        CountryIndex[216] = "CH";
+        CountryIndex[84] = "DE";
+        CountryIndex[77] = "FR";
 
-        return CountryIndex.indexOf(Country);
+        return Arrays.asList(CountryIndex).indexOf(Country);
     }
 
     public int GetWorkingDaysIndex(String WorkingDay){

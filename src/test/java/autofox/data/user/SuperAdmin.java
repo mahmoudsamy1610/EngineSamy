@@ -1,9 +1,10 @@
 package autofox.data.user;
 
-import autofox.objects.objectSystem.users.AdminUsersPojoChatGBT;
+import autofox.objects.objectSystem.users.AdminUsersPojo;
 import automation.engine.dataWorks.DataFaker;
-import static automation.utils.helpers.StringConcatenator.* ;
-import static automation.utils.helpers.StringConcatenator.Concatenate;
+import automation.utils.varWorks.RandomDigitsGenerator;
+
+import static automation.utils.varWorks.StringConcatenator.Concatenate;
 
 public class SuperAdmin {
 //these classes are  only Generators for users ... if you want this class to get a created user ... you need to put this class in package [Apis/gui] accordingly
@@ -11,7 +12,7 @@ public class SuperAdmin {
 
      public static final String AutomationPrefix = "auto_" ;
 
-    public static AdminUsersPojoChatGBT.UserData GenerateValidSuperAdmin(){
+    public static AdminUsersPojo.UserData GenerateValidSuperAdmin(){
 
         String Email = Concatenate(AutomationPrefix , DataFaker.FakeEmail());
         String UserName = Concatenate(AutomationPrefix ,DataFaker.FakeUserName());
@@ -24,15 +25,15 @@ public class SuperAdmin {
         boolean IsSuperUser = true ;
         //boolean IsStaff = true;
 
-        AdminUsersPojoChatGBT.UserData superAdmin = new AdminUsersPojoChatGBT.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country ,IsSuperUser ) ;
+        AdminUsersPojo.UserData superAdmin = new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country ,IsSuperUser ) ;
 
         return superAdmin;
     }
 
 
-    public static AdminUsersPojoChatGBT.UserData GenerateInvalidSuperAdmin(){
+    public static AdminUsersPojo.UserData GenerateInvalidSuperAdmin(){
         String Email = "Invalid email testing";
-        String UserName = "  ";
+        String UserName = String.valueOf(RandomDigitsGenerator.GenerateRandomNumber(2)) ;
         String FirstName = DataFaker.FakeFirstName();
         String LastName = DataFaker.FakeLastName();
         String CompanyName = DataFaker.FakeCompanyName();
@@ -42,7 +43,7 @@ public class SuperAdmin {
         boolean IsSuperUser = true ;
         boolean IsStaff = true;
 
-        AdminUsersPojoChatGBT.UserData superAdmin = new AdminUsersPojoChatGBT.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country ,IsSuperUser ) ;
+        AdminUsersPojo.UserData superAdmin = new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country ,IsSuperUser ) ;
 
         return superAdmin;
     }

@@ -1,6 +1,6 @@
 package automation.engine.gridWorks;
 
-import automation.utils.helpers.TaskCleaner;
+import automation.utils.cmdWorks.TaskCleaner;
 import automation.utils.loggers.EngineLogger;
 import org.testng.IExecutionListener;
 

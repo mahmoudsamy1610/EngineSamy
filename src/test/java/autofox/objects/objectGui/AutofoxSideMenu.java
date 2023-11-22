@@ -14,6 +14,7 @@ public class AutofoxSideMenu {
     //initialization
     public WebDriver driver;
     AddAdminPage addAdminPage ;
+    AdminListPage adminListPage ;
 
     //Locators
     public static By Dashboard = By.cssSelector("app-sidebar-nav-link.nav-item.ng-star-inserted");
@@ -96,6 +97,13 @@ public class AutofoxSideMenu {
         return addAdminPage ;
     }
 
+    public AdminListPage ClickOnAdminList(){
+
+        adminListPage = new AdminListPage(driver);
+        int AdminListIndex = GetAdminsChildIndex("List");
+        ElementActions.ClickElement(driver , GetMenuChildLocator(AdminListIndex) , "Admin list");
+        return adminListPage ;
+    }
 
 }
 

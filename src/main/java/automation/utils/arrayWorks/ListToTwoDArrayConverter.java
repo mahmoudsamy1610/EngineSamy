@@ -1,4 +1,4 @@
-package automation.utils.helpers;
+package automation.utils.arrayWorks;
 
 import automation.utils.loggers.JavaLogger;
 

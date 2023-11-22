@@ -1,6 +1,6 @@
 package automation.engine.reportingWorks;
 
-import automation.utils.helpers.CMDRunner;
+import automation.utils.cmdWorks.CMDRunner;
 import automation.utils.loggers.EngineLogger;
 import automation.utils.propertyWorks.PropertyGetter;
 

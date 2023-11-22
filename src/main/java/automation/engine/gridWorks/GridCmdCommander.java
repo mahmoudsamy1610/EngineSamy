@@ -1,8 +1,8 @@
 package automation.engine.gridWorks;
 
-import automation.utils.helpers.CMDRunner;
-import automation.utils.helpers.PathConverter;
-import automation.utils.helpers.StringConcatenator;
+import automation.utils.cmdWorks.CMDRunner;
+import automation.utils.fileWorks.PathConverter;
+import automation.utils.varWorks.StringConcatenator;
 import automation.utils.loggers.EngineLogger;
 import automation.utils.propertyWorks.PropertyGetter;
 
