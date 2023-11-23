@@ -81,12 +81,11 @@ public class AdminLogin {
         loginPage.openLoginPage();
         loginPage.insertLoginToken(AdminToken);
         loginPage.clickLogin();
-
         String ActualAdminEmail =  autofoxHeader.GetLoggedInEmail();
+        //---------------------------------------Assertions------------------------------------
+        //Expected Results : Valid Admin can log in and home page title is logout
         CompareText.CheckText(ActualAdminEmail, AdminEmail , "Logged in Admin Email");
         autofoxHeader.ClickLogOut();
-
-        //Expected Results : Valid Admin can log in and home page title is logout
 
     }
 
@@ -102,11 +101,11 @@ public class AdminLogin {
         loginPage.openLoginPage();
         loginPage.insertLoginToken(AdminToken);
         loginPage.clickLogin();
-
         String InvalidCredsError =   loginPage.GetInvalidCredsErrorToaster();
+        //---------------------------------------Assertions------------------------------------
+        //Expected Results : invalid Admin cannot login and Error message "invalid login credentials appears
         CompareText.CheckText(InvalidCredsError,"Invalid login credentials." , "Error message");
 
-        //Expected Results : invalid Admin cannot login and Error message "invalid login credentials appears
 
     }
 

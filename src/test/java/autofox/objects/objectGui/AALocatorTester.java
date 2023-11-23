@@ -49,26 +49,11 @@ public class AALocatorTester {
         String SuperAdminToken = StaticSuperAdmin.LoginToken ;
         loginGuiSteps.UserLogin(SuperAdminToken);
         autofoxSideMenu.ClickOnAdmins();
-       // addAdminPage.OpenAddAdminPage();
-       // addAdminPage.InsertAdminData("email" , "asdas");
-        //addAdminPage.InsertAdminData("username" , "asdas");
-        //addAdminPage.InsertAdminData("first_name" , "asdas");
-        //addAdminPage.InsertAdminData("email" , "as123231231312311das");
-        //addAdminPage.ClickDropDown("language");
-        //addAdminPage.SelectAdminLanguage("PT");
-      //  addAdminPage.ClickDropDown("country_id");
-      //  addAdminPage.SelectAdminCountry("FR");
-      //  addAdminPage.SelectAdminPermission("is_review_user" , true);
-      //  addAdminPage.InsertAdminData("review_images_target" , "123");
-      //  addAdminPage.ClickDropDown("working_days");
-      //  addAdminPage.SelectWorkingDay("Monday");
-     //   addAdminPage.SelectWorkingDay("Tuesday");
-     //   KeyboardActions.PressEscapeKey(driver);
-      //  addAdminPage.SelectAdminPermission("is_sales_user" , true);
-      //  addAdminPage.ClickSaveAdmin();
-
-        autofoxSideMenu.ClickOnAdminList();
-        System.out.println(adminListPage.GetCellText(2, "Email"));
+        AddAdminPage NewAddAdminPage =  autofoxSideMenu.ClickOnAddAdmin();
+        NewAddAdminPage.InsertAdminData("email" , "123");
+        KeyboardActions.PressTabKey(driver);
+        String AngularErrorOfEmail = NewAddAdminPage.GetAdminDataAngularError("email");
+        System.out.println(AngularErrorOfEmail);
 
 
 

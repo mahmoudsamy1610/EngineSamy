@@ -17,7 +17,7 @@ public class ElementActions {
 
     public static void ClearText(WebDriver Driver, By Locator , String ElementName){
         EngineLogger.EngineInfo("Clearing Text inside field : " + ElementName + "By Locator :" + Locator);
-        AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
+        AllureStepLogger.logStep("Clear alll text inside field : " + ElementName);
 
         try {
             LocatorActions.locateElement(Driver, Locator, ElementName);
@@ -25,7 +25,7 @@ public class ElementActions {
         }
         catch (Exception E) {
             EngineLogger.EngineExceptionError("Failed to clear text in field : " + ElementName + "By Locator :" + Locator , E);
-            AllureStepLogger.logStep("Clearing Text inside field : " + ElementName);
+            AllureStepLogger.logStep("Clear all text inside field : " + ElementName);
             Assert.fail("Failed to clear text in field : " + ElementName , E);
         }
     }

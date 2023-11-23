@@ -86,7 +86,7 @@ public class AutofoxSideMenu {
     public void ClickOnAdmins(){
 
         int AdminsIndex = GetMenuParentIndex("Admins") ;
-        ElementActions.ClickElement(driver , GetMenuParentLocator(AdminsIndex) , "Add admin");
+        ElementActions.ClickElement(driver , GetMenuParentLocator(AdminsIndex) , " Admins");
     }
 
     public AddAdminPage ClickOnAddAdmin(){

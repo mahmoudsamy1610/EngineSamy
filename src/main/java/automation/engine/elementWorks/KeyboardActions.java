@@ -28,4 +28,23 @@ public class KeyboardActions {
     }
 
 
+    public static void PressTabKey(WebDriver Driver){
+        /*Keys hint
+        ESCAPE
+         */
+
+        EngineLogger.EngineInfo("Pressing Tab key");
+
+        Actions actions = new Actions(Driver);
+
+        try {
+            actions.sendKeys(Keys.TAB).perform();
+        }
+        catch (Exception E) {
+            EngineLogger.EngineExceptionError(" Failed Pressing Tab key" , E);
+            Assert.fail(" Failed Pressing Tab key " , E);
+        }
+    }
+
+
 }

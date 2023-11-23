@@ -2,11 +2,13 @@ package testClasses.gui;
 
 import autofox.data.user.SuperAdmin;
 import autofox.objects.objectGui.AddAdminPage;
+import autofox.objects.objectGui.AdminListPage;
 import autofox.objects.objectGui.AutofoxHeader;
 import autofox.data.user.StaticSuperAdmin;
 import autofox.objects.objectGui.AutofoxSideMenu;
 import autofox.objects.objectSystem.users.AdminUsersPojo;
 import autofox.sharedSteps.gui.user.LoginGuiSteps;
+import automation.engine.Assertions.CompareText;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
 import io.qameta.allure.Description;
@@ -22,9 +24,8 @@ public class CreateNewAdmin {
 
     //Initialization
     WebDriver driver;
-       LoginGuiSteps loginGuiSteps;
+    LoginGuiSteps loginGuiSteps;
     AutofoxSideMenu autofoxSideMenu ;
-    AddAdminPage addAdminPage;
     AutofoxHeader autofoxHeader;
 
     //Static Data
@@ -60,7 +61,6 @@ public class CreateNewAdmin {
         //pages
         loginGuiSteps = new LoginGuiSteps(driver);
         autofoxSideMenu = new AutofoxSideMenu(driver);
-        addAdminPage = new AddAdminPage(driver);
         autofoxHeader = new AutofoxHeader(driver);
 
     }
@@ -74,29 +74,26 @@ public class CreateNewAdmin {
         //Steps
        loginGuiSteps.UserLogin(StaticSuperAdmin.LoginToken);
        autofoxSideMenu.ClickOnAdmins();
-       autofoxSideMenu.ClickOnAddAdmin();
-       addAdminPage.InsertAdminData("email" , ValidAdmin.email);
-       addAdminPage.InsertAdminData("username" , ValidAdmin.username);
-       addAdminPage.InsertAdminData("first_name" , ValidAdmin.firstName);
-       addAdminPage.InsertAdminData("last_name" , ValidAdmin.lastName);
-       addAdminPage.InsertAdminData("company_name" , ValidAdmin.companyName);
-       addAdminPage.InsertAdminData("company_address" , ValidAdmin.companyAddress);
-       addAdminPage.ClickDropDown("language");
-       addAdminPage.SelectAdminLanguage(ValidAdmin.language);
-       addAdminPage.ClickDropDown("country_id");
-       addAdminPage.SelectAdminCountry(ValidAdmin.countryId);
-       addAdminPage.SelectAdminPermission( "is_superuser" , ValidAdmin.isSuperuser);
-       addAdminPage.ClickSaveAdmin();
-
-       addAdminPage.ClickToaster();
-       addAdminPage.WaitForToaster();
+       AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
+       NewAddAdminPage.InsertAdminData("email" , ValidAdmin.email);
+       NewAddAdminPage.InsertAdminData("username" , ValidAdmin.username);
+       NewAddAdminPage.InsertAdminData("first_name" , ValidAdmin.firstName);
+       NewAddAdminPage.InsertAdminData("last_name" , ValidAdmin.lastName);
+       NewAddAdminPage.InsertAdminData("company_name" , ValidAdmin.companyName);
+       NewAddAdminPage.InsertAdminData("company_address" , ValidAdmin.companyAddress);
+       NewAddAdminPage.ClickDropDown("language");
+       NewAddAdminPage.SelectAdminLanguage(ValidAdmin.language);
+       NewAddAdminPage.ClickDropDown("country_id");
+       NewAddAdminPage.SelectAdminCountry(ValidAdmin.countryId);
+       NewAddAdminPage.SelectAdminPermission( "is_superuser" , ValidAdmin.isSuperuser);
+       NewAddAdminPage.ClickSaveAdmin();
+       autofoxSideMenu.ClickOnAdmins();
+       AdminListPage NewAdminListPage = autofoxSideMenu.ClickOnAdminList();
+       String CreatedAdminEmail = NewAdminListPage.GetCellText(1 , "Email");
+       //--------------------------------------Assertions-----------------------------------
+       //Expected Results : super admin can create new admins with valid data
+        CompareText.CheckText(CreatedAdminEmail , ValidAdmin.email, "Created admin Email");
        autofoxHeader.ClickLogOut();
-
-
-
-
-
-        //Expected Results : super admin can create new admins with valid data
 
     }
 
@@ -105,17 +102,36 @@ public class CreateNewAdmin {
     @Test(priority = 1 , dataProvider = "Invalid admin data")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Check that super admin can create new admins with valid data")
-    public void TestInvalidAdminCreation()   {
+    public void TestInvalidAdminCreation(AdminUsersPojo.UserData InvalidAdmin)   {
 
-        String SuperAdminToken = StaticSuperAdmin.LoginToken ;
-
+        //Angular Error messages are hard coded, we have a bug that back end error messages not appear
+        //This is why I didn't get the error message correctly from the main POJO class of admins
+        String ExpectedAngularInvalidEmailError = "Invalid email address.";
+        String ExpectedAngularInvalidUsernameCharCount = "Username should not be less than 3 characters.";
 
         //Steps
-        loginGuiSteps.UserLogin(SuperAdminToken);
+        loginGuiSteps.UserLogin(StaticSuperAdmin.LoginToken);
         autofoxSideMenu.ClickOnAdmins();
-
-
-        //Expected Results : super admin can create new admins with valid data
+        AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
+        NewAddAdminPage.InsertAdminData("email" , InvalidAdmin.email);
+        NewAddAdminPage.InsertAdminData("username" , InvalidAdmin.username);
+        NewAddAdminPage.InsertAdminData("first_name" , InvalidAdmin.firstName);
+        NewAddAdminPage.InsertAdminData("last_name" , InvalidAdmin.lastName);
+        NewAddAdminPage.InsertAdminData("company_name" , InvalidAdmin.companyName);
+        NewAddAdminPage.InsertAdminData("company_address" , InvalidAdmin.companyAddress);
+        NewAddAdminPage.ClickDropDown("language");
+        NewAddAdminPage.SelectAdminLanguage(InvalidAdmin.language);
+        NewAddAdminPage.ClickDropDown("country_id");
+        NewAddAdminPage.SelectAdminCountry(InvalidAdmin.countryId);
+        NewAddAdminPage.SelectAdminPermission( "is_superuser" , InvalidAdmin.isSuperuser);
+        NewAddAdminPage.ClickSaveAdmin();
+        String AngularErrorOfEmail = NewAddAdminPage.GetAdminDataAngularError("email");
+        String AngularErrorOfUsername = NewAddAdminPage.GetAdminDataAngularError("username");
+        //--------------------------------------Assertions-----------------------------------
+        //Expected Results : super admin can NOT create new admins with Invalid data
+        CompareText.CheckText(AngularErrorOfEmail , ExpectedAngularInvalidEmailError, "Invalid Email angular error");
+        CompareText.CheckText(AngularErrorOfUsername , ExpectedAngularInvalidUsernameCharCount, "username less than 3 char. angular error");
+        autofoxHeader.ClickLogOut();
 
     }
 

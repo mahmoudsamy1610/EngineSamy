@@ -31,8 +31,8 @@ public class AddAdminPage {
 
     public By GetTextFieldLocator(String TextFieldId){
 
-        By PermissionLabel = By.id(TextFieldId);
-        return PermissionLabel;
+        By TextFieldLabel = By.id(TextFieldId);
+        return TextFieldLabel;
         /* available Ids
         email
         username
@@ -44,6 +44,11 @@ public class AddAdminPage {
         review_images_target
         audit_images_target
          */
+    }
+
+    public By GetTextFieldAngularErrorLocator(String TextFieldId){
+        By TextFieldLocator = GetTextFieldLocator(TextFieldId);
+        return RelativeLocator.with(By.cssSelector("div.ng-star-inserted > small")).near(TextFieldLocator);
     }
 
 
@@ -144,6 +149,12 @@ public class AddAdminPage {
         ElementActions.WriteText(driver , TextField , InputText , ""+TextField+" : text field" );
     }
 
+    public String GetAdminDataAngularError(String TextFieldId){
+
+        By TextFieldAngularErrorLocator = GetTextFieldAngularErrorLocator(TextFieldId);
+        return ElementActions.GetElementText(driver ,TextFieldAngularErrorLocator , "Angular error validation from : "+TextFieldId) ;
+    }
+
     public void ClickDropDown(String DropDownName){
 
         By DropDownLocator = GetDropDownLocator(DropDownName);
@@ -156,7 +167,7 @@ public class AddAdminPage {
 
         int LangIndex = GetLanguageIndex(Language);
         By LangItemLocator = GetLanguageItemLocator(LangIndex);
-        ElementActions.ClickElement(driver , LangItemLocator , "Language dropdown item ");
+        ElementActions.ClickElement(driver , LangItemLocator , "Language dropdown item : " + Language);
 
     }
 
@@ -165,7 +176,7 @@ public class AddAdminPage {
 
         int CountryIndex = GetCountryIndex(Country);
         By CountryItemLocator = GetCountryItemLocator(CountryIndex);
-        ElementActions.ClickElement(driver , CountryItemLocator , "Country dropdown item ");
+        ElementActions.ClickElement(driver , CountryItemLocator , "Country dropdown item : " + Country);
 
     }
 
