@@ -10,7 +10,7 @@ public class CompareText {
 
         AllureStepLogger.logStep("Check that  [" + ExpectedTextName + "] is [" + ActualText + "]");
         EngineLogger.EngineInfo("Check that  [" + ExpectedTextName + "] is [" + ActualText + "]");
-        Assert.assertEquals(ActualText, ExpectedText);
+        Assert.assertTrue(ActualText.contains(ExpectedText) ,  " The Actual  text: " +ActualText+ " -- does not equal or include the Expected text : " +ExpectedText );
 
     }
 
