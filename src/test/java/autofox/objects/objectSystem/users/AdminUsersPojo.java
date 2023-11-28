@@ -2,6 +2,13 @@ package autofox.objects.objectSystem.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.javafaker.Bool;
+
+import java.security.Permission;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AdminUsersPojo {
     public AdminUsersPojo(String Email , String UserName ){
@@ -21,7 +28,8 @@ public class AdminUsersPojo {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class UserData {
-        public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country , boolean IsSuperUser){
+        //Constructor
+        public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country ,String Settings){
             this.email = Email;
             this.username = UserName ;
             this.firstName = FirstName;
@@ -30,7 +38,11 @@ public class AdminUsersPojo {
             this.companyAddress = CompanyAddress ;
             this.language = Language ;
             this.countryId = Country;
-            this.isSuperuser = IsSuperUser;
+            if (Settings.equalsIgnoreCase("is_superuser")) {
+                this.isSuperuser = true;
+            }else {
+                this.adminSettings = new AdminSettings(Settings);
+            }
         }
 
         @JsonProperty("id")
@@ -1221,6 +1233,19 @@ public class AdminUsersPojo {
 
         @JsonIgnoreProperties(ignoreUnknown = true)
         public static class AdminSettings {
+
+            public String GetStringOfAdminSettings(String Settings){
+
+                if (Settings.equalsIgnoreCase("is_retoucher_user")) {
+                    this.isRetouchUser = true ;
+
+                } else if (Settings.equalsIgnoreCase("is_review_user")) {
+                    this.isReviewUser = true ;
+                }
+                return Settings ;
+               }
+
+
 
             @JsonProperty("id")
             public int id;

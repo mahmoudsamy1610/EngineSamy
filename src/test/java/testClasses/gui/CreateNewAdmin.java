@@ -1,5 +1,6 @@
 package testClasses.gui;
 
+import autofox.data.user.Retoucher;
 import autofox.data.user.SuperAdmin;
 import autofox.objects.objectGui.AddAdminPage;
 import autofox.objects.objectGui.AdminListPage;
@@ -34,20 +35,19 @@ public class CreateNewAdmin {
     //Data Providers
     @DataProvider(name = "Valid admin data")
     public static Object[][] ValidAdminData() {
-        AdminUsersPojo.UserData[][] ValidAdmins = new AdminUsersPojo.UserData[][]{
+        return new AdminUsersPojo.UserData[][]{
                 {SuperAdmin.GenerateValidSuperAdmin()},
-                {SuperAdmin.GenerateValidSuperAdmin()}
+                {Retoucher.GenerateValidRetoucher()},
+
         };
-        return ValidAdmins ;
     }
 
     @DataProvider(name = "Invalid admin data")
     public static Object[][] InvalidAdminData() {
-        AdminUsersPojo.UserData[][] InvalidAdmins = new AdminUsersPojo.UserData[][]{
+        return new AdminUsersPojo.UserData[][]{
                 {SuperAdmin.GenerateInvalidSuperAdmin()},
-                {SuperAdmin.GenerateInvalidSuperAdmin()}
+                {Retoucher.GenerateInvalidRetoucher()}
         };
-        return InvalidAdmins ;
     }
 
 
@@ -85,7 +85,7 @@ public class CreateNewAdmin {
        NewAddAdminPage.SelectAdminLanguage(ValidAdmin.language);
        NewAddAdminPage.ClickDropDown("country_id");
        NewAddAdminPage.SelectAdminCountry(ValidAdmin.countryId);
-       NewAddAdminPage.SelectAdminPermission( "is_superuser" , ValidAdmin.isSuperuser);
+       NewAddAdminPage.SelectAdminPermission( ValidAdmin.adminSettings.GetStringOfAdminSettings(),  ValidAdmin.isSuperuser);
        NewAddAdminPage.ClickSaveAdmin();
        autofoxSideMenu.ClickOnAdmins();
        AdminListPage NewAdminListPage = autofoxSideMenu.ClickOnAdminList();

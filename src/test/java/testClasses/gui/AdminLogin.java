@@ -25,7 +25,7 @@ public class AdminLogin {
     //Data Providers
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
-        String[][] ValidAdmins = new String[][]{
+        return new String[][]{
                 {StaticSuperAdmin.LoginToken , StaticSuperAdmin.Email},
                 {StaticRetoucher.LoginToken , StaticRetoucher.Email} ,
                 {StaticReviewer.LoginToken, StaticReviewer.Email},
@@ -37,12 +37,11 @@ public class AdminLogin {
                 {StaticRetoucherPerformance.LoginToken , StaticRetoucherPerformance.Email},
 
         };
-        return ValidAdmins ;
     }
 
     @DataProvider(name = "InvalidAdmin")
     public static Object[][] InvalidAdminData() {
-        String[][] InvalidAdmins = new String[][]{
+        return new String[][]{
                 {Wreck(StaticSuperAdmin.LoginToken) , Wreck(StaticSuperAdmin.Email)},
                 {Wreck(StaticRetoucher.LoginToken), Wreck(StaticRetoucher.Email)} ,
                 {Wreck(StaticReviewer.LoginToken), Wreck(StaticReviewer.Email) },
@@ -53,7 +52,6 @@ public class AdminLogin {
                 {Wreck(StaticReportedIssues.LoginToken) , Wreck(StaticReportedIssues.Email)},
                 {Wreck(StaticRetoucherPerformance.LoginToken), Wreck(StaticRetoucherPerformance.Email)},
         };
-        return InvalidAdmins ;
     }
 
 
