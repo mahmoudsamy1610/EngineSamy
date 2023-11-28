@@ -9,7 +9,7 @@ Test environment  [Alpha || DEV || Live]
 
 <suite name="Local" >
 
-    <parameter name="ConfigUrl" value="runConfiguration/Local.xml"/>
+    <parameter name="ConfigUrl" value="runConfiguration/BrowserStack.xml"/>
     <parameter name="ExecutionType" value="local"/>
     <parameter name="BrowserType" value="chrome"/>
     <parameter name="ParaModule" value="TimeSaving"/>
