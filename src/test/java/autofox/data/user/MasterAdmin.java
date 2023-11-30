@@ -6,14 +6,14 @@ import automation.utils.varWorks.RandomDigitsGenerator;
 
 import static automation.utils.varWorks.StringConcatenator.Concatenate;
 
-public class SuperAdmin {
+public class MasterAdmin {
 //these classes are  only Generators for users ... if you want this class to get a created user ... you need to put this class in package [Apis/gui] accordingly
 
 
      public static final String AutomationPrefix = "auto_" ;
+     public static final String AdminRole = "is_master_user" ;
 
-
-    public static AdminUsersPojo.UserData GenerateValidSuperAdmin(){
+    public static AdminUsersPojo.UserData GenerateValidMasterAdmin(){
 
         String Email = Concatenate(AutomationPrefix , DataFaker.FakeEmail());
         String UserName = Concatenate(AutomationPrefix ,DataFaker.FakeUserName());
@@ -23,14 +23,13 @@ public class SuperAdmin {
         String CompanyAddress = Concatenate(AutomationPrefix , DataFaker.FakeCompanyAddress());
         String Language = "EN" ;
         String Country = "DE" ;
-        boolean IsSuperUser = true ;
-        String PermissionKey = "is_superuser" ;
 
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , PermissionKey );
+
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country);
     }
 
 
-    public static AdminUsersPojo.UserData GenerateInvalidSuperAdmin(){
+    public static AdminUsersPojo.UserData GenerateInvalidMasterAdmin(){
         String Email = "Invalid email testing";
         String UserName = String.valueOf(RandomDigitsGenerator.GenerateRandomNumber(2)) ;
         String FirstName = DataFaker.FakeFirstName();
@@ -39,11 +38,8 @@ public class SuperAdmin {
         String CompanyAddress = DataFaker.FakeCompanyAddress();
         String Language = "EN" ;
         String Country = "DE" ;
-        boolean IsSuperUser = true ;
-        boolean IsStaff = true;
-        String PermissionKey = "is_superuser" ;
 
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , PermissionKey );
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country);
     }
 
 

@@ -11,6 +11,8 @@ public class Retoucher {
 
 
      public static final String AutomationPrefix = "auto_" ;
+    public static final String AdminRole = "is_retouch_user" ;
+
 
     public static AdminUsersPojo.UserData GenerateValidRetoucher(){
 
@@ -22,9 +24,8 @@ public class Retoucher {
         String CompanyAddress = Concatenate(AutomationPrefix , DataFaker.FakeCompanyAddress());
         String Language = "EN" ;
         String Country = "DE" ;
-        String PermissionKey = "is_retoucher_user" ;
 
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country , PermissionKey );
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country);
     }
 
 
@@ -37,10 +38,9 @@ public class Retoucher {
         String CompanyAddress = DataFaker.FakeCompanyAddress();
         String Language = "EN" ;
         String Country = "DE" ;
-        String PermissionKey = "is_retoucher_user" ;
 
 
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country , PermissionKey );
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country );
     }
 
 

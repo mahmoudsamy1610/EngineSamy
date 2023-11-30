@@ -3,6 +3,7 @@ package autofox.objects.objectSystem.users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.javafaker.Bool;
+import org.apache.maven.settings.Settings;
 
 import java.security.Permission;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class AdminUsersPojo {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class UserData {
         //Constructor
-        public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country ,String Settings){
+        public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country ){
             this.email = Email;
             this.username = UserName ;
             this.firstName = FirstName;
@@ -38,11 +39,7 @@ public class AdminUsersPojo {
             this.companyAddress = CompanyAddress ;
             this.language = Language ;
             this.countryId = Country;
-            if (Settings.equalsIgnoreCase("is_superuser")) {
-                this.isSuperuser = true;
-            }else {
-                this.adminSettings = new AdminSettings(Settings);
-            }
+
         }
 
         @JsonProperty("id")
@@ -86,6 +83,10 @@ public class AdminUsersPojo {
 
         @JsonProperty("last_login")
         public String lastLogin;
+
+
+        @JsonProperty("is_master_user")
+        public boolean isMasterUser;
 
         @JsonProperty("is_superuser")
         public boolean isSuperuser;
@@ -1233,19 +1234,6 @@ public class AdminUsersPojo {
 
         @JsonIgnoreProperties(ignoreUnknown = true)
         public static class AdminSettings {
-
-            public String GetStringOfAdminSettings(String Settings){
-
-                if (Settings.equalsIgnoreCase("is_retoucher_user")) {
-                    this.isRetouchUser = true ;
-
-                } else if (Settings.equalsIgnoreCase("is_review_user")) {
-                    this.isReviewUser = true ;
-                }
-                return Settings ;
-               }
-
-
 
             @JsonProperty("id")
             public int id;

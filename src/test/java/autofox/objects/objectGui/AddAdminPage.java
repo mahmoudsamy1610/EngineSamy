@@ -1,7 +1,6 @@
 package autofox.objects.objectGui;
 
 import automation.engine.elementWorks.ElementActions;
-import automation.utils.loggers.BusinessLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
@@ -69,6 +68,7 @@ public class AddAdminPage {
         By PermissionLabel = By.cssSelector("label[for='"+ApiPermissionKey+"']");
         return RelativeLocator.with(By.cssSelector("span.switch-slider")).toRightOf(PermissionLabel);
           /* available labels
+        is_master_user
         is_superuser
         is_retouch_user
         is_training_retoucher
@@ -181,14 +181,11 @@ public class AddAdminPage {
     }
 
 
-    public void SelectAdminPermission(String ApiPermissionKey , boolean State){
+    public void SelectAdminPermission(String ApiPermissionKey){
 
         By PermissionToggleLocator = GetPermissionToggleLocator(ApiPermissionKey);
-        if (State) {
-            ElementActions.ClickElement(driver, PermissionToggleLocator, "" + ApiPermissionKey + " : permission toggle");
-        }else {
-            BusinessLogger.BusinessInfo("No permission will be selected for this Admin");
-        }
+        ElementActions.ClickElement(driver, PermissionToggleLocator, "" + ApiPermissionKey + " : permission toggle");
+
     }
 
     public void SelectWorkingDay(String WorkingDay){
@@ -209,8 +206,13 @@ public class AddAdminPage {
 
     }
 
-    public void ClickToaster(){
+    public void DismissToaster(){
         ElementActions.ClickElement(driver , SuccessToaster ,  "Success toaster message" );
+    }
+
+    public String GetSuccessToasterText(){
+
+        return ElementActions.GetElementText(driver , SuccessToaster , "Add admin Success toaster message text");
     }
 
     public void WaitForToaster(){
