@@ -1,6 +1,6 @@
 package testClasses.gui;
 
-import autofox.data.user.*;
+import autofox.data.user.staticUser.*;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
 import automation.engine.Assertions.CompareText;

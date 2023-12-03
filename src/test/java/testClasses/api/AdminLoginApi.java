@@ -2,8 +2,8 @@ package testClasses.api;
 
 import autofox.objects.objectApi.AdminUserDeserializer;
 import autofox.objects.objectApi.AdminLoginApiRequest;
-import autofox.data.user.StaticRetoucher;
-import autofox.data.user.StaticSuperAdmin;
+import autofox.data.user.staticUser.StaticRetoucher;
+import autofox.data.user.staticUser.StaticSuperAdmin;
 import automation.engine.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;

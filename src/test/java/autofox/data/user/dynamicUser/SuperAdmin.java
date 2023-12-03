@@ -1,4 +1,4 @@
-package autofox.data.user;
+package autofox.data.user.dynamicUser;
 
 import autofox.objects.objectSystem.users.AdminUsersPojo;
 import automation.engine.dataWorks.DataFaker;
@@ -6,15 +6,14 @@ import automation.utils.varWorks.RandomDigitsGenerator;
 
 import static automation.utils.varWorks.StringConcatenator.Concatenate;
 
-public class Retoucher {
+public class SuperAdmin {
 //these classes are  only Generators for users ... if you want this class to get a created user ... you need to put this class in package [Apis/gui] accordingly
 
 
      public static final String AutomationPrefix = "auto_" ;
-    public static final String AdminRole = "is_retouch_user" ;
+     public static final String AdminRole = "is_superuser" ;
 
-
-    public static AdminUsersPojo.UserData GenerateValidRetoucher(){
+    public static AdminUsersPojo.UserData GenerateValidSuperAdmin(){
 
         String Email = Concatenate(AutomationPrefix , DataFaker.FakeEmail());
         String UserName = Concatenate(AutomationPrefix ,DataFaker.FakeUserName());
@@ -25,11 +24,12 @@ public class Retoucher {
         String Language = "EN" ;
         String Country = "DE" ;
 
+
         return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country);
     }
 
 
-    public static AdminUsersPojo.UserData GenerateInvalidRetoucher(){
+    public static AdminUsersPojo.UserData GenerateInvalidSuperAdmin(){
         String Email = "Invalid email testing";
         String UserName = String.valueOf(RandomDigitsGenerator.GenerateRandomNumber(2)) ;
         String FirstName = DataFaker.FakeFirstName();
@@ -39,8 +39,7 @@ public class Retoucher {
         String Language = "EN" ;
         String Country = "DE" ;
 
-
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country );
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country);
     }
 
 

@@ -1,11 +1,13 @@
 package testClasses.gui;
 
-import autofox.data.user.Retoucher;
-import autofox.data.user.MasterAdmin;
+import autofox.data.user.dynamicUser.Retoucher;
+import autofox.data.user.dynamicUser.MasterAdmin;
+import autofox.data.user.dynamicUser.SuperAdmin;
+import autofox.data.user.staticUser.StaticMasterAdmin;
 import autofox.objects.objectGui.AddAdminPage;
 import autofox.objects.objectGui.AdminListPage;
 import autofox.objects.objectGui.AutofoxHeader;
-import autofox.data.user.StaticSuperAdmin;
+import autofox.data.user.staticUser.StaticSuperAdmin;
 import autofox.objects.objectGui.AutofoxSideMenu;
 import autofox.objects.objectSystem.users.AdminUsersPojo;
 import autofox.sharedSteps.gui.user.LoginGuiSteps;
@@ -37,7 +39,7 @@ public class CreateNewAdmin {
     public static Object[][] ValidAdminData() {
         return new Object[][]{
                 {MasterAdmin.GenerateValidMasterAdmin() , MasterAdmin.AdminRole },
-                {Retoucher.GenerateValidRetoucher() , Retoucher.AdminRole },
+                {SuperAdmin.GenerateValidSuperAdmin() , SuperAdmin.AdminRole}
 
         };
     }
@@ -46,9 +48,30 @@ public class CreateNewAdmin {
     public static Object[][] InvalidAdminData() {
         return new Object[][]{
                 {MasterAdmin.GenerateInvalidMasterAdmin() , MasterAdmin.AdminRole},
+                {SuperAdmin.GenerateValidSuperAdmin() , SuperAdmin.AdminRole}
+        };
+    }
+
+
+
+    @DataProvider(name = "Valid designer data")
+    public static Object[][] ValidDesignerData() {
+        return new Object[][]{
+                {Retoucher.GenerateValidRetoucher() , Retoucher.AdminRole },
+
+        };
+    }
+
+    @DataProvider(name = "Invalid designer data")
+    public static Object[][] InvalidDesignerData() {
+        return new Object[][]{
                 {Retoucher.GenerateInvalidRetoucher() ,Retoucher.AdminRole  }
         };
     }
+
+
+
+
 
 
     @BeforeClass
@@ -72,7 +95,7 @@ public class CreateNewAdmin {
     public void TestValidAdminCreation(AdminUsersPojo.UserData ValidAdmin , String Settings)   {
 
         //Steps
-       loginGuiSteps.UserLogin(StaticSuperAdmin.LoginToken);
+       loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
        autofoxSideMenu.ClickOnAdmins();
        AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
        NewAddAdminPage.InsertAdminData("email" , ValidAdmin.getEmail());
@@ -90,7 +113,7 @@ public class CreateNewAdmin {
        String AddAdminSuccessMessage = NewAddAdminPage.GetSuccessToasterText();
        //--------------------------------------Assertions-----------------------------------
        //Expected Results : Success message appear "Admin added successfully"
-       CompareText.CheckText(AddAdminSuccessMessage , "Admin added successfully"  , "Add addmin success message");
+       CompareText.CheckText(AddAdminSuccessMessage , "Admin added successfully"  , "Add admin success message");
 
 
        //Steps
@@ -107,7 +130,7 @@ public class CreateNewAdmin {
 
 
 
-    @Test(priority = 1 , dataProvider = "Invalid admin data")
+    @Test(priority = 3 , dataProvider = "Invalid admin data")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Check that master admin can create new admins with valid data")
     public void TestInvalidAdminCreation(AdminUsersPojo.UserData InvalidAdmin , String Settings)   {
@@ -118,7 +141,7 @@ public class CreateNewAdmin {
         String ExpectedAngularInvalidUsernameCharCount = "Username should not be less than 3 characters.";
 
         //Steps
-        loginGuiSteps.UserLogin(StaticSuperAdmin.LoginToken);
+        loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
         autofoxSideMenu.ClickOnAdmins();
         AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
         NewAddAdminPage.InsertAdminData("email" , InvalidAdmin.getEmail());
@@ -142,6 +165,90 @@ public class CreateNewAdmin {
         autofoxHeader.ClickLogOut();
 
     }
+
+
+
+
+    @Test(priority = 2 , dataProvider = "Valid designer data")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Check that master admin can create new designers  with valid data")
+    public void TestValidDesignerCreation(AdminUsersPojo.UserData ValidDesigner , String Settings)   {
+
+        //Steps
+        loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
+        autofoxSideMenu.ClickOnAdmins();
+        AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
+        NewAddAdminPage.InsertAdminData("email" , ValidDesigner.getEmail());
+        NewAddAdminPage.InsertAdminData("username" , ValidDesigner.getUsername());
+        NewAddAdminPage.InsertAdminData("first_name" , ValidDesigner.getFirstName());
+        NewAddAdminPage.InsertAdminData("last_name" , ValidDesigner.getLastName());
+        NewAddAdminPage.InsertAdminData("company_name" , ValidDesigner.getCompanyName());
+        NewAddAdminPage.InsertAdminData("company_address" , ValidDesigner.getCompanyAddress());
+        NewAddAdminPage.ClickDropDown("language");
+        NewAddAdminPage.SelectAdminLanguage(ValidDesigner.getLanguage());
+        NewAddAdminPage.ClickDropDown("country_id");
+        NewAddAdminPage.SelectAdminCountry(ValidDesigner.getCountryId());
+        NewAddAdminPage.SelectAdminPermission(Settings);
+        NewAddAdminPage.ClickSaveAdmin();
+        String AddAdminSuccessMessage = NewAddAdminPage.GetSuccessToasterText();
+        //--------------------------------------Assertions-----------------------------------
+        //Expected Results : Success message appear "Admin added successfully"
+        CompareText.CheckText(AddAdminSuccessMessage , "Admin added successfully"  , "Add admin success message");
+
+
+        //Steps
+        NewAddAdminPage.DismissToaster();
+        autofoxSideMenu.ClickOnAdmins();
+        AdminListPage NewAdminListPage = autofoxSideMenu.ClickOnAdminList();
+        String CreatedAdminEmail = NewAdminListPage.GetCellText(1 , "Email");
+        //--------------------------------------Assertions-----------------------------------
+        //Expected Results : Created admin found in admin list
+        CompareText.CheckText(CreatedAdminEmail , ValidDesigner.email, "Created admin Email");
+        autofoxHeader.ClickLogOut();
+
+    }
+
+
+
+    @Test(priority = 4 , dataProvider = "Invalid designer data")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Check that master admin can create new designers with valid data")
+    public void TestInvalidDesignerCreation(AdminUsersPojo.UserData InvalidDesigner , String Settings)   {
+
+        //Angular Error messages are hard coded, we have a bug that back end error messages not appear
+        //This is why I didn't get the error message correctly from the main POJO class of admins
+        String ExpectedAngularInvalidEmailError = "Invalid email address.";
+        String ExpectedAngularInvalidUsernameCharCount = "Username should not be less than 3 characters.";
+
+        //Steps
+        loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
+        autofoxSideMenu.ClickOnAdmins();
+        AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
+        NewAddAdminPage.InsertAdminData("email" , InvalidDesigner.getEmail());
+        NewAddAdminPage.InsertAdminData("username" , InvalidDesigner.getUsername());
+        NewAddAdminPage.InsertAdminData("first_name" , InvalidDesigner.getFirstName());
+        NewAddAdminPage.InsertAdminData("last_name" , InvalidDesigner.getLastName());
+        NewAddAdminPage.InsertAdminData("company_name" , InvalidDesigner.getCompanyName());
+        NewAddAdminPage.InsertAdminData("company_address" , InvalidDesigner.getCompanyAddress());
+        NewAddAdminPage.ClickDropDown("language");
+        NewAddAdminPage.SelectAdminLanguage(InvalidDesigner.getLanguage());
+        NewAddAdminPage.ClickDropDown("country_id");
+        NewAddAdminPage.SelectAdminCountry(InvalidDesigner.getCountryId());
+        NewAddAdminPage.SelectAdminPermission(Settings);
+        NewAddAdminPage.ClickSaveAdmin();
+        String AngularErrorOfEmail = NewAddAdminPage.GetAdminDataAngularError("email");
+        String AngularErrorOfUsername = NewAddAdminPage.GetAdminDataAngularError("username");
+        //--------------------------------------Assertions-----------------------------------
+        //Expected Results : master admin can NOT create new admins with Invalid data
+        CompareText.CheckText(AngularErrorOfEmail , ExpectedAngularInvalidEmailError, "Invalid Email angular error");
+        CompareText.CheckText(AngularErrorOfUsername , ExpectedAngularInvalidUsernameCharCount, "username less than 3 char. angular error");
+        autofoxHeader.ClickLogOut();
+
+    }
+
+
+
+
 
 
     @AfterClass

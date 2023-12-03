@@ -1,12 +1,10 @@
 package autofox.objects.objectGui;
 
-import autofox.data.user.StaticSuperAdmin;
+import autofox.data.user.staticUser.StaticSuperAdmin;
 import autofox.sharedSteps.gui.user.LoginGuiSteps;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
-import automation.engine.elementWorks.ElementActions;
 import automation.engine.elementWorks.KeyboardActions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

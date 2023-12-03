@@ -12,11 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 public class AdminUsersPojo {
-    public AdminUsersPojo(String Email , String UserName ){
-
-    }
-
-
 
     @JsonProperty("status")
     public int status;
@@ -29,7 +24,7 @@ public class AdminUsersPojo {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class UserData {
-        //Constructor
+        //Constructor {Master and Super}
         public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country ){
             this.email = Email;
             this.username = UserName ;
@@ -41,6 +36,21 @@ public class AdminUsersPojo {
             this.countryId = Country;
 
         }
+
+            //Constructor {Designers}
+            public UserData(String Email ,String UserName  ,String FirstName ,String LastName ,String CompanyName ,String CompanyAddress ,String Language , String Country , Boolean Training ,  int Target , String WorkingDays ){
+                this.email = Email;
+                this.username = UserName ;
+                this.firstName = FirstName;
+                this.lastName = LastName;
+                this.companyName = CompanyName ;
+                this.companyAddress = CompanyAddress ;
+                this.language = Language ;
+                this.countryId = Country;
+                AdminSettings adminSettings = new AdminSettings(Training , Target , WorkingDays);
+               setAdminSettings(adminSettings);
+            }
+
 
         @JsonProperty("id")
         public int id;
@@ -1234,6 +1244,19 @@ public class AdminUsersPojo {
 
         @JsonIgnoreProperties(ignoreUnknown = true)
         public static class AdminSettings {
+
+            public AdminSettings ( Boolean Training , int Target , String WrokingDays){
+            //Constructor for designers working days and target
+
+                this.retouchTargetPerDay = Target ;
+                this.reviewTargetPerDay = Target ;
+                this.auditTargetPerDay = Target ;
+                this.workingDays = WrokingDays;
+                this.isTrainingRetoucher = Training ;
+
+            }
+
+
 
             @JsonProperty("id")
             public int id;

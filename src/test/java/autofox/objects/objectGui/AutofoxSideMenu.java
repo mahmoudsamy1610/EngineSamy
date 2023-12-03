@@ -42,9 +42,11 @@ public class AutofoxSideMenu {
         AutofoxParentMenuItems.add(5,"ManualRetouch") ;
         AutofoxParentMenuItems.add(6,"Reports") ;
         AutofoxParentMenuItems.add(7,"AiConversion") ;
-        AutofoxParentMenuItems.add(8,"Admins") ;
-        AutofoxParentMenuItems.add(9,"Companies") ;
-        AutofoxParentMenuItems.add(10,"Settings") ;
+        AutofoxParentMenuItems.add(8,"AiConversion") ;
+        AutofoxParentMenuItems.add(9,"AiConversion") ;
+        AutofoxParentMenuItems.add(10,"Admins") ;
+        AutofoxParentMenuItems.add(11,"Companies") ;
+        AutofoxParentMenuItems.add(12,"Settings") ;
 
        int ParentIndex = AutofoxParentMenuItems.indexOf(ParentItemName);
 

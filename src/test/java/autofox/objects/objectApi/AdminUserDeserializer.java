@@ -2,7 +2,7 @@ package autofox.objects.objectApi;
 
 import autofox.objects.objectSystem.users.AdminUsersLoginPojo;
 import autofox.objects.objectSystem.users.AdminUsersLoginPojo.*;
-import autofox.data.user.StaticSuperAdmin;
+import autofox.data.user.staticUser.StaticSuperAdmin;
 import automation.utils.loggers.BusinessLogger;
 import io.restassured.response.Response;
 

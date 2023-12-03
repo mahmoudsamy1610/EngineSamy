@@ -1,4 +1,4 @@
-package autofox.data.user;
+package autofox.data.user.staticUser;
 
 import autofox.objects.objectSystem.users.AdminUsersLoginPojo.AdminUsers;
 import static automation.engine.dataWorks.DataWrecker.Wreck;
