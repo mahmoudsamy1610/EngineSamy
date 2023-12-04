@@ -1,6 +1,7 @@
 package autofox.objects.objectGui;
 
 import automation.engine.elementWorks.ElementActions;
+import automation.engine.elementWorks.KeyboardActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
@@ -193,7 +194,7 @@ public class AddAdminPage {
         int WorkingDayIndex = GetWorkingDaysIndex(WorkingDay);
         By WorkingDayItemLocator = GetWorkingDaysItemLocator(WorkingDayIndex);
         ElementActions.ClickElement(driver , WorkingDayItemLocator , ""+WorkingDay+"  : dropdown item ");
-
+        KeyboardActions.PressEscapeKey(driver);
     }
 
     public void ClickSaveAdmin(){

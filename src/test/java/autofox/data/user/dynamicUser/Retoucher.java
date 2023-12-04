@@ -12,6 +12,7 @@ public class Retoucher {
 
      public static final String AutomationPrefix = "auto_" ;
     public static final String AdminRole = "is_retouch_user" ;
+    public static final String TargetType = "retouch_images_target" ;
 
 
     public static AdminUsersPojo.UserData GenerateValidRetoucher(){
@@ -26,8 +27,7 @@ public class Retoucher {
         String Country = "DE" ;
         Boolean Training = false;
         int Target = 50 ;
-        String WorkingDays = "0,1,2" ; //Monday, Tuesday , Thursday
-
+        String WorkingDays = "Monday" ;
 
         return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , Training , Target ,WorkingDays);
     }
@@ -44,8 +44,7 @@ public class Retoucher {
         String Country = "DE" ;
         Boolean Training = false;
         int Target = 50 ;
-        String WorkingDays = "0,1,2" ; //Monday, Tuesday , Thursday
-
+        String WorkingDays = "Monday" ;
 
         return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , Training , Target ,WorkingDays);
     }

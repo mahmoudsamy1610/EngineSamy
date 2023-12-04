@@ -17,11 +17,14 @@ import automation.engine.browserWorks.BrowserRunner;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import net.bytebuddy.dynamic.TargetType;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import javax.enterprise.inject.New;
 
 public class CreateNewAdmin {
 
@@ -48,7 +51,7 @@ public class CreateNewAdmin {
     public static Object[][] InvalidAdminData() {
         return new Object[][]{
                 {MasterAdmin.GenerateInvalidMasterAdmin() , MasterAdmin.AdminRole},
-                {SuperAdmin.GenerateValidSuperAdmin() , SuperAdmin.AdminRole}
+                {SuperAdmin.GenerateInvalidSuperAdmin() , SuperAdmin.AdminRole}
         };
     }
 
@@ -57,7 +60,7 @@ public class CreateNewAdmin {
     @DataProvider(name = "Valid designer data")
     public static Object[][] ValidDesignerData() {
         return new Object[][]{
-                {Retoucher.GenerateValidRetoucher() , Retoucher.AdminRole },
+                {Retoucher.GenerateValidRetoucher() , Retoucher.AdminRole , Retoucher.TargetType },
 
         };
     }
@@ -172,7 +175,7 @@ public class CreateNewAdmin {
     @Test(priority = 2 , dataProvider = "Valid designer data")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Check that master admin can create new designers  with valid data")
-    public void TestValidDesignerCreation(AdminUsersPojo.UserData ValidDesigner , String Settings)   {
+    public void TestValidDesignerCreation(AdminUsersPojo.UserData ValidDesigner , String Settings , String TargetType)   {
 
         //Steps
         loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
@@ -189,6 +192,9 @@ public class CreateNewAdmin {
         NewAddAdminPage.ClickDropDown("country_id");
         NewAddAdminPage.SelectAdminCountry(ValidDesigner.getCountryId());
         NewAddAdminPage.SelectAdminPermission(Settings);
+        NewAddAdminPage.InsertAdminData( TargetType , String.valueOf(ValidDesigner.getAdminSettings().getRetouchTargetPerDay()));
+        NewAddAdminPage.ClickDropDown("working_days");
+        NewAddAdminPage.SelectWorkingDay(ValidDesigner.getAdminSettings().workingDays);
         NewAddAdminPage.ClickSaveAdmin();
         String AddAdminSuccessMessage = NewAddAdminPage.GetSuccessToasterText();
         //--------------------------------------Assertions-----------------------------------

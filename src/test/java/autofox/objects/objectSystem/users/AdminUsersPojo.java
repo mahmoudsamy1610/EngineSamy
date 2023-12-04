@@ -1245,13 +1245,13 @@ public class AdminUsersPojo {
         @JsonIgnoreProperties(ignoreUnknown = true)
         public static class AdminSettings {
 
-            public AdminSettings ( Boolean Training , int Target , String WrokingDays){
+            public AdminSettings ( Boolean Training , int Target , String WorkingDays){
             //Constructor for designers working days and target
 
                 this.retouchTargetPerDay = Target ;
                 this.reviewTargetPerDay = Target ;
                 this.auditTargetPerDay = Target ;
-                this.workingDays = WrokingDays;
+                this.workingDays = WorkingDays;
                 this.isTrainingRetoucher = Training ;
 
             }
