@@ -12,9 +12,11 @@ public class Auditor {
 
      public static final String AutomationPrefix = "auto_" ;
     public static final String AdminRole = "is_audit_user" ;
+    public static final String TargetType = "audit_images_target" ;
 
 
-    public static AdminUsersPojo.UserData GenerateValidAudit(){
+
+    public static AdminUsersPojo.UserData GenerateValidAuditor(){
 
         String Email = Concatenate(AutomationPrefix , DataFaker.FakeEmail());
         String UserName = Concatenate(AutomationPrefix ,DataFaker.FakeUserName());
@@ -24,12 +26,15 @@ public class Auditor {
         String CompanyAddress = Concatenate(AutomationPrefix , DataFaker.FakeCompanyAddress());
         String Language = "EN" ;
         String Country = "DE" ;
+        Boolean Training = false;
+        int Target = 50 ;
+        String WorkingDays = "Monday" ;
 
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country);
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , Training , Target ,WorkingDays);
     }
 
 
-    public static AdminUsersPojo.UserData GenerateInvalidAudit(){
+    public static AdminUsersPojo.UserData GenerateInvalidAuditor(){
         String Email = "Invalid email testing";
         String UserName = String.valueOf(RandomDigitsGenerator.GenerateRandomNumber(2)) ;
         String FirstName = DataFaker.FakeFirstName();
@@ -38,9 +43,11 @@ public class Auditor {
         String CompanyAddress = DataFaker.FakeCompanyAddress();
         String Language = "EN" ;
         String Country = "DE" ;
+        Boolean Training = false;
+        int Target = 50 ;
+        String WorkingDays = "Monday" ;
 
-
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country );
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , Training , Target ,WorkingDays);
     }
 
 

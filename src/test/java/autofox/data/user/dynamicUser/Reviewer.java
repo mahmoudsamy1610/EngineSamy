@@ -11,7 +11,9 @@ public class Reviewer {
 
 
      public static final String AutomationPrefix = "auto_" ;
-    public static final String AdminRole = "is_Review_user" ;
+    public static final String AdminRole = "is_review_user" ;
+    public static final String TargetType = "review_images_target" ;
+
 
 
     public static AdminUsersPojo.UserData GenerateValidReviewer(){
@@ -24,8 +26,11 @@ public class Reviewer {
         String CompanyAddress = Concatenate(AutomationPrefix , DataFaker.FakeCompanyAddress());
         String Language = "EN" ;
         String Country = "DE" ;
+        Boolean Training = false;
+        int Target = 50 ;
+        String WorkingDays = "Monday" ;
 
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country);
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , Training , Target ,WorkingDays);
     }
 
 
@@ -38,9 +43,11 @@ public class Reviewer {
         String CompanyAddress = DataFaker.FakeCompanyAddress();
         String Language = "EN" ;
         String Country = "DE" ;
+        Boolean Training = false;
+        int Target = 50 ;
+        String WorkingDays = "Monday" ;
 
-
-        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country );
+        return new AdminUsersPojo.UserData(Email,  UserName , FirstName , LastName ,CompanyName , CompanyAddress , Language  , Country  , Training , Target ,WorkingDays);
     }
 
 

@@ -1,8 +1,6 @@
 package testClasses.gui;
 
-import autofox.data.user.dynamicUser.Retoucher;
-import autofox.data.user.dynamicUser.MasterAdmin;
-import autofox.data.user.dynamicUser.SuperAdmin;
+import autofox.data.user.dynamicUser.*;
 import autofox.data.user.staticUser.StaticMasterAdmin;
 import autofox.objects.objectGui.AddAdminPage;
 import autofox.objects.objectGui.AdminListPage;
@@ -42,7 +40,12 @@ public class CreateNewAdmin {
     public static Object[][] ValidAdminData() {
         return new Object[][]{
                 {MasterAdmin.GenerateValidMasterAdmin() , MasterAdmin.AdminRole },
-                {SuperAdmin.GenerateValidSuperAdmin() , SuperAdmin.AdminRole}
+                {SuperAdmin.GenerateValidSuperAdmin() , SuperAdmin.AdminRole} ,
+                {Vehicles.GenerateValidVehicleAdmin() , Vehicles.AdminRole} ,
+                {Sales.GenerateValidSalesAdmin() , Sales.AdminRole},
+                {ReportedImages.GenerateValidReportedImagesAdmin() , ReportedImages.AdminRole},
+                {ReportedIssues.GenerateValidReportedIssuesAdmin() , ReportedIssues.AdminRole},
+                {RetoucherPerformance.GenerateValidRetoucherPerformanceAdmin() , RetoucherPerformance.AdminRole}
 
         };
     }
@@ -51,7 +54,13 @@ public class CreateNewAdmin {
     public static Object[][] InvalidAdminData() {
         return new Object[][]{
                 {MasterAdmin.GenerateInvalidMasterAdmin() , MasterAdmin.AdminRole},
-                {SuperAdmin.GenerateInvalidSuperAdmin() , SuperAdmin.AdminRole}
+                {SuperAdmin.GenerateInvalidSuperAdmin() , SuperAdmin.AdminRole} ,
+                {Vehicles.GenerateInvalidVehicleAdmin() , Vehicles.AdminRole} ,
+                {Sales.GenerateInvalidSalesAdmin() , Sales.AdminRole} ,
+                {ReportedImages.GenerateInvalidReportedImagesAdmin() , ReportedImages.AdminRole},
+                {ReportedIssues.GenerateInvalidReportedIssuesAdmin() , ReportedIssues.AdminRole},
+                {RetoucherPerformance.GenerateInvalidRetoucherPerformanceAdmin() , RetoucherPerformance.AdminRole}
+
         };
     }
 
@@ -61,6 +70,8 @@ public class CreateNewAdmin {
     public static Object[][] ValidDesignerData() {
         return new Object[][]{
                 {Retoucher.GenerateValidRetoucher() , Retoucher.AdminRole , Retoucher.TargetType },
+                {Reviewer.GenerateValidReviewer() , Reviewer.AdminRole , Reviewer.TargetType},
+                {Auditor.GenerateValidAuditor() , Auditor.AdminRole  , Auditor.TargetType}
 
         };
     }
@@ -68,7 +79,9 @@ public class CreateNewAdmin {
     @DataProvider(name = "Invalid designer data")
     public static Object[][] InvalidDesignerData() {
         return new Object[][]{
-                {Retoucher.GenerateInvalidRetoucher() ,Retoucher.AdminRole  }
+                {Retoucher.GenerateInvalidRetoucher() ,Retoucher.AdminRole },
+                {Reviewer.GenerateInvalidReviewer() , Reviewer.AdminRole},
+                {Auditor.GenerateInvalidAuditor() , Auditor.AdminRole}
         };
     }
 
@@ -78,6 +91,7 @@ public class CreateNewAdmin {
 
 
     @BeforeClass
+    @Description("Master admin should be logged in")
     public void setup(){
 
         // Start driver
@@ -89,6 +103,9 @@ public class CreateNewAdmin {
         autofoxSideMenu = new AutofoxSideMenu(driver);
         autofoxHeader = new AutofoxHeader(driver);
 
+        //Preconditions
+        loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
+
     }
 
 
@@ -98,7 +115,6 @@ public class CreateNewAdmin {
     public void TestValidAdminCreation(AdminUsersPojo.UserData ValidAdmin , String Settings)   {
 
         //Steps
-       loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
        autofoxSideMenu.ClickOnAdmins();
        AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
        NewAddAdminPage.InsertAdminData("email" , ValidAdmin.getEmail());
@@ -127,7 +143,6 @@ public class CreateNewAdmin {
        //--------------------------------------Assertions-----------------------------------
        //Expected Results : Created admin found in admin list
        CompareText.CheckText(CreatedAdminEmail , ValidAdmin.email, "Created admin Email");
-       autofoxHeader.ClickLogOut();
 
     }
 
@@ -144,7 +159,6 @@ public class CreateNewAdmin {
         String ExpectedAngularInvalidUsernameCharCount = "Username should not be less than 3 characters.";
 
         //Steps
-        loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
         autofoxSideMenu.ClickOnAdmins();
         AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
         NewAddAdminPage.InsertAdminData("email" , InvalidAdmin.getEmail());
@@ -165,7 +179,6 @@ public class CreateNewAdmin {
         //Expected Results : master admin can NOT create new admins with Invalid data
         CompareText.CheckText(AngularErrorOfEmail , ExpectedAngularInvalidEmailError, "Invalid Email angular error");
         CompareText.CheckText(AngularErrorOfUsername , ExpectedAngularInvalidUsernameCharCount, "username less than 3 char. angular error");
-        autofoxHeader.ClickLogOut();
 
     }
 
@@ -178,7 +191,6 @@ public class CreateNewAdmin {
     public void TestValidDesignerCreation(AdminUsersPojo.UserData ValidDesigner , String Settings , String TargetType)   {
 
         //Steps
-        loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
         autofoxSideMenu.ClickOnAdmins();
         AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
         NewAddAdminPage.InsertAdminData("email" , ValidDesigner.getEmail());
@@ -210,7 +222,6 @@ public class CreateNewAdmin {
         //--------------------------------------Assertions-----------------------------------
         //Expected Results : Created admin found in admin list
         CompareText.CheckText(CreatedAdminEmail , ValidDesigner.email, "Created admin Email");
-        autofoxHeader.ClickLogOut();
 
     }
 
@@ -227,7 +238,6 @@ public class CreateNewAdmin {
         String ExpectedAngularInvalidUsernameCharCount = "Username should not be less than 3 characters.";
 
         //Steps
-        loginGuiSteps.UserLogin(StaticMasterAdmin.LoginToken);
         autofoxSideMenu.ClickOnAdmins();
         AddAdminPage NewAddAdminPage = autofoxSideMenu.ClickOnAddAdmin();
         NewAddAdminPage.InsertAdminData("email" , InvalidDesigner.getEmail());
@@ -248,7 +258,6 @@ public class CreateNewAdmin {
         //Expected Results : master admin can NOT create new admins with Invalid data
         CompareText.CheckText(AngularErrorOfEmail , ExpectedAngularInvalidEmailError, "Invalid Email angular error");
         CompareText.CheckText(AngularErrorOfUsername , ExpectedAngularInvalidUsernameCharCount, "username less than 3 char. angular error");
-        autofoxHeader.ClickLogOut();
 
     }
 
@@ -259,6 +268,7 @@ public class CreateNewAdmin {
 
     @AfterClass
     public void TearDown(){
+        autofoxHeader.ClickLogOut();
         BrowserActions.Shutdown(driver);
     }
 

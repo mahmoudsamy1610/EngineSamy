@@ -146,8 +146,8 @@ public class AddAdminPage {
     public void InsertAdminData(String TextFieldId, String InputText){
 
         By TextField = GetTextFieldLocator(TextFieldId);
-        ElementActions.ClearText(driver , TextField , ""+TextField+" : text field" );
-        ElementActions.WriteText(driver , TextField , InputText , ""+TextField+" : text field" );
+        ElementActions.ClearText(driver , TextField , ""+TextFieldId+" : text field" );
+        ElementActions.WriteText(driver , TextField , InputText , ""+TextFieldId+" : text field" );
     }
 
     public String GetAdminDataAngularError(String TextFieldId){

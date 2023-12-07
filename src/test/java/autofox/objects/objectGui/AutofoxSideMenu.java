@@ -23,6 +23,8 @@ public class AutofoxSideMenu {
     public static List<String> AutofoxParentMenuItems = new ArrayList<>();
     public static List<String> DealersItems = new ArrayList<>() ;
     public static List<String> VehiclesItems = new ArrayList<>() ;
+    public static List<String> AuditItems = new ArrayList<>() ;
+    public static List<String> FTPItems = new ArrayList<>() ;
     public static List<String> ThemesItems = new ArrayList<>() ;
     public static List<String> ManualRetouchItems = new ArrayList<>() ;
     public static List<String> ReportsItems = new ArrayList<>() ;
@@ -38,15 +40,15 @@ public class AutofoxSideMenu {
         AutofoxParentMenuItems.add(1,null) ;
         AutofoxParentMenuItems.add(2,"Dealers") ;
         AutofoxParentMenuItems.add(3,"Vehicles") ;
-        AutofoxParentMenuItems.add(4,"Themes") ;
-        AutofoxParentMenuItems.add(5,"ManualRetouch") ;
-        AutofoxParentMenuItems.add(6,"Reports") ;
-        AutofoxParentMenuItems.add(7,"AiConversion") ;
-      //  AutofoxParentMenuItems.add(8,"AiConversion") ;
-       // AutofoxParentMenuItems.add(9,"AiConversion") ;
-        AutofoxParentMenuItems.add(8,"Admins") ;
-        AutofoxParentMenuItems.add(9,"Companies") ;
-        AutofoxParentMenuItems.add(10,"Settings") ;
+        AutofoxParentMenuItems.add(4,"Audit") ;
+        AutofoxParentMenuItems.add(5,"FTP") ;
+        AutofoxParentMenuItems.add(6,"Themes") ;
+        AutofoxParentMenuItems.add(7,"ManualRetouch") ;
+        AutofoxParentMenuItems.add(8,"Reports") ;
+        AutofoxParentMenuItems.add(9,"AiConversion") ;
+        AutofoxParentMenuItems.add(10,"Admins") ;
+        AutofoxParentMenuItems.add(11,"Companies") ;
+        AutofoxParentMenuItems.add(12,"Settings") ;
 
        int ParentIndex = AutofoxParentMenuItems.indexOf(ParentItemName);
 

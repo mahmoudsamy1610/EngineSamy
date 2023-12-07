@@ -26,6 +26,7 @@ public class AdminLogin {
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
         return new String[][]{
+                {StaticMasterAdmin.LoginToken , StaticMasterAdmin.Email},
                 {StaticSuperAdmin.LoginToken , StaticSuperAdmin.Email},
                 {StaticRetoucher.LoginToken , StaticRetoucher.Email} ,
                 {StaticReviewer.LoginToken, StaticReviewer.Email},
@@ -42,6 +43,7 @@ public class AdminLogin {
     @DataProvider(name = "InvalidAdmin")
     public static Object[][] InvalidAdminData() {
         return new String[][]{
+                {Wreck(StaticMasterAdmin.LoginToken) , Wreck(StaticMasterAdmin.Email)},
                 {Wreck(StaticSuperAdmin.LoginToken) , Wreck(StaticSuperAdmin.Email)},
                 {Wreck(StaticRetoucher.LoginToken), Wreck(StaticRetoucher.Email)} ,
                 {Wreck(StaticReviewer.LoginToken), Wreck(StaticReviewer.Email) },
@@ -56,7 +58,7 @@ public class AdminLogin {
 
 
 
-    @BeforeClass
+    @BeforeMethod
         public void setup(){
 
         // Start driver
@@ -109,7 +111,7 @@ public class AdminLogin {
 
 
 
-        @AfterClass
+        @AfterMethod
             public void TearDown(){
                 BrowserActions.Shutdown(driver);
     }

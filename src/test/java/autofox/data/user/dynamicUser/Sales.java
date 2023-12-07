@@ -6,14 +6,14 @@ import automation.utils.varWorks.RandomDigitsGenerator;
 
 import static automation.utils.varWorks.StringConcatenator.Concatenate;
 
-public class Vehicles {
+public class Sales {
 //these classes are  only Generators for users ... if you want this class to get a created user ... you need to put this class in package [Apis/gui] accordingly
 
 
      public static final String AutomationPrefix = "auto_" ;
-     public static final String AdminRole = "is_view_vehicle_user" ;
+     public static final String AdminRole = "is_sales_user" ;
 
-    public static AdminUsersPojo.UserData GenerateValidVehicleAdmin(){
+    public static AdminUsersPojo.UserData GenerateValidSalesAdmin(){
 
         String Email = Concatenate(AutomationPrefix , DataFaker.FakeEmail());
         String UserName = Concatenate(AutomationPrefix ,DataFaker.FakeUserName());
@@ -29,7 +29,7 @@ public class Vehicles {
     }
 
 
-    public static AdminUsersPojo.UserData GenerateInvalidVehicleAdmin(){
+    public static AdminUsersPojo.UserData GenerateInvalidSalesAdmin(){
         String Email = "Invalid email testing";
         String UserName = String.valueOf(RandomDigitsGenerator.GenerateRandomNumber(2)) ;
         String FirstName = DataFaker.FakeFirstName();
