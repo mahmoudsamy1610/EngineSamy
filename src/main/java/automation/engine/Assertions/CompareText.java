@@ -13,7 +13,6 @@ public class CompareText {
         EngineLogger.EngineInfo("The Actual text for  [" + ExpectedTextName + "] is [" + ActualText + "]");
         Assert.assertTrue(ActualText.contains(ExpectedText) ,  " The Actual  text: " +ActualText+ " -- does not equal or include the Expected text : " +ExpectedText );
 
-
     }
 
 
