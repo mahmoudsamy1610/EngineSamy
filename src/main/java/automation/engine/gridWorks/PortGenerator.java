@@ -1,6 +1,6 @@
 package automation.engine.gridWorks;
 
-import automation.utils.helpers.RandomDigitsGenerator;
+import automation.utils.varWorks.RandomDigitsGenerator;
 import automation.utils.loggers.EngineLogger;
 
 public class PortGenerator {

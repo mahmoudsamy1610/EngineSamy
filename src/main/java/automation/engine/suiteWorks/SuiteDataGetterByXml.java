@@ -1,7 +1,7 @@
 package automation.engine.suiteWorks;
 
-import automation.utils.helpers.StringPicker;
-import automation.utils.helpers.StringToListJoiner;
+import automation.utils.varWorks.StringPicker;
+import automation.utils.varWorks.StringToListJoiner;
 import automation.utils.loggers.EngineLogger;
 import automation.utils.propertyWorks.PropertyGetter;
 import automation.utils.xmlWorks.XmlAttValueGetter;

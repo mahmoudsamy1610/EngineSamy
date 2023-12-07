@@ -2,49 +2,21 @@
   "Node1":
     {
       "Id": 1,
-      "Test": "test1",
-      "Suite" : "Login1",
+      "Test": "LoginTest",
+      "Suite" : "Login",
       "Browser": "firefox",
-      "Platform": "linux"
+      "Platform": "Windows 10"
 
     },
 
   "Node2":
   {
     "Id": 5,
-    "Test": "test2",
-    "Suite" : "Login2",
+    "Test": "CreateAdmin",
+    "Suite" : "CreateUser",
     "Browser": "chrome",
-    "Platform": "Linux"
+    "Platform": "Windows 10"
 
-  },
-
-  "Node3":
-    {
-      "Id": 2,
-      "Test": "test3",
-      "Suite" : "Login3",
-      "Browser": "MicrosoftEdge",
-      "Platform": "Windows 10"
-    },
-
-  "Node4":
-    {
-      "Id": 3,
-      "Test": "test4",
-      "Suite" : "Login4",
-      "Browser": "firefox",
-      "Platform": "Windows 10"
-    },
-
-
-  "Node5":
-  {
-    "Id": 9,
-    "Test": "test55000",
-    "Suite" : "Login8798",
-    "Browser": "browserBlaBla",
-    "Platform": "platformBlaBla"
   }
 
 

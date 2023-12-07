@@ -3,16 +3,18 @@ package autofox.objects.objectGui;
 import autofox.data.routes.RoutesUser;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.elementWorks.ElementActions;
+import automation.engine.elementWorks.LocatorActions;
 import automation.engine.setupWorks.EnvironmentManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
 public class LoginPage {
 
     public WebDriver driver;
     //Locators
-    public static By TokenField = By.id("login_token");
+    public  By TokenField =  By.id("login_token");
     public static By LoginButton = By.cssSelector("button.login-btn.btn-block.btn-danger");
     public static By InvalidLoginCredsToaster = By.cssSelector("div[role='alertdialog']") ;
 
@@ -33,12 +35,12 @@ public class LoginPage {
 
 
     public void insertLoginToken(String Token)   {
-        ElementActions.writeText(driver,TokenField,Token, "Login Token Field" );
+        ElementActions.WriteText(driver,TokenField,Token, "Login Token Field" );
     }
 
 
     public void clickLogin(){
-        ElementActions.clickElement(driver,LoginButton, "Login Button");
+        ElementActions.ClickElement(driver,LoginButton, "Login Button" );
     }
 
     public String GetInvalidCredsErrorToaster(){
