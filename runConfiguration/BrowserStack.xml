@@ -25,10 +25,9 @@ Test environment  [Alpha || DEV || Live]
 
 
 
-    <suite-files >
+   <suite-files >
         <suite-file path="../src/test/resources/testSuites/Login.xml"/>
-
-
+        <suite-file path="../src/test/resources/testSuites/CreateUser.xml"/>
     </suite-files>
 
 
