@@ -1,6 +1,6 @@
 package automation.engine.gridWorks;
 
-import automation.utils.helpers.FileCleaner;
+import automation.utils.fileWorks.FileCleaner;
 import automation.utils.loggers.EngineLogger;
 
 public class NodeCleaner {

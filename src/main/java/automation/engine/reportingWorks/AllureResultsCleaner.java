@@ -1,6 +1,6 @@
 package automation.engine.reportingWorks;
 
-import automation.utils.helpers.DirCleaner;
+import automation.utils.fileWorks.DirCleaner;
 import automation.utils.loggers.EngineLogger;
 import automation.utils.propertyWorks.PropertyGetter;
 import org.testng.IExecutionListener;

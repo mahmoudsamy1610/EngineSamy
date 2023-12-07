@@ -1,7 +1,7 @@
 package automation.engine.dataWorks;
 
-import automation.utils.helpers.RandomDigitsGenerator;
-import automation.utils.helpers.StringConcatenator;
+import automation.utils.varWorks.RandomDigitsGenerator;
+import automation.utils.varWorks.StringConcatenator;
 import automation.utils.loggers.EngineLogger;
 
 public class DataWrecker {

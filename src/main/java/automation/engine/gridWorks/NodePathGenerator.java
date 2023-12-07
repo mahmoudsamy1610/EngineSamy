@@ -1,7 +1,7 @@
 package automation.engine.gridWorks;
 
-import automation.utils.helpers.StringConcatenator;
-import automation.utils.helpers.StringPicker;
+import automation.utils.varWorks.StringConcatenator;
+import automation.utils.varWorks.StringPicker;
 import automation.utils.loggers.EngineLogger;
 import automation.utils.propertyWorks.PropertyGetter;
 

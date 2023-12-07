@@ -1,7 +1,6 @@
 package testClasses.gui;
 
-import autofox.data.user.*;
-import autofox.objects.objectGui.DashboardPage;
+import autofox.data.user.staticUser.*;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
 import automation.engine.Assertions.CompareText;
@@ -10,7 +9,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import autofox.objects.objectGui.AutofoxElements;
+import autofox.objects.objectGui.AutofoxHeader;
 import autofox.objects.objectGui.LoginPage;
 import static automation.engine.dataWorks.DataWrecker.Wreck;
 
@@ -21,13 +20,13 @@ public class AdminLogin {
     //Initialization
     WebDriver driver;
     LoginPage loginPage ;
-    AutofoxElements autofoxElements;
-    DashboardPage dashboardPage ;
+    AutofoxHeader autofoxHeader;
 
-
+    //Data Providers
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
-        String[][] dataArr = new String[][]{
+        return new String[][]{
+                {StaticMasterAdmin.LoginToken , StaticMasterAdmin.Email},
                 {StaticSuperAdmin.LoginToken , StaticSuperAdmin.Email},
                 {StaticRetoucher.LoginToken , StaticRetoucher.Email} ,
                 {StaticReviewer.LoginToken, StaticReviewer.Email},
@@ -39,12 +38,12 @@ public class AdminLogin {
                 {StaticRetoucherPerformance.LoginToken , StaticRetoucherPerformance.Email},
 
         };
-        return dataArr ;
     }
 
     @DataProvider(name = "InvalidAdmin")
     public static Object[][] InvalidAdminData() {
-        String[][] dataArr = new String[][]{
+        return new String[][]{
+                {Wreck(StaticMasterAdmin.LoginToken) , Wreck(StaticMasterAdmin.Email)},
                 {Wreck(StaticSuperAdmin.LoginToken) , Wreck(StaticSuperAdmin.Email)},
                 {Wreck(StaticRetoucher.LoginToken), Wreck(StaticRetoucher.Email)} ,
                 {Wreck(StaticReviewer.LoginToken), Wreck(StaticReviewer.Email) },
@@ -55,12 +54,11 @@ public class AdminLogin {
                 {Wreck(StaticReportedIssues.LoginToken) , Wreck(StaticReportedIssues.Email)},
                 {Wreck(StaticRetoucherPerformance.LoginToken), Wreck(StaticRetoucherPerformance.Email)},
         };
-        return dataArr ;
     }
 
 
 
-    @BeforeClass
+    @BeforeMethod
         public void setup(){
 
         // Start driver
@@ -69,11 +67,7 @@ public class AdminLogin {
 
         //pages
         loginPage = new LoginPage(driver);
-        autofoxElements = new AutofoxElements(driver) ;
-        dashboardPage = new DashboardPage(driver);
-
-        //shared steps
-
+        autofoxHeader = new AutofoxHeader(driver) ;
     }
 
 
@@ -87,12 +81,11 @@ public class AdminLogin {
         loginPage.openLoginPage();
         loginPage.insertLoginToken(AdminToken);
         loginPage.clickLogin();
-
-        String ActualAdminEmail =  autofoxElements.GetLoggedInEmail();
-        CompareText.CheckText(ActualAdminEmail, AdminEmail , "Logged in Admin Email");
-        autofoxElements.LogOut();
-
+        String ActualAdminEmail =  autofoxHeader.GetLoggedInEmail();
+        //---------------------------------------Assertions------------------------------------
         //Expected Results : Valid Admin can log in and home page title is logout
+        CompareText.CheckText(ActualAdminEmail, AdminEmail , "Logged in Admin Email");
+        autofoxHeader.ClickLogOut();
 
     }
 
@@ -108,17 +101,17 @@ public class AdminLogin {
         loginPage.openLoginPage();
         loginPage.insertLoginToken(AdminToken);
         loginPage.clickLogin();
-
         String InvalidCredsError =   loginPage.GetInvalidCredsErrorToaster();
+        //---------------------------------------Assertions------------------------------------
+        //Expected Results : invalid Admin cannot login and Error message "invalid login credentials appears
         CompareText.CheckText(InvalidCredsError,"Invalid login credentials." , "Error message");
 
-        //Expected Results : invalid Admin cannot login and Error message "invalid login credentials appears
 
     }
 
 
 
-        @AfterClass
+        @AfterMethod
             public void TearDown(){
                 BrowserActions.Shutdown(driver);
     }

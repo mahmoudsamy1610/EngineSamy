@@ -1,6 +1,6 @@
 package automation.engine.gridWorks;
 
-import automation.utils.helpers.ListToTwoDArrayConverter;
+import automation.utils.arrayWorks.ListToTwoDArrayConverter;
 import automation.utils.loggers.EngineLogger;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package automation.engine.browserWorks;
 
-import automation.utils.helpers.TaskCleaner;
+import automation.utils.cmdWorks.TaskCleaner;
 import automation.utils.loggers.EngineLogger;
 import org.testng.IExecutionListener;
 
@@ -13,6 +13,7 @@ public class DriverMemoryCleaner implements IExecutionListener {
 
     public static void CleanAllDriverTasks() {
         EngineLogger.EngineInfo("All Web drivers tasks in the background are purged");
+        EngineLogger.EngineWarn("----------Neglect the exception if tests didn't launch this driver----------");
 
         try {
             CleanChromeDriverTasks();
@@ -26,6 +27,8 @@ public class DriverMemoryCleaner implements IExecutionListener {
 
     public static void CleanChromeDriverTasks() {
         EngineLogger.EngineInfo("Cleaning Chrome webdriver Tasks in the background");
+        EngineLogger.EngineWarn("----------Neglect the exception if tests didn't launch this driver----------");
+
 
         try {
             TaskCleaner.CleanTasks("chromedriver","chromedriver.exe");
@@ -36,6 +39,8 @@ public class DriverMemoryCleaner implements IExecutionListener {
 
     public static void CleanGeckoDriverTasks() {
         EngineLogger.EngineInfo("Cleaning Gecko webdriver Tasks in the background");
+        EngineLogger.EngineWarn("----------Neglect the exception if tests didn't launch this driver----------");
+
 
         try {
             TaskCleaner.CleanTasks("geckodriver","geckodriver.exe");

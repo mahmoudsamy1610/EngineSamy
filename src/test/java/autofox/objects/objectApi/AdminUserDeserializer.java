@@ -1,8 +1,8 @@
 package autofox.objects.objectApi;
 
-import autofox.objects.objectSystem.users.AdminUsersPojo;
-import autofox.objects.objectSystem.users.AdminUsersPojo.*;
-import autofox.data.user.StaticSuperAdmin;
+import autofox.objects.objectSystem.users.AdminUsersLoginPojo;
+import autofox.objects.objectSystem.users.AdminUsersLoginPojo.*;
+import autofox.data.user.staticUser.StaticSuperAdmin;
 import automation.utils.loggers.BusinessLogger;
 import io.restassured.response.Response;
 
@@ -18,7 +18,7 @@ public class AdminUserDeserializer{
         AdminUsers adminUser = null;
 
         try {
-            AdminUsersPojo adminUserPojo = AdminResponse.body().as(AdminUsersPojo.class);
+            AdminUsersLoginPojo adminUserPojo = AdminResponse.body().as(AdminUsersLoginPojo.class);
             adminUser = adminUserPojo.getData().getAdminUsers();
         } catch (Exception E) {
             BusinessLogger.BusinessExceptionError("Failed Mapping Apis response of {user} node into POJO class", E);
@@ -33,7 +33,7 @@ public class AdminUserDeserializer{
         List<AdminErrors> adminErrors ;
 
         try {
-            AdminUsersPojo adminUserPojo = AdminResponse.body().as(AdminUsersPojo.class);
+            AdminUsersLoginPojo adminUserPojo = AdminResponse.body().as(AdminUsersLoginPojo.class);
             adminErrors = adminUserPojo.getAdminErrors();
         } catch (Exception E) {
             BusinessLogger.BusinessExceptionError("Failed Mapping Apis response of {errors} node  into POJO class", E);
