@@ -1,16 +1,17 @@
-
-# ignore IDEA folder
-.idea/
-
-# ignore allure Json files
-allure-results/*
-allure-reports/*
-
-
-#ignore target folder
 target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
 
-#ignore random folders
-logs/browserstack-plugin.log
-
-#ignore random files
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
