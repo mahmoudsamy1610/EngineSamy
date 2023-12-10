@@ -1,2 +1,4 @@
 # EngineSamy
-Automation framework 
+Automation framework done by Mahmoud Samy
+Supported features ..
+- 
