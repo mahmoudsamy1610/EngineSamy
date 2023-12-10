@@ -12,7 +12,7 @@ services:
       GRID_BROWSER_TIMEOUT: 300
       GRID_TIMEOUT: 300
     volumes:
-      - D:/Automation/Autofox:/Autofox
+      - D:/Automation/EngineSamy:/EngineSamy
 
   chrome:
     image: selenium/node-chrome
@@ -28,7 +28,7 @@ services:
       SE_NODE_MAX_SESSIONS: 4
       SE_NODE_MAX_INSTANCES: 4
     volumes:
-      - D:/Automation/Autofox:/Autofox
+      - D:/Automation/EngineSamy:/EngineSamy
 
   firefox:
     image: selenium/node-firefox
@@ -44,4 +44,4 @@ services:
       SE_NODE_MAX_SESSIONS: 4
       SE_NODE_MAX_INSTANCES: 4
     volumes:
-      - D:/Automation/Autofox:/Autofox
+      - D:/Automation/EngineSamy:/EngineSamy

@@ -1,6 +1,5 @@
 package autofox.objects.objectGui;
 
-import autofox.data.user.staticUser.StaticSuperAdmin;
 import autofox.sharedSteps.gui.user.LoginGuiSteps;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
@@ -18,9 +17,6 @@ public class AALocatorTester {
     LoginPage loginPage ;
     AutofoxHeader autofoxElements;
     LoginGuiSteps loginGuiSteps;
-    AutofoxSideMenu autofoxSideMenu ;
-    AddAdminPage addAdminPage ;
-    AdminListPage adminListPage ;
 
 
     @BeforeClass
@@ -34,9 +30,7 @@ public class AALocatorTester {
         loginPage = new LoginPage(driver);
         autofoxElements = new AutofoxHeader(driver) ;
         loginGuiSteps = new LoginGuiSteps(driver);
-        autofoxSideMenu = new AutofoxSideMenu(driver);
-        addAdminPage = new AddAdminPage(driver);
-        adminListPage = new AdminListPage(driver);
+
     }
 
 
@@ -44,14 +38,6 @@ public class AALocatorTester {
     public void TestLocator()   {
 
 
-        String SuperAdminToken = StaticSuperAdmin.LoginToken ;
-        loginGuiSteps.UserLogin(SuperAdminToken);
-        autofoxSideMenu.ClickOnAdmins();
-        AddAdminPage NewAddAdminPage =  autofoxSideMenu.ClickOnAddAdmin();
-        NewAddAdminPage.InsertAdminData("email" , "123");
-        KeyboardActions.PressTabKey(driver);
-        String AngularErrorOfEmail = NewAddAdminPage.GetAdminDataAngularError("email");
-        System.out.println(AngularErrorOfEmail);
 
 
 

@@ -26,16 +26,8 @@ public class AdminLogin {
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
         return new String[][]{
-                {StaticMasterAdmin.LoginToken , StaticMasterAdmin.Email},
-                {StaticSuperAdmin.LoginToken , StaticSuperAdmin.Email},
-                {StaticRetoucher.LoginToken , StaticRetoucher.Email} ,
-                {StaticReviewer.LoginToken, StaticReviewer.Email},
-                {StaticAuditor.LoginToken, StaticAuditor.Email},
-                {StaticVehicles.LoginToken, StaticVehicles.Email},
-                {StaticSales.LoginToken,StaticSales.Email },
-                {StaticReportedImages.LoginToken,StaticReportedImages.Email },
-                {StaticReportedIssues.LoginToken ,StaticReportedIssues.Email },
-                {StaticRetoucherPerformance.LoginToken , StaticRetoucherPerformance.Email},
+                {StaticMasterAdmin.LoginToken , StaticMasterAdmin.Email}
+
 
         };
     }
@@ -43,16 +35,7 @@ public class AdminLogin {
     @DataProvider(name = "InvalidAdmin")
     public static Object[][] InvalidAdminData() {
         return new String[][]{
-                {Wreck(StaticMasterAdmin.LoginToken) , Wreck(StaticMasterAdmin.Email)},
-                {Wreck(StaticSuperAdmin.LoginToken) , Wreck(StaticSuperAdmin.Email)},
-                {Wreck(StaticRetoucher.LoginToken), Wreck(StaticRetoucher.Email)} ,
-                {Wreck(StaticReviewer.LoginToken), Wreck(StaticReviewer.Email) },
-                {Wreck(StaticAuditor.LoginToken) , Wreck(StaticAuditor.Email) },
-                {Wreck(StaticVehicles.LoginToken) , Wreck(StaticVehicles.Email)},
-                {Wreck(StaticSales.LoginToken) , Wreck(StaticSales.Email)},
-                {Wreck(StaticReportedImages.LoginToken) , Wreck(StaticReportedImages.Email)},
-                {Wreck(StaticReportedIssues.LoginToken) , Wreck(StaticReportedIssues.Email)},
-                {Wreck(StaticRetoucherPerformance.LoginToken), Wreck(StaticRetoucherPerformance.Email)},
+                {Wreck(StaticMasterAdmin.LoginToken) , Wreck(StaticMasterAdmin.Email)}
         };
     }
 

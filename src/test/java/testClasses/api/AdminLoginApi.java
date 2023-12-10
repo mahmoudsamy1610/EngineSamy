@@ -1,9 +1,8 @@
 package testClasses.api;
 
+import autofox.data.user.staticUser.StaticMasterAdmin;
 import autofox.objects.objectApi.AdminUserDeserializer;
 import autofox.objects.objectApi.AdminLoginApiRequest;
-import autofox.data.user.staticUser.StaticRetoucher;
-import autofox.data.user.staticUser.StaticSuperAdmin;
 import automation.engine.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -22,8 +21,7 @@ public class AdminLoginApi {
     @DataProvider(name = "ValidAdmin")
     public static Object[][] ValidAdminData() {
         AdminUsers[][] dataArr = new AdminUsers[][]{
-                {StaticSuperAdmin.GenerateValidStaticSuperAdmin()},
-                {StaticRetoucher.GenerateValidStaticRetoucher()}
+                {StaticMasterAdmin.GenerateValidStaticMasterAdmin()}
         };
         return dataArr ;
     }
@@ -31,8 +29,7 @@ public class AdminLoginApi {
     @DataProvider(name = "InvalidAdmin")
     public static Object[][] InvalidAdminData() {
         AdminUsers[][] dataArr = new AdminUsers[][]{
-                {StaticSuperAdmin.GenerateInvalidStaticSuperAdmin()},
-                {StaticRetoucher.GenerateInvalidStaticRetoucher()}
+                {StaticMasterAdmin.GenerateInvalidStaticMasterAdmin()},
         };
         return dataArr ;
     }
@@ -65,7 +62,7 @@ public class AdminLoginApi {
         //Steps
         Response LoginResponse = AdminLoginApiRequest.LoginApis(InvalidAdminUser);
         AdminErrors AdminUserErrorResponse = AdminUserDeserializer.DeserializeAdminErrorFetch(LoginResponse , "login");
-        CompareText.CheckText(AdminUserErrorResponse.getErrorMessage() , StaticSuperAdmin.LoginCredsError , " Response error message ");
+        CompareText.CheckText(AdminUserErrorResponse.getErrorMessage() , StaticMasterAdmin.LoginCredsError , " Response error message ");
 
         //Expected Results : invalid Admin cannot login and Error message "invalid login credentials appears
 

@@ -1,8 +1,8 @@
 package autofox.objects.objectApi;
 
+import autofox.data.user.staticUser.StaticMasterAdmin;
 import autofox.objects.objectSystem.users.AdminUsersLoginPojo;
 import autofox.objects.objectSystem.users.AdminUsersLoginPojo.*;
-import autofox.data.user.staticUser.StaticSuperAdmin;
 import automation.utils.loggers.BusinessLogger;
 import io.restassured.response.Response;
 
@@ -69,7 +69,7 @@ public class AdminUserDeserializer{
 
 
     public static void main(String[] args) throws IOException {
-        AdminUsers Admin = StaticSuperAdmin.GenerateInvalidStaticSuperAdmin();
+        AdminUsers Admin = StaticMasterAdmin.GenerateInvalidStaticMasterAdmin();
         Response response = AdminLoginApiRequest.LoginApis(Admin);
         List<AdminErrors> admins = DeserializeAdminErrors(response);
 

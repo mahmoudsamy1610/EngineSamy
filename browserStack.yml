@@ -11,7 +11,7 @@ accessKey: PNCjpv3oYQpFGpQ4yS17
 # ======================
 # The following capabilities are used to set up reporting on BrowserStack:
 # Set 'projectName' to the name of your project. Example, Marketing Website
-projectName: Autofox
+projectName: EngineSamy
 # Set `buildName` as the name of the job / testsuite being run
 buildName: BrowserStack
 # `buildIdentifier` is a unique id to differentiate every execution that gets appended to
