@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--
+Execution method [Local || ParaLocal || GridSTA || GridHub || Headless]
+browser type [Chrome || FireFox || MicrosoftEdge || Safari]
+Parallel execution modules [TimeSaving || AllChrome]
+Test environment  [Alpha || DEV || Live]
+-->
+
+<suite name="Local" >
+
+    <parameter name="ConfigUrl" value="runConfiguration/Local.xml"/>
+    <parameter name="ExecutionType" value="ParaLocal"/>
+    <parameter name="BrowserType" value="chrome"/>
+    <parameter name="ParaModule" value="TimeSaving"/>
+    <parameter name="Environment" value="Alpha"/>
+
+
+    <listeners>
+        <listener class-name="automation.engine.reportingWorks.AllureResultsCleaner" />
+        <listener class-name="automation.engine.gridWorks.GridSetup" />
+        <listener class-name="automation.engine.reportingWorks.AllureReportGenerator" />
+        <listener class-name="automation.engine.browserWorks.DriverMemoryCleaner" />
+    </listeners>
+
+
+
+    <suite-files >
+        <suite-file path="../src/test/resources/testSuites/Login.xml"/>
+    </suite-files>
+
+
+</suite>
+

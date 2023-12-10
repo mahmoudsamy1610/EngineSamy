@@ -1,0 +1,24 @@
+{
+  "Node1":
+    {
+      "Id": 1,
+      "Test": "LoginTest",
+      "Suite" : "Login",
+      "Browser": "firefox",
+      "Platform": "Windows 10"
+
+    },
+
+  "Node2":
+  {
+    "Id": 5,
+    "Test": "CreateAdmin",
+    "Suite" : "CreateUser",
+    "Browser": "chrome",
+    "Platform": "Windows 10"
+
+  }
+
+
+
+}

@@ -1,0 +1,60 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "test" ]
+  pull_request:
+    branches: [ "test" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: install NPM
+      run: npm install -g allure-commandline --save-dev
+      shell: bash
+
+    - name: Install Allure
+      run: |
+        curl -LO https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.24.0/allure-commandline-2.24.0.zip
+        unzip allure-commandline-2.24.0.zip
+        export PATH="${PATH}:$(pwd)/allure-2.24.0/bin"
+      shell: bash
+
+    - name: Build with Maven
+      run: mvn -PBStack clean test
+      shell: bash
+
+    - name: Upload Allure results
+      uses: actions/upload-artifact@v2
+      with:
+        name: allure-results
+        path: allure-results
+
+    - name: Run Allure report
+      run: allure generate allure-results --clean -o allure-reports
+      shell: bash
+
+    - name: Upload Allure Reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: allure-reports
+        path: allure-reports
