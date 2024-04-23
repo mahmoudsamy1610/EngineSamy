@@ -1,6 +1,5 @@
 package business.objects.objectGui;
 
-import business.sharedSteps.gui.user.LoginGuiSteps;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
 import org.openqa.selenium.WebDriver;
@@ -13,9 +12,7 @@ public class AALocatorTester {
 
     //Initialization
     WebDriver driver;
-    LoginPage loginPage ;
-    AutofoxHeader autofoxElements;
-    LoginGuiSteps loginGuiSteps;
+
 
 
     @BeforeClass
@@ -26,9 +23,7 @@ public class AALocatorTester {
         BrowserActions.MaxWindow(driver);
 
         //pages
-        loginPage = new LoginPage(driver);
-        autofoxElements = new AutofoxHeader(driver) ;
-        loginGuiSteps = new LoginGuiSteps(driver);
+
 
     }
 

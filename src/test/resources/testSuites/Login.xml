@@ -12,7 +12,7 @@
         <parameter name="allure.results.directory" value="results/LoginTest" />
 
         <classes>
-            <class name="testClasses.gui.AdminLogin"/>
+
         </classes>
     </test>
 

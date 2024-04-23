@@ -34,7 +34,7 @@
     <exec-maven-plugin.dep.version>3.1.0</exec-maven-plugin.dep.version>
     <javafaker.dep.version>1.0.2</javafaker.dep.version>
     <maven-compiler-plugin.dep.version>3.11.0</maven-compiler-plugin.dep.version>
-    <com.browserstack.dep.version>1.5.2</com.browserstack.dep.version>
+    <com.browserstack.dep.version>1.13.21</com.browserstack.dep.version>
     <org.apache.maven.plugins.dep.version>3.6.0</org.apache.maven.plugins.dep.version>
 
 
