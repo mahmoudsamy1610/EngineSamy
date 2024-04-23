@@ -1,6 +1,6 @@
 package testClasses.gui;
 
-import autofox.data.user.staticUser.*;
+import business.data.user.staticUser.*;
 import automation.engine.browserWorks.BrowserActions;
 import automation.engine.browserWorks.BrowserRunner;
 import automation.engine.Assertions.CompareText;
@@ -9,8 +9,8 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import autofox.objects.objectGui.AutofoxHeader;
-import autofox.objects.objectGui.LoginPage;
+import business.objects.objectGui.AutofoxHeader;
+import business.objects.objectGui.LoginPage;
 import static automation.engine.dataWorks.DataWrecker.Wreck;
 
 

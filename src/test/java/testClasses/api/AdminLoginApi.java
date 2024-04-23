@@ -1,8 +1,8 @@
 package testClasses.api;
 
-import autofox.data.user.staticUser.StaticMasterAdmin;
-import autofox.objects.objectApi.AdminUserDeserializer;
-import autofox.objects.objectApi.AdminLoginApiRequest;
+import business.data.user.staticUser.StaticMasterAdmin;
+import business.objects.objectApi.AdminUserDeserializer;
+import business.objects.objectApi.AdminLoginApiRequest;
 import automation.engine.Assertions.CompareText;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -10,7 +10,7 @@ import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static autofox.objects.objectSystem.users.AdminUsersLoginPojo.*;
+import static business.objects.objectSystem.users.AdminUsersLoginPojo.*;
 
 public class AdminLoginApi {
 

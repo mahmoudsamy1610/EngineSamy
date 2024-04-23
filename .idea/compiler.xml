@@ -10,8 +10,5 @@
         <module name="EngineSamy" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="EngineSamy" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
