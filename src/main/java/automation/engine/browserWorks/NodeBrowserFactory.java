@@ -19,17 +19,6 @@ import java.net.URL;
 
 public class NodeBrowserFactory {
 
-
-
-
-
-
-
-
-
-
-
-
     public static WebDriver SetNodeBrowserType_2(String NodePlatformType , String NodeBrowserType ){
         EngineLogger.EngineInfo("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);
         AllureStepLogger.logStep("Initializing Chrome driver {Grid node} : "+ NodeBrowserType + " on : " + NodePlatformType);

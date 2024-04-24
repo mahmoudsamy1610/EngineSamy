@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite  name="Login" >
+<suite  name="Register" >
 
     <listeners>
         <listener class-name="automation.engine.suiteWorks.SuiteDataGetterByRun" />
     </listeners>
 
 
-    <test name = "LoginTest">
-        <parameter name="allure.results.directory" value="results/LoginTest" />
+    <test name = "RegisterTest">
+        <parameter name="allure.results.directory" value="results/RegisterTest" />
 
         <classes>
-
+            <class name="testClasses.gui.Register"/>
         </classes>
     </test>
 

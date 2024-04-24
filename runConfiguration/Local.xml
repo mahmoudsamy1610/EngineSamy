@@ -10,7 +10,7 @@ Test environment  [Alpha || DEV || Live]
 <suite name="Local" >
 
     <parameter name="ConfigUrl" value="runConfiguration/Local.xml"/>
-    <parameter name="ExecutionType" value="ParaLocal"/>
+    <parameter name="ExecutionType" value="Local"/>
     <parameter name="BrowserType" value="chrome"/>
     <parameter name="ParaModule" value="TimeSaving"/>
     <parameter name="Environment" value="Alpha"/>
@@ -26,7 +26,7 @@ Test environment  [Alpha || DEV || Live]
 
 
     <suite-files >
-        <suite-file path="../src/test/resources/testSuites/Login.xml"/>
+        <suite-file path="../src/test/resources/testSuites/Register.xml"/>
     </suite-files>
 
 

@@ -6,6 +6,7 @@ import automation.engine.reportingWorks.AllureStepLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
@@ -56,7 +57,7 @@ public class BrowserFactory {
             WebDriver driver;
             WebDriverListener listener;
 
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().browserVersion("124.0.6367.79").setup();
             driver = new ChromeDriver();
 
             listener = new EventListener();
