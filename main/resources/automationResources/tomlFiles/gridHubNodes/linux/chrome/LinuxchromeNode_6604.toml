@@ -1,0 +1,8 @@
+[server]
+port=6604
+
+[node]
+selenium-manager = true
+[[node.driver-configuration]]
+display-name ="chrome"
+stereotype="{\"browserName\": \"chrome\",\"platformName\": \"Linux\"}"
