@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM openjdk:17
 
-WORKDIR /business
+WORKDIR /EngineSamy
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
@@ -13,8 +13,8 @@ RUN ./mvnw dependency:resolve
 COPY src ./src
 
 
-RUN chmod -R 777 /business
-RUN chmod -R 777 /business/allure-reports
+RUN chmod -R 777 /EngineSamy
+RUN chmod -R 777 /EngineSamy/allure-reports
 
 
 CMD ["./mvnw" , "-PLocal" , "clean" , "test"]
