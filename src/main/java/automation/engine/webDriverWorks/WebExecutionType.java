@@ -1,19 +1,17 @@
-package automation.engine.setupWorks;
+package automation.engine.webDriverWorks;
 
 import automation.engine.config.ConfigBrowserType;
 import automation.engine.config.ConfigExecutionType;
 import automation.engine.gridWorks.StaGridLauncher;
-import automation.engine.browserWorks.BrowserFactory;
-import automation.engine.browserWorks.StaBrowserFactory;
 import automation.utils.loggers.EngineLogger;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-public class RunSpace {
+public class WebExecutionType {
 
 
-    public static WebDriver SetRunningType() {
+    public static WebDriver SetExecutionType() {
 
         String ExecutionType = ConfigExecutionType.GetExecutionType();
 
@@ -24,7 +22,7 @@ public class RunSpace {
 
             if (ExecutionType.equalsIgnoreCase("Local")) {
                 String BrowserType = ConfigBrowserType.GetBrowserType();
-                return BrowserFactory.SetBrowserType(BrowserType);
+                return WebBrowserFactory.SetBrowserType(BrowserType);
 
             } else if (ExecutionType.equalsIgnoreCase("ParaLocal")) {
                 return ParaLocalRunLevel.SetParaLocalRunLevel();
@@ -52,6 +50,6 @@ public class RunSpace {
 
 
     public static void main(String[] args) {
-        SetRunningType();
+        SetExecutionType();
     }
 }

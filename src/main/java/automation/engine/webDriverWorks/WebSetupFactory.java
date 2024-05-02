@@ -1,9 +1,9 @@
-package automation.engine.setupWorks;
+package automation.engine.webDriverWorks;
 
 import automation.utils.loggers.EngineLogger;
 import org.openqa.selenium.WebDriver;
 
-public class SetupFactory {
+public class WebSetupFactory {
 
 
     public static WebDriver Run() {
@@ -12,7 +12,7 @@ public class SetupFactory {
         EngineLogger.EngineInfo("Establishing test running bases ");
 
         try {
-            Driver = RunSpace.SetRunningType();
+            Driver = WebExecutionType.SetExecutionType();
         }catch (Exception E){
             EngineLogger.EngineExceptionError("Found an error while Establishing test running bases " , E);
         }

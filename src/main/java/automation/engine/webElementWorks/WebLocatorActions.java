@@ -1,16 +1,14 @@
-package automation.engine.elementWorks;
+package automation.engine.webElementWorks;
 
 import automation.utils.loggers.EngineLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Objects;
 
-public class LocatorActions {
+public class WebLocatorActions {
 
 
 

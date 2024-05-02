@@ -1,4 +1,4 @@
-package automation.engine.browserWorks;
+package automation.engine.webDriverWorks;
 
 import automation.engine.listeners.EventListener;
 import automation.utils.loggers.EngineLogger;
@@ -6,7 +6,6 @@ import automation.engine.reportingWorks.AllureStepLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
@@ -16,7 +15,7 @@ import org.testng.Assert;
 import java.io.IOException;
 
 
-public class BrowserFactory {
+public class WebBrowserFactory {
 
 
     public static WebDriver SetBrowserType(String BrowserType){

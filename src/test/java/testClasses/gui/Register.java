@@ -1,8 +1,7 @@
 package testClasses.gui;
 
-import automation.engine.browserWorks.BrowserActions;
-import automation.engine.browserWorks.BrowserRunner;
-import automation.engine.dataWorks.DataFaker;
+import automation.engine.webDriverWorks.WebBrowserActions;
+import automation.engine.webDriverWorks.WebDriverStarter;
 import business.objects.objectGui.RegisterPage;
 import business.objects.objectSystem.users.User;
 import io.qameta.allure.Description;
@@ -10,7 +9,6 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -41,8 +39,8 @@ public class Register {
     public void Setup(){
 
         // Start driver
-        driver = BrowserRunner.StartBrowser();
-        BrowserActions.MaxWindow(driver);
+        driver = WebDriverStarter.StartBrowser();
+        WebBrowserActions.MaxWindow(driver);
 
         //Objects
        registerPage = new RegisterPage(driver) ;

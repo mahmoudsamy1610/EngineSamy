@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <!--
-Execution method [Local || ParaLocal || GridSTA || GridHub || Headless]
-browser type [Chrome || FireFox || MicrosoftEdge || Safari]
+Execution method [AppLocal || AppParaLocal || AppHeadless]
+App type [AndroidApp || IOSApp || AndroidChrome || AndroidFireFox || IosSafari]
 Parallel execution modules [TimeSaving || AllChrome]
 Test environment  [Alpha || DEV || Live]
 -->
 
-<suite name="Local" >
+<suite name="AppLocal" >
 
-    <parameter name="ConfigUrl" value="runConfiguration/Local.xml"/>
-    <parameter name="ExecutionType" value="Local"/>
-    <parameter name="BrowserType" value="chrome"/>
+    <parameter name="ConfigUrl" value="runConfiguration/AppLocal.xml"/>
+    <parameter name="ExecutionType" value="AppLocal"/>
+    <parameter name="AppType" value="NativeApp"/>
     <parameter name="ParaModule" value="TimeSaving"/>
     <parameter name="Environment" value="Alpha"/>
 
 
     <listeners>
         <listener class-name="automation.engine.reportingWorks.AllureResultsCleaner" />
-        <listener class-name="automation.engine.gridWorks.GridSetup" />
         <listener class-name="automation.engine.reportingWorks.AllureReportGenerator" />
-        <listener class-name="automation.engine.webDriverWorks.WebDriverMemoryCleaner" />
     </listeners>
 
 

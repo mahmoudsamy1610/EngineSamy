@@ -1,4 +1,4 @@
-package automation.engine.browserWorks;
+package automation.engine.webDriverWorks;
 
 import automation.utils.loggers.EngineLogger;
 import automation.engine.reportingWorks.AllureStepLogger;

@@ -1,4 +1,4 @@
-package automation.engine.browserWorks;
+package automation.engine.webDriverWorks;
 
 import automation.utils.loggers.EngineLogger;
 import automation.engine.reportingWorks.AllureStepLogger;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-public class BrowserActions {
+public class WebBrowserActions {
 
 
     //Method to navigate to specific URL

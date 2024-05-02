@@ -1,4 +1,4 @@
-package automation.engine.elementWorks;
+package automation.engine.webElementWorks;
 
 import automation.engine.reportingWorks.AllureStepLogger;
 import automation.utils.loggers.EngineLogger;
@@ -9,9 +9,8 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class MenuActions {
+public class WebMenuActions {
 
     public static List<WebElement> GetMenuItems(WebDriver Driver, By MenuLocator , String MenuElemenName , By MenuParentItem){
         EngineLogger.EngineInfo("Fetching menu all items elements [" + MenuElemenName+ "]");
@@ -20,7 +19,7 @@ public class MenuActions {
         List<WebElement> MenuParentItems = new ArrayList<>();
 
         try {
-            LocatorActions.locateElement(Driver, MenuLocator, MenuElemenName);
+            WebLocatorActions.locateElement(Driver, MenuLocator, MenuElemenName);
                Driver.findElements(MenuParentItem);
 
         }catch (Exception E){

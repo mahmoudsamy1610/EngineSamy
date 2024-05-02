@@ -1,4 +1,4 @@
-package automation.engine.elementWorks;
+package automation.engine.webElementWorks;
 
 import automation.utils.loggers.EngineLogger;
 import automation.engine.reportingWorks.AllureStepLogger;
@@ -12,7 +12,7 @@ import org.testng.Assert;
 import java.util.Objects;
 
 
-public class ElementActions {
+public class WebElementActions {
 
 
     public static void ClearText(WebDriver Driver, By Locator , String ElementName){
@@ -20,7 +20,7 @@ public class ElementActions {
         AllureStepLogger.logStep("Clear alll text inside field : " + ElementName);
 
         try {
-            LocatorActions.locateElement(Driver, Locator, ElementName);
+            WebLocatorActions.locateElement(Driver, Locator, ElementName);
             Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).clear();
         }
         catch (Exception E) {
@@ -36,7 +36,7 @@ public class ElementActions {
         AllureStepLogger.logStep("Write : ["+ Text +  "] in : [" +ElementName+ "]"  );
 
         try {
-            LocatorActions.locateElement(Driver, Locator, ElementName);
+            WebLocatorActions.locateElement(Driver, Locator, ElementName);
             Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).sendKeys(Text);
         }
         catch (Exception E) {
@@ -52,7 +52,7 @@ public class ElementActions {
         AllureStepLogger.logStep("Click on [" + ElementName+ "]" );
 
         try {
-            LocatorActions.locateElement(Driver, Locator, ElementName);
+            WebLocatorActions.locateElement(Driver, Locator, ElementName);
             Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).click();
             }
         catch (Exception E) {
@@ -70,7 +70,7 @@ public class ElementActions {
         Actions actions = new Actions(Driver);
 
         try {
-            LocatorActions.locateElement(Driver, Locator, ElementName);
+            WebLocatorActions.locateElement(Driver, Locator, ElementName);
             WebElement element = Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator));
             actions.moveToElement(element).perform();
         }
@@ -103,7 +103,7 @@ public class ElementActions {
         AllureStepLogger.logStep("waiting for element to disappear [" + ElementName+ "] " );
 
         try {
-            LocatorActions.locateElement(Driver, Locator, ElementName);
+            WebLocatorActions.locateElement(Driver, Locator, ElementName);
             Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.invisibilityOfElementLocated(Locator));
         }
         catch (Exception E) {
@@ -120,7 +120,7 @@ public class ElementActions {
 
         try {
             String ElementText;
-            LocatorActions.locateElement(Driver, Locator, ElementName);
+            WebLocatorActions.locateElement(Driver, Locator, ElementName);
             ElementText = Objects.requireNonNull(WaitManager.useExplicitWait(Driver)).until(ExpectedConditions.elementToBeClickable(Locator)).getText();
             return ElementText;
         }

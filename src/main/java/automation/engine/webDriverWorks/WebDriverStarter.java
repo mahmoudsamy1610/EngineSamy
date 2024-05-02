@@ -1,10 +1,9 @@
-package automation.engine.browserWorks;
+package automation.engine.webDriverWorks;
 
 import automation.utils.loggers.EngineLogger;
-import automation.engine.setupWorks.SetupFactory;
 import org.openqa.selenium.WebDriver;
 
-public class BrowserRunner {
+public class WebDriverStarter {
 
 
     public static WebDriver StartBrowser(){
@@ -12,7 +11,7 @@ public class BrowserRunner {
         try {
             EngineLogger.EngineInfo("---------- Preparing WebDiver requirements ------------");
                 WebDriver driver;
-                driver = SetupFactory.Run();
+                driver = WebSetupFactory.Run();
 
                     return driver;
                 }

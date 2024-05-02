@@ -1,6 +1,6 @@
 package business.objects.objectGui;
 
-import automation.engine.elementWorks.ElementActions;
+import automation.engine.webElementWorks.WebElementActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,16 +17,16 @@ public class LoginPage {
    }
 
    public void InsertEmail(String TextInput){
-      ElementActions.WriteText(driver , EmailField , TextInput , "Login Email text field");
+      WebElementActions.WriteText(driver , EmailField , TextInput , "Login Email text field");
    }
 
    //should return contact page
    public void InsertPassword(String TextInput){
-      ElementActions.WriteText(driver , PasswordField , TextInput , "Login Password text field");
+      WebElementActions.WriteText(driver , PasswordField , TextInput , "Login Password text field");
    }
 
    public void ClickSubmitRegistration(){
-      ElementActions.ClickElement(driver , SubmitButton , "login Submit button");
+      WebElementActions.ClickElement(driver , SubmitButton , "login Submit button");
    }
 
 }

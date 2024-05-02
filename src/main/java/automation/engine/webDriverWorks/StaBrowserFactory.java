@@ -1,4 +1,4 @@
-package automation.engine.browserWorks;
+package automation.engine.webDriverWorks;
 
 import automation.engine.listeners.EventListener;
 import automation.utils.loggers.EngineLogger;

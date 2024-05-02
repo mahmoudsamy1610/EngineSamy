@@ -1,4 +1,4 @@
-package automation.engine.setupWorks;
+package automation.engine.environmentWorks;
 
 
 import automation.engine.config.ConfigTestEnvironment;

@@ -37,7 +37,7 @@
     <maven-compiler-plugin.dep.version>3.11.0</maven-compiler-plugin.dep.version>
     <com.browserstack.dep.version>1.13.21</com.browserstack.dep.version>
     <org.apache.maven.plugins.dep.version>3.6.0</org.apache.maven.plugins.dep.version>
-
+    <io.appium.dep.version>9.2.2</io.appium.dep.version>
 
     <maven-compiler-plugin.plugin.version>3.11.0</maven-compiler-plugin.plugin.version>
     <maven-surefire-plugin.plugin.version>3.1.2</maven-surefire-plugin.plugin.version>
@@ -185,6 +185,13 @@
       <artifactId>maven-dependency-plugin</artifactId>
       <version>${org.apache.maven.plugins.dep.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>io.appium</groupId>
+      <artifactId>java-client</artifactId>
+      <version>${io.appium.dep.version}</version>
+    </dependency>
+
   </dependencies>
 
 

@@ -1,10 +1,10 @@
-package automation.engine.browserWorks;
+package automation.engine.webDriverWorks;
 
 import automation.utils.cmdWorks.TaskCleaner;
 import automation.utils.loggers.EngineLogger;
 import org.testng.IExecutionListener;
 
-public class DriverMemoryCleaner implements IExecutionListener {
+public class WebDriverMemoryCleaner implements IExecutionListener {
 
 
     public void onExecutionFinish(){
