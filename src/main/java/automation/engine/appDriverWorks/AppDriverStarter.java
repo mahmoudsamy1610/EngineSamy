@@ -6,7 +6,7 @@ import io.appium.java_client.AppiumDriver;
 public class AppDriverStarter {
 
 
-        public static AppiumDriver StartBrowser(){
+        public static AppiumDriver StartApp(){
 
             try {
                 EngineLogger.EngineInfo("---------- Preparing AppiumDriver requirements ------------");

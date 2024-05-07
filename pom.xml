@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <profileId>Local</profileId>
+    <profileId>AppLocal</profileId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <selenium.dep.version>4.10.0</selenium.dep.version>
@@ -37,7 +37,7 @@
     <maven-compiler-plugin.dep.version>3.11.0</maven-compiler-plugin.dep.version>
     <com.browserstack.dep.version>1.13.21</com.browserstack.dep.version>
     <org.apache.maven.plugins.dep.version>3.6.0</org.apache.maven.plugins.dep.version>
-    <io.appium.dep.version>9.2.2</io.appium.dep.version>
+    <io.appium.dep.version>8.5.0</io.appium.dep.version>
 
     <maven-compiler-plugin.plugin.version>3.11.0</maven-compiler-plugin.plugin.version>
     <maven-surefire-plugin.plugin.version>3.1.2</maven-surefire-plugin.plugin.version>
@@ -192,6 +192,8 @@
       <version>${io.appium.dep.version}</version>
     </dependency>
 
+
+
   </dependencies>
 
 
@@ -264,6 +266,41 @@
         </plugins>
       </build>
     </profile>
+
+
+    <profile>
+      <id>AppLocal</id>
+      <dependencies>
+        <dependency>
+          <groupId>io.appium</groupId>
+          <artifactId>java-client</artifactId>
+          <version>${io.appium.dep.version}</version>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.plugin.version}</version>
+            <configuration>
+              <testFailureIgnore>true</testFailureIgnore>
+              <parallel>Suites</parallel>
+              <suiteXmlFiles>
+                <file>runConfiguration/AppLocal.xml</file>
+              </suiteXmlFiles>
+              <properties>
+                <property>
+                  <name>suitethreadpoolsize</name>
+                  <value>20</value>
+                </property>
+              </properties>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
 
     <profile>
       <id>BStack</id>
