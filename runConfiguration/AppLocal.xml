@@ -12,6 +12,7 @@ Test environment  [Alpha || DEV || Live]
     <parameter name="ConfigUrl" value="runConfiguration/AppLocal.xml"/>
     <parameter name="ExecutionType" value="AppLocal"/>
     <parameter name="AppType" value="AndroidApp"/>
+    <parameter name="AppDriver" value="uiautomator2"/>
     <parameter name="ParaModule" value="TimeSaving"/>
     <parameter name="Environment" value="Alpha"/>
 

@@ -11,6 +11,7 @@ public class AppDriverStarter {
             try {
                 EngineLogger.EngineInfo("---------- Preparing AppiumDriver requirements ------------");
                 AppiumDriver driver;
+                AppiumServices.StartAppiumService();
                 driver = AppSetupFactory.Run();
 
                 return driver;

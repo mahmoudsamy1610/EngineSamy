@@ -51,6 +51,9 @@ public class AppDriverFactory {
 
         try {
 
+            AppiumServices.UninstallAppiumDriver();
+            AppiumServices.InstallAppiumDriver();
+
             String AppAbsPath = PathConverter.ConvertPathToAbs("src/main/resources/automationResources/apks/ApiDemos-debug.apk");
 
         DesiredCapabilities AppDriverCaps = new DesiredCapabilities();
