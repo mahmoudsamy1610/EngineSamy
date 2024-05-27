@@ -12,7 +12,7 @@
         <parameter name="allure.results.directory" value="results/RegisterTest" />
 
         <classes>
-            <class name="testClasses.gui.Register"/>
+            <class name="web.testClasses.gui.Register"/>
         </classes>
     </test>
 

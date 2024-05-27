@@ -20,7 +20,7 @@ Test environment  [Alpha || DEV || Live]
         <listener class-name="automation.engine.reportingWorks.AllureResultsCleaner" />
         <listener class-name="automation.engine.gridWorks.GridSetup" />
         <listener class-name="automation.engine.reportingWorks.AllureReportGenerator" />
-        <listener class-name="automation.engine.browserWorks.DriverMemoryCleaner" />
+        <listener class-name="automation.engine.webDriverWorks.WebDriverMemoryCleaner" />
     </listeners>
 
 

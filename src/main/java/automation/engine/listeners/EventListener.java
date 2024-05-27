@@ -54,10 +54,13 @@ public class EventListener implements WebDriverListener {
         WebDriverListener.super.beforeGetCurrentUrl(driver);
     }
 
+    /*
     @Override
     public void afterGetCurrentUrl(String result, WebDriver driver) {
         WebDriverListener.super.afterGetCurrentUrl(result, driver);
     }
+
+     */
 
     @Override
     public void beforeGetTitle(WebDriver driver) {

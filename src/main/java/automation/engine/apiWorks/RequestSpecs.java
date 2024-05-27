@@ -1,6 +1,6 @@
 package automation.engine.apiWorks;
 
-import automation.engine.setupWorks.EnvManagerApi;
+import automation.engine.environmentWorks.EnvManagerApi;
 import automation.utils.loggers.EngineLogger;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.http.ContentType;
