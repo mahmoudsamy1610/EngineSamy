@@ -49,18 +49,14 @@ public class AppDriverFactory {
 
     private static AppiumDriver SetupUiAutomator2Driver() {
 
+        EngineLogger.EngineInfo("set up AppDriver");
+
         try {
 
             AppiumServices.UninstallAppiumDriver();
             AppiumServices.InstallAppiumDriver();
 
-            String AppAbsPath = PathConverter.ConvertPathToAbs("src/main/resources/automationResources/apks/ApiDemos-debug.apk");
-
-        DesiredCapabilities AppDriverCaps = new DesiredCapabilities();
-        AppDriverCaps.setCapability("platformName" , "Android");
-        AppDriverCaps.setCapability("automationName" , "UiAutomator2");
-        AppDriverCaps.setCapability("deviceName" , "emulator-5554"); // design needed to confiugre phone name
-        AppDriverCaps.setCapability("app" , AppAbsPath); // design needed to confiugre App path
+           DesiredCapabilities AppDriverCaps = AppCapabilities.DecideAppCapabilities();
 
         return  new AndroidDriver(new URL("http://192.168.1.11:4723/") ,AppDriverCaps);
 

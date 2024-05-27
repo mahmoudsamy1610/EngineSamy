@@ -3,7 +3,10 @@ import automation.utils.loggers.EngineLogger;
 import io.appium.java_client.AppiumDriver;
 
 
-public class AppDriverStarter {
+public class
+
+
+AppDriverStarter {
 
 
         public static AppiumDriver StartApp(){

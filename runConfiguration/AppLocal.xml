@@ -3,6 +3,10 @@
 <!--
 Execution method [AppLocal || AppParaLocal || AppHeadless]
 App type [AndroidApp || IOSApp || AndroidChrome || AndroidFireFox || IosSafari]
+App driver [uiautomator2 || xcuitest || mac2 || espresso || safari || gecko || chromium]
+App Caps-PlatformName [Android || IOS]
+App Caps-AutomationName [UiAutomator2 || ...]
+App Caps-DeviceName [emulator-5554 || ...]
 Parallel execution modules [TimeSaving || AllChrome]
 Test environment  [Alpha || DEV || Live]
 -->
@@ -13,6 +17,8 @@ Test environment  [Alpha || DEV || Live]
     <parameter name="ExecutionType" value="AppLocal"/>
     <parameter name="AppType" value="AndroidApp"/>
     <parameter name="AppDriver" value="uiautomator2"/>
+    <parameter name="AutomationName" value="UiAutomator2"/>
+    <parameter name="deviceName" value="emulator-5554"/>
     <parameter name="ParaModule" value="TimeSaving"/>
     <parameter name="Environment" value="Alpha"/>
 
@@ -25,7 +31,7 @@ Test environment  [Alpha || DEV || Live]
 
 
     <suite-files >
-        <suite-file path="../src/test/resources/testSuites/Register.xml"/>
+        <suite-file path="../src/test/resources/testSuites/AppDemo.xml"/>
     </suite-files>
 
 

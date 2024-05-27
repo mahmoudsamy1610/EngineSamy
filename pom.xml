@@ -222,6 +222,38 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <version>${exec-maven-plugin.plugin.version}</version>
+        <executions>
+
+          <execution>
+            <id>set-path</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>cmd</executable>
+              <arguments>
+                <argument>/c</argument>
+                <argument>set PATH=C:\Program Files\nodejs;%PATH%</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>print-path</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>cmd</executable>
+              <arguments>
+                <argument>/c</argument>
+                <argument>echo %PATH%</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -236,6 +268,7 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 
@@ -270,6 +303,12 @@
 
     <profile>
       <id>AppLocal</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <env.PATH>C:\Program Files\nodejs;${env.PATH}</env.PATH>
+      </properties>
       <dependencies>
         <dependency>
           <groupId>io.appium</groupId>
