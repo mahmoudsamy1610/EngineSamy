@@ -19,7 +19,7 @@ public class AppCapabilities {
            String AppPlatformName = ConfigAppCapabilities.ConfigureAppPlatformName();
            String AppAutomationName =  ConfigAppCapabilities.ConfigureAppAutomationName();
            String AppDeviceName = ConfigAppCapabilities.ConfigureAppDeviceName();
-           String AppAbsPath = PathConverter.ConvertPathToAbs("src/main/resources/automationResources/apks/ApiDemos-debug.apk");
+           String AppAbsPath = ConfigAppCapabilities.ConfigureAppPath();
 
             DesiredCapabilities AppDriverCaps = new DesiredCapabilities();
 

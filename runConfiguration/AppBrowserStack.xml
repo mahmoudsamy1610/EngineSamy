@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--
+Execution method [AppLocal || AppParaLocal || AppHeadless]
+App type [AndroidApp || IOSApp || AndroidChrome || AndroidFireFox || IosSafari]
+App driver [uiautomator2 || xcuitest || mac2 || espresso || safari || gecko || chromium]
+App Caps-PlatformName [Android || IOS]
+App Caps-AutomationName [UiAutomator2 || ...]
+App Caps-DeviceName [emulator-5554 || ...]
+App Caps-AppPath [src/main/resources/automationResources/apks/ApiDemos-debug.apk]
+Parallel execution modules [TimeSaving || AllChrome]
+Test environment  [Alpha || DEV || Live]
+-->
+
+<suite name="AppBrowserStack" >
+
+    <parameter name="ConfigUrl" value="runConfiguration/AppBrowserStack.xml"/>
+    <parameter name="ExecutionType" value="AppLocal"/>
+    <parameter name="AppType" value="AndroidApp"/>
+    <parameter name="AppDriver" value="uiautomator2"/>
+    <parameter name="AutomationName" value="UiAutomator2"/>
+    <parameter name="deviceName" value="emulator-5554"/>
+    <parameter name="AppPath" value="src/main/resources/automationResources/apks/ApiDemos-debug.apk"/>
+    <parameter name="ParaModule" value="TimeSaving"/>
+    <parameter name="Environment" value="Alpha"/>
+
+
+    <listeners>
+        <listener class-name="automation.engine.reportingWorks.AllureResultsCleaner" />
+        <listener class-name="automation.engine.reportingWorks.AllureReportGenerator" />
+    </listeners>
+
+
+
+    <suite-files >
+        <suite-file path="../src/test/resources/testSuites/AppDemo.xml"/>
+    </suite-files>
+
+
+</suite>
+
