@@ -1,4 +1,4 @@
-# ignore IDEA folder
+git# ignore IDEA folder
 .idea/
 
 # ignore allure Json files
