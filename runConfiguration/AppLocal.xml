@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <!--
-Execution method [AppLocal || AppParaLocal || AppHeadless]
+Execution method [Local || ParaLocal || GridSTA || GridHub || BrowserStack]
 App type [AndroidApp || IOSApp || AndroidChrome || AndroidFireFox || IosSafari]
 App driver [uiautomator2 || xcuitest || mac2 || espresso || safari || gecko || chromium]
 App Caps-PlatformName [Android || IOS]

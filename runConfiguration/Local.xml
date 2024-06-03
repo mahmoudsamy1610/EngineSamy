@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <!--
-Execution method [Local || ParaLocal || GridSTA || GridHub || Headless]
+Execution method [Local || ParaLocal || GridSTA || GridHub || BrowserStack]
+is Headless [True || False]
 browser type [Chrome || FireFox || MicrosoftEdge || Safari]
 Parallel execution modules [TimeSaving || AllChrome]
 Test environment  [Alpha || DEV || Live]
@@ -11,6 +12,7 @@ Test environment  [Alpha || DEV || Live]
 
     <parameter name="ConfigUrl" value="runConfiguration/Local.xml"/>
     <parameter name="ExecutionType" value="Local"/>
+    <parameter name="IsHeadless" value="false"/>
     <parameter name="BrowserType" value="chrome"/>
     <parameter name="ParaModule" value="TimeSaving"/>
     <parameter name="Environment" value="Alpha"/>

@@ -6,7 +6,7 @@ WORKDIR /EngineSamy
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 COPY docker-compose.yml ./
-COPY browserStack.yml ./
+COPY browserstack.yml ./
 
 
 RUN ./mvnw dependency:resolve

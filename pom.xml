@@ -9,11 +9,14 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <profileId>AppLocal</profileId>
+    <profileId>BStack</profileId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <selenium.dep.version>4.10.0</selenium.dep.version>
+    <selenium.dep.version>4.13.0</selenium.dep.version>
+    <selenium-remote-driver.dep>4.13.0</selenium-remote-driver.dep>
     <webDriverManager.dep.version>5.8.0</webDriverManager.dep.version>
+    <selenium-firefox-driver.dep>4.7.2</selenium-firefox-driver.dep>
+    <selenium-edge-driver.dep>4.7.2</selenium-edge-driver.dep>
     <testNg.dep.version>7.7.1</testNg.dep.version>
     <restAssured.dep.version>5.3.0</restAssured.dep.version>
     <fasterXmlCore.dep.version>2.15.0</fasterXmlCore.dep.version>
@@ -35,9 +38,9 @@
     <exec-maven-plugin.dep.version>3.1.0</exec-maven-plugin.dep.version>
     <javafaker.dep.version>1.0.2</javafaker.dep.version>
     <maven-compiler-plugin.dep.version>3.11.0</maven-compiler-plugin.dep.version>
-    <com.browserstack.dep.version>1.13.21</com.browserstack.dep.version>
+    <com.browserstack.dep.version>1.15.0</com.browserstack.dep.version>
     <org.apache.maven.plugins.dep.version>3.6.0</org.apache.maven.plugins.dep.version>
-    <io.appium.dep.version>8.5.0</io.appium.dep.version>
+    <io.appium.dep.version>8.6.0</io.appium.dep.version>
 
     <maven-compiler-plugin.plugin.version>3.11.0</maven-compiler-plugin.plugin.version>
     <maven-surefire-plugin.plugin.version>3.1.2</maven-surefire-plugin.plugin.version>
@@ -48,10 +51,28 @@
 
 
   <dependencies>
-        <dependency>
+    <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>${selenium.dep.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-remote-driver</artifactId>
+      <version>${selenium-remote-driver.dep}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-firefox-driver</artifactId>
+      <version>${selenium-firefox-driver.dep}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-edge-driver</artifactId>
+      <version>${selenium-edge-driver.dep}</version>
     </dependency>
 
     <dependency>
@@ -330,6 +351,11 @@
         <artifactId>browserstack-java-sdk</artifactId>
         <version>${com.browserstack.dep.version}</version>
         <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-remote-driver</artifactId>
+        <version>${selenium-remote-driver.dep}</version>
       </dependency>
     </dependencies>
     <build>
