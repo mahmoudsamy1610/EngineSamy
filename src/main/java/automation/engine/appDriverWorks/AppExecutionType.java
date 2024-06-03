@@ -5,7 +5,10 @@ import automation.engine.config.ConfigBrowserType;
 import automation.engine.config.ConfigExecutionType;
 import automation.utils.loggers.EngineLogger;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.io.IOException;
+import java.util.Map;
 
 
 public class AppExecutionType {

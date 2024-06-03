@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <!--
-Execution method [AppLocal || AppParaLocal || AppHeadless]
+Execution method [AppLocal || AppParaLocal || AppHeadless ]
 App type [AndroidApp || IOSApp || AndroidChrome || AndroidFireFox || IosSafari]
 App driver [uiautomator2 || xcuitest || mac2 || espresso || safari || gecko || chromium]
 App Caps-PlatformName [Android || IOS]
@@ -19,8 +19,6 @@ Test environment  [Alpha || DEV || Live]
     <parameter name="AppType" value="AndroidApp"/>
     <parameter name="AppDriver" value="uiautomator2"/>
     <parameter name="AutomationName" value="UiAutomator2"/>
-    <parameter name="deviceName" value="emulator-5554"/>
-    <parameter name="AppPath" value="src/main/resources/automationResources/apks/ApiDemos-debug.apk"/>
     <parameter name="ParaModule" value="TimeSaving"/>
     <parameter name="Environment" value="Alpha"/>
 

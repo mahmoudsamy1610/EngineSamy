@@ -36,6 +36,10 @@ public class WebExecutionType {
             } else if (ExecutionType.equalsIgnoreCase("GridHub")) {
                 return ParaGridRunLevel.SetParaGridRunLevel();
 
+            } else if (ExecutionType.equalsIgnoreCase("BrowserStack")) {
+                String BrowserType = ConfigBrowserType.GetBrowserType();
+                return WebBrowserStackFactory.SetBrowserStackBrowserType(BrowserType) ;
+
             } else {
                 EngineLogger.EngineError("Invalid Execution type provided : " + ExecutionType);
                 throw new IOException();

@@ -20,6 +20,19 @@ public class ConfigExecutionType {
     }
 
 
+    public static String GetHeadless() {
+
+        String ConfigFilePath = null;
+        String IsHeadless = null;
+        try {
+            ConfigFilePath = ConfigFileDecider.DecideConfigFile();
+            IsHeadless =  XmlAttValueGetter.GetAttributeValueByAttName(ConfigFilePath, "parameter", "name", "IsHeadless", "value");
+            JavaLogger.JavaInfo("Fetching Headless mode configuration parameter : " + IsHeadless + " , from configuration file : " + ConfigFilePath);
+        } catch (Exception E) {
+            JavaLogger.JavaExceptionError("Failed Fetching Headless mode configuration parameter : " + IsHeadless + " , from configuration file : " + ConfigFilePath, E);
+        }
+        return IsHeadless;
+    }
 
 
 

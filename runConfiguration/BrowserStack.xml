@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <!--
-Execution method [Local || ParaLocal || GridSTA || GridHub || Headless]
+Execution method [Local || ParaLocal || GridSTA || GridHub || BrowserStack]
+is Headless [True || False]
 browser type [Chrome || FireFox || MicrosoftEdge || Safari]
 Parallel execution modules [TimeSaving || AllChrome]
 Test environment  [Alpha || DEV || Live]
 -->
 
-<suite name="Local" >
+<suite name="BStack" >
 
     <parameter name="ConfigUrl" value="runConfiguration/BrowserStack.xml"/>
-    <parameter name="ExecutionType" value="local"/>
-    <parameter name="BrowserType" value="chrome"/>
+    <parameter name="ExecutionType" value="BrowserStack"/>
+    <parameter name="IsHeadless" value="true"/>
+    <parameter name="BrowserType" value="Chrome"/>
     <parameter name="ParaModule" value="TimeSaving"/>
     <parameter name="Environment" value="Alpha"/>
 
 
     <listeners>
         <listener class-name="automation.engine.reportingWorks.AllureResultsCleaner" />
-        <listener class-name="automation.engine.gridWorks.GridSetup" />
         <listener class-name="automation.engine.reportingWorks.AllureReportGenerator" />
-        <listener class-name="automation.engine.webDriverWorks.WebDriverMemoryCleaner" />
     </listeners>
 
 
 
    <suite-files >
-        <suite-file path="../src/test/resources/testSuites/Login.xml"/>
-    </suite-files>
+       <suite-file path="../src/test/resources/testSuites/Register.xml"/>
+   </suite-files>
 
 
 </suite>
