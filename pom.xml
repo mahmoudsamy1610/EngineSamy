@@ -9,12 +9,13 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <profileId>BStack</profileId>
+    <profileId>${profileId}</profileId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <selenium.dep.version>4.13.0</selenium.dep.version>
-    <selenium-remote-driver.dep>4.13.0</selenium-remote-driver.dep>
+    <selenium.dep.version>4.20.0</selenium.dep.version>
+    <selenium-remote-driver.dep>4.20.0</selenium-remote-driver.dep>
     <webDriverManager.dep.version>5.8.0</webDriverManager.dep.version>
+    <selenium-chrome-driver.dep>4.11.0</selenium-chrome-driver.dep><!--Please change this carefully as it sometimes causes comp. issues-->
     <selenium-firefox-driver.dep>4.7.2</selenium-firefox-driver.dep>
     <selenium-edge-driver.dep>4.7.2</selenium-edge-driver.dep>
     <testNg.dep.version>7.7.1</testNg.dep.version>
@@ -65,6 +66,12 @@
 
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-chrome-driver</artifactId>
+      <version>${selenium-chrome-driver.dep}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-firefox-driver</artifactId>
       <version>${selenium-firefox-driver.dep}</version>
     </dependency>
@@ -79,6 +86,12 @@
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>${webDriverManager.dep.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -289,6 +302,7 @@
               <parallel>Suites</parallel>
               <suiteXmlFiles>
                 <file>runConfiguration/Local.xml</file>
+                <!--this^ parameter is here to be detected by ConfigFileDecider.DecideConfigFile(); in the xmlGetter line -->
               </suiteXmlFiles>
               <properties>
                 <property>
@@ -329,6 +343,7 @@
               <parallel>Suites</parallel>
               <suiteXmlFiles>
                 <file>runConfiguration/AppLocal.xml</file>
+                <!--this^ parameter is here to be detected by ConfigFileDecider.DecideConfigFile(); in the xmlGetter line -->
               </suiteXmlFiles>
               <properties>
                 <property>
@@ -369,7 +384,8 @@
               <argLine>-javaagent:"${settings.localRepository}/com/browserstack/browserstack-java-sdk/${com.browserstack.dep.version}/browserstack-java-sdk-${com.browserstack.dep.version}.jar"</argLine>
               <parallel>suites</parallel>
               <suiteXmlFiles>
-                <file>runConfiguration/BrowserStack.xml</file>
+                <file>runConfiguration/BStack.xml</file>
+                <!--this^ parameter is here to be detected by ConfigFileDecider.DecideConfigFile(); in the xmlGetter line -->
               </suiteXmlFiles>
               <properties>
                 <property>
@@ -404,7 +420,8 @@
               <argLine>-javaagent:"${settings.localRepository}/com/browserstack/browserstack-java-sdk/${com.browserstack.dep.version}/browserstack-java-sdk-${com.browserstack.dep.version}.jar"</argLine>
               <parallel>suites</parallel>
               <suiteXmlFiles>
-                <file>runConfiguration/AppBrowserStack.xml</file>
+                <file>runConfiguration/AppBStack.xml</file>
+                <!--this^ parameter is here to be detected by ConfigFileDecider.DecideConfigFile(); in the xmlGetter line -->
               </suiteXmlFiles>
               <properties>
                 <property>

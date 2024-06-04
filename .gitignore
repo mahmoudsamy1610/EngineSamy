@@ -10,7 +10,7 @@ allure-reports/*
 target/
 
 #ignore logs
-logs/browserstack-plugin.log
+logs/
 Log.log
 
 #ignore random files

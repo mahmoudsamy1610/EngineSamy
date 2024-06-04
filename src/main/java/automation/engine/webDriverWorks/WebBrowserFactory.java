@@ -74,7 +74,7 @@ public class WebBrowserFactory {
                 driver = new ChromeDriver(chromeOptions);
             }else {
                 EngineLogger.EngineInfo("Headless mode decided as isHeadless = "+ false);
-                WebDriverManager.chromedriver().setup();
+              //  WebDriverManager.chromedriver().browserVersion("125.0.6422.142").setup();
                 driver = new ChromeDriver();
 
             }

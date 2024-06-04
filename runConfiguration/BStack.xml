@@ -10,7 +10,7 @@ Test environment  [Alpha || DEV || Live]
 
 <suite name="BStack" >
 
-    <parameter name="ConfigUrl" value="runConfiguration/BrowserStack.xml"/>
+    <parameter name="ConfigUrl" value="runConfiguration/BStack.xml"/>
     <parameter name="ExecutionType" value="BrowserStack"/>
     <parameter name="IsHeadless" value="true"/>
     <parameter name="BrowserType" value="Chrome"/>

@@ -13,7 +13,10 @@ public class ConfigFileDecider {
 
         try {
             PomXmlRelativePath = "Pom.xml";
-            ProfileId = XmlTagValueGetter.FindXmlTagValue(PomXmlRelativePath, "profileId");
+            ProfileId = System.getProperty("profileId");
+            EngineLogger.EngineInfo("configuration file decided : " + ProfileId);
+
+
             RunConfigFilePath = XmlTagValueGetter.GetAdjacentXmlTagValue(PomXmlRelativePath, "profile", "id", ProfileId, "file");
 
             EngineLogger.EngineInfo("Reading Pom file to get decided running configuration file path : " + RunConfigFilePath);

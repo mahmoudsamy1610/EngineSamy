@@ -20,9 +20,6 @@ public class ConfigFilePath {
     }
 
 
-    public static void main(String[] args) {
-        System.out.println(GetConfigFilePath());
-    }
 
 
 }

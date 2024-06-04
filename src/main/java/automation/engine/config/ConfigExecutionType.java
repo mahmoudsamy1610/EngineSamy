@@ -37,8 +37,12 @@ public class ConfigExecutionType {
 
 
 
+
+
+
     public static void main(String[] args) {
-        //System.out.println(ConfigBrowserType());
+        String ConfigFilePath = System.getProperty("profileConfig");
+        System.out.println(ConfigFilePath);
     }
 
 }
