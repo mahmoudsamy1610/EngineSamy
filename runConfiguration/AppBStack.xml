@@ -12,9 +12,9 @@ Parallel execution modules [TimeSaving || AllChrome]
 Test environment  [Alpha || DEV || Live]
 -->
 
-<suite name="AppBrowserStack" >
+<suite name="AppBStack" >
 
-    <parameter name="ConfigUrl" value="runConfiguration/AppBrowserStack.xml"/>
+    <parameter name="ConfigUrl" value="runConfiguration/AppBStack.xml"/>
     <parameter name="ExecutionType" value="AppLocal"/>
     <parameter name="AppType" value="AndroidApp"/>
     <parameter name="AppDriver" value="uiautomator2"/>
