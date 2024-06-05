@@ -26,6 +26,7 @@ Test environment  [Alpha || DEV || Live]
     <listeners>
         <listener class-name="automation.engine.reportingWorks.AllureResultsCleaner" />
         <listener class-name="automation.engine.reportingWorks.AllureReportGenerator" />
+        <listener class-name="automation.engine.appDriverWorks.AppBrowserStackUploader" />
     </listeners>
 
 

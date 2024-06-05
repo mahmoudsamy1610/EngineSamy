@@ -18,6 +18,7 @@ public class TomlFileCreator {
                     writer.close();
                 } catch (Exception E) {
                     JavaLogger.JavaExceptionError("Failed creating TOML file at : " + TomlRelativePath , E);
+                    throw new RuntimeException(E);
                 }
 
             }
