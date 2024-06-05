@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+
     <profileId>${profileId}</profileId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -42,6 +43,7 @@
     <com.browserstack.dep.version>1.15.0</com.browserstack.dep.version>
     <org.apache.maven.plugins.dep.version>3.6.0</org.apache.maven.plugins.dep.version>
     <io.appium.dep.version>8.6.0</io.appium.dep.version>
+    <org.yaml.dep.version>2.2</org.yaml.dep.version>
 
     <maven-compiler-plugin.plugin.version>3.11.0</maven-compiler-plugin.plugin.version>
     <maven-surefire-plugin.plugin.version>3.1.2</maven-surefire-plugin.plugin.version>
@@ -225,6 +227,13 @@
       <artifactId>java-client</artifactId>
       <version>${io.appium.dep.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>${org.yaml.dep.version}</version>
+    </dependency>
+
   </dependencies>
 
 
