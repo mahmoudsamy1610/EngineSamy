@@ -3,7 +3,6 @@ package automation.engine.appDriverWorks;
 import automation.engine.apiWorks.Post;
 import automation.utils.fileWorks.YamlFileReader;
 import automation.utils.loggers.EngineLogger;
-import browserstack.shaded.org.json.JSONObject;
 import io.restassured.response.Response;
 import org.testng.IExecutionListener;
 
@@ -26,8 +25,7 @@ public class AppBrowserStackUploader  implements IExecutionListener {
         try {
 
             if (response.statusCode() == 200) {
-                JSONObject jsonResponse = new JSONObject(response.getBody().asString());
-                AppUrl = jsonResponse.getString("app_url");
+                AppUrl = response.toString();
                 EngineLogger.EngineInfo("App uploaded successfully and response URL is : " + AppUrl);
 
             } else {

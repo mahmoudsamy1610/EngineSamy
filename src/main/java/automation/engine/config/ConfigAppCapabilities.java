@@ -58,9 +58,9 @@ public class ConfigAppCapabilities {
         try {
             ConfigFilePath = ConfigFileDecider.DecideConfigFile();
             AppPath = XmlAttValueGetter.GetAttributeValueByAttName(ConfigFilePath, "parameter", "name", "AppPath", "value");
-            JavaLogger.JavaInfo("Fetching DeviceName configuration parameter : " + AppPath + " , from configuration file : " + ConfigFilePath);
+            JavaLogger.JavaInfo("Fetching appPath configuration parameter : " + AppPath + " , from configuration file : " + ConfigFilePath);
         } catch (Exception E) {
-            JavaLogger.JavaExceptionError("Failed Fetching DeviceName configuration parameter : " + AppPath + " , from configuration file : " + ConfigFilePath, E);
+            JavaLogger.JavaExceptionError("Failed Fetching appPath configuration parameter : " + AppPath + " , from configuration file : " + ConfigFilePath, E);
         }
         return AppPath;
     }

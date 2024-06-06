@@ -7,6 +7,7 @@ App driver [uiautomator2 || xcuitest || mac2 || espresso || safari || gecko || c
 App Caps-PlatformName [Android || IOS]
 App Caps-AutomationName [UiAutomator2 || ...]
 App Caps-DeviceName [emulator-5554 || ...]
+App Caps-AppPath [src/main/resources/automationResources/apks/ApiDemos-debug.apk]
 Parallel execution modules [TimeSaving || AllChrome]
 Test environment  [Alpha || DEV || Live]
 -->
@@ -18,9 +19,9 @@ Test environment  [Alpha || DEV || Live]
     <parameter name="AppType" value="AndroidApp"/>
     <parameter name="AppDriver" value="uiautomator2"/>
     <parameter name="AutomationName" value="UiAutomator2"/>
-    <parameter name="deviceName" value="emulator-5554"/>
-    <parameter name="ParaModule" value="TimeSaving"/>
-    <parameter name="Environment" value="Alpha"/>
+    <parameter name="DeviceName" value="emulator-5554"/>
+    <parameter name="AppPath" value="src/main/resources/automationResources/apks/ApiDemos-debug.apk"/>
+
 
 
     <listeners>
