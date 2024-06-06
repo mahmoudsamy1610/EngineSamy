@@ -30,9 +30,10 @@ public class AppExecutionType {
                 //when implementing parallel execution you need new classes as web
                 //return AppPlatformFactory.SetPlatform(BrowserType);
 
-            } else {
-                EngineLogger.EngineError("Invalid App Execution type provided : " + ExecutionType);
-                throw new IOException();
+            } else if (ExecutionType.equalsIgnoreCase("BrowserStack")) {
+                String AppType = ConfigAppType.GetAppType();
+                return BStackDriverFactory.SetBStackPlatform(AppType);
+
             }
 
         }catch (Exception E){

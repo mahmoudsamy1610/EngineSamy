@@ -27,7 +27,7 @@ public class AppBrowserStackUploader  implements IExecutionListener {
 
             if (response.statusCode() == 200) {
                 AppUrl = response.toString();
-
+                EngineLogger.EngineInfo("App uploaded successfully and response URL is : " + AppUrl);
             } else {
                 throw new NullPointerException();
             }

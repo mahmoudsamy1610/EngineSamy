@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <!--
-Execution method [AppLocal || AppParaLocal || AppHeadless ]
+Execution method [AppLocal || AppParaLocal || AppHeadless || BrowserStack]
 App type [AndroidApp || IOSApp || AndroidChrome || AndroidFireFox || IosSafari]
 App driver [uiautomator2 || xcuitest || mac2 || espresso || safari || gecko || chromium]
 App Caps-PlatformName [Android || IOS]
 App Caps-AutomationName [UiAutomator2 || ...]
 App Caps-DeviceName [emulator-5554 || ...]
-App Caps-AppPath [src/main/resources/automationResources/apks/ApiDemos-debug.apk]
 Parallel execution modules [TimeSaving || AllChrome]
 Test environment  [Alpha || DEV || Live]
 -->
@@ -15,12 +14,10 @@ Test environment  [Alpha || DEV || Live]
 <suite name="AppBStack" >
 
     <parameter name="ConfigUrl" value="runConfiguration/AppBStack.xml"/>
-    <parameter name="ExecutionType" value="AppLocal"/>
+    <parameter name="ExecutionType" value="BrowserStack"/>
     <parameter name="AppType" value="AndroidApp"/>
     <parameter name="AppDriver" value="uiautomator2"/>
-    <parameter name="AutomationName" value="UiAutomator2"/>
-    <parameter name="ParaModule" value="TimeSaving"/>
-    <parameter name="Environment" value="Alpha"/>
+
 
 
     <listeners>

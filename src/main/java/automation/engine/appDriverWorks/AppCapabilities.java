@@ -19,7 +19,7 @@ public class AppCapabilities {
            String AppPlatformName = ConfigAppCapabilities.ConfigureAppPlatformName();
            String AppAutomationName =  ConfigAppCapabilities.ConfigureAppAutomationName();
            String AppDeviceName = ConfigAppCapabilities.ConfigureAppDeviceName();
-           String AppAbsPath = ConfigAppCapabilities.ConfigureAppPath();
+           String AppAbsPath = PathConverter.ConvertPathToAbs(ConfigAppCapabilities.ConfigureAppPath());
 
             DesiredCapabilities AppDriverCaps = new DesiredCapabilities();
 

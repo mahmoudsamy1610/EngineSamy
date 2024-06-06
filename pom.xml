@@ -10,7 +10,7 @@
 
   <properties>
 
-    <profileId>${profileId}</profileId>
+    <profileId>Local</profileId>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <selenium.dep.version>4.20.0</selenium.dep.version>
