@@ -3,6 +3,7 @@ package automation.engine.appDriverWorks;
 import automation.engine.apiWorks.Post;
 import automation.utils.fileWorks.YamlFileReader;
 import automation.utils.loggers.EngineLogger;
+import automation.utils.propertyWorks.PropertyGetter;
 import io.restassured.response.Response;
 import org.testng.IExecutionListener;
 
@@ -14,7 +15,7 @@ public class AppBrowserStackUploader  implements IExecutionListener {
 
         String BStackUserName = YamlFileReader.ReadFromYamlFile ("appBrowserStack.yml" , "userName");
         String BStackAccessKey = YamlFileReader.ReadFromYamlFile ("appBrowserStack.yml" , "accessKey");
-        String BStackUploadUrl = "https://api-cloud.browserstack.com/app-automate/upload";
+        String BStackUploadUrl = PropertyGetter.GetPropertyValue("Appium", "AppiumAppUploadPath");
 
         EngineLogger.EngineInfo("Calling browser stack POST api to upload app from path : " + LocalFilePath);
 
@@ -27,7 +28,6 @@ public class AppBrowserStackUploader  implements IExecutionListener {
             if (response.statusCode() == 200) {
                 AppUrl = response.toString();
                 EngineLogger.EngineInfo("App uploaded successfully and response URL is : " + AppUrl);
-
             } else {
                 throw new NullPointerException();
             }
@@ -40,8 +40,17 @@ public class AppBrowserStackUploader  implements IExecutionListener {
 
 
     public void onExecutionStart(){
+        PropertyGetter.GetPropertyValue("EngineData", "AppUnderTestPath");
         UploadAppBrowserStack("src/main/resources/automationResources/apks/ApiDemos-debug.apk");
         EngineLogger.EngineInfo("uploading app from local system director using browser stack upload APIs");
+    }
+
+
+
+
+    public static void main(String[] args) {
+        UploadAppBrowserStack("src/main/resources/automationResources/apks/ApiDemos-debug.apk");
+
     }
 
 

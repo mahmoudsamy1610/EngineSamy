@@ -54,7 +54,7 @@ public class ApiDemosTest {
     @AfterTest
     public void TearDown(){
         //driver.quit();
-        AppiumServices.StopAppiumService();
+       // AppiumServices.StopAppiumService();
 
     }
 

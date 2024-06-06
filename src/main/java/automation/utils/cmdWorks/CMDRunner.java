@@ -16,8 +16,12 @@ public class CMDRunner {
             Process process = processBuilder.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             String line;
             while ((line = reader.readLine()) != null) {
+                JavaLogger.JavaInfo("Line : " + line);
+            }
+            while ((line = error.readLine()) != null) {
                 JavaLogger.JavaInfo("Line : " + line);
             }
 
