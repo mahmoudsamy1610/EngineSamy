@@ -1,17 +1,15 @@
 package automation.engine.appDriverWorks;
 
+import automation.engine.config.ConfigAppCapabilities;
 import automation.engine.reportingWorks.AllureStepLogger;
 import automation.utils.fileWorks.PathConverter;
 import automation.utils.loggers.EngineLogger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AppDriverFactory {
@@ -53,8 +51,11 @@ public class AppDriverFactory {
 
         try {
 
+            String LocalAbsAppPath = PathConverter.ConvertPathToAbs(ConfigAppCapabilities.ConfigureAppPath());
+
             AppiumServices.UninstallAppiumDriver();
             AppiumServices.InstallAppiumDriver();
+            AppInstaller.InstallApp(LocalAbsAppPath);
 
            DesiredCapabilities AppDriverCaps = AppCapabilities.DecideAppCapabilities();
 

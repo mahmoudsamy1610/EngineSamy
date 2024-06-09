@@ -65,15 +65,17 @@ public class AndroidStudioLauncher implements IExecutionListener {
 
     }
 
+    /*
 
     @SneakyThrows
     public void onExecutionStart(){
         EngineLogger.EngineInfo("uploading app from local system director using browser stack upload APIs");
         StartAndroidStudio();
         StartAndroidSession();
-        InstallApp();
 
     }
+
+     */
 
     public static void main(String[] args) throws Exception {
         StartAndroidStudio();

@@ -4,10 +4,11 @@ import automation.engine.config.ConfigAppDriver;
 import automation.utils.cmdWorks.CMDRunner;
 import automation.utils.loggers.EngineLogger;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.testng.IExecutionListener;
 
-public class AppiumServices {
+public class AppiumServices implements IExecutionListener {
 
-    public static void StartAppiumService(){
+    public static void StartAppiumService() {
 
         EngineLogger.EngineInfo("--------------Starting Appium Service on local machine-------------");
 
@@ -70,5 +71,26 @@ public class AppiumServices {
 
     }
 
+
+    public void onExecutionStart(){
+        StopAppiumService();
+        StartAppiumService();
+
+    }
+
+
+
+    public void onExecutionFinish(){
+        StopAppiumService();
+
+    }
+
+
+    public static void main(String[] args) {
+        StopAppiumService();
+        StartAppiumService();
+        StopAppiumService();
+
+    }
 
 }
