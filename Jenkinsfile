@@ -2,7 +2,7 @@ node {
     def mvnHome
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
-        git branch: 'test', credentialsId: 'SSH', url: 'https://github.com/mahmoudsamy1610/business'
+        git branch: 'test', credentialsId: 'SSH', url: 'https://github.com/mahmoudsamy1610/EngineSamy'
         // Get the Maven tool.
         // ** NOTE: This 'M3' Maven tool must be configured
         // **       in the global configuration.
@@ -14,7 +14,7 @@ node {
             if (isUnix()) {
                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" -P$Config clean test/)
+                bat(/"%MVN_HOME%\bin\mvn" -P$Profile clean test/)
             }
         }
     }
