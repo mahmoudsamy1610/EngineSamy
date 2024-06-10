@@ -2,7 +2,7 @@ node {
     def mvnHome
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
-        git branch: 'test', credentialsId: 'SSH', url: 'https://github.com/mahmoudsamy1610/EngineSamy'
+        git branch: 'test', credentialsId: 'SSH-iHorizonsLaptop', url: 'https://github.com/mahmoudsamy1610/EngineSamy'
         // Get the Maven tool.
         // ** NOTE: This 'M3' Maven tool must be configured
         // **       in the global configuration.
