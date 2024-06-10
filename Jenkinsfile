@@ -1,5 +1,10 @@
 node {
     def mvnHome
+
+    properties([
+            pipelineTriggers([pollSCM('* * * * *')])  // Poll SCM every minute
+        ])
+
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
         git branch: 'test', credentialsId: 'SSH-iHorizonsLaptop', url: 'https://github.com/mahmoudsamy1610/EngineSamy'
