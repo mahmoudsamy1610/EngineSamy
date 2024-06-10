@@ -2,7 +2,7 @@ node {
     def mvnHome
 
     properties([
-            pipelineTriggers([pollSCM('* * * * *')])  // Poll SCM every minute
+            pipelineTriggers([pollSCM('H/5 * * * *')])  // Poll SCM every minute
         ])
 
     stage('Preparation') { // for display purposes
