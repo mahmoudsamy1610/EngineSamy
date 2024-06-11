@@ -10,7 +10,7 @@
 
   <properties>
 
-    <profileId>AppLocal</profileId>
+    <!--<profileId>AppLocal</profileId>-->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <selenium.dep.version>4.20.0</selenium.dep.version>
@@ -314,6 +314,9 @@
   <profiles>
     <profile>
       <id>Local</id>
+      <properties>
+        <env>local</env>
+      </properties>
       <build>
         <plugins>
           <plugin>
@@ -342,10 +345,8 @@
 
     <profile>
       <id>AppLocal</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <properties>
+        <env>AppLocal</env>
         <env.PATH>C:\Program Files\nodejs;${env.PATH}</env.PATH>
       </properties>
       <dependencies>
@@ -383,6 +384,9 @@
 
     <profile>
       <id>BStack</id>
+      <properties>
+        <env>BStack</env>
+      </properties>
     <dependencies>
       <dependency>
         <groupId>com.browserstack</groupId>
@@ -424,6 +428,9 @@
 
     <profile>
       <id>AppBStack</id>
+      <properties>
+        <env>AppBStack</env>
+      </properties>
       <dependencies>
         <dependency>
           <groupId>com.browserstack</groupId>
