@@ -14,7 +14,7 @@ node {
             if (isUnix()) {
                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" clean test -P$Profile -Denv=$ProfileEnv /)
+                bat(/"%MVN_HOME%\bin\mvn" clean test -P$Profile -Denv=$ProfileEnv -Dbrowserstack.config=$BrowserStackYml /)
             }
         }
     }
