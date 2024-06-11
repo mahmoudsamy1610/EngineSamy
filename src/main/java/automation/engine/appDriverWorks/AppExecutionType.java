@@ -18,6 +18,10 @@ public class AppExecutionType {
         try {
 
             if (ExecutionType.equalsIgnoreCase("AppLocal")) {
+
+                AndroidStudioLauncher.StartAndroidStudio();
+                AndroidStudioLauncher.StartAndroidSession();
+
                 String AppType = ConfigAppType.GetAppType();
                 return AppDriverFactory.SetPlatform(AppType);
 

@@ -40,7 +40,7 @@ public class AppBrowserStackUploader  implements IExecutionListener {
 
 
     public void onExecutionStart(){
-        PropertyGetter.GetPropertyValue("EngineData", "AppUnderTestPath");
+        PropertyGetter.GetPropertyValue("Appium", "AppUnderTestPath");
         UploadAppBrowserStack("src/main/resources/automationResources/apks/ApiDemos-debug.apk");
         EngineLogger.EngineInfo("uploading app from local system director using browser stack upload APIs");
     }
