@@ -17,9 +17,6 @@ AppDriverStarter {
 
                 AppiumDriver driver;
 
-                AndroidStudioLauncher.StartAndroidStudio();
-                AndroidStudioLauncher.StartAndroidSession();
-
                 driver = AppSetupFactory.Run();
 
                 return driver;
